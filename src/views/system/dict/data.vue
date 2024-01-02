@@ -210,8 +210,8 @@ const data = reactive({
   queryParams: {
     pageNum: 1,
     pageSize: 10,
-    dictName: undefined,
     dictType: undefined,
+    dictLabel: undefined,
     status: undefined
   },
   rules: {
@@ -279,7 +279,7 @@ function handleClose() {
 /** 重置按钮操作 */
 function resetQuery() {
   proxy.resetForm("queryRef");
-  queryParams.value.dictType = defaultDictType;
+  queryParams.value.dictType = defaultDictType.value;
   handleQuery();
 }
 /** 新增按钮操作 */
