@@ -1,0 +1,56 @@
+[
+  {
+    "source": "1",
+    "target": "2",
+    "lineStyle": null
+  },
+  {
+    "source": "1",
+    "target": "3",
+    "lineStyle": null
+  },
+  {
+    "source": "1",
+    "target": "4",
+    "lineStyle": {
+      "type": "dashed"
+    }
+  },
+  {
+    "source": "4",
+    "target": "5",
+    "lineStyle": null
+  },
+  {
+    "source": "5",
+    "target": "6",
+    "lineStyle": {
+      "type": "dashed"
+    }
+  },
+  {
+    "source": "6",
+    "target": "7",
+    "lineStyle": null
+  },
+  {
+    "source": "8",
+    "target": "6",
+    "lineStyle": null
+  },
+  {
+    "source": "22",
+    "target": "4",
+    "lineStyle": null
+  },
+  {
+    "source": "23",
+    "target": "7",
+    "lineStyle": null
+  },
+  {
+    "source": "24",
+    "target": "22",
+    "lineStyle": null
+  }
+]
