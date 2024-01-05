@@ -31,21 +31,20 @@
               </el-form-item>
             </el-col>
           </el-row>
+
+          <div style="margin-left:40px;font-weight: bold;height:25px">⇩</div>
           <el-row :gutter="10">
-            <el-col :span="2">
-              <el-form-item label="=>" prop="totalNum"></el-form-item>
-            </el-col>
-            <el-col :span="6">
+            <el-col :span="7">
               <el-form-item label="供应关系企业数量：" prop="supplyNum">
                 <span style="font-weight: bold">{{ supplyNum }}</span>
               </el-form-item>
             </el-col>
-            <el-col :span="6" style="margin-left:20px">
+            <el-col :span="7" style="margin-left:20px">
               <el-form-item label="合作关系企业数量：" prop="cooperationNum">
                 <span style="font-weight: bold">{{ cooperationNum }}</span>
               </el-form-item>
             </el-col>
-            <el-col :span="6" style="margin-left:20px">
+            <el-col :span="7" style="margin-left:20px">
               <el-form-item label="竞争关系企业数量：" prop="competitioNum">
                 <span style="font-weight: bold">{{ competitioNum }}</span>
               </el-form-item>
@@ -57,8 +56,9 @@
       <div id="main2" class="container-r">
         <div class="title-info">评估企业收益指标：</div>
         <el-form
-          style="display: flex; flex-direction: column; align-items: center"
+          style="display: flex; flex-direction: column; align-items: left; text-align: left;margin-left: 150px;margin-top: 50px" 
         >
+
           <el-row :gutter="24" style="margin-bottom:10px">
             <el-col :span="12">
               <el-form-item label="企业市场份额：" prop="marketShare">
@@ -404,7 +404,7 @@ const loading = computed(() => store.isLoding);
   display: flex; 
 }
 .container-l {
-  height: 340px;
+  height: 350px;
   width: 700px;
   flex: 1; 
   border: 1px solid #bfbfbf; 
@@ -412,7 +412,7 @@ const loading = computed(() => store.isLoding);
   margin-right: 10px;
 }
 .container-r {
-  height: 340px;
+  height: 350px;
   width: 700px;
   flex: 1; 
   border: 1px solid #bfbfbf; 

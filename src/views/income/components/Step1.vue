@@ -194,16 +194,16 @@
                 <div class="legend-item">
                   <div
                     class="color-box"
-                    style="background-color: lightgreen"
+                    style="background-color: rgba(255,0,0,0.5)"
                   ></div>
                   合作关系
                 </div>
                 <div class="legend-item">
-                  <div class="color-box" style="background-color: orange"></div>
+                  <div class="color-box" style="background-color: rgba(0,0,255,0.5)"></div>
                   供应关系
                 </div>
                 <div class="legend-item">
-                  <div class="color-box" style="background-color: grey"></div>
+                  <div class="color-box" style="background-color: rgba(0,128,0,0.5)"></div>
                   竞争关系
                 </div>
               </div>
@@ -588,14 +588,24 @@ const dynamicLoading = (relatedNode, selectedCompanyInfo, relatedLink) => {
             width: 2, // 设置线条粗细
             curveness: 0.15, // 设置线条弯曲程度
             color: (() => {
-              // 根据关系类型设置颜色
-              if (link.relation === "供应关系") {
-                return "orange";
-              } else if (link.relation === "合作关系") {
-                return "lightgreen";
+              // 根据关系类型设置连线颜色
+              if (link.relation === "合作关系") {
+                 return "rgba(255, 0, 0, 0.5)";  // 设置透明度为0.5的红色
+              }else if (link.relation === "供应关系") {
+                return "rgba(0, 0, 255, 0.5)";  // 设置透明度为0.5的蓝色
               } else if (link.relation === "竞争关系") {
-                return "grey";
+                return "rgba(0, 128, 0, 0.5)";  // 设置透明度为0.5的绿色
               }
+
+              
+              // if (link.relation === "供应关系") {
+              //   // return "blue";
+              //   return "rgba(0, 0, 255, 0.4)";  // 设置透明度为0.5的蓝色
+              // } else if (link.relation === "合作关系") {
+              //    return "rgba(255, 0, 0, 0.5)";  // 设置透明度为0.5的红色
+              // } else if (link.relation === "竞争关系") {
+              //   return "green";
+              // }
             })(),
           },
         },
