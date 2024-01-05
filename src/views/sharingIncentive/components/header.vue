@@ -2,7 +2,7 @@
   <div>
     <div class="menu-container">
       <el-menu
-          :default-active= "DataAnalysis"
+          :default-active="DataAnalysis"
           background-color="#204F71"
           text-color="#fff"
           active-text-color="#3eede7"
@@ -38,40 +38,40 @@
       </el-menu>
     </div>
     <!-- <el-container> -->
-      <!-- <el-menu
-          background-color="#204F71"
-          text-color="#fff"
-          active-text-color="#3eede7"
-          mode="horizontal"
-          router
-          class="menu"
-          @select="handleSelect">
-        <div class="left-items">
-          <el-menu-item index="DataAnalysis" style="margin-right: 20px;">
-            <i class="el-icon-map-location"></i>
-            共享态势
-          </el-menu-item>
-          <el-menu-item index="mysharing" style="margin-right: -200px;">
-            <i class="el-icon-data-analysis"></i>
-            我的共享
-          </el-menu-item>
-        </div>
-        <div class="center-item">
-            <span class="neon" style="font-size: 18px;">
-            基于多重产业链的数据共享激励构件
-            </span>
-        </div>
-        <div class="right-items">
-          <el-menu-item index="currentsharing" style="margin-left: -200px;">
-            <i class="el-icon-edit-outline"></i>
-            当前任务
-          </el-menu-item>
-          <el-menu-item index="incentiveusage" style="margin-left: 20px;">
-            <i class="el-icon-set-up"></i>
-            激励使用
-          </el-menu-item>
-        </div>
-      </el-menu> -->
+    <!-- <el-menu
+        background-color="#204F71"
+        text-color="#fff"
+        active-text-color="#3eede7"
+        mode="horizontal"
+        router
+        class="menu"
+        @select="handleSelect">
+      <div class="left-items">
+        <el-menu-item index="DataAnalysis" style="margin-right: 20px;">
+          <i class="el-icon-map-location"></i>
+          共享态势
+        </el-menu-item>
+        <el-menu-item index="mysharing" style="margin-right: -200px;">
+          <i class="el-icon-data-analysis"></i>
+          我的共享
+        </el-menu-item>
+      </div>
+      <div class="center-item">
+          <span class="neon" style="font-size: 18px;">
+          基于多重产业链的数据共享激励构件
+          </span>
+      </div>
+      <div class="right-items">
+        <el-menu-item index="currentsharing" style="margin-left: -200px;">
+          <i class="el-icon-edit-outline"></i>
+          当前任务
+        </el-menu-item>
+        <el-menu-item index="incentiveusage" style="margin-left: 20px;">
+          <i class="el-icon-set-up"></i>
+          激励使用
+        </el-menu-item>
+      </div>
+    </el-menu> -->
     <el-main>
       <Step1></Step1>
       <!-- <el-card v-if="active === 0">
@@ -101,11 +101,11 @@ import Step2 from './mysharing.vue'
 
 const active = ref(0)
 export default {
-  components:{Step1,Step2,Step3,Step4},
-  
+  components: {Step1, Step2, Step3, Step4},
 
-  data(){
-    return{
+
+  data() {
+    return {
       // active0 = 0 
       // date:new Date(),
       // paths:[],
@@ -119,34 +119,34 @@ export default {
     //   _this.date = new Date(); // 修改数据date
     // }, 1000)
   },
-  methods:{
-    handleSelect(key){
-      consle.log(key);
-      if (key == "DataAnalysis")(active = 0)
-      if (key == "MySharing")(active = 1)
-      if (key == "CurrentSharing")(active = 2)
-      if (key == "IncentiveUsage")(active = 3)
-    }
-  },
-  created() {
-    //console.log(this.$router)
-  },
-  methods:{
+  // methods:{
+  //   handleSelect(key){
+  //     consle.log(key);
+  //     if (key == "DataAnalysis")(active = 0)
+  //     if (key == "MySharing")(active = 1)
+  //     if (key == "CurrentSharing")(active = 2)
+  //     if (key == "IncentiveUsage")(active = 3)
+  //   }
+  // },
+  // created() {
+  //   //console.log(this.$router)
+  // },
+  methods: {
     dateFormat(time) {
-      var date=new Date(time);
-      var year=date.getFullYear();
+      var date = new Date(time);
+      var year = date.getFullYear();
       /* 在日期格式中，月份是从0开始的，因此要加0
       * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
       * */
-      var month= date.getMonth()+1<10 ? "0"+(date.getMonth()+1) : date.getMonth()+1;
-      var day=date.getDate()<10 ? "0"+date.getDate() : date.getDate();
-      var hours=date.getHours()<10 ? "0"+date.getHours() : date.getHours();
-      var minutes=date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes();
-      var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
+      var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+      var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+      var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+      var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+      var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
       // 拼接
-      return year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
+      return year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
     },
-    logoout(){
+    logoout() {
       this.$router.push("/login")
       localStorage.removeItem("user")
       this.$message.success("退出成功")
@@ -185,21 +185,24 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .el-menu-item {
   font-size: 15px;
   background-color: #002339;
   font-family: 微软雅黑;
-  font-weight:800;
+  font-weight: 800;
   color: #fff;
 }
+
 .neon {
   font-family: 微软雅黑;
-  font-style:oblique;
-  font-weight:800;
+  font-style: oblique;
+  font-weight: 800;
   color: #fff;
   -webkit-animation: shining 0.5s alternate infinite;
   animation: shining 1s alternate infinite;
 }
+
 @-webkit-keyframes shining {
   from {
     text-shadow: 0 0 10px rgb(10, 25, 66), 0 0 20px
