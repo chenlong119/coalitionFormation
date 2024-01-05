@@ -2,11 +2,12 @@
 import {getCurrentInstance, nextTick, onMounted, ref} from 'vue'
 import * as echarts from 'echarts';
 import request from "@/utils/request";
-import Management from "@/views/task/management/Task.vue"
+import Task from "@/views/task/management/Task.vue"
 //企业信息列表部分
 import {addBusiness, delBusiness, getBusiness, listBusiness, updateBusiness} from "@/api/taskallocation/business";
 import Map from './map.vue'
 import MultiChart from "@/views/coalitionformation/dashboard/multiChart.vue";
+import {ElMessage, ElMessageBox} from "element-plus";
 
 
 let reload = ref(false);
@@ -42,15 +43,9 @@ const data = reactive({
     task: null
   },
   rules: {
-    state: [
-      {required: true, message: "当前状态不能为空", trigger: "change"}
-    ],
     layer: [
       {required: true, message: "所属网络层不能为空", trigger: "blur"}
-    ],
-    neighbor: [
-      {required: true, message: "邻居不能为空", trigger: "blur"}
-    ],
+    ]
   }
 });
 
@@ -142,7 +137,27 @@ function submitForm() {
         form.value.neighbor = added.value.map(item => item.id).join(",");
         added.value = [];
         addBusiness(form.value).then(response => {
-          proxy.$modal.msgSuccess("新增成功");
+
+          let htmlString = "<div style='text-align: left;'>" +
+              "<p>企业编号：" + form.value.id + "</p>" +
+              "<p>企业名称：" + form.value.name + "</p>" +
+              "<p>企业地址：" + form.value.address + "</p>" +
+              "<p>所属产业链：" + form.value.chain + "</p>" +
+              "<p>所属网络层：" + form.value.layer +
+              "</p><p>企业邻居节点编号：" + form.value.neighbor + "</p>" +
+              "<p>所属园区：" + form.value.park + "</p>" +
+              "<p>具有技能种类数量：" + form.value.skillNum + "</p>" +
+              "</div>"
+          ElMessageBox.alert(htmlString, '新增企业信息', {
+            dangerouslyUseHTMLString: true,
+            confirmButtonText: '确定',
+            callback: (action) => {
+              ElMessage({
+                type: 'success',
+                message: "新增成功",
+              })
+            },
+          })
           open.value = false;
           getList();
         });
@@ -497,7 +512,7 @@ onMounted(() => {
               <el-input v-model="form.layer" placeholder="请输入网络层编号"/>
             </el-form-item>
             <!--            prop="neighbor"-->
-            <el-form-item label="企业邻居节点">
+            <el-form-item label="企业邻居节点" prop="neighbor">
               <el-input v-model="kw" placeholder="请输入企业邻居节点名称" @keyup="searchNeighbor">
               </el-input>
               <div class="tippanel" v-if="kw!=''">
@@ -552,7 +567,7 @@ onMounted(() => {
           </template>
         </el-dialog>
       </div>
-      <Management v-else @switchBusiness="switchBusiness"></Management>
+      <Task v-else @switchBusiness="switchBusiness"></Task>
     </el-card>
     <el-row>
       <el-col :span="12">

@@ -1,32 +1,38 @@
 <template>
   <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="appStore.sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" v-if="!settingsStore.topNav" />
-    <top-nav id="topmenu-container" class="topmenu-container" v-if="settingsStore.topNav" />
+    <hamburger id="hamburger-container" :is-active="appStore.sidebar.opened" class="hamburger-container"
+               @toggleClick="toggleSideBar"/>
+    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" v-if="!settingsStore.topNav"/>
+    <top-nav id="topmenu-container" class="topmenu-container" v-if="settingsStore.topNav"/>
 
     <div class="right-menu">
       <template v-if="appStore.device !== 'mobile'">
-        <header-search id="header-search" class="right-menu-item" />
-
-        <el-tooltip content="源码地址" effect="dark" placement="bottom">
-          <ruo-yi-git id="ruoyi-git" class="right-menu-item hover-effect" />
-        </el-tooltip>
-
-        <el-tooltip content="文档地址" effect="dark" placement="bottom">
-          <ruo-yi-doc id="ruoyi-doc" class="right-menu-item hover-effect" />
-        </el-tooltip>
-
-        <screenfull id="screenfull" class="right-menu-item hover-effect" />
+        <div style="position: relative">
+          <el-tooltip :content="htmlString" placement="bottom"
+                      raw-content
+                      effect="light"
+          >
+            <el-icon :size="24"
+                     color="#5a5e66"
+                     style="margin-top: 12px;margin-right: 10px">
+              <Bell/>
+            </el-icon>
+          </el-tooltip>
+          <div class="red-dot"></div>
+        </div>
+        <screenfull id="screenfull" class="right-menu-item hover-effect"/>
 
         <el-tooltip content="布局大小" effect="dark" placement="bottom">
-          <size-select id="size-select" class="right-menu-item hover-effect" />
+          <size-select id="size-select" class="right-menu-item hover-effect"/>
         </el-tooltip>
       </template>
       <div class="avatar-container">
         <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">
           <div class="avatar-wrapper">
-            <img :src="userStore.avatar" class="user-avatar" />
-            <el-icon><caret-bottom /></el-icon>
+            <img :src="userStore.avatar" class="user-avatar"/>
+            <el-icon>
+              <caret-bottom/>
+            </el-icon>
           </div>
           <template #dropdown>
             <el-dropdown-menu>
@@ -48,15 +54,12 @@
 </template>
 
 <script setup>
-import { ElMessageBox } from 'element-plus'
+import {ElMessageBox} from 'element-plus'
 import Breadcrumb from '@/components/Breadcrumb'
 import TopNav from '@/components/TopNav'
 import Hamburger from '@/components/Hamburger'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
-import HeaderSearch from '@/components/HeaderSearch'
-import RuoYiGit from '@/components/RuoYi/Git'
-import RuoYiDoc from '@/components/RuoYi/Doc'
 import useAppStore from '@/store/modules/app'
 import useUserStore from '@/store/modules/user'
 import useSettingsStore from '@/store/modules/settings'
@@ -64,6 +67,32 @@ import useSettingsStore from '@/store/modules/settings'
 const appStore = useAppStore()
 const userStore = useUserStore()
 const settingsStore = useSettingsStore()
+
+const finishTasks = [{
+  id: 1,
+  name: '生产三元锂电池',
+  status: '已完成',
+  time: '2021-09-01'
+},
+  {
+    id: 5,
+    name: '生产汽车车身',
+    status: '已完成',
+    time: '2021-08-20'
+  },
+  {
+    id: 8,
+    name: '生产汽车轮胎',
+    status: '已完成',
+    time: '2021-08-10'
+  }
+]
+
+let htmlString = "<div style='text-align: center'><h3>任务完成情况</h3><table border='1' style='margin: 0 auto'><tr><th>任务名称</th><th>完成状态</th><th>完成时间</th></tr>"
+for (let i = 0; i < finishTasks.length; i++) {
+  htmlString += "<tr><td>" + finishTasks[i].name + "</td><td>" + finishTasks[i].status + "</td><td>" + finishTasks[i].time + "</td></tr>"
+}
+htmlString += "</table></div>"
 
 function toggleSideBar() {
   appStore.toggleSideBar()
@@ -91,10 +120,12 @@ function logout() {
     userStore.logOut().then(() => {
       location.href = '/index';
     })
-  }).catch(() => { });
+  }).catch(() => {
+  });
 }
 
 const emits = defineEmits(['setLayout'])
+
 function setLayout() {
   emits('setLayout');
 }
@@ -187,5 +218,15 @@ function setLayout() {
       }
     }
   }
+}
+
+.red-dot {
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 13px;
+  right: 16px;
 }
 </style>

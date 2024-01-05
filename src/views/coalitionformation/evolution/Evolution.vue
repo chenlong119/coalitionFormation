@@ -197,7 +197,7 @@ let data4 = [];
 let option2 = null;
 let option3 = null;
 let option4 = null;
-let index = 1;
+let index = ref(1);
 const date = ref(null);
 watch(date, () => {
   let random = Math.random();
@@ -216,18 +216,18 @@ watch(date, () => {
 const startTimer = () => {
   interval =
       setInterval(() => {
-        if (index === 1) {
+        if (index.value === 1) {
           myChart2.setOption(option1);
-          index++;
-        } else if (index === 2) {
+          index.value++;
+        } else if (index.value === 2) {
           myChart2.setOption(option2);
-          index++;
-        } else if (index === 3) {
+          index.value++;
+        } else if (index.value === 3) {
           myChart2.setOption(option3);
-          index++;
+          index.value++;
         } else {
           myChart2.setOption(option4);
-          index = 1;
+          index.value = 1;
         }
       }, 2000)
 }
@@ -281,7 +281,7 @@ const stopTimer = () => {
       <el-col :span="12">
         <el-card :shadow="'hover'">
           <template #header>
-            <span style="line-height: 30px">后续3天企业联盟状态变化</span>
+            <span style="line-height: 30px">后续{{ index }}天企业联盟状态变化</span>
           </template>
           <div ref="chart2" style="width: 100%; height:700px" @mouseenter="stopTimer" @mouseleave="startTimer"></div>
         </el-card>

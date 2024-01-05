@@ -194,6 +194,7 @@ import {addManagement, delManagement, getManagement, listManagement, updateManag
 import {nextTick, ref} from "vue";
 import request from "@/utils/request";
 import * as echarts from "echarts";
+import {ElMessage, ElMessageBox} from "element-plus";
 
 const emits = defineEmits(["switchBusiness"]);
 
@@ -433,7 +434,24 @@ function submitForm() {
         });
       } else {
         addManagement(form.value).then(response => {
-          proxy.$modal.msgSuccess("新增成功");
+          let htmlstring = `<div>
+            <p>任务名称：${form.value.name}</p>
+            <p>任务价值：${form.value.value}</p>
+            <p>截止日期：${form.value.ddl}</p>
+            <p>持续时长：${form.value.duration}</p>
+            <p>任务到达时间：${form.value.arrivalTime}</p>
+            <p>所需资源种类数量：${form.value.resourceNum}</p>
+          </div>`
+          ElMessageBox.alert(htmlstring, '新增任务信息', {
+            dangerouslyUseHTMLString: true,
+            confirmButtonText: '确定',
+            callback: (action) => {
+              ElMessage({
+                type: 'success',
+                message: "新增任务成功",
+              })
+            },
+          })
           open.value = false;
           getList();
         });

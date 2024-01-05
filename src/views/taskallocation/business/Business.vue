@@ -193,6 +193,7 @@ const single = ref(true);
 const multiple = ref(true);
 const total = ref(0);
 const title = ref("");
+// const showDialog = ref(false);
 
 const data = reactive({
   form: {},
@@ -278,6 +279,7 @@ function handleSelectionChange(selection) {
 
 /** 新增按钮操作 */
 function handleAdd() {
+  // showDialog.value = true;
   reset();
   open.value = true;
   title.value = "添加企业信息";

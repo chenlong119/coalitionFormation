@@ -8,7 +8,7 @@
             <el-input v-model="hours" placeholder="请输入时间间隔1-40" style="width: 200px;margin-left: 10px"/>
           </template>
           <div ref="taskInfo" style="width: 100%;height: 350px"
-               @mouseenter="handleHover" @mouseleave="handleLeave(40)"
+               @mouseenter="handleHover" @mouseleave="handleLeave"
           />
         </el-card>
       </el-col>
@@ -61,7 +61,6 @@
 
 <script setup>
 import {getCurrentInstance, nextTick, onMounted, onUnmounted, ref, watch} from "vue";
-import {useCoalitionStore} from "@/store/modules/coalition";
 import * as echarts from "echarts";
 import Drawer from "@/views/coalitionformation/detail/coalition/Drawer.vue";
 
@@ -157,12 +156,11 @@ const tableData = [
     current: 20
   },
 ]
-const coalitionStore = useCoalitionStore();
 const taskInfo = ref(null);
 const {proxy} = getCurrentInstance();
 const taskLinkageInfo = ref(null);
 let taskFinishInfo = ref(null);
-let taskInfoInstance;
+let taskInfoInstance = null;
 let times = [
   //1到40
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -212,6 +210,11 @@ let data = [
   [119, 192, 413, 193, 47, 90, 82, 142],
   [120, 206, 392, 150, 45, 60, 80, 120],
 ];
+data = data.map(function (item) {
+  return item.map(function (value) {
+    return value / 10;
+  });
+});
 
 const drawer = ref(false);
 let cname = ref();
@@ -223,14 +226,8 @@ const handleCoalition = (index) => {
     cid.value = tableData[index].cid;
   })
 }
-//对data每个元素除以10
-data = data.map(function (item) {
-  return item.map(function (value) {
-    return value / 10;
-  });
-});
 let option1 = {
-  tooltip: {formatter: "联盟名称：1号联盟<br/>{b}<br/>{c}%"},
+  tooltip: {formatter: "{b}<br/>{c}%"},
   yAxis: {
     data: tableData.map((item) => item.tname),
     inverse: true,
@@ -595,6 +592,7 @@ let option3 = {
     }
   ]
 };
+
 let interval = null;
 let index2 = 0;
 const myInterval = (length) => {
@@ -613,7 +611,7 @@ const myInterval = (length) => {
     taskInfoInstance.setOption(smallOption);
     index2--;
     if (index2 < 0) {
-      index2 = length - 1;
+      index2 = 39;
     }
   }, 1000);
 }
@@ -636,8 +634,8 @@ watch(hours, (val) => {
 const handleHover = () => {
   clearMyInterval();
 }
-const handleLeave = (time) => {
-  myInterval(time);
+const handleLeave = () => {
+  myInterval(index2 + 1);
 }
 // let timer = null;
 onMounted(() => {
