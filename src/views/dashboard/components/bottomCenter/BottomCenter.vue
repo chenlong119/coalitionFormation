@@ -11,7 +11,9 @@ let chartOptions = null;
 chartOptions = {
   title: {
     text: '企业协作团体总览图',
-    color: 'white',
+    textStyle: {
+      color: "#ffffff",
+    },
     textAlign: 'center', // 设置标题文本水平居中
     left: '50%', // 将标题水平居中
     top: 'top', // 距离底部的距离
@@ -32,7 +34,7 @@ chartOptions = {
 const renderPieChart = async () => {
 
   const chartInstance = echarts.init(pieChart.value);
-  chartInstance.setOption(chartOptions);
+  //chartInstance.setOption(chartOptions);
 
   let res = await getGroupInfo();
 
@@ -96,20 +98,11 @@ const renderPieChart = async () => {
   ];
   chartOptions.tooltip = tooltip;
   chartOptions.series = series;
-  chartOptions.title = {
-    textStyle: {
-      color: "#ffffff",
-    },
-    text: '企业协作团体总览图',
-    textAlign: 'center', // 设置标题文本水平居中
-    left: '50%', // 将标题水平居中
-    top: 'top', // 距离底部的距离
-  },
-      chartInstance.setOption(chartOptions);
+  chartInstance.setOption(chartOptions);
 };
 onMounted(() => {
-  const chartInstance = echarts.init(pieChart.value);
-  chartInstance.setOption(chartOptions);
+  //const chartInstance = echarts.init(pieChart.value);
+  //chartInstance.setOption(chartOptions);
   renderPieChart();
 })
 </script>
