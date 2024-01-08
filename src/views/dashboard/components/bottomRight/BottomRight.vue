@@ -180,7 +180,7 @@ onMounted(()=>{
 
 <template>
   <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'协同模式'">
-  <div ref="chartContainer" class="chart-container"></div>
+  <div ref="taskLinkageInfo1" class="chart-container"></div>
   </Body>
 </template>
 
@@ -189,66 +189,135 @@ onMounted(()=>{
 import Body from "@/views/dashboard/components/main/component/Body.vue";
 import * as echarts from "echarts";
 import {ref, onMounted} from 'vue';
+import {
+  fetchBusinessDirections,
+  fetchBusinessLocations,
+} from '@/api/multimode/faultyMachine';
 
+const businessLocations = ref([]);
+const businessDirections = ref([]);
+const taskLinkageInfo1 = ref(null);
+const colors = ['#e6ccff', '#ccffcc', '#ffffcc', '#ccf5ff'];
+const colorMap = new Map();
+const linkscolors = ['red', 'green', 'blue', 'gray', 'yellow', 'purple', 'orange'];
+const linkscolorMap = new Map();
+const getColorByGroupId = (groupId) => {
+  if (!colorMap.has(groupId)) {
+    // 分配一个新颜色
+    const color = colors[colorMap.size % colors.length];
+    colorMap.set(groupId, color);
+  }
+  return colorMap.get(groupId);
+};
+const getColorByModeId = (modeId) => {
+  if (!linkscolorMap.has(modeId)) {
+    // 分配一个新颜色
+    const color = linkscolors[linkscolorMap.size % linkscolors.length];
+    linkscolorMap.set(modeId, color);
+  }
+  return linkscolorMap.get(modeId);
+};
+const initializeChart = () => {
+  // 创建或更新图表实例
+  const chartInstance = echarts.init(taskLinkageInfo1.value);
+  // 根据 businessLocations 和 businessDirections 更新图表配置
+  const links = businessDirections.value.map(direction => {
+    const sourceNode = `企业 ${direction.sourceId}`;
+    const targetNode = `企业 ${direction.goalId}`;
+    return {
+      id: direction.locationId,
+      source: sourceNode,
+      target: targetNode,
+      history: (direction.history || []).map(h => ({
+        id: h.id, 
+        taskName: h.taskName,
+        deliveryDate: h.deliveryDate,
+        deliveryExperience: h.deliveryExperience
 
-const chartContainer = ref(null);
+      })),
 
-const createPieChart = () => {
-      const chartInstance = echarts.init(chartContainer.value);
+      lineStyle: {
+        curveness: 0.2,
+        color: getColorByModeId(direction.modeId)
+      },
+      tooltip: {
+        formatter: `连线信息：企业${direction.sourceId} -> 企业${direction.goalId}<br>当前合作任务：${direction.taskId}<br>协同模式：${direction.mode}`
+      }
+    };
+  });
+  console.log(links);
 
-      const chartOptions = {
+  const option = {
+    tooltip: {},
+    animationDurationUpdate: 50,
+    animationEasingUpdate: 'quinticInOut',
+    series: [{
+      type: 'graph',
+      layout: 'none',
+      symbolSize: 45,
+      roam: true,
+      label: {
+        show: true
+      },
+      edgeSymbol: ['circle', 'arrow'],
+      edgeSymbolSize: [1, 5],
+      edgeLabel: {
+        fontSize: 10
+      },
+      data: businessLocations.value.map(location => ({
+        name: `企业 ${location.businessId}`,
+        x: location.x,
+        y: location.y,
+        itemStyle: {color: getColorByGroupId(location.businessGroupId)},
         tooltip: {
-          trigger: 'item',
-        },
-        legend: {
-          textStyle:
-              {
-                color: '#fff',
-                fontSize: 10,
-              },
-          left:'10%',
-        },
-        series: [
-          {
-            type: 'pie',
-            left: 'center',
-            bottom:0,
-            radius: '100%',
-            data: [
-              {value: 5, name: '不跨企业'},
-              {value: 10, name: '跨企业'},
-              {value: 15, name: '跨企业跨链'},
-              {value: 50, name: '跨企业跨链跨群'},
-              {value: 20, name: '跨企业跨群'},
-            ],
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)',
-              },
-            },
-            focusNodeAdjacency: true,
-            itemStyle: {
-              borderWidth: 1,
-            },
-            label: { //标签样式
-              color: "#fff",
-              fontSize: 10,
-              fontFamily: "SourceHanSansCN",
-              position: "inside",
-              rotate: 0,
-            },
-          },
-        ],
-      };
+          formatter: `节点信息：<br/>${location.businessId}---${location.businessName}<br/>所属企业群编号：${location.businessGroupId}<br/>企业群：${location.businessGroupName}`
+        }
+      })),
+      links: links,
+      lineStyle: {
+        opacity: 0.9,
+        width: 2,
+        curveness: 0
+      }
 
-      chartInstance.setOption(chartOptions);
+    }]
+
+  };
+  console.log("Business Locations:", businessLocations.value);
+  console.log("Links:", links);
+  chartInstance.on('click', (params) => {
+    if (params.dataType === 'edge') {
+      // 找到点击的连线对应的历史数据
+      const clickedLink = businessDirections.value.find(d => `企业 ${d.sourceId}` === params.data.source && `企业 ${d.goalId}` === params.data.target);
+      console.log("Clicked Link", clickedLink);
+
+      // 确保找到了连线，并且该连线有历史数据
+      if (clickedLink && clickedLink.history) {
+        showDrawer({
+          source: `企业 ${clickedLink.sourceId}`,
+          target: `企业 ${clickedLink.goalId}`,
+          history: clickedLink.history.map(h => ({
+            id: h.id,
+            taskName: h.taskName,
+            deliveryDate: h.deliveryDate,
+            deliveryExperience: h.deliveryExperience
+          }))
+        });
+      }
     }
-;
+  });
 
-onMounted(() => {
-  createPieChart();
+  chartInstance.setOption(option);
+};
+
+
+onMounted(async () => {
+const responseLocations = await fetchBusinessLocations();
+  console.log(responseLocations); // 检查这里的响应
+  businessLocations.value = responseLocations;
+  const directions = await fetchBusinessDirections();
+  businessDirections.value = directions;
+  initializeChart();
 });
 
 

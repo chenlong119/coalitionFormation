@@ -614,7 +614,7 @@ const dynamicLoading = (relatedNode, selectedCompanyInfo, relatedLink) => {
           formatter: "{c}", // 连线标签的内容格式器，{c} 代表关系强度
         },
       })),
-      roam: true, //开启鼠标缩放和平移漫游
+      roam: false, //开启鼠标缩放和平移漫游
       left: "center",
       top: "center",
       itemStyle: {
