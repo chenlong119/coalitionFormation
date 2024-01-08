@@ -20,13 +20,12 @@ export default {
         let counts = response.map(item => item.highScoreCount);
 
         // 反转数组以确保顺序正确
-        months = months.reverse();
-        counts = counts.reverse();
+
 
         const lineChart = echarts.init(lineChartRef.value);
         const lineOption = {
           title: {
-            text: '近五个月90分以上的企业数目',
+            text: '近半年90分以上的企业数目',
             x: 'center',
             textStyle: {
               fontSize: 16,
