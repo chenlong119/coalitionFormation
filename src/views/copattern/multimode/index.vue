@@ -198,6 +198,7 @@
 <!--}-->
 <!--</script>-->
 <script setup>
+import { ElMessage, ElMessageBox } from 'element-plus'
 import * as echarts from "echarts";
 // import _ from "lodash";
 import {onMounted, reactive, ref} from 'vue';
@@ -635,6 +636,13 @@ onMounted(async () => {
   initializeChart();
 });
 const handleSearch = async () => {
+  if (queryInput.value === '') {
+    ElMessage({
+      type: 'warning',
+      message: '请输入搜索内容',
+    })
+    return;
+  }
   try {
     let response;
 
@@ -1581,7 +1589,7 @@ const initializeChart = () => {
   font-size: 14px; /* 调整字体大小 */
   position: absolute;
   left: 610px;
-  top: 260px;
+  top: 255px;
   background-color: #fff;
   padding: 8px; /* 内边距 */
   border: 2px solid #ccc;

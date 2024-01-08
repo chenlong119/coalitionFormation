@@ -44,6 +44,9 @@
                  @change="handleSelectChange2">
         <el-option v-for="item in relationData" :key="item.id" :label="item.name" :value="item.id"/>
       </el-select>
+      <span>
+        <el-button type="default" @click="reset">重置</el-button>
+      </span>
     </div>
     <el-main>
       <div style="margin-bottom: 15px"><span style="font-size: 14px; font-weight: bold;">耦合关系展现：</span></div>
@@ -252,7 +255,8 @@ const pageSize = 5
 //当前页
 let currentPage = ref(1);
 // 计算与所选节点相关的所有节点信息和连接信息
-const selectedNode = ref(""); //用户选择的节点
+const selectedNode = ref("");
+const relatedNodes = ref([]);
 const selectedRelation = ref("");
 const relatedNodesWithout = reactive([]);
 const relatedNodeIds = new Set();
@@ -307,7 +311,6 @@ watch([selectedNode], () => {
     node.index = index + 1;
   });
   relatedNodesWithout.value = tempRelatedNodes1;
-  //console.log(relatedNodesWithout.value);
 
 }, {deep: true});
 //"查看详情"功能
@@ -1016,7 +1019,13 @@ onMounted(async () => {
   });
 })
 ;
+const reset = () => {
+  selectedRelation.value="";
+  selectedNode.value="";
+  relatedNodesWithout.value="";
+}
 const handleSelectChange = () => {
+  //selectedRelation.value="";
   //let selectedNodeIndices = selectedNode.value;
   //console.log(selectedNode.value);
   if (selectedRelation.value != "") {
@@ -1047,7 +1056,7 @@ const handleSelectChange = () => {
       dataIndex: selectedNodeIndices-1, // 替换成您的数据中节点的索引或 ID
     });
   }
-  selectedRelation.value="";
+  // selectedRelation.value="";
 
 };
 const handleSelectChange2 = () => {
@@ -1072,7 +1081,7 @@ const handleSelectChange2 = () => {
       seriesIndex: 0,    // 替换成您的图表中的系列索引
       dataIndex: dataIndex, // 替换成您的数据中节点的索引或 ID
     });
-    selectedRelation.value="";
+    // selectedRelation.value="";
   }
 
 };
