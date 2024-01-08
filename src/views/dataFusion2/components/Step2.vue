@@ -3,9 +3,10 @@
     <div id="main2" ref="chartContainer" class="container"
          style="flex: 1 0 70%; height: 460px; background-color: rgb(255,255,255)">
     </div>
-    <el-button type="primary"  @click="toggleLegendAndCategories" style="margin: 10px; padding: 8px; font-size: 16px; height: 100px" class="vertical-text-button">
+    <el-button type="primary" @click="toggleLegendAndCategories"
+               style="margin: 10px; padding: 8px; font-size: 16px; height: 100px" class="vertical-text-button">
       <span>{{ buttonText }}</span>
-      </el-button>
+    </el-button>
     <div id="pieChart" ref="pieChart" class="container"
          style="flex: 1 0 25%; height: 460px; background-color: rgb(255,255,255)">
     </div>
@@ -93,11 +94,10 @@
 
 
 <script setup>
-import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
+import {computed, onMounted, reactive, ref} from 'vue'
 import * as echarts from 'echarts'
-import axios from "axios";
-import {getAllCompany, getAllCompanyAndLink, getAllCompanyWithoutLocation, getGroupInfo} from "@/api/datafusion/test";
-import {View} from "@element-plus/icons-vue";  //引入echarts
+import {getAllCompanyAndLink, getAllCompanyWithoutLocation, getGroupInfo} from "@/api/datafusion/test";
+
 const formulaVisible = ref(false)
 const singleCompanyForm = reactive({
   companyName: ""
@@ -181,27 +181,27 @@ const renderPieChart = async () => {
   chartOptions.series = series;
   chartOptions.title = {
     text: '企业协作团体总览图',
-        textAlign: 'center', // 设置标题文本水平居中
-        left: '50%', // 将标题水平居中
-        top: 'top', // 距离底部的距离
+    textAlign: 'center', // 设置标题文本水平居中
+    left: '50%', // 将标题水平居中
+    top: 'top', // 距离底部的距离
   },
-  chartInstance.setOption(chartOptions);
+      chartInstance.setOption(chartOptions);
 };
 const toggleLegendAndCategories = () => {
   legendAndCategoriesEnabled.value = !legendAndCategoriesEnabled.value;
   if (legendAndCategoriesEnabled.value) {
     legendConfig = {
       data: [
-        { name: '1' },
-        { name: '2' },
-        { name: '3' },
-        { name: '4' },
-        { name: '5' },
+        {name: '1'},
+        {name: '2'},
+        {name: '3'},
+        {name: '4'},
+        {name: '5'},
       ],
       selectedMode: 'all',
     };
-  }else {
-    legendConfig={
+  } else {
+    legendConfig = {
       data: [], // 初始为空
       selectedMode: 'none',
     };
@@ -219,17 +219,17 @@ const toggleLegendAndCategories = () => {
       {
         categories: legendAndCategoriesEnabled.value
             ? [
-              { name: '1' },
-              { name: '2' },
-              { name: '3' },
-              { name: '4' },
-              { name: '5' },
+              {name: '1'},
+              {name: '2'},
+              {name: '3'},
+              {name: '4'},
+              {name: '5'},
             ]
             : [],
         itemStyle: legendAndCategoriesEnabled.value
-          ? [] : {
+            ? [] : {
               normal: {
-                color: function(params) {
+                color: function (params) {
                   // 根据节点的 layer 值来设置颜色
                   // 这里的示例是根据不同的 layer 设置不同的颜色
                   const layerColors = ['#61a0a8', '#63b2ee', '#76da91', '#feb64d', '#f76d7c'];
@@ -490,6 +490,7 @@ onMounted(async () => {
     // 如果节点不存在，默认颜色为黑色
     return 'black';
   }
+
 //计算polygon的相对坐标点
   function calculatePoints(points) {
     const widthRatio = containerWidth / 800; // 宽度比例
@@ -724,7 +725,7 @@ onMounted(async () => {
       roam: true,     //开启鼠标缩放和平移漫游
       itemStyle: {
         normal: {
-          color: function(params) {
+          color: function (params) {
             // 根据节点的 layer 值来设置颜色
             // 这里的示例是根据不同的 layer 设置不同的颜色
             const layerColors = ['#61a0a8', '#63b2ee', '#76da91', 'rgba(196,76,126,0.98)', '#f76d7c'];
@@ -739,7 +740,7 @@ onMounted(async () => {
       label: {
         show: true,     //是否显示节点标签
         //formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
-        formatter: function(params) {
+        formatter: function (params) {
           return params.data.trueId;
         }
       },
@@ -754,7 +755,7 @@ onMounted(async () => {
         },
         label: {
           show: true,
-          formatter: function(params) {
+          formatter: function (params) {
             return params.data.name;  // 鼠标悬浮时显示节点的名称
           }
         }
@@ -834,7 +835,7 @@ onMounted(async () => {
 
 </script>
 
-<style>
+<style scoped>
 
 
 .feature-item {
@@ -875,7 +876,7 @@ onMounted(async () => {
 }
 
 .container {
-//width: 750px; flex: 1; /* 自动平均分配父容器的宽度 */
+  //width: 750px; flex: 1; /* 自动平均分配父容器的宽度 */
   border: 1px solid #bfbfbf; /* 添加1像素黑色边框 */
   padding: 20px; /* 可选：添加内边距，使内容区域不会贴紧边框 */
 }
@@ -885,6 +886,7 @@ onMounted(async () => {
   overflow: hidden;
   text-overflow: ellipsis; /* 可以显示省略号 (...) 来指示截断的文本 */
 }
+
 .vertical-text-button {
   writing-mode: vertical-lr; /* 从左到右的垂直排列 */
   text-orientation: upright; /* 文字方向为正立 */

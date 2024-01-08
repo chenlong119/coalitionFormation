@@ -16,16 +16,16 @@
   <div>
     <div id="main"
          style="width: 1000px;height:400px;margin: 0 auto;background-color: rgba(250,247,247,0.5)"></div>
-<!--    <div style="display: flex; justify-content: flex-end;">-->
-<!--      <el-button-->
-<!--          type="primary"-->
-<!--          plain-->
-<!--          icon="Plus"-->
-<!--          @click="handleAdd"-->
-<!--          v-hasPermi="['task:taskAllocation:add']"-->
-<!--      >新企业加入-->
-<!--      </el-button>-->
-<!--    </div>-->
+    <!--    <div style="display: flex; justify-content: flex-end;">-->
+    <!--      <el-button-->
+    <!--          type="primary"-->
+    <!--          plain-->
+    <!--          icon="Plus"-->
+    <!--          @click="handleAdd"-->
+    <!--          v-hasPermi="['task:taskAllocation:add']"-->
+    <!--      >新企业加入-->
+    <!--      </el-button>-->
+    <!--    </div>-->
     <el-dialog :title="title" v-model="open" width="500px" append-to-body>
       <el-form ref="taskAllocationRef" :model="form" :rules="rules" label-width="150px">
         <el-form-item label="企业名称" prop="name">
@@ -45,11 +45,11 @@
         </el-form-item>
         <el-form-item label="企业性质" prop="property">
           <el-radio-group v-model="form.property">
-            <el-radio label="供应商" />
-            <el-radio label="制造商" />
-            <el-radio label="分销商" />
-            <el-radio label="服务商" />
-            <el-radio label="环保公司" />
+            <el-radio label="供应商"/>
+            <el-radio label="制造商"/>
+            <el-radio label="分销商"/>
+            <el-radio label="服务商"/>
+            <el-radio label="环保公司"/>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="企业所属产业链" prop="chain">
@@ -72,10 +72,9 @@
 
 
 <script setup>
-import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
+import {onMounted, reactive, ref} from 'vue'
 import * as echarts from 'echarts'
-import axios from "axios";
-import {getAllCompany, submitData} from "@/api/datafusion/test";  //引入echarts
+import {getAllCompany} from "@/api/datafusion/test"; //引入echarts
 const formulaVisible = ref(false)
 const open = ref(false);
 const title = ref("");
@@ -187,8 +186,8 @@ onMounted(async () => {
 
   // 计算节点的相对位置
   graph.nodes.forEach(node => {
-    node.locationX  = node.locationX / 800 * containerWidth;
-    node.locationY  = node.locationY  / 500 * containerHeight;
+    node.locationX = node.locationX / 800 * containerWidth;
+    node.locationY = node.locationY / 500 * containerHeight;
   });
 
   //绘制ECharts关系图
@@ -306,29 +305,29 @@ onMounted(async () => {
           const name = params.data.name;
           const chain = params.data.chain;
           const category = params.data.category;
-          const marketShare = (params.data.marketShare * 100).toFixed(1) +  '%' ;
-          const marketIncrease = (params.data.marketIncrease * 100).toFixed(1) +  '%';
-          const profitability = (params.data.profitability * 100).toFixed(1) +  '%';
-          const investRatio = (params.data.investRatio * 100).toFixed(1) +  '%';
+          const marketShare = (params.data.marketShare * 100).toFixed(1) + '%';
+          const marketIncrease = (params.data.marketIncrease * 100).toFixed(1) + '%';
+          const profitability = (params.data.profitability * 100).toFixed(1) + '%';
+          const investRatio = (params.data.investRatio * 100).toFixed(1) + '%';
           const productWidth = params.data.productWidth;
           const productDepth = params.data.productDepth;
           const brandAwareness = Math.round(params.data.brandAwareness * 100);
           const cooperationWillingness = params.data.cooperationWillingness * 100;
           const reputation = params.data.reputation * 100;
           const cooperationNum = params.data.cooperationNum;
-          const cooperationSuccess = (params.data.cooperationSuccess * 100).toFixed(1) +  '%';
-          const averageRoi = (params.data.averageRoi * 100).toFixed(1) +  '%';
+          const cooperationSuccess = (params.data.cooperationSuccess * 100).toFixed(1) + '%';
+          const averageRoi = (params.data.averageRoi * 100).toFixed(1) + '%';
           const suppliersNum = params.data.suppliersNum;
-          const turnover = (params.data.turnover * 100).toFixed(1) +  '%';
-          const deliveryRate = (params.data.deliveryRate * 100).toFixed(1) +  '%';
+          const turnover = (params.data.turnover * 100).toFixed(1) + '%';
+          const deliveryRate = (params.data.deliveryRate * 100).toFixed(1) + '%';
           const tradeLevel = params.data.tradeLevel * 100;
           const layer = params.data.layer;
-          if (layer === 1){
+          if (layer === 1) {
             return "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "市场份额：" + marketShare + '<br/>' + "市场增长率：" + marketIncrease + '<br/>' + "盈利率：" + profitability + '<br/>' + "科研投入比例：" + investRatio + '<br/>' + "产品线宽度：" + productWidth + '<br/>' + "产品线深度：" + productDepth + '<br/>' + "品牌知名度：" + brandAwareness;
-          } else if(layer === 2){
+          } else if (layer === 2) {
             return "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "供应商数量：" + suppliersNum + '<br/>' + "库存周转率：" + turnover + '<br/>' + "准时交付率：" + deliveryRate + '<br/>' + "物流水平：" + tradeLevel;
-          } else if(layer === 3){
-            return  "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "合作意愿强度：" + cooperationWillingness + '<br/>' + "信誉分：" + reputation + '<br/>' + "参与合作数量：" + cooperationNum + '<br/>' + "合作成功率：" + cooperationSuccess + '<br/>' + "合作项目平均收益率：" + averageRoi;
+          } else if (layer === 3) {
+            return "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "合作意愿强度：" + cooperationWillingness + '<br/>' + "信誉分：" + reputation + '<br/>' + "参与合作数量：" + cooperationNum + '<br/>' + "合作成功率：" + cooperationSuccess + '<br/>' + "合作项目平均收益率：" + averageRoi;
           }
 
         }
@@ -483,7 +482,7 @@ onMounted(async () => {
 
 </script>
 
-<style>
+<style scoped>
 .header-container {
   display: flex;
   justify-content: center;

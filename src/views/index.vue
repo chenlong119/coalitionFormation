@@ -21,16 +21,16 @@
       </div>
       <div class="lineTwo">
         <div class="leftBox">
-          <div class="box1 skew bg" @click="$router.push('/datafusion')">
+          <div class="box1 skew bg" @click="$router.push('/sharingIncentive/auction/Mysharing')">
             <div class="rSkew bg">
-              <span>群智汇聚</span>
+              <span>共享激励</span>
             </div>
+          </div>
+          <div class="box2 bg skew" @click="$router.push('/datafusion')">
+            <span class="rSkew">群智汇聚</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/taskallocation/taskdashboard')">
             <span class="rSkew">联盟形成</span>
-          </div>
-          <div class="box2 bg skew" @click="$router.push('/income')">
-            <span class="rSkew">收益评估</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/testss')">
             <span class="rSkew">协同效果评估</span>
