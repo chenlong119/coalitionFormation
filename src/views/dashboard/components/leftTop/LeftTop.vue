@@ -1,5 +1,5 @@
 <template>
-  <Body :dec-id="3" :icon-name="'icon-tongji4'" :name="'任务通过率'">
+  <Body :dec-id="3" :icon-name="'icon-tongji4'" :name="'任务完成情况'">
   <template #default>
     <div class="chart">
       <Chart/>

@@ -32,10 +32,13 @@
           <div class="box2 bg skew" @click="$router.push('/income')">
             <span class="rSkew">收益评估</span>
           </div>
+          <div class="box2 bg skew" @click="$router.push('/testss')">
+            <span class="rSkew">协同效果评估</span>
+          </div>
         </div>
         <div class="rightBox" @click="$router.push('/multimode')">
           <div class="box1 bg skew">
-            <span class="rSkew">协同模式</span>
+            <span class="rSkew">多模式协同</span>
           </div>
           <div class="box2  skew bg ">
             <div class="rSkew bg">
@@ -93,7 +96,7 @@ onUnmounted(() => {
   console.log('unmounted')
   erd.uninstall(index.value);
 })
-// todo 处理时间监听
+
 const handleTime = () => {
   timeInfo.setInterval = setInterval(() => {
     const date = new Date()
@@ -175,13 +178,13 @@ const handleTime = () => {
       height: 4%;
 
       .leftBox {
-        width: 50%;
+        width: 60%;
         height: 100%;
         display: flex;
 
         .box1 {
           height: 100%;
-          width: 50%;
+          width: 25%;
           position: relative;
 
           div {
@@ -195,7 +198,7 @@ const handleTime = () => {
 
         .box2 {
           height: 100%;
-          width: 50%;
+          width: 25%;
           margin-left: 10px;
           display: flex;
           justify-content: center;
@@ -203,7 +206,7 @@ const handleTime = () => {
       }
 
       .rightBox {
-        width: 50%;
+        width: 40%;
         height: 100%;
         display: flex;
         margin-left: 10px;
