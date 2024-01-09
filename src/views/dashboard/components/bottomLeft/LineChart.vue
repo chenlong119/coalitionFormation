@@ -1,13 +1,16 @@
 <template>
   <div class="box-card">
+    <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'多粒度协同评估'">
     <div ref="lineChartRef" class="chart"></div>
+    </Body>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import {onMounted, ref} from 'vue';
 import * as echarts from 'echarts';
-import { fetchMonthlyStatistics } from "@/api/multigranularity/datashow"; // 根据实际路径调整
+import Body from "@/views/dashboard/components/main/component/Body.vue";
+import {fetchMonthlyStatistics} from "@/api/multigranularity/datashow"; // 根据实际路径调整
 
 export default {
   setup() {
@@ -15,7 +18,7 @@ export default {
 
     onMounted(async () => {
       const response = await fetchMonthlyStatistics();
-      if (response ) {
+      if (response) {
         let months = response.map(item => item.month);
         let counts = response.map(item => item.highScoreCount);
 
@@ -29,7 +32,8 @@ export default {
             x: 'center',
             textStyle: {
               fontSize: 16,
-              fontWeight: 'bolder'
+              fontWeight: 'bolder',
+              color: '#ffffff'
             }
           },
           tooltip: {
@@ -44,6 +48,9 @@ export default {
           },
           yAxis: {
             type: 'value'
+          },
+          grid: {
+            bottom: '10%'
           },
           series: [{
             data: counts,
@@ -63,21 +70,17 @@ export default {
     return {
       lineChartRef
     };
+  },
+  components: {
+    Body
   }
 };
 </script>
 
 <style scoped>
-.box-card {
-  margin-top: 20px;
-  width: 96%;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
-  background-color: #000000;
-}
 
 .chart {
-  height: 300px;
+  width: 100%;
+  height: 280px;
 }
 </style>

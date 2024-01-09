@@ -179,7 +179,7 @@ onMounted(()=>{
 </style> -->
 
 <template>
-  <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'协同模式'">
+  <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'企业群多模式协同'">
   <div ref="taskLinkageInfo1" class="chart-container"></div>
   </Body>
 </template>
@@ -188,11 +188,8 @@ onMounted(()=>{
 <script setup>
 import Body from "@/views/dashboard/components/main/component/Body.vue";
 import * as echarts from "echarts";
-import {ref, onMounted} from 'vue';
-import {
-  fetchBusinessDirections,
-  fetchBusinessLocations,
-} from '@/api/multimode/faultyMachine';
+import {onMounted, ref} from 'vue';
+import {fetchBusinessDirections, fetchBusinessLocations,} from '@/api/multimode/faultyMachine';
 
 const businessLocations = ref([]);
 const businessDirections = ref([]);
@@ -229,7 +226,7 @@ const initializeChart = () => {
       source: sourceNode,
       target: targetNode,
       history: (direction.history || []).map(h => ({
-        id: h.id, 
+        id: h.id,
         taskName: h.taskName,
         deliveryDate: h.deliveryDate,
         deliveryExperience: h.deliveryExperience
@@ -312,7 +309,7 @@ const initializeChart = () => {
 
 
 onMounted(async () => {
-const responseLocations = await fetchBusinessLocations();
+  const responseLocations = await fetchBusinessLocations();
   console.log(responseLocations); // 检查这里的响应
   businessLocations.value = responseLocations;
   const directions = await fetchBusinessDirections();

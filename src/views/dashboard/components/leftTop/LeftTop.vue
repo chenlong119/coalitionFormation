@@ -1,9 +1,6 @@
 <template>
   <Body :dec-id="3" :icon-name="'icon-tongji4'" :name="'任务完成情况'">
   <template #default>
-    <div class="chart">
-      <Chart/>
-    </div>
     <!-- 4个主要的数据 -->
     <div class="main">
       <div
@@ -20,6 +17,9 @@
           <span>(个)</span>
         </p>
       </div>
+    </div>
+    <div class="chart">
+      <Chart/>
     </div>
   </template>
   </Body>
@@ -96,13 +96,13 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 .chart {
-  height: 60%;
+  height: 65%;
   display: flex;
   justify-content: center;
 }
 
 .main {
-  height: 40%;
+  height: 35%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);

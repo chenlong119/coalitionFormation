@@ -23,7 +23,7 @@
         <div class="leftBox">
           <div class="box1 skew bg" @click="$router.push('/sharingIncentive/auction/Mysharing')">
             <div class="rSkew bg">
-              <span>共享激励</span>
+              <span>数据共享激励</span>
             </div>
           </div>
           <div class="box2 bg skew" @click="$router.push('/datafusion')">
@@ -38,7 +38,7 @@
         </div>
         <div class="rightBox" @click="$router.push('/multimode')">
           <div class="box1 bg skew">
-            <span class="rSkew">多模式协同</span>
+            <span class="rSkew">企业群多模式协同</span>
           </div>
           <div class="box2  skew bg ">
             <div class="rSkew bg">
