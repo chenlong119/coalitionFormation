@@ -33,7 +33,7 @@ import LeftTop from "../leftTop/LeftTop.vue";
 import BottomCenter from "../bottomCenter/BottomCenter.vue";
 import BottomRight from "../bottomRight/BottomRight.vue";
 import RelationGraph from "../multilayer/RelationGraph.vue";
-import IncomeGraph from "../bottomLeft/IncomeGraph.vue";
+import IncomeGraph from "../bottomLeft/LineChart.vue";
 </script>
 
 <style scoped>
