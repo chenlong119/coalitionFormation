@@ -11,7 +11,9 @@ let chartOptions = null;
 chartOptions = {
   title: {
     text: '企业协作团体总览图',
-    color: 'white',
+    textStyle: {
+      color: "#ffffff",
+    },
     textAlign: 'center', // 设置标题文本水平居中
     left: '50%', // 将标题水平居中
     top: 'top', // 距离底部的距离
@@ -32,7 +34,7 @@ chartOptions = {
 const renderPieChart = async () => {
 
   const chartInstance = echarts.init(pieChart.value);
-  chartInstance.setOption(chartOptions);
+  //chartInstance.setOption(chartOptions);
 
   let res = await getGroupInfo();
 
@@ -74,7 +76,7 @@ const renderPieChart = async () => {
       type: 'pie',
       left: 'center',
       bottom: 0,
-      radius: '130%',
+      radius: '100%',
       roseType: 'area',
       data: pieData.value,
       emphasis: {
@@ -96,20 +98,11 @@ const renderPieChart = async () => {
   ];
   chartOptions.tooltip = tooltip;
   chartOptions.series = series;
-  chartOptions.title = {
-    textStyle: {
-      color: "#ffffff",
-    },
-    text: '企业协作团体总览图',
-    textAlign: 'center', // 设置标题文本水平居中
-    left: '50%', // 将标题水平居中
-    top: 'top', // 距离底部的距离
-  },
-      chartInstance.setOption(chartOptions);
+  chartInstance.setOption(chartOptions);
 };
 onMounted(() => {
-  const chartInstance = echarts.init(pieChart.value);
-  chartInstance.setOption(chartOptions);
+  //const chartInstance = echarts.init(pieChart.value);
+  //chartInstance.setOption(chartOptions);
   renderPieChart();
 })
 </script>
@@ -118,12 +111,10 @@ onMounted(() => {
   <Body :dec-id="3" :name="'群智汇聚'" :icon-name="'icon-layer-group'">
 <!--  <div ref="chartref" style="height:100%"></div>-->
     <div id="pieChart" ref="pieChart" class="container"
-         style="flex: 1 0 25%; height: 460px; background-color: #0f1325;">
+         style="flex: 1 0 25%; height: 100%; background-color: #0f1325;">
     </div>
   </Body>
-<!--  <div id="pieChart" ref="pieChart" class="container"-->
-<!--       style="flex: 1 0 25%; height: 460px; background-color: rgb(255,255,255)">-->
-<!--  </div>-->
+
 </template>
 
 <style scoped lang="scss">

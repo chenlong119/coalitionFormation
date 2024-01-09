@@ -2,288 +2,240 @@
   "nodes": [
     {
       "id": "0",
-      "name": "宝山钢铁股份",
-      "filed": "金属冶炼加工",
-      "category": "汽车+家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "中国铝业",
+      "filed": "金属采掘",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -674.82776,
       "y": -443.6904
     },
     {
       "id": "1",
-      "name": "鞍钢集团",
-      "filed": "金属冶炼加工",
-      "category": "汽车+家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "欧洲矿业",
+      "filed": "金属采掘",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -528.08344,
       "y": -446.8853
     },
     {
       "id": "2",
-      "name": "山东希诺金属材料",
-      "filed": "金属冶炼加工",
-      "category": "汽车+家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "澳洲力拓集团",
+      "filed": "金属采掘",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -565.76357,
       "y": -396.29176
     },
     {
       "id": "3",
-      "name": "山东安耐传动",
-      "filed": "传动带制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "宝钢股份",
+      "filed": "金属冶炼",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -342.82404,
       "y": -455.26283
     },
     {
       "id": "4",
-      "name": "江苏宏亿精工",
-      "filed": "传动带制造",
-      "category": "汽车+家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "万山特钢股份",
+      "filed": "金属冶炼",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -369.30386,
       "y": -399.06424
     },
     {
       "id": "5",
-      "name": "无锡久亿鑫传动",
-      "filed": "传动带制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "三菱重工",
+      "filed": "金属冶炼",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -227.26337,
       "y": -406.03506
     },
     {
       "id": "6",
-      "name": "金发科技股份",
-      "filed": "非金属冶炼加工",
-      "category": "汽车+家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "南钢股份",
+      "filed": "金属加工",
+      "category": "金属产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -692.6012,
       "y": -75.16974
     },
     {
       "id": "7",
-      "name": "欧金矿业",
-      "filed": "非金属冶炼加工",
-      "category": "汽车+家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "武汉钢铁",
+      "filed": "金属加工",
+      "category": "金属产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -502.6012,
       "y": -95.16974
     },
     {
       "id": "8",
-      "name": "金川集团",
-      "filed": "非金属冶炼加工",
-      "category": "汽车+家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "索迪斯",
+      "filed": "金属加工",
+      "category": "金属产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -562.6012,
       "y": -35.16974
     },
     {
       "id": "9",
-      "name": "延锋汽车内饰系统",
-      "filed": "内饰系统制造",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "安永金属回收",
+      "filed": "金属回收再利用",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 644.39832,
       "y": -421.16772
     },
     {
       "id": "10",
-      "name": "山东鲁信装饰",
-      "filed": "内饰系统制造",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "宝钢再生资源",
+      "filed": "金属回收再利用",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 459.34107,
       "y": -384.56128
     },
     {
       "id": "11",
-      "name": "保隆汽车配件",
-      "filed": "内饰系统制造",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "美利金属回收",
+      "filed": "金属回收再利用",
+      "category": "金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 547.93029,
       "y": -340.8120565
     },
     {
       "id": "12",
-      "name": "云南天然橡胶",
-      "filed": "橡胶制造",
-      "category": "汽车+家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "中煤能源集团",
+      "filed": "非金属采掘",
+      "category": "非金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -689.77908,
       "y": -324.69139
     },
     {
       "id": "13",
-      "name": "云南瑞华能源",
-      "filed": "橡胶制造",
-      "category": "汽车+家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "中国石油化工",
+      "filed": "非金属采掘",
+      "category": "非金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -494.31313,
       "y": -318.55301
     },
     {
       "id": "14",
-      "name": "诺博橡胶制品",
-      "filed": "橡胶制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "北方稀土集团",
+      "filed": "非金属采掘",
+      "category": "非金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -558.05168,
       "y": -241.99768
     },
     {
       "id": "15",
-      "name": "博世汽车部件",
-      "filed": "座椅制造",
-      "category": "汽车产业链",
-      "network": [
-        "2"
-      ],
+      "name": "中国建材集团",
+      "filed": "非金属矿物制品",
+      "category": "非金属产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -327.701546,
       "y": -2.55057
     },
     {
       "id": "16",
-      "name": "大陆投资",
-      "filed": "座椅制造",
-      "category": "汽车产业链",
-      "network": [
-        "2"
-      ],
+      "name": "中国海螺集团",
+      "filed": "非金属矿物制品",
+      "category": "非金属产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -325.2226,
       "y": -93.5572
     },
     {
       "id": "17",
-      "name": "上海博泽电机",
-      "filed": "座椅制造",
-      "category": "汽车产业链",
-      "network": [
-        "2"
-      ],
+      "name": "北新建材股份",
+      "filed": "非金属矿物制品",
+      "category": "非金属产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -246.55884,
       "y": -53.98975
     },
     {
       "id": "18",
-      "name": "容百科技",
-      "filed": "正极材料制造",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "新型建材集团",
+      "filed": "非金属回收再利用",
+      "category": "非金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 444.79382,
       "y": -293.57944
     },
     {
       "id": "19",
-      "name": "天津巴莫",
-      "filed": "正极材料制造",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "万利达再生资源",
+      "filed": "非金属回收再利用",
+      "category": "非金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 604.79382,
       "y": -263.57944
     },
     {
       "id": "20",
-      "name": "长远锂科",
-      "filed": "正极材料制造",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "马士基再生资源",
+      "filed": "非金属回收再利用",
+      "category": "非金属产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 514.79382,
       "y": -203.57944
     },
     {
       "id": "21",
-      "name": "山东大成塑业",
-      "filed": "脱水桶制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "中国石化化工",
+      "filed": "化工原料制造",
+      "category": "化工原料产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -306.44113,
       "y": -315.13303
     },
     {
       "id": "22",
-      "name": "东莞江冠机械",
-      "filed": "脱水桶制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "湖北宜化化工",
+      "filed": "化工原料制造",
+      "category": "化工原料产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -166.44113,
       "y": -335.13303
     },
     {
       "id": "23",
-      "name": "泰州伯信达洗涤",
-      "filed": "脱水桶制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "中国盐业集团",
+      "filed": "化工原料制造",
+      "category": "化工原料产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -206.44113,
       "y": -235.13303
@@ -291,44 +243,38 @@
     {
       "id": "24",
       "name": "中国中材集团",
-      "filed": "厦门钨业",
-      "category": "汽车+家电产业链",
-      "network": [
-        "2"
-      ],
+      "filed": "化工材料合成",
+      "category": "化工原料产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -702.6012,
       "y": 0.16974
     },
     {
       "id": "25",
-      "name": "山东兴华半导体",
-      "filed": "半导体制造",
-      "category": "家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "中国石油化工",
+      "filed": "化工材料合成",
+      "category": "化工原料产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -602.6012,
       "y": 60.16974
     },
     {
       "id": "26",
-      "name": "武汉新芯",
-      "filed": "半导体制造",
-      "category": "家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "中国航空工业集团",
+      "filed": "化工材料合成",
+      "category": "化工原料产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -502.6012,
       "y": 20.16974
     },
     {
       "id": "27",
-      "name": "瓜子二手车",
-      "filed": "汽车回收",
-      "category": "汽车产业链",
+      "name": "赢创集团",
+      "filed": "化工原料处理",
+      "category": "化工原料产业链",
       "network": [
         "1"
       ],
@@ -338,9 +284,9 @@
     },
     {
       "id": "28",
-      "name": "途虎二手车",
-      "filed": "汽车回收",
-      "category": "汽车产业链",
+      "name": "巴斯夫公司",
+      "filed": "化工原料处理",
+      "category": "化工原料产业链",
       "network": [
         "1",
         "2",
@@ -352,9 +298,9 @@
     },
     {
       "id": "29",
-      "name": "58同城",
-      "filed": "汽车回收",
-      "category": "汽车产业链",
+      "name": "肯达化学",
+      "filed": "化工原料处理",
+      "category": "化工原料产业链",
       "network": [
         "1",
         "2",
@@ -366,393 +312,329 @@
     },
     {
       "id": "30",
-      "name": "青岛爱尔家佳新材料",
-      "filed": "功能涂料合成",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "中国五矿集团",
+      "filed": "原材料采掘",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -713.92447,
       "y": 307.69823
     },
     {
       "id": "31",
-      "name": "杜邦高性能涂料",
-      "filed": "功能涂料合成",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "中国有色矿业集团",
+      "filed": "原材料采掘",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -501.4253,
       "y": 288.45137
     },
     {
       "id": "32",
-      "name": "3M中国",
-      "filed": "功能涂料合成",
-      "category": "汽车+家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "中国神华能源",
+      "filed": "原材料采掘",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -601.4253,
       "y": 348.45137
     },
     {
       "id": "33",
-      "name": "宁德时代",
-      "filed": "电机制造",
-      "category": "汽车+家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "东方电气集团",
+      "filed": "电池制造",
+      "category": "能源产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -304.6001,
       "y": 53.15067
     },
     {
       "id": "34",
-      "name": "常州永安电机",
-      "filed": "电机制造",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "宁德时代",
+      "filed": "电池制造",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -367.84915,
       "y": 278.7059
     },
     {
       "id": "35",
-      "name": "山东百特电机",
-      "filed": "电机制造",
-      "category": "家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "三星SDI",
+      "filed": "电池制造",
+      "category": "能源产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -288.2307,
       "y": 128.48405
     },
     {
       "id": "36",
-      "name": "山东盛测电子科技",
-      "filed": "家电检测",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "特斯拉",
+      "filed": "充电基础设施建设",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 198.2307,
       "y": 467.48405
     },
     {
       "id": "37",
-      "name": "山东龙为检测",
-      "filed": "家电检测",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "国家电网公司",
+      "filed": "充电基础设施建设",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 258.2307,
       "y": 407.48405
     },
     {
       "id": "38",
-      "name": "山东龙为检测",
-      "filed": "家电检测",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "爱驰汽车科技",
+      "filed": "充电基础设施建设",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 258.2307,
       "y": 337.48405
     },
     {
       "id": "39",
-      "name": "普天新能源",
-      "filed": "充电服务",
-      "category": "汽车产业链",
-      "network": [
-        "3"
-      ],
+      "name": "环保科技",
+      "filed": "化工废料处理",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 453.26874,
       "y": 328.94648
     },
     {
       "id": "40",
-      "name": "特来电",
-      "filed": "充电服务",
-      "category": "汽车产业链",
-      "network": [
-        "3"
-      ],
+      "name": "爱康科技",
+      "filed": "化工废料处理",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 406.44904,
       "y": 280.05937
     },
     {
       "id": "41",
-      "name": "星星电充",
-      "filed": "充电服务 ",
-      "category": "汽车产业链",
-      "network": [
-        "3"
-      ],
+      "name": "清远市环保科技",
+      "filed": "化工废料处理",
+      "category": "能源产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 546.7876,
       "y": 293.38005
     },
     {
       "id": "42",
-      "name": "威海新光电碳制品",
-      "filed": "电刷材料制造",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "百度",
+      "filed": "汽车软件开发",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -736.49738,
       "y": 399.55914
     },
     {
       "id": "43",
-      "name": "上海沪东电碳",
-      "filed": "电刷材料制造",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "Mobileye公司",
+      "filed": "汽车软件开发",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -599.187843,
       "y": 450.13132
     },
     {
       "id": "44",
-      "name": "株洲微特电刷",
-      "filed": "电刷材料制造",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "奥托立夫股份",
+      "filed": "汽车软件开发",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -509.187843,
       "y": 390.13132
     },
     {
       "id": "45",
-      "name": "露茜汽车制造",
-      "filed": "发动机制造",
-      "category": "汽车产业链",
-      "network": [
-        "3"
-      ],
+      "name": "华为",
+      "filed": "车联网设备制造",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -439.187843,
       "y": 440.13132
     },
     {
       "id": "46",
-      "name": "皆可博车辆控制系统",
-      "filed": "发动机制造",
-      "category": "汽车产业链",
-      "network": [
-        "3"
-      ],
+      "name": "科达利集团",
+      "filed": "车联网设备制造",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -327.00418,
       "y": 355.02663
     },
     {
       "id": "47",
-      "name": "道依茨国际贸易",
-      "filed": "发动机制造",
-      "category": "汽车产业链",
-      "network": [
-        "3"
-      ],
+      "name": "英特尔公司",
+      "filed": "车联网设备制造",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": -305.99521,
       "y": 440.87549
     },
     {
       "id": "48",
-      "name": "京东物流",
-      "filed": "物流运输",
-      "category": "汽车+家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "腾讯公司",
+      "filed": "互联网服务",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 366.07935,
       "y": 383.11964
     },
     {
       "id": "49",
-      "name": "济南中集车辆物流",
-      "filed": "物流运输",
-      "category": "汽车+家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "阿里巴巴集团",
+      "filed": "互联网服务",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 440.3201,
       "y": 432.4031
     },
     {
       "id": "50",
-      "name": "青岛中车四方车辆物流",
-      "filed": "物流运输",
-      "category": "汽车+家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "字节跳动",
+      "filed": "互联网服务",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 368.13535,
       "y": 476.8573
     },
     {
       "id": "51",
-      "name": "启迪环境",
-      "filed": "原材料回收",
-      "category": "汽车+家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "京东数科",
+      "filed": "大数据分析",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 587.89572,
       "y": 430.462326
     },
     {
       "id": "52",
-      "name": "贵研铂业",
-      "filed": "原材料回收",
-      "category": "汽车+家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "元征科技",
+      "filed": "大数据分析",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 526.4831,
       "y": 468.10622
     },
     {
       "id": "53",
-      "name": "骆驼股份",
-      "filed": "原材料回收",
-      "category": "汽车+家电产业链",
-      "network": [
-        "3"
-      ],
+      "name": "国家信息中心",
+      "filed": "大数据分析",
+      "category": "信息技术产业链",
+      "network": ["3"],
       "symbolSize": 20,
       "x": 557.07365,
       "y": 371.05923
     },
     {
       "id": "54",
-      "name": "山东芯光光电",
-      "filed": "电子元器件制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "中联重科股份",
+      "filed": "机械设备制造",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 70.63559,
       "y": -420.6565
     },
     {
       "id": "55",
-      "name": "置信电机",
-      "filed": "电子元器件制造",
-      "category": "汽车+家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "大连重工集团",
+      "filed": "机械设备制造",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -10.66415,
       "y": -385.89165
     },
     {
       "id": "56",
-      "name": "敦泰科技",
-      "filed": "电子元器件制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "三一重工股份",
+      "filed": "机械设备制造",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": -125.43939,
       "y": -435.7736
     },
     {
       "id": "57",
-      "name": "山东固而美金属制品",
-      "filed": "金属机箱制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "顺丰速运",
+      "filed": "物流运输",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 150.69348,
       "y": -376.1069
     },
     {
       "id": "58",
-      "name": "宁波中威壳体",
-      "filed": "金属机箱制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "中国邮政",
+      "filed": "物流运输",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 30.44687,
       "y": -323.805411
     },
     {
       "id": "59",
-      "name": "捷速精密金属",
-      "filed": "金属机箱制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "德邦物流",
+      "filed": "物流运输",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 205.82993,
       "y": -420.78036
     },
     {
       "id": "60",
-      "name": "山东英科轴承",
-      "filed": "轴承制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "麦可思",
+      "filed": "人力资源服务",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 350.6618,
       "y": -405.18481
     },
     {
       "id": "61",
-      "name": "众绅机械制造",
-      "filed": "轴承制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "阳光人力资源",
+      "filed": "人力资源服务",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 265.78366,
       "y": -354.882454
     },
     {
       "id": "62",
-      "name": "瓦房店轴承集团",
-      "filed": "轴承制造",
-      "category": "家电产业链",
+      "name": "花旗集团",
+      "filed": "人力资源服务",
+      "category": "辅助产业产业链",
       "network": [
         "1",
         "2"
@@ -763,37 +645,31 @@
     },
     {
       "id": "63",
-      "name": "山东家无忧家电",
-      "filed": "家电维护",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "name": "江淮汽车",
+      "filed": "汽车零部件制造",
+      "category": "汽车产业链",
+      "network": ["3"],
+      "symbolSize": 30,
       "x": -16.17184,
       "y": 300.7286825
     },
     {
       "id": "64",
-      "name": "美的集团",
-      "filed": "家电制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
-      ],
+      "name": "武汉博泰汽车",
+      "filed": "汽车零部件制造",
+      "category": "汽车产业链",
+      "network": ["1"],
       "symbolSize": 30,
       "x": -100.1917,
       "y": -208.17537
     },
     {
       "id": "65",
-      "name": "青岛康捷家电维修",
-      "filed": "家电维护",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "name": "博世集团",
+      "filed": "汽车零部件制造",
+      "category": "汽车产业链",
+      "network": ["3"],
+      "symbolSize": 30,
       "x": -16.17184,
       "y": 390.7286825
     },
@@ -802,40 +678,37 @@
       "name": "比亚迪",
       "filed": "整车制造",
       "category": "汽车产业链",
-      "network": [
-        "2"
-      ],
+      "network": ["2"],
       "symbolSize": 50,
       "x": 50,
       "y": 20
     },
     {
       "id": "67",
-      "name": "美的集团",
-      "filed": "家电制造",
-      "category": "家电产业链",
-      "network": [
-        "1"
+      "name": "上汽集团",
+      "filed": [
+        "整车制造",
+        "汽车销售"
       ],
+      "category": "汽车产业链",
+      "network": ["1"],
       "symbolSize": 30,
       "x": 5.81955,
       "y": -245.45826
     },
     {
       "id": "68",
-      "name": "山东佳诚电器维修",
-      "filed": "家电维护",
-      "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "name": "一汽集团",
+      "filed": "整车制造",
+      "category": "汽车产业链",
+      "network": ["3"],
+      "symbolSize": 30,
       "x": 56.40784,
       "y": 467.242233
     },
     {
       "id": "69",
-      "name": "广汇汽车",
+      "name": "美国通用汽车",
       "filed": "汽车销售",
       "category": "汽车产业链",
       "network": [
@@ -843,13 +716,13 @@
         "2",
         "3"
       ],
-      "symbolSize": 20,
+      "symbolSize": 30,
       "x": 186.4313,
       "y": -21.06331
     },
     {
       "id": "70",
-      "name": "正通汽车",
+      "name": "德国大众",
       "filed": "汽车销售",
       "category": "汽车产业链",
       "network": [
@@ -857,7 +730,7 @@
         "2",
         "3"
       ],
-      "symbolSize": 20,
+      "symbolSize": 30,
       "x": 178.9568,
       "y": 104.65488
     },
@@ -866,142 +739,119 @@
       "name": "长安汽车",
       "filed": "车辆维护",
       "category": "汽车产业链",
-      "network": [
-        "2"
-      ],
-      "symbolSize": 20,
+      "network": ["2"],
+      "symbolSize": 30,
       "x": 288.4799,
       "y": -67.15146
     },
     {
       "id": "72",
-      "name": "北京奔驰",
+      "name": "优信集团",
       "filed": "车辆维护",
       "category": "汽车产业链",
-      "network": [
-        "2"
-      ],
-      "symbolSize": 20,
+      "network": ["2"],
+      "symbolSize": 30,
       "x": 300.35959,
       "y": 31.50797
     },
     {
       "id": "73",
-      "name": "一汽大众",
+      "name": "奥迪服务",
       "filed": "车辆维护",
       "category": "汽车产业链",
-      "network": [
-        "2"
-      ],
-      "symbolSize": 20,
+      "network": ["2"],
+      "symbolSize": 30,
       "x": 307.3717,
       "y": 140.2809
     },
     {
       "id": "74",
-      "name": "南山铝业",
-      "filed": "热镀铝锌生产",
-      "category": "汽车+家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "金发科技",
+      "filed": "树脂原料",
+      "category": "化工原料产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -711.6012,
       "y": 121.16974
     },
     {
       "id": "75",
-      "name": "中国铝业",
-      "filed": "热镀铝锌生产",
-      "category": "汽车+家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "广东立邦化工",
+      "filed": "树脂原料",
+      "category": "化工原料产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -541.6012,
       "y": 131.16974
     },
     {
       "id": "76",
-      "name": "广东浩创钢铁",
-      "filed": "热镀铝锌生产",
-      "category": "家电产业链",
-      "network": [
-        "2"
-      ],
+      "name": "安徽海螺水泥",
+      "filed": "树脂原料",
+      "category": "化工原料产业链",
+      "network": ["2"],
       "symbolSize": 20,
       "x": -411.6012,
       "y": 91.16974
     },
     {
       "id": "77",
-      "name": "腾讯",
-      "filed": "汽车软件开发",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "格林电子",
+      "filed": "电池检测",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 285.78366,
       "y": -304.882454
     },
     {
       "id": "78",
-      "name": "小马达信息科技",
-      "filed": "汽车软件开发",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "汉德信息",
+      "filed": "电池检测",
+      "category": "辅助产业产业链",
+      "network": ["1"],
       "symbolSize": 20,
       "x": 275.78366,
       "y": -244.882454
     },
     {
       "id": "79",
-      "name": "威尔森信息科技",
-      "filed": "汽车软件开发",
-      "category": "汽车产业链",
+      "name": "安捷伦科技",
+      "filed": "电池检测",
+      "category": "辅助产业产业链",
       "network": [
-        "1"
-      ],
+        "1"],
       "symbolSize": 20,
       "x": 345.78366,
       "y": -204.882454
     },
     {
       "id": "80",
-      "name": "青岛方格智能家居",
-      "filed": "家电销售",
+      "name": "爱普生集团",
+      "filed": "家电配套设施",
       "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "network": ["3"],
+      "symbolSize": 30,
       "x": -120.1917,
       "y": 278.17537
     },
     {
       "id": "81",
-      "name": "苏宁电器",
-      "filed": "家电销售",
+      "name": "美的集团",
+      "filed": "家电配套设施",
       "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "network": ["3"],
+      "symbolSize": 30,
       "x": -154.29285,
       "y": 360.3104
     },
     {
       "id": "82",
-      "name": "国美电器",
-      "filed": "家电销售",
+      "name": "欧司朗公司",
+      "filed": "家电配套设施",
       "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "network": ["3"],
+      "symbolSize": 30,
       "x": -136.17184,
       "y": 450.7286825
     },
@@ -1021,61 +871,52 @@
     },
     {
       "id": "84",
-      "name": "山东惠宇环保科技",
-      "filed": "家电回收",
+      "name": "格力电器",
+      "filed": "家电制造",
       "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "network": ["3"],
+      "symbolSize": 30,
       "x": 76.40784,
       "y": 277.242233
     },
     {
       "id": "85",
-      "name": "蔚来汽车",
-      "filed": "整车制造",
-      "category": "汽车产业链",
-      "network": [
-        "1"
-      ],
+      "name": "海尔智家",
+      "filed": "家电制造",
+      "category": "家电产业链",
+      "network": ["1"],
       "symbolSize": 30,
       "x": 105.81955,
       "y": -235.45826
     },
     {
       "id": "86",
-      "name": "理想汽车",
-      "filed": "整车制造",
-      "category": "汽车产业链",
+      "name": "苏宁易购",
+      "filed": "家电销售",
+      "category": "家电产业链",
       "network": [
-        "1"
-      ],
+        "1"],
       "symbolSize": 30,
       "x": 206.4313,
       "y": -191.06331
     },
     {
       "id": "87",
-      "name": "山东惠宇环保科技",
-      "filed": "家电回收",
+      "name": "国美电器",
+      "filed": "家电销售",
       "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "network": ["3"],
+      "symbolSize": 30,
       "x": 146.4313,
       "y": 341.06331
     },
     {
       "id": "88",
-      "name": "山东惠宇环保科技",
-      "filed": "家电回收",
+      "name": "五星电器",
+      "filed": "家电销售",
       "category": "家电产业链",
-      "network": [
-        "3"
-      ],
-      "symbolSize": 20,
+      "network": ["3"],
+      "symbolSize": 30,
       "x": 126.4313,
       "y": 421.06331
     }
@@ -1083,889 +924,578 @@
   "links": [
     {
       "source": "0",
-      "target": "54",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "55",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "56",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "57",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "58",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "59",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "60",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "61",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "62",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "54",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "55",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "56",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "57",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "58",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "59",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "60",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "61",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "62",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "54",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "55",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "56",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "57",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "58",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "59",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "60",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "61",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "62",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "12",
       "target": "3",
       "label": {
         "formatter": "供应关系"
+      },
+      "arrow": {
+        "show": true,
+        "type": "arrow"
       }
     },
     {
-      "source": "12",
+      "source": "0",
       "target": "4",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
+      "source": "0",
+      "target": "5",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "1",
+      "target": "3",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "1",
+      "target": "4",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "1",
+      "target": "5",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "2",
+      "target": "3",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "2",
+      "target": "4",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "2",
+      "target": "5",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "3",
+      "target": "6",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "3",
+      "target": "7",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "3",
+      "target": "8",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "4",
+      "target": "6",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "4",
+      "target": "7",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "4",
+      "target": "8",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "5",
+      "target": "6",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "5",
+      "target": "7",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "5",
+      "target": "8",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
       "source": "12",
-      "target": "5",
+      "target": "15",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "12",
+      "target": "16",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "12",
+      "target": "17",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "13",
-      "target": "3",
+      "target": "15",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "13",
-      "target": "4",
+      "target": "16",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "13",
-      "target": "5",
+      "target": "17",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "14",
-      "target": "3",
+      "target": "15",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "14",
-      "target": "4",
+      "target": "16",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "14",
-      "target": "5",
+      "target": "17",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "24",
-      "target": "54",
+      "source": "21",
+      "target": "24",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "24",
-      "target": "55",
+      "source": "21",
+      "target": "25",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "24",
-      "target": "56",
+      "source": "21",
+      "target": "26",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "25",
-      "target": "54",
+      "source": "22",
+      "target": "24",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "25",
-      "target": "55",
+      "source": "22",
+      "target": "25",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "25",
-      "target": "56",
+      "source": "22",
+      "target": "26",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "26",
-      "target": "54",
+      "source": "23",
+      "target": "24",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "26",
-      "target": "55",
+      "source": "23",
+      "target": "25",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "26",
-      "target": "56",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "30",
-      "target": "21",
+      "source": "23",
+      "target": "26",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "30",
-      "target": "22",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "30",
-      "target": "23",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "30",
-      "target": "57",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "30",
-      "target": "58",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "30",
-      "target": "59",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "31",
-      "target": "21",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "31",
-      "target": "22",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "31",
-      "target": "23",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "31",
-      "target": "57",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "31",
-      "target": "58",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "31",
-      "target": "59",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "32",
-      "target": "21",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "32",
-      "target": "22",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "32",
-      "target": "23",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "32",
-      "target": "57",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "32",
-      "target": "58",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "32",
-      "target": "59",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "42",
       "target": "33",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "42",
+      "source": "30",
       "target": "34",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "42",
+      "source": "30",
       "target": "35",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "43",
+      "source": "31",
       "target": "33",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "43",
+      "source": "31",
       "target": "34",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "31",
+      "target": "35",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "32",
+      "target": "33",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "32",
+      "target": "34",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "32",
+      "target": "35",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "42",
+      "target": "45",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "42",
+      "target": "46",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "42",
+      "target": "47",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "43",
+      "target": "45",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "43",
+      "target": "46",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "43",
+      "target": "47",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "44",
-      "target": "35",
+      "target": "45",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "45",
-      "target": "33",
+      "source": "44",
+      "target": "46",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "45",
-      "target": "34",
+      "source": "44",
+      "target": "47",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "45",
-      "target": "35",
+      "source": "6",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "74",
-      "target": "33",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "74",
-      "target": "34",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "74",
-      "target": "35",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "75",
-      "target": "33",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "75",
-      "target": "34",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "75",
-      "target": "35",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "76",
-      "target": "33",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "76",
-      "target": "34",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "76",
-      "target": "35",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "3",
-      "target": "83",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "3",
+      "source": "6",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "3",
-      "target": "67",
+      "source": "6",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "4",
-      "target": "83",
+      "source": "7",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "4",
+      "source": "7",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "4",
-      "target": "67",
+      "source": "7",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "5",
-      "target": "83",
+      "source": "8",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "5",
+      "source": "8",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "5",
-      "target": "67",
+      "source": "8",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "21",
-      "target": "83",
+      "source": "15",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "21",
+      "source": "15",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "21",
-      "target": "67",
+      "source": "15",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "22",
-      "target": "83",
+      "source": "16",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "22",
+      "source": "16",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "22",
-      "target": "67",
+      "source": "16",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "23",
-      "target": "83",
+      "source": "17",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "23",
+      "source": "17",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "23",
-      "target": "67",
+      "source": "17",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "54",
-      "target": "83",
+      "source": "24",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "54",
+      "source": "24",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "54",
-      "target": "67",
+      "source": "24",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "55",
-      "target": "83",
+      "source": "25",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "55",
+      "source": "25",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "55",
-      "target": "67",
+      "source": "25",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "56",
-      "target": "83",
+      "source": "26",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "56",
+      "source": "26",
       "target": "64",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "56",
-      "target": "67",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "57",
-      "target": "83",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "57",
-      "target": "64",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "57",
-      "target": "67",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "58",
-      "target": "83",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "58",
-      "target": "64",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "58",
-      "target": "67",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "59",
-      "target": "83",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "59",
-      "target": "64",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "59",
-      "target": "67",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "60",
-      "target": "83",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "60",
-      "target": "64",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "60",
-      "target": "67",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "61",
-      "target": "83",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "61",
-      "target": "64",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "61",
-      "target": "67",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "62",
-      "target": "83",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "62",
-      "target": "64",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "62",
-      "target": "67",
+      "source": "26",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "33",
-      "target": "83",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
@@ -1979,14 +1509,14 @@
     },
     {
       "source": "33",
-      "target": "67",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "34",
-      "target": "83",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
@@ -2000,14 +1530,14 @@
     },
     {
       "source": "34",
-      "target": "67",
+      "target": "65",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "35",
-      "target": "83",
+      "target": "63",
       "label": {
         "formatter": "供应关系"
       }
@@ -2021,384 +1551,818 @@
     },
     {
       "source": "35",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "45",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "45",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "45",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "46",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "46",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "46",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "47",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "47",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "47",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "54",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "54",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "54",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "55",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "55",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "55",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "56",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "56",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "56",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "60",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "60",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "60",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "61",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "61",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "61",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "62",
+      "target": "63",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "62",
+      "target": "64",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "62",
+      "target": "65",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "63",
+      "target": "66",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "63",
       "target": "67",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "83",
-      "target": "80",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "80",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "67",
-      "target": "80",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "81",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "81",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "67",
-      "target": "81",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "82",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "82",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "67",
-      "target": "82",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "36",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "36",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "67",
-      "target": "36",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "37",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "37",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "67",
-      "target": "37",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "38",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "38",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "67",
-      "target": "38",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "80",
-      "target": "63",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "80",
-      "target": "65",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "80",
+      "source": "63",
       "target": "68",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "81",
-      "target": "63",
+      "source": "64",
+      "target": "66",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "81",
-      "target": "65",
+      "source": "65",
+      "target": "66",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "81",
+      "source": "64",
+      "target": "67",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "65",
+      "target": "67",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "65",
       "target": "68",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "82",
-      "target": "63",
+      "source": "66",
+      "target": "69",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "82",
-      "target": "65",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "82",
-      "target": "68",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "63",
-      "target": "84",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "63",
-      "target": "87",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "63",
-      "target": "88",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "65",
-      "target": "84",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "65",
-      "target": "87",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "65",
-      "target": "88",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "68",
-      "target": "84",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "68",
-      "target": "87",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "68",
-      "target": "88",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "48",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "49",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "50",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "48",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "49",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "50",
+      "source": "66",
+      "target": "70",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
       "source": "67",
+      "target": "69",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "67",
+      "target": "70",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "68",
+      "target": "69",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "68",
+      "target": "70",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "69",
+      "target": "71",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "69",
+      "target": "72",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "69",
+      "target": "73",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "70",
+      "target": "71",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "70",
+      "target": "72",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "70",
+      "target": "73",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "9",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "10",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "11",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "9",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "10",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "11",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "9",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "10",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "11",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "18",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "19",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "20",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "18",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "19",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "20",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "18",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "19",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "20",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "27",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "28",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "29",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "27",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "28",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "29",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "27",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "28",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "29",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "36",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "37",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "38",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "36",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "37",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "38",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "36",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "37",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "38",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "39",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "40",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "71",
+      "target": "41",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "39",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "40",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "41",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "39",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "40",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "73",
+      "target": "41",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "69",
       "target": "48",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "67",
+      "source": "69",
       "target": "49",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "67",
+      "source": "69",
       "target": "50",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "83",
+      "source": "70",
+      "target": "48",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "70",
+      "target": "49",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "70",
+      "target": "50",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "48",
       "target": "51",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "83",
+      "source": "48",
       "target": "52",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "83",
+      "source": "48",
       "target": "53",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "64",
+      "source": "49",
       "target": "51",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "64",
+      "source": "49",
       "target": "52",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "64",
+      "source": "49",
       "target": "53",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "67",
+      "source": "50",
       "target": "51",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "67",
+      "source": "50",
       "target": "52",
       "label": {
         "formatter": "供应关系"
       }
     },
     {
-      "source": "67",
+      "source": "50",
       "target": "53",
       "label": {
         "formatter": "供应关系"
@@ -2419,8 +2383,15 @@
       }
     },
     {
-      "source": "1",
-      "target": "2",
+      "source": "3",
+      "target": "4",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "3",
+      "target": "5",
       "label": {
         "formatter": "竞争关系"
       }
@@ -2434,13 +2405,6 @@
     },
     {
       "source": "6",
-      "target": "8",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "7",
       "target": "8",
       "label": {
         "formatter": "竞争关系"
@@ -2461,8 +2425,36 @@
       }
     },
     {
-      "source": "13",
-      "target": "14",
+      "source": "15",
+      "target": "16",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "15",
+      "target": "17",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "21",
+      "target": "22",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "21",
+      "target": "23",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "22",
+      "target": "23",
       "label": {
         "formatter": "竞争关系"
       }
@@ -2476,13 +2468,13 @@
     },
     {
       "source": "24",
-      "target": "26",
+      "target": "25",
       "label": {
         "formatter": "竞争关系"
       }
     },
     {
-      "source": "25",
+      "source": "24",
       "target": "26",
       "label": {
         "formatter": "竞争关系"
@@ -2510,6 +2502,27 @@
       }
     },
     {
+      "source": "33",
+      "target": "34",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "33",
+      "target": "35",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "34",
+      "target": "35",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
       "source": "42",
       "target": "43",
       "label": {
@@ -2531,64 +2544,22 @@
       }
     },
     {
-      "source": "74",
-      "target": "75",
+      "source": "45",
+      "target": "46",
       "label": {
         "formatter": "竞争关系"
       }
     },
     {
-      "source": "74",
-      "target": "76",
+      "source": "45",
+      "target": "47",
       "label": {
         "formatter": "竞争关系"
       }
     },
     {
-      "source": "75",
-      "target": "76",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "3",
-      "target": "4",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "3",
-      "target": "5",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "4",
-      "target": "5",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "21",
-      "target": "22",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "21",
-      "target": "23",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "22",
-      "target": "23",
+      "source": "46",
+      "target": "47",
       "label": {
         "formatter": "竞争关系"
       }
@@ -2636,85 +2607,8 @@
       }
     },
     {
-      "source": "60",
-      "target": "61",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "60",
-      "target": "62",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "61",
-      "target": "62",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "34",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "35",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "34",
-      "target": "35",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "83",
+      "source": "63",
       "target": "64",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "83",
-      "target": "67",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "64",
-      "target": "67",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "80",
-      "target": "81",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "80",
-      "target": "82",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "81",
-      "target": "82",
       "label": {
         "formatter": "竞争关系"
       }
@@ -2727,36 +2621,120 @@
       }
     },
     {
-      "source": "63",
+      "source": "64",
+      "target": "65",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "66",
+      "target": "67",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "66",
       "target": "68",
       "label": {
         "formatter": "竞争关系"
       }
     },
     {
-      "source": "65",
+      "source": "67",
       "target": "68",
       "label": {
         "formatter": "竞争关系"
       }
     },
     {
-      "source": "84",
-      "target": "87",
+      "source": "69",
+      "target": "70",
       "label": {
         "formatter": "竞争关系"
       }
     },
     {
-      "source": "84",
-      "target": "88",
+      "source": "71",
+      "target": "72",
       "label": {
         "formatter": "竞争关系"
       }
     },
     {
-      "source": "87",
-      "target": "88",
+      "source": "71",
+      "target": "73",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "72",
+      "target": "73",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "9",
+      "target": "10",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "9",
+      "target": "11",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "10",
+      "target": "11",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "18",
+      "target": "19",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "18",
+      "target": "20",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "19",
+      "target": "20",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "27",
+      "target": "28",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "27",
+      "target": "29",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "28",
+      "target": "29",
       "label": {
         "formatter": "竞争关系"
       }
@@ -2778,1140 +2756,6 @@
     {
       "source": "37",
       "target": "38",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "18",
-      "target": "33",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "19",
-      "target": "33",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "20",
-      "target": "33",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "74",
-      "target": "45",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "75",
-      "target": "45",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "74",
-      "target": "46",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "75",
-      "target": "46",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "74",
-      "target": "47",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "75",
-      "target": "47",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "6",
-      "target": "18",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "7",
-      "target": "18",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "8",
-      "target": "18",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "24",
-      "target": "18",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "6",
-      "target": "19",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "7",
-      "target": "19",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "8",
-      "target": "19",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "24",
-      "target": "19",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "6",
-      "target": "20",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "7",
-      "target": "20",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "8",
-      "target": "20",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "24",
-      "target": "20",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "9",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "10",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "11",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "45",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "46",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "47",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "9",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "10",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "11",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "45",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "46",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "0",
-      "target": "47",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "9",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "10",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "11",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "45",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "46",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "1",
-      "target": "47",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "9",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "10",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "11",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "45",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "46",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "2",
-      "target": "47",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "15",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "15",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "15",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "16",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "16",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "16",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "17",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "17",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "17",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "45",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "45",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "45",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "46",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "46",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "46",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "47",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "47",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "47",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "9",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "9",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "9",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "10",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "10",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "10",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "11",
-      "target": "66",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "11",
-      "target": "85",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "11",
-      "target": "86",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "48",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "48",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "48",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "49",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "49",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "49",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "50",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "50",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "50",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "39",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "39",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "39",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "40",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "40",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "40",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "41",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "41",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "41",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "77",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "77",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "77",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "78",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "78",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "78",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "79",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "85",
-      "target": "79",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "79",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "48",
-      "target": "69",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "49",
-      "target": "69",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "50",
-      "target": "69",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "48",
-      "target": "70",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "49",
-      "target": "70",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "50",
-      "target": "70",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "69",
-      "target": "71",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "70",
-      "target": "71",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "69",
-      "target": "72",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "70",
-      "target": "72",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "69",
-      "target": "73",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "70",
-      "target": "73",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "69",
-      "target": "27",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "70",
-      "target": "27",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "69",
-      "target": "28",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "70",
-      "target": "28",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "69",
-      "target": "29",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "70",
-      "target": "29",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "27",
-      "target": "51",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "28",
-      "target": "51",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "29",
-      "target": "51",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "27",
-      "target": "52",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "28",
-      "target": "52",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "29",
-      "target": "52",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "27",
-      "target": "53",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "28",
-      "target": "53",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "29",
-      "target": "53",
-      "label": {
-        "formatter": "供应关系"
-      }
-    },
-    {
-      "source": "15",
-      "target": "16",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "15",
-      "target": "17",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "17",
-      "target": "16",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "15",
-      "target": "9",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "15",
-      "target": "10",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "17",
-      "target": "11",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "45",
-      "target": "9",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "46",
-      "target": "10",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "47",
-      "target": "11",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "9",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "10",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "33",
-      "target": "11",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "27",
-      "target": "71",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "28",
-      "target": "72",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "29",
-      "target": "73",
-      "label": {
-        "formatter": "合作关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "85",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "66",
-      "target": "86",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "86",
-      "target": "85",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "45",
-      "target": "46",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "45",
-      "target": "47",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "46",
-      "target": "47",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "77",
-      "target": "78",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "77",
-      "target": "79",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "78",
-      "target": "79",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "9",
-      "target": "10",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "9",
-      "target": "11",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "10",
-      "target": "11",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "18",
-      "target": "19",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "18",
-      "target": "20",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "19",
-      "target": "20",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "27",
-      "target": "28",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "27",
-      "target": "29",
-      "label": {
-        "formatter": "竞争关系"
-      }
-    },
-    {
-      "source": "28",
-      "target": "29",
       "label": {
         "formatter": "竞争关系"
       }
@@ -3978,17 +2822,1345 @@
       "label": {
         "formatter": "竞争关系"
       }
+    },
+    {
+      "source": "0",
+      "target": "6",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "0",
+      "target": "7",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "0",
+      "target": "8",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "1",
+      "target": "6",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "1",
+      "target": "7",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "1",
+      "target": "8",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "2",
+      "target": "6",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "2",
+      "target": "7",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "2",
+      "target": "8",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "33",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "33",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "33",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "34",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "34",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "34",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "35",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "35",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "35",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "45",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "45",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "45",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "46",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "46",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "46",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "47",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "47",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "47",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "66",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "67",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "68",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+
+
+
+
+    {
+      "source": "74",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "74",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "74",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "75",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "75",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "75",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "76",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "76",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "76",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "77",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "77",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "77",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "78",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "78",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "78",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "79",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "79",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "79",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "6",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "6",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "6",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "7",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "7",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "7",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "8",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "8",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "8",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "15",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "15",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "15",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "16",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "16",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "16",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "17",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "17",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "17",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "24",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "24",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "24",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "25",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "25",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "25",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "26",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "26",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "26",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "54",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "54",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "54",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "55",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "55",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "55",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "56",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "56",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "56",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "57",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "58",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "59",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "60",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "60",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "60",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "61",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "61",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "61",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "62",
+      "target": "80",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "62",
+      "target": "81",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "62",
+      "target": "82",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "80",
+      "target": "83",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "80",
+      "target": "84",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "80",
+      "target": "85",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "81",
+      "target": "83",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "81",
+      "target": "84",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "81",
+      "target": "85",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "82",
+      "target": "83",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "82",
+      "target": "84",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "82",
+      "target": "85",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "83",
+      "target": "86",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "83",
+      "target": "87",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "83",
+      "target": "88",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "84",
+      "target": "86",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "84",
+      "target": "87",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "84",
+      "target": "88",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "85",
+      "target": "86",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "85",
+      "target": "87",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "85",
+      "target": "88",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "9",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "10",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "11",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "9",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "10",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "11",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "9",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "10",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "11",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "18",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "19",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "20",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "18",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "19",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "20",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "18",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "19",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "20",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "27",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "28",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "29",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "27",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "28",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "29",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "27",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "28",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "29",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "39",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "40",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "41",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "39",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "40",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "41",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "39",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "40",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "88",
+      "target": "41",
+      "label": {
+        "formatter": "供应关系"
+      }
+    },
+    {
+      "source": "74",
+      "target": "75",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "77",
+      "target": "78",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "80",
+      "target": "81",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "83",
+      "target": "84",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "87",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "86",
+      "target": "88",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "87",
+      "target": "88",
+      "label": {
+        "formatter": "竞争关系"
+      }
+    },
+    {
+      "source": "74",
+      "target": "83",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "74",
+      "target": "84",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "74",
+      "target": "85",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "75",
+      "target": "83",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "75",
+      "target": "84",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "75",
+      "target": "85",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "76",
+      "target": "83",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "76",
+      "target": "84",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "76",
+      "target": "85",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "77",
+      "target": "83",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "77",
+      "target": "84",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "77",
+      "target": "85",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "78",
+      "target": "83",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "78",
+      "target": "84",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "78",
+      "target": "85",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "79",
+      "target": "83",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "79",
+      "target": "84",
+      "label": {
+        "formatter": "合作关系"
+      }
+    },
+    {
+      "source": "79",
+      "target": "85",
+      "label": {
+        "formatter": "合作关系"
+      }
     }
   ],
   "categories": [
+    {
+      "name": "金属产业链"
+    },
+    {
+      "name": "非金属产业链"
+    },
+    {
+      "name": "化工原料产业链"
+    },
+    {
+      "name": "能源产业链"
+    },
+    {
+      "name": "信息技术产业链"
+    },
+    {
+      "name": "辅助产业产业链"
+    },
     {
       "name": "汽车产业链"
     },
     {
       "name": "家电产业链"
-    },
-    {
-      "name": "汽车+家电产业链"
     }
   ]
 }

@@ -298,25 +298,7 @@ function cancel() {
   </div>
 </template>
 
-<style scoped>
-
-
-el-row {
-  margin-bottom: 20px;
-}
-
-el-row:last-child {
-  margin-bottom: 0;
-}
-
-el-col {
-  border-radius: 4px;
-}
-
-grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
+<style scoped lang="scss">
 
 .table {
   border: #2c3e50;

@@ -1,24 +1,24 @@
 <template>
-<!--  <el-button type="success" plain @click="formulaVisible = true" style="margin-bottom: 10px;">模型解读</el-button>-->
-<!--  <el-dialog v-model="formulaVisible" title="多重产业链关联耦合模型解读">-->
-<!--    <el-form label-position="left">-->
-<!--      <el-form-item label="节点含义：" :label-width="'150px'">-->
-<!--        <span>多重产业链上的企业</span>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="网络层含义含义：" :label-width="'150px'">-->
-<!--        <span>多重产业链上的企业组成的不同关系网络</span>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="垂直边含义：" :label-width="'150px'">-->
-<!--        <span>同一企业在不同关系网络中的映射</span>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="不同颜色的节点含义：" :label-width="'180px'">-->
-<!--        <span>企业被划分到不同的企业协作团体</span>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="不同颜色的水平边含义：" :label-width="'180px'">-->
-<!--        <span>左边的图中从上往下依次代表着不同的网络关系：合作关系，供应关系，竞争关系；右边的图中代表着整体的关联关系</span>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
-<!--  </el-dialog>-->
+  <!--  <el-button type="success" plain @click="formulaVisible = true" style="margin-bottom: 10px;">模型解读</el-button>-->
+  <!--  <el-dialog v-model="formulaVisible" title="多重产业链关联耦合模型解读">-->
+  <!--    <el-form label-position="left">-->
+  <!--      <el-form-item label="节点含义：" :label-width="'150px'">-->
+  <!--        <span>多重产业链上的企业</span>-->
+  <!--      </el-form-item>-->
+  <!--      <el-form-item label="网络层含义含义：" :label-width="'150px'">-->
+  <!--        <span>多重产业链上的企业组成的不同关系网络</span>-->
+  <!--      </el-form-item>-->
+  <!--      <el-form-item label="垂直边含义：" :label-width="'150px'">-->
+  <!--        <span>同一企业在不同关系网络中的映射</span>-->
+  <!--      </el-form-item>-->
+  <!--      <el-form-item label="不同颜色的节点含义：" :label-width="'180px'">-->
+  <!--        <span>企业被划分到不同的企业协作团体</span>-->
+  <!--      </el-form-item>-->
+  <!--      <el-form-item label="不同颜色的水平边含义：" :label-width="'180px'">-->
+  <!--        <span>左边的图中从上往下依次代表着不同的网络关系：合作关系，供应关系，竞争关系；右边的图中代表着整体的关联关系</span>-->
+  <!--      </el-form-item>-->
+  <!--    </el-form>-->
+  <!--  </el-dialog>-->
   <div class="common-layout">
     <div id="main2" ref="chartContainer" class="container"
          style="width: 750px;height:460px;background-color: rgb(255,255,255)"></div>
@@ -90,16 +90,16 @@
             所属企业团体：{{ info.category }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            市场份额：{{ (info.marketShare * 100).toFixed(1) +"%"}}
+            市场份额：{{ (info.marketShare * 100).toFixed(1) + "%" }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            市场增长率：：{{ (info.marketIncrease*100).toFixed(1) +"%" }}
+            市场增长率：：{{ (info.marketIncrease * 100).toFixed(1) + "%" }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            盈利率：{{ (info.profitability*100).toFixed(1) +"%"}}
+            盈利率：{{ (info.profitability * 100).toFixed(1) + "%" }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            科研投入比例：{{ (info.investRatio*100).toFixed(1) +"%"}}
+            科研投入比例：{{ (info.investRatio * 100).toFixed(1) + "%" }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
             产品线宽度：{{ info.productWidth }}
@@ -108,34 +108,34 @@
             产品线深度：{{ info.productDepth }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            品牌知名度：{{ Math.round(info.brandAwareness*100) }}
+            品牌知名度：{{ Math.round(info.brandAwareness * 100) }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
             供应商数量：{{ info.suppliersNum }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            库存周转率：{{ (info.turnover*100).toFixed(1) +"%" }}
+            库存周转率：{{ (info.turnover * 100).toFixed(1) + "%" }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            准时交付率：：{{ (info.deliveryRate*100).toFixed(1) +"%" }}
+            准时交付率：：{{ (info.deliveryRate * 100).toFixed(1) + "%" }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            物流水平：{{ (info.tradeLevel*100).toFixed(1)}}
+            物流水平：{{ (info.tradeLevel * 100).toFixed(1) }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            合作意愿强度：{{ (info.cooperationWillingness*100).toFixed(1)}}
+            合作意愿强度：{{ (info.cooperationWillingness * 100).toFixed(1) }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            信誉分：{{ (info.reputation*100).toFixed(1)}}
+            信誉分：{{ (info.reputation * 100).toFixed(1) }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
             参与合作数量：{{ info.cooperationNum }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            合作成功率：{{ (info.cooperationSuccess*100).toFixed(1) +"%"}}
+            合作成功率：{{ (info.cooperationSuccess * 100).toFixed(1) + "%" }}
           </el-form-item>
           <el-form-item label="" :label-width="formLabelWidth">
-            合作项目平均收益率：{{ (info.averageRoi*100).toFixed(1) +"%" }}
+            合作项目平均收益率：{{ (info.averageRoi * 100).toFixed(1) + "%" }}
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -147,17 +147,10 @@
 
 
 <script setup>
-import {ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
+import {onMounted, reactive, ref, watch} from 'vue'
 import * as echarts from 'echarts'
-import axios from "axios";  //引入echarts
 //import jsonData from "../../../assets/dataFusion/step3.json"
-import {isNull} from "lodash";
-import {
-  getAllCompany,
-  getAllCompanyAndLink,
-  getAllCompanyWithoutLocation,
-  getTotalRelation
-} from "@/api/datafusion/test";
+import {getAllCompanyAndLink, getAllCompanyWithoutLocation, getTotalRelation} from "@/api/datafusion/test";
 //定义组件的自定义事件
 const nodeData = reactive([]);
 const companyData = reactive([]);
@@ -321,7 +314,7 @@ let info = ref({
   name: '',
   chain: '',
   index: -1,
-  marketShare:'',
+  marketShare: '',
   marketIncrease: '',
   profitability: '',
   investRatio: '',
@@ -362,7 +355,7 @@ onMounted(async () => {
   const response2 = ref(null);
   response.value = await getAllCompanyAndLink();
   //const response2 = await axios.get('/src/assets/dataFusion/step3.json');
-  response2.value =  await getTotalRelation();
+  response2.value = await getTotalRelation();
   const graph = response.value;
   const graph2 = response2.value;
   console.log(graph)
@@ -388,7 +381,7 @@ onMounted(async () => {
         case 2:
           return '#90ee90';
         case 3:
-            return '#39779d';
+          return '#39779d';
         default:
           return 'black';
       }
@@ -546,17 +539,17 @@ onMounted(async () => {
           const deliveryRate = (params.data.deliveryRate * 100).toFixed(1) + '%';
           const tradeLevel = (params.data.tradeLevel * 100).toFixed(0);
           const layer = params.data.layer;
-          if (layer === 1){
+          if (layer === 1) {
             return "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "市场份额：" + marketShare + '<br/>' + "市场增长率：" + marketIncrease + '<br/>' + "盈利率：" + profitability + '<br/>' + "科研投入比例：" + investRatio + '<br/>' + "产品线宽度：" + productWidth + '<br/>' + "产品线深度：" + productDepth + '<br/>' + "品牌知名度：" + brandAwareness;
-          } else if(layer === 2){
+          } else if (layer === 2) {
             return "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "供应商数量：" + suppliersNum + '<br/>' + "库存周转率：" + turnover + '<br/>' + "准时交付率：" + deliveryRate + '<br/>' + "物流水平：" + tradeLevel;
-          } else if(layer === 3){
-            return  "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "合作意愿强度：" + cooperationWillingness + '<br/>' + "信誉分：" + reputation + '<br/>' + "参与合作数量：" + cooperationNum + '<br/>' + "合作成功率：" + cooperationSuccess + '<br/>' + "合作项目平均收益率：" + averageRoi;
+          } else if (layer === 3) {
+            return "id: " + trueId + '<br/>' + "locationId：" + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "合作意愿强度：" + cooperationWillingness + '<br/>' + "信誉分：" + reputation + '<br/>' + "参与合作数量：" + cooperationNum + '<br/>' + "合作成功率：" + cooperationSuccess + '<br/>' + "合作项目平均收益率：" + averageRoi;
           }
         } else if (params.dataType === 'edge') {
           //console.log(params.data)
-          var sourceLocationId = params.data.source+1;
-          var targetLocationId = params.data.target+1;
+          var sourceLocationId = params.data.source + 1;
+          var targetLocationId = params.data.target + 1;
           // 在节点数据中查找匹配的节点
           var sourceNode = graph.nodes.find(node => node.locationId === sourceLocationId);
           var targetNode = graph.nodes.find(node => node.locationId === targetLocationId);
@@ -566,11 +559,11 @@ onMounted(async () => {
           var sourceNodeId = sourceNode ? sourceNode.id : null;
           var targetNodeId = targetNode ? targetNode.id : null;
           var label = params.data.label.formatter;
-          if(layer === 1){
+          if (layer === 1) {
             return "企业1 id： " + sourceNodeId + '<br/>' + "企业2 id：" + targetNodeId + '<br/>' + "竞争关联强度：" + label;
-          } else if(layer === 2){
+          } else if (layer === 2) {
             return "企业1 id： " + sourceNodeId + '<br/>' + "企业2 id：" + targetNodeId + '<br/>' + "供应关联强度：" + label;
-          } else if(layer === 3){
+          } else if (layer === 3) {
             return "企业1 id： " + sourceNodeId + '<br/>' + "企业2 id：" + targetNodeId + '<br/>' + "合作关联强度：" + label;
           }
 
@@ -600,7 +593,7 @@ onMounted(async () => {
         symbolSize: 18,
         name: node.name,
         chain: node.chain,
-        category: node.category-1,
+        category: node.category - 1,
         marketShare: node.marketShare,
         marketIncrease: node.marketIncrease,
         profitability: node.profitability,
@@ -627,15 +620,15 @@ onMounted(async () => {
         },
         label: {
           show: true,
-          formatter: link.strengthRelation!==null?link.strengthRelation.toString():"", // 将 strengthRelation 转为字符串作为注释
+          formatter: link.strengthRelation !== null ? link.strengthRelation.toString() : "", // 将 strengthRelation 转为字符串作为注释
         },
       })),
       categories: [
-        { name: "1" },
-        { name: "2" },
-        { name: "3" },
-        { name: "4" },
-        { name: "5" }
+        {name: "1"},
+        {name: "2"},
+        {name: "3"},
+        {name: "4"},
+        {name: "5"}
       ],
       roam: true,     //开启鼠标缩放和平移漫游
 
@@ -643,7 +636,7 @@ onMounted(async () => {
         show: true,     //是否显示节点标签
         // position: 'right',  //节点标签的位置
         // formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
-        formatter: function(params) {
+        formatter: function (params) {
           return params.data.trueId;
         }
       },
@@ -685,7 +678,7 @@ onMounted(async () => {
         },
         label: {
           show: true,
-          formatter: function(params) {
+          formatter: function (params) {
             return params.data.name;  // 鼠标悬浮时显示节点的名称
           }
         }
@@ -809,21 +802,21 @@ onMounted(async () => {
           const name = params.data.name;
           const chain = params.data.chain;
           const category = params.data.category;
-          const marketShare = (params.data.marketShare * 100).toFixed(1) +  '%' ;
-          const marketIncrease = (params.data.marketIncrease * 100).toFixed(1) +  '%';
-          const profitability = (params.data.profitability * 100).toFixed(1) +  '%';
-          const investRatio = (params.data.investRatio * 100).toFixed(1) +  '%';
+          const marketShare = (params.data.marketShare * 100).toFixed(1) + '%';
+          const marketIncrease = (params.data.marketIncrease * 100).toFixed(1) + '%';
+          const profitability = (params.data.profitability * 100).toFixed(1) + '%';
+          const investRatio = (params.data.investRatio * 100).toFixed(1) + '%';
           const productWidth = params.data.productWidth;
           const productDepth = params.data.productDepth;
           const brandAwareness = Math.round(params.data.brandAwareness * 100);
           const cooperationWillingness = params.data.cooperationWillingness * 100;
           const reputation = params.data.reputation * 100;
           const cooperationNum = params.data.cooperationNum;
-          const cooperationSuccess = (params.data.cooperationSuccess * 100).toFixed(1) +  '%';
-          const averageRoi = (params.data.averageRoi * 100).toFixed(1) +  '%';
+          const cooperationSuccess = (params.data.cooperationSuccess * 100).toFixed(1) + '%';
+          const averageRoi = (params.data.averageRoi * 100).toFixed(1) + '%';
           const suppliersNum = params.data.suppliersNum;
-          const turnover = (params.data.turnover * 100).toFixed(1) +  '%';
-          const deliveryRate = (params.data.deliveryRate * 100).toFixed(1) +  '%';
+          const turnover = (params.data.turnover * 100).toFixed(1) + '%';
+          const deliveryRate = (params.data.deliveryRate * 100).toFixed(1) + '%';
           const tradeLevel = params.data.tradeLevel * 100;
           return "id: " + id + '<br/>' + "企业名称：" + name;
           //return "id: " + id + '<br/>' + "企业名称：" + name + '<br/>' + "企业所属产业链：" + chain + '<br/>' + "所属团体：" + category + '<br/>' + "市场份额：" + marketShare + '<br/>' + "市场增长率：" + marketIncrease + '<br/>' + "盈利率：" + profitability + '<br/>' + "科研投入比例：" + investRatio + '<br/>' + "产品线宽度：" + productWidth + '<br/>' + "产品线深度：" + productDepth + '<br/>' + "品牌知名度：" + brandAwareness + '<br/>' + "供应商数量：" + suppliersNum + '<br/>' + "库存周转率：" + turnover + '<br/>' + "准时交付率：" + deliveryRate + '<br/>' + "物流水平：" + tradeLevel + '<br/>' + "合作意愿强度：" + cooperationWillingness + '<br/>' + "信誉分：" + reputation + '<br/>' + "参与合作数量：" + cooperationNum + '<br/>' + "合作成功率：" + cooperationSuccess + '<br/>' + "合作项目平均收益率：" + averageRoi;
@@ -839,7 +832,7 @@ onMounted(async () => {
       {
         orient: 'vertical',
         left: 'left',
-        formatter: function(name) {
+        formatter: function (name) {
           return '团体 ' + name; // 在每个图例项前加上 "Category "
         }
       }
@@ -856,7 +849,7 @@ onMounted(async () => {
         symbolSize: 20,
         name: node.name,
         chain: node.chain,
-        category: node.category-1,
+        category: node.category - 1,
         marketShare: node.marketShare,
         marketIncrease: node.marketIncrease,
         profitability: node.profitability,
@@ -882,17 +875,17 @@ onMounted(async () => {
         lineStyle: {
           color: "rgba(71,82,71,0.8)"
         },
-          label: {
-            show: true,
-            formatter: link.strengthRelation.toString(), // 将 strengthRelation 转为字符串作为注释
-          },
+        label: {
+          show: true,
+          formatter: link.strengthRelation.toString(), // 将 strengthRelation 转为字符串作为注释
+        },
       })),
       categories: [
-        { name: "1" },
-        { name: "2" },
-        { name: "3" },
-        { name: "4" },
-        { name: "5" }
+        {name: "1"},
+        {name: "2"},
+        {name: "3"},
+        {name: "4"},
+        {name: "5"}
       ],
       roam: true,     //开启鼠标缩放和平移漫游
 
@@ -900,7 +893,7 @@ onMounted(async () => {
         show: true,     //是否显示节点标签
         // position: 'right',  //节点标签的位置
         // formatter: '{b}'  //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
-        formatter: function(params) {
+        formatter: function (params) {
           return params.data.id;
         }
       },
@@ -941,7 +934,7 @@ onMounted(async () => {
         },
         label: {
           show: true,
-          formatter: function(params) {
+          formatter: function (params) {
             return params.data.name;  // 鼠标悬浮时显示节点的名称
           }
         }
@@ -1020,9 +1013,9 @@ onMounted(async () => {
 })
 ;
 const reset = () => {
-  selectedRelation.value="";
-  selectedNode.value="";
-  relatedNodesWithout.value="";
+  selectedRelation.value = "";
+  selectedNode.value = "";
+  relatedNodesWithout.value = "";
 }
 const handleSelectChange = () => {
   //selectedRelation.value="";
@@ -1053,7 +1046,7 @@ const handleSelectChange = () => {
     myChart2.dispatchAction({
       type: 'highlight', // 触发高亮效果
       seriesIndex: 0,    // 替换成您的图表中的系列索引
-      dataIndex: selectedNodeIndices-1, // 替换成您的数据中节点的索引或 ID
+      dataIndex: selectedNodeIndices - 1, // 替换成您的数据中节点的索引或 ID
     });
   }
   // selectedRelation.value="";
@@ -1087,7 +1080,7 @@ const handleSelectChange2 = () => {
 };
 </script>
 
-<style>
+<style scoped>
 .header-container {
   display: flex;
   justify-content: center;
@@ -1108,18 +1101,22 @@ const handleSelectChange2 = () => {
   flex: 1; /* 平均分配容器的宽度 */
   margin: 10px; /* 可选的外边距，用于控制 <div> 之间的间距 */
 }
+
 .container {
-//width: 750px; flex: 1; /* 自动平均分配父容器的宽度 */
+  //width: 750px; flex: 1; /* 自动平均分配父容器的宽度 */
   border: 1px solid #bfbfbf; /* 添加1像素黑色边框 */
   padding: 20px; /* 可选：添加内边距，使内容区域不会贴紧边框 */
 }
+
 .container-t {
   width: 100%; /* 或者适当的宽度值 */
   /* 其他样式属性 */
 }
-.m-2{
+
+.m-2 {
   margin-right: 10px;
 }
+
 .flex-container {
   display: flex;
   align-items: center;
@@ -1139,7 +1136,7 @@ const handleSelectChange2 = () => {
 .custom-table .el-table__header-wrapper th,
 .custom-table .el-table__body-wrapper td {
   border-width: 2px !important;
-//border-color: #333 !important;
+  //border-color: #333 !important;
 }
 
 /* 首行底色更深 */
