@@ -1,5 +1,5 @@
 <template>
-  <Body :dec-id="3" :icon-name="'icon-tongji4'" :name="'任务完成情况'">
+  <Body :dec-id="3" :icon-name="'icon-tongji4'" :name="'群智联盟'">
   <template #default>
     <!-- 4个主要的数据 -->
     <div class="main">
@@ -33,19 +33,19 @@ import Body from "@/views/dashboard/components/main/component/Body.vue";
 const dataArr = [
   {
     number: 10,
-    text: '今日完成总量'
+    text: '今日完成任务总量'
   },
   {
     number: 44,
-    text: '总共完成数量'
+    text: '总共完成任务数量'
   },
   {
     number: 36,
-    text: '正在执行数量'
+    text: '正在执行任务数量'
   },
   {
     number: 7,
-    text: '未通过数量'
+    text: '未通过任务数量'
   }
 ]
 // 对应图标

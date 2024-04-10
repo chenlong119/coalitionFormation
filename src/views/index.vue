@@ -23,22 +23,22 @@
         <div class="leftBox">
           <div class="box1 skew bg" @click="$router.push('/sharingIncentive/auction/Mysharing')">
             <div class="rSkew bg">
-              <span>数据共享激励</span>
+              <span>数据共享激励构件</span>
             </div>
           </div>
           <div class="box2 bg skew" @click="$router.push('/datafusion')">
-            <span class="rSkew">群智汇聚</span>
+            <span class="rSkew">群智汇聚构件</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/taskallocation/taskdashboard')">
-            <span class="rSkew">联盟形成</span>
+            <span class="rSkew">群智联盟构件</span>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/testss')">
-            <span class="rSkew">协同效果评估</span>
+          <div class="box2 bg skew" @click="$router.push('/multimode')">
+            <span class="rSkew">企业群多模式协同构件</span>
           </div>
         </div>
-        <div class="rightBox" @click="$router.push('/multimode')">
+        <div class="rightBox" @click="$router.push('/testss')">
           <div class="box1 bg skew">
-            <span class="rSkew">企业群多模式协同</span>
+            <span class="rSkew">企业服务多粒度评估构件</span>
           </div>
           <div class="box2  skew bg ">
             <div class="rSkew bg">
@@ -212,7 +212,7 @@ const handleTime = () => {
         margin-left: 10px;
 
         .box1 {
-          width: 40%;
+          width: 50%;
           height: 100%;
           margin-right: 10px;
 
@@ -223,7 +223,7 @@ const handleTime = () => {
         }
 
         .box2 {
-          width: 60%;
+          width: 50%;
           height: 100%;
           position: relative;
 

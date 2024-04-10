@@ -8,17 +8,17 @@
     <div class="right-menu">
       <template v-if="appStore.device !== 'mobile'">
         <div style="position: relative">
-          <el-tooltip :content="htmlString" placement="bottom"
-                      raw-content
-                      effect="light"
-          >
-            <el-icon :size="24"
-                     color="#5a5e66"
-                     style="margin-top: 12px;margin-right: 10px">
-              <Bell/>
-            </el-icon>
-          </el-tooltip>
-          <div class="red-dot"></div>
+          <!--          <el-tooltip :content="htmlString" placement="bottom"-->
+          <!--                      raw-content-->
+          <!--                      effect="light"-->
+          <!--          >-->
+          <!--            <el-icon :size="24"-->
+          <!--                     color="#5a5e66"-->
+          <!--                     style="margin-top: 12px;margin-right: 10px">-->
+          <!--              <Bell/>-->
+          <!--            </el-icon>-->
+          <!--          </el-tooltip>-->
+          <!--          <div class="red-dot"></div>-->
         </div>
         <screenfull id="screenfull" class="right-menu-item hover-effect"/>
 
