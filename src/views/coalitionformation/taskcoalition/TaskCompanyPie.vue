@@ -8,6 +8,9 @@ const taskCompanyPie = ref();
 let chartInstance = null;
 
 const drawtaskCompanyPie = async () => {
+  taskStore.tasks = await request({
+    url: "/coalition/formation/getall"
+  });
   const res = taskStore.tasks;
   //统计每种类别的个数 taskStatus 0,1,2,3
   let categoryArr = [];
@@ -28,7 +31,7 @@ const drawtaskCompanyPie = async () => {
   })
   //根据企业id获取企业名字
   let ids = data.map(item => item.name).join(",");
-     
+  console.log(ids)
   const names = await request({
     url: "/company/show/getnames",
     params: {

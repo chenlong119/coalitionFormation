@@ -23,22 +23,22 @@
         <div class="leftBox">
           <div class="box1 skew bg" @click="$router.push('/sharingIncentive/auction/Mysharing')">
             <div class="rSkew bg">
-              <span>数据共享激励构件</span>
+              <span>数据共享激励</span>
             </div>
           </div>
           <div class="box2 bg skew" @click="$router.push('/datafusion')">
-            <span class="rSkew">群智汇聚构件</span>
+            <span class="rSkew">群智汇聚</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/taskallocation/taskdashboard')">
-            <span class="rSkew">群智联盟构件</span>
+            <span class="rSkew">联盟形成</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/multimode')">
-            <span class="rSkew">企业群多模式协同构件</span>
+            <span class="rSkew">企业群多模式协同</span>
           </div>
         </div>
-        <div class="rightBox" @click="$router.push('/testss')">
+        <div class="rightBox" @click="$router.push('/multig/pinggu')">
           <div class="box1 bg skew">
-            <span class="rSkew">企业服务多粒度评估构件</span>
+            <span class="rSkew">协同效果评估</span>
           </div>
           <div class="box2  skew bg ">
             <div class="rSkew bg">
@@ -65,7 +65,7 @@ import elementResizeDetectorMaker from 'element-resize-detector'
 import {debounce} from 'lodash'
 
 const index = ref(null);
-const title = "多重产业链企业群协同平台"
+const title = "多重产业链企业群协同系统"
 const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 let height;
 let width;
@@ -83,19 +83,19 @@ onMounted(() => {
   height = index.value.offsetHeight;
   width = index.value.offsetWidth;
   handleTime();
-  erd.listenTo(index.value, debounce((element) => {
-    if (width === element.offsetWidth && height === element.offsetHeight) {
-      return;
-    }
-    height = element.offsetHeight;
-    width = element.offsetWidth;
-    location.reload();
-  }, 500));
+  // erd.listenTo(index.value, debounce((element) => {
+  //   if (width === element.offsetWidth && height === element.offsetHeight) {
+  //     return;
+  //   }
+  //   height = element.offsetHeight;
+  //   width = element.offsetWidth;
+  //   location.reload();
+  // }, 500));
 })
-onUnmounted(() => {
-  console.log('unmounted')
-  erd.uninstall(index.value);
-})
+// onUnmounted(() => {
+//   console.log('unmounted')
+//   erd.uninstall(index.value);
+// })
 
 const handleTime = () => {
   timeInfo.setInterval = setInterval(() => {
@@ -175,7 +175,7 @@ const handleTime = () => {
       padding: 0 5px;
       color: #fff;
       font-size: 25px;
-      height: 4%;
+      height: 5%;
 
       .leftBox {
         width: 60%;
@@ -212,18 +212,18 @@ const handleTime = () => {
         margin-left: 10px;
 
         .box1 {
-          width: 50%;
+          width: 40%;
           height: 100%;
           margin-right: 10px;
 
           span {
             display: inline-block;
-            margin-left: 50px;
+            margin-left: 10px;
           }
         }
 
         .box2 {
-          width: 50%;
+          width: 60%;
           height: 100%;
           position: relative;
 
@@ -253,6 +253,8 @@ const handleTime = () => {
 
     .bg {
       background-color: #004d8c;
+      text-align: center;
+      line-height: 45px;
     }
   }
 }
