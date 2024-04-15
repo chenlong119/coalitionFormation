@@ -273,10 +273,6 @@ onMounted(async () => {
   } finally {
     isRunning.value = false;
   }
-
-  multiChartInstance = echarts.init(multiChart.value);
-  multiChartInstance.setOption(baseOption);
-  drawRelationShip();
 });
 function createPieChart(chartContainer, data) {
   const chartInstance = echarts.init(chartContainer);
