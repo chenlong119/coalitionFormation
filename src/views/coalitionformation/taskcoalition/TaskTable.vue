@@ -324,7 +324,11 @@ const coalitionformation=async (task)=>{
     },
     data:task.resource
   })
-
+  ElMessage({
+    type: 'success',
+    message: "联盟形成成功，联盟编号为："+res
+  })
+  getList();
 }
 /** 查询任务信息列表 */
 function getList() {
