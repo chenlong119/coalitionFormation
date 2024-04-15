@@ -180,7 +180,7 @@ onMounted(()=>{
 
 <template>
   <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'企业群多模式协同'">
-  <div ref="taskLinkageInfo1" class="chart-container"></div>
+  <div ref="sit2" class="chart-container"></div>
   </Body>
 </template>
 
@@ -188,135 +188,127 @@ onMounted(()=>{
 <script setup>
 import Body from "@/views/dashboard/components/main/component/Body.vue";
 import * as echarts from "echarts";
-import {onMounted, ref} from 'vue';
-import {fetchBusinessDirections, fetchBusinessLocations,} from '@/api/multimode/faultyMachine';
+import request from "@/utils/request.js";
+import {onMounted, reactive, ref, nextTick} from 'vue';
+import {
+  runGeneticAlgorithm,
+  getActiveTasks,
+  sendSolutionToBackend,
+  fetchCoalitionDetails,
+  modeShow,
+  getAllScoreRecords,
 
-const businessLocations = ref([]);
-const businessDirections = ref([]);
-const taskLinkageInfo1 = ref(null);
-const colors = ['#e6ccff', '#ccffcc', '#ffffcc', '#ccf5ff'];
-const colorMap = new Map();
-const linkscolors = ['red', 'green', 'blue', 'gray', 'yellow', 'purple', 'orange'];
-const linkscolorMap = new Map();
-const getColorByGroupId = (groupId) => {
-  if (!colorMap.has(groupId)) {
-    // 分配一个新颜色
-    const color = colors[colorMap.size % colors.length];
-    colorMap.set(groupId, color);
+} from '@/api/multimode/faultyMachine';
+
+
+// mode板块
+const modesData = ref([]); // 使用ref来保持响应性
+
+const fetchModesData = async () => {
+  try {
+    const response = await modeShow();
+    console.log("Data from modeShow:", response);
+    modesData.value = response.map(mode => ({
+      ...mode,
+      completionRate: (mode.completionRate * 100).toFixed(2) + '%', // 假设完成率是0到1之间的数，转换为百分比
+      failureRate:(100- (mode.completionRate * 100).toFixed(2) )+ '%',
+    }));
+    // 确保DOM已更新，再绘制echarts图表
+    nextTick(() => {
+      if (sit2.value) { // 确保sit2已经被ref关联
+        createPieChart(sit2.value, modesData.value);
+      }
+    });
+  } catch (error) {
+    console.error("Failed to fetch modes data:", error);
   }
-  return colorMap.get(groupId);
 };
-const getColorByModeId = (modeId) => {
-  if (!linkscolorMap.has(modeId)) {
-    // 分配一个新颜色
-    const color = linkscolors[linkscolorMap.size % linkscolors.length];
-    linkscolorMap.set(modeId, color);
-  }
-  return linkscolorMap.get(modeId);
-};
-const initializeChart = () => {
-  // 创建或更新图表实例
-  const chartInstance = echarts.init(taskLinkageInfo1.value);
-  // 根据 businessLocations 和 businessDirections 更新图表配置
-  const links = businessDirections.value.map(direction => {
-    const sourceNode = `企业 ${direction.sourceId}`;
-    const targetNode = `企业 ${direction.goalId}`;
-    return {
-      id: direction.locationId,
-      source: sourceNode,
-      target: targetNode,
-      history: (direction.history || []).map(h => ({
-        id: h.id,
-        taskName: h.taskName,
-        deliveryDate: h.deliveryDate,
-        deliveryExperience: h.deliveryExperience
-
-      })),
-
-      lineStyle: {
-        curveness: 0.2,
-        color: getColorByModeId(direction.modeId)
-      },
-      tooltip: {
-        formatter: `连线信息：企业${direction.sourceId} -> 企业${direction.goalId}<br>当前合作任务：${direction.taskId}<br>协同模式：${direction.mode}`
-      }
-    };
+// 定义一个计算属性来排序modesData
+const sortedModesData = computed(() => {
+  // 假设每个模式对象中的完成率已经是百分比形式的字符串了，需要转换为数字进行比较
+  return modesData.value.slice().sort((a, b) => {
+    // 转换完成率字符串为数字，去掉百分号并转换为浮点数进行比较
+    let rateA = parseFloat(a.completionRate.replace('%', ''));
+    let rateB = parseFloat(b.completionRate.replace('%', ''));
+    return rateB - rateA; // 降序排序
   });
-  console.log(links);
-
-  const option = {
-    tooltip: {},
-    animationDurationUpdate: 50,
-    animationEasingUpdate: 'quinticInOut',
-    series: [{
-      type: 'graph',
-      layout: 'none',
-      symbolSize: 45,
-      roam: true,
-      label: {
-        show: true
-      },
-      edgeSymbol: ['circle', 'arrow'],
-      edgeSymbolSize: [1, 5],
-      edgeLabel: {
-        fontSize: 10
-      },
-      data: businessLocations.value.map(location => ({
-        name: `企业 ${location.businessId}`,
-        x: location.x,
-        y: location.y,
-        itemStyle: {color: getColorByGroupId(location.businessGroupId)},
-        tooltip: {
-          formatter: `节点信息：<br/>${location.businessId}---${location.businessName}<br/>所属企业群编号：${location.businessGroupId}<br/>企业群：${location.businessGroupName}`
-        }
-      })),
-      links: links,
-      lineStyle: {
-        opacity: 0.9,
-        width: 2,
-        curveness: 0
-      }
-
-    }]
-
-  };
-  console.log("Business Locations:", businessLocations.value);
-  console.log("Links:", links);
-  chartInstance.on('click', (params) => {
-    if (params.dataType === 'edge') {
-      // 找到点击的连线对应的历史数据
-      const clickedLink = businessDirections.value.find(d => `企业 ${d.sourceId}` === params.data.source && `企业 ${d.goalId}` === params.data.target);
-      console.log("Clicked Link", clickedLink);
-
-      // 确保找到了连线，并且该连线有历史数据
-      if (clickedLink && clickedLink.history) {
-        showDrawer({
-          source: `企业 ${clickedLink.sourceId}`,
-          target: `企业 ${clickedLink.goalId}`,
-          history: clickedLink.history.map(h => ({
-            id: h.id,
-            taskName: h.taskName,
-            deliveryDate: h.deliveryDate,
-            deliveryExperience: h.deliveryExperience
-          }))
-        });
-      }
-    }
-  });
-
-  chartInstance.setOption(option);
-};
-
-
-onMounted(async () => {
-  const responseLocations = await fetchBusinessLocations();
-  console.log(responseLocations); // 检查这里的响应
-  businessLocations.value = responseLocations;
-  const directions = await fetchBusinessDirections();
-  businessDirections.value = directions;
-  initializeChart();
 });
 
+const sit2 = ref(null);//饼状图
+onMounted(async () => {
+  try {
+    const response = await getAllScoreRecords();
+    console.log('Received data:', response); // 打印到控制台
+    scoreRecords.value = response; // 将数据保存到scoreRecords变量中
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+
+//mode 板块挂载
+  fetchModesData();
+  fetchData();
+
+  //调用GA函数
+  fetchRunDataAndUpdateExceptionalTaskIds();
+  //获取长宽
+  getActiveTasks().then(response => {
+    const rectangle = rectangleRef.value;
+    if (rectangle) {
+      const containerWidth = rectangle.offsetWidth;
+      const containerHeight = rectangle.offsetHeight;
+      prepareCircles(response, containerWidth, containerHeight);
+    }
+  }).catch(error => {
+    console.error('获取任务数据失败', error);
+  });
+  // intervalId = setInterval(toggleCirclesVisibility, 20000);
+  try {
+    isRunning.value = true;
+    const response = await runGeneticAlgorithm();
+    console.log(response); // 或者处理返回的数据
+    const response1 = await getActiveTasks();
+    console.log('获取:',response1); // 或者处理返回的数据
+  } catch (error) {
+    console.error('Error running genetic algorithm:', error);
+  } finally {
+    isRunning.value = false;
+  }
+
+  multiChartInstance = echarts.init(multiChart.value);
+  multiChartInstance.setOption(baseOption);
+  drawRelationShip();
+});
+function createPieChart(chartContainer, data) {
+  const chartInstance = echarts.init(chartContainer);
+  const chartOptions = {
+    tooltip: {
+      trigger: 'item',
+      formatter: function (params) {
+        //console.log("ECharts tooltip params:", params); // 输出params以检查
+        const modeData = data.find(item => item.modeName === params.name);
+        const completionRate = modeData.completionRate;
+        const failureRate = modeData.failureRate;
+        const defaultContent = `${params.marker}${params.name} : ${params.value}<br/>`;
+        const additionalContent = `任务完成率: ${completionRate}<br/>故障发生率: ${failureRate}`;
+        return defaultContent + additionalContent;
+      },
+    },
+    series: [
+      {
+        type: 'pie',
+        data: data.map(item => ({value: item.competitionNum, name: item.modeName})),
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        },
+      },
+    ],
+  };
+  chartInstance.setOption(chartOptions);
+}
 
 </script>
 
