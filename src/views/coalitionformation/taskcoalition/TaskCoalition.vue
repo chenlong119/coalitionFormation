@@ -5,6 +5,7 @@ import TaskGraph from "@/views/coalitionformation/taskcoalition/TaskGraph.vue";
 import TaskChainPie from "@/views/coalitionformation/taskcoalition/TaskChainPie.vue";
 import TaskStatusPie from "@/views/coalitionformation/taskcoalition/TaskStatusPie.vue";
 import TaskCompanyPie from "@/views/coalitionformation/taskcoalition/TaskCompanyPie.vue";
+import TaskBar from "./TaskBar.vue";
 </script>
 
 <template>
@@ -18,18 +19,21 @@ import TaskCompanyPie from "@/views/coalitionformation/taskcoalition/TaskCompany
           <TaskGraph/>
         </el-card>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="5">
         <el-card shadow="hover">
           <TaskChainPie/>
         </el-card>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="5">
         <el-card shadow="hover" class="part1">
           <TaskStatusPie/>
         </el-card>
         <el-card shadow="hover">
           <TaskCompanyPie/>
         </el-card>
+      </el-col>
+      <el-col :span="8">
+          <TaskBar/>
       </el-col>
     </el-row>
   </div>

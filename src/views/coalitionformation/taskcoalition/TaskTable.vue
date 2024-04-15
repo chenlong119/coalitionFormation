@@ -315,6 +315,17 @@ const getTaskResource = async (taskId) => {
   })
 }
 
+const coalitionformation=async (task)=>{
+  const res=await request({
+    url:"/coalition/allocation",
+    method:"post",
+    params:{
+      taskId:task.id
+    },
+    data:task.resource
+  })
+
+}
 /** 查询任务信息列表 */
 function getList() {
   loading.value = true;
