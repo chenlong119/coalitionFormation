@@ -179,8 +179,8 @@ onMounted(()=>{
 </style> -->
 
 <template>
-  <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'企业群多模式协同'">
-  <div ref="sit2" class="chart-container"></div>
+  <Body :icon-name="'icon-laptop'" :dec-id="1" name="课题3">
+<!--  <div ref="sit2" class="chart-container"></div>-->
   </Body>
 </template>
 

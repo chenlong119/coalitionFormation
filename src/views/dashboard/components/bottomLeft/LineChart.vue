@@ -1,31 +1,26 @@
 <template>
   <div class="box-card">
-    <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'多粒度协同评估'">
-    <div ref="lineChartRef" class="chart"></div>
+    <Body :icon-name="'icon-laptop'" :dec-id="1" name="课题2">
     </Body>
   </div>
 </template>
 
-<script>
-import {onMounted, ref} from 'vue';
-import * as echarts from 'echarts';
-import Body from "@/views/dashboard/components/main/component/Body.vue";
-import {fetchMonthlyStatistics} from "@/api/multigranularity/datashow"; // 根据实际路径调整
+<script >
+
+ import {onMounted, ref} from 'vue';
+ import * as echarts from 'echarts';
+ import Body from "@/views/dashboard/components/main/component/Body.vue";
+ import {fetchMonthlyStatistics} from "@/api/multigranularity/datashow"; // 根据实际路径调整
 
 export default {
-  components: {Body},
+ components: {Body},
   setup() {
     const lineChartRef = ref(null);
-
     onMounted(async () => {
       const response = await fetchMonthlyStatistics();
       if (response) {
         let months = response.map(item => item.month);
-        let counts = response.map(item => item.highScoreCount);
-
-        // 反转数组以确保顺序正确
-
-
+        let counts = response.map(item => item.highScoreCount);// 反转数组以确保顺序正确
         const lineChart = echarts.init(lineChartRef.value);
         const lineOption = {
           title: {
@@ -45,7 +40,6 @@ export default {
             type: 'category',
             boundaryGap: false,
             data: months
-
           },
           yAxis: {
             type: 'value'
@@ -67,7 +61,6 @@ export default {
         lineChart.setOption(lineOption);
       }
     });
-
     return {
       lineChartRef
     };
@@ -79,9 +72,8 @@ export default {
 </script>
 
 <style scoped>
-
-.chart {
-  width: 100%;
-  height: 280px;
+.chart{
+ width: 100%;
+ height: 280px;
 }
 </style>
