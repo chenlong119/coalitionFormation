@@ -1,0 +1,109 @@
+<script setup>
+import * as echarts from 'echarts';
+import userTaskStore from "@/store/modules/task.js";
+import request from "@/utils/request.js";
+const dynamicBar=ref(null);
+let barChart=null;
+const taskStore=userTaskStore();
+const data = [];
+const draw=async ()=>{
+  taskStore.tasks = await request({
+    url: "/coalition/formation/getall"
+  });
+ let taskList=taskStore.tasks.filter(item=>item.taskStatus===1);
+ let categories=taskList.map(item=>item.name);
+  // console.log(categories)
+ for(let i=0;i<categories.length;i++)
+ {
+   data.push(Math.round(Math.random() * 30))
+ }
+  let option = {
+    title:{
+      text:'任务完成率变化图'
+    },
+    grid:{
+      left:0,
+      bottom:0,
+      containLabel:true
+    },
+    xAxis: {
+      max: 'dataMax'
+    },
+    yAxis: {
+      type: 'category',
+      data: categories,
+      inverse: true,
+      animationDuration: 300,
+      animationDurationUpdate: 300,
+      max: 5
+    },
+    series: [
+      {
+        realtimeSort: true,
+        name: 'X',
+        type: 'bar',
+        data: data,
+        label: {
+          show: true,
+          position: 'right',
+          formatter:function(params){
+           return params.value+"%";
+           },
+          valueAnimation: true
+        }
+      }
+    ],
+    animationDuration: 0,
+    animationDurationUpdate: 3000,
+    animationEasing: 'linear',
+    animationEasingUpdate: 'linear'
+  };
+  barChart.setOption(option);
+}
+
+function run() {
+  for (let i = 0; i < data.length; ++i) {
+    if (Math.random() > 0.6) {
+      data[i] += Math.round(Math.random() * 15);
+      if(data[i]>=100)
+      {
+        data[i]=Math.round(Math.random()*30);
+      }
+    } else {
+      data[i] += Math.round(Math.random() * 30);
+      if(data[i]>=100)
+      {
+        data[i]=Math.round(Math.random()*30);
+      }
+    }
+  }
+  barChart.setOption({
+    series: [
+      {
+        type: 'bar',
+        data
+      }
+    ]
+  });
+}
+onMounted(()=>{
+  barChart=echarts.init(dynamicBar.value)
+  draw();
+  setInterval(()=>{
+    run()
+  },3000)
+})
+</script>
+
+<template>
+  <el-card shadow="hover">
+    <div class="dynamicBar" ref="dynamicBar"></div>
+  </el-card>
+</template>
+
+<style scoped lang="scss">
+.dynamicBar{
+  width: 100%;
+  height: 400px;
+}
+</style>

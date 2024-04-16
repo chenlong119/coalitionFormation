@@ -1,92 +1,92 @@
 <template>
-  <div class="app-container">
-    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="联盟编号" prop="id">
-        <el-input
-            v-model="queryParams.id"
-            placeholder="请输入联盟编号"
-            clearable
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="联盟任务" prop="taskId">
-        <el-input
-            v-model="queryParams.taskId"
-            placeholder="请输入联盟任务编号"
-            clearable
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="联盟状态" prop="coalitionStatus">
-        <el-select v-model="queryParams.coalitionStatus" placeholder="请选择联盟状态" clearable>
-          <el-option
-              v-for="dict in coalition_state"
-              :key="dict.value"
-              :label="dict.label"
-              :value="dict.value"
+    <div class="app-container">
+      <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="68px">
+        <el-form-item label="联盟编号" prop="id">
+          <el-input
+              v-model="queryParams.id"
+              placeholder="请输入联盟编号"
+              clearable
+              @keyup.enter="handleQuery"
           />
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-        <el-button icon="Refresh" @click="resetQuery">重置</el-button>
-      </el-form-item>
-    </el-form>
-    <el-table v-loading="loading" :data="enterpriseList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="联盟编号" align="center" prop="id" />
-      <el-table-column label="联盟名称" align="center" prop="name" />
-      <el-table-column label="联盟任务编号" align="center" prop="taskId" />
-      <el-table-column label="联盟状态" align="center" prop="coalitionStatus">
-        <template #default="scope">
-          <dict-tag :options="coalition_state" :value="scope.row.coalitionStatus"/>
-        </template>
-      </el-table-column>
-      <el-table-column label="联盟内部企业个数" align="center">
-        <template #default="socpe">
-          <span>{{socpe.row.company?.length}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template #default="scope">
-          <el-button link type="primary" icon="Search" @click="handleCoalition(scope.row)" :disabled="scope.row.coalitionStatus!=1">查看联盟详情</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+        </el-form-item>
+        <el-form-item label="联盟任务" prop="taskId">
+          <el-input
+              v-model="queryParams.taskId"
+              placeholder="请输入联盟任务编号"
+              clearable
+              @keyup.enter="handleQuery"
+          />
+        </el-form-item>
+        <el-form-item label="联盟状态" prop="coalitionStatus">
+          <el-select v-model="queryParams.coalitionStatus" placeholder="请选择联盟状态" clearable>
+            <el-option
+                v-for="dict in coalition_state"
+                :key="dict.value"
+                :label="dict.label"
+                :value="dict.value"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
+          <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+        </el-form-item>
+      </el-form>
+      <el-table v-loading="loading" :data="enterpriseList" @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55" align="center" />
+        <el-table-column label="联盟编号" align="center" prop="id" />
+        <el-table-column label="联盟名称" align="center" prop="name" />
+        <el-table-column label="联盟任务编号" align="center" prop="taskId" />
+        <el-table-column label="联盟状态" align="center">
+          <template #default="scope">
+            <el-tag :type="stateTypes[scope.row.coalitionStatus]">{{getStateName(scope.row)}}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="联盟内部企业个数" align="center">
+          <template #default="socpe">
+            <span>{{socpe.row.company?.length}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+          <template #default="scope">
+            <el-button link type="primary" icon="Search" @click="handleCoalition(scope.row)">查看联盟详情</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
 
-    <pagination
-        v-show="total>0"
-        :total="total"
-        v-model:page="queryParams.pageNum"
-        v-model:limit="queryParams.pageSize"
-        @pagination="getList"
-    />
-    <el-dialog
-        title="联盟详情"
-        v-model="coalitionDialog"
-        width="50%"
-    >
-      <el-row :gutter="15">
-        <el-col :span="14">
-          <div>
-            <h3>当前任务：{{taskName}}</h3>
-          </div>
-          <el-table :data="companyList">
-            <el-table-column label="企业编号" align="center" prop="id" />
-            <el-table-column label="企业名称" align="center" prop="name" />
-            <el-table-column label="所属产业链" align="center">
-              <template #default="scope">
-                <span>{{chainName[scope.row.layerId-1]}}</span>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-col>
-        <el-col :span="10">
-          <CoalitionPie :coalition-company="companyList"/>
-        </el-col>
-      </el-row>
-    </el-dialog>
-  </div>
+      <pagination
+          v-show="total>0"
+          :total="total"
+          v-model:page="queryParams.pageNum"
+          v-model:limit="queryParams.pageSize"
+          @pagination="getList"
+      />
+      <el-dialog
+          title="联盟详情"
+          v-model="coalitionDialog"
+          width="50%"
+      >
+        <el-row :gutter="15">
+          <el-col :span="14">
+            <div>
+              <h3>当前任务：{{taskName}}</h3>
+            </div>
+            <el-table :data="companyList">
+              <el-table-column label="企业编号" align="center" prop="id" />
+              <el-table-column label="企业名称" align="center" prop="name" />
+              <el-table-column label="所属产业链" align="center">
+                <template #default="scope">
+                  <span>{{chainName[scope.row.layerId-1]}}</span>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-col>
+          <el-col :span="10">
+            <CoalitionPie :coalition-company="companyList"/>
+          </el-col>
+        </el-row>
+      </el-dialog>
+    </div>
 </template>
 
 <script setup name="Enterprise">
@@ -98,6 +98,7 @@ const { proxy } = getCurrentInstance();
 const { coalition_state } = proxy.useDict('coalition_state');
 
 const chainName=['汽车产业链','家电产业链','电子产业链']
+const stateTypes=['danger','warning','success']
 const enterpriseList = ref([]);
 const loading = ref(true);
 const showSearch = ref(true);
@@ -109,6 +110,18 @@ const coalitionDialog=ref(false)
 
 let companyList=ref([]);
 let taskName=ref("");
+
+
+const getStateName=(row)=>{
+  let label="";
+  coalition_state.value.forEach(item=>{
+    if(item.value===row.coalitionStatus.toString())
+    {
+      label= item.label;
+    }
+  })
+  return label;
+}
 const handleCoalition=async (row)=>{
   coalitionDialog.value=true
  companyList.value=row.company
@@ -181,3 +194,10 @@ function handleSelectionChange(selection) {
 
 getList();
 </script>
+
+<style scoped>
+.app-container
+{
+  height: 460px;
+}
+</style>
