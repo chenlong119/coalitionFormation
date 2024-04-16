@@ -11,7 +11,9 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
   <div class="container">
     <div class="column1">
       <CoalitionTable/>
+      <el-card shadow="hover">
       <CoalitionDynamicBar/>
+      </el-card>
     </div>
     <div class="column2">
       <div style="margin-top:10px">
@@ -47,7 +49,6 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
     justify-content: flex-start;
     width: 50%;
     height: 100%;
-    //margin-right: 5px;
   }
   .column2{
     display: flex;
