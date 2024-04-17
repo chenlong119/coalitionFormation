@@ -309,8 +309,8 @@ onMounted(()=>{
 </script>
 
 <style scoped>
-//.chart-container {
-//  width: 100%;
-//  height: 100%;
-//}
+.chart-container {
+  width: 100%;
+  height: 100%;
+}
 </style>
