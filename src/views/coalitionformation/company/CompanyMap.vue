@@ -3,7 +3,7 @@ import {onMounted, ref} from "vue";
 import * as echarts from 'echarts'
 //引入axios
 import axios from "axios";
-
+import mapData from "@/assets/chain.json";
 let name_title = "多重产业链网络中企业地理分布图"
 let nameColor = " rgb(55, 75, 113)"
 let name_fontFamily = '等线'
@@ -64,9 +64,9 @@ let convertData = function (data) {
 
 const initChart = async () => {
   chartInstance = echarts.init(map.value);
-  const res = await axios.get('/src/assets/chain.json');
-  echarts.registerMap('china', res.data);
-  res.data.features.forEach(function (item) {
+  // const res = await axios.get('/src/assets/chain.json');
+  echarts.registerMap('china', mapData);
+  mapData.features.forEach(function (item) {
     geoCoordMap[item.properties.name] = item.properties.cp;
   });
   const initOption = {
