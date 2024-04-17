@@ -17,7 +17,8 @@ const draw=async ()=>{
  let option = {
     title:{
       text:"任务完成率变化图",
-      left:"center"
+      left:"center",
+      top:10
     },
    grid:{
       left:0,
@@ -62,8 +63,16 @@ function run() {
   for (let i = 0; i < data.length; ++i) {
     if (Math.random() > 0.7) {
       data[i] += Math.round(Math.random() * 15);
+      if(data[i]>=100)
+      {
+        data[i]=Math.round(Math.random() * 30);
+      }
     } else {
       data[i] += Math.round(Math.random() * 30);
+      if(data[i]>=100)
+      {
+        data[i]=Math.round(Math.random() * 30);
+      }
     }
   }
   barChart.setOption({

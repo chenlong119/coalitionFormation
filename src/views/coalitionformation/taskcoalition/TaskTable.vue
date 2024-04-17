@@ -93,6 +93,15 @@
         >配置资源
         </el-button>
       </el-col>
+      <el-col :span="1.5">
+        <el-button
+            type="primary"
+            plain
+            icon="Share"
+            @click="$router.push('/coalitionFormation/coalitionResult')"
+        >查看联盟详情
+        </el-button>
+      </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
