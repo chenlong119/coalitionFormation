@@ -96,9 +96,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <el-card shadow="hover">
     <div class="dynamicBar" ref="dynamicBar"></div>
-  </el-card>
 </template>
 
 <style scoped lang="scss">
