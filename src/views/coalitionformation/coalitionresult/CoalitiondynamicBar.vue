@@ -59,6 +59,7 @@ const draw=async ()=>{
   };
   barChart.setOption(option);
 }
+
 function run() {
   for (let i = 0; i < data.length; ++i) {
     if (Math.random() > 0.7) {
@@ -95,7 +96,7 @@ onMounted(()=>{
 </script>
 
 <template>
-<div class="dynamicBar" ref="dynamicBar"></div>
+    <div class="dynamicBar" ref="dynamicBar"></div>
 </template>
 
 <style scoped lang="scss">
