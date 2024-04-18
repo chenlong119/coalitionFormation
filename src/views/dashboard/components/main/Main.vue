@@ -1,12 +1,11 @@
 <template>
-  <el-row :gutter="10" style="height:60%">
+  <el-row :gutter="10" style="height:60%;margin-bottom: 10px">
     <el-col :span="6">
       <dv-border-box-12 class="pd">
         <LeftTop/>
       </dv-border-box-12>
     </el-col>
     <el-col :span="18">
-      <!-- <RelationGraph/> -->
       <CompanyRelationGraph/>
     </el-col>
   </el-row>
@@ -33,8 +32,7 @@
 import LeftTop from "../leftTop/LeftTop.vue";
 import BottomCenter from "../bottomCenter/BottomCenter.vue";
 import BottomRight from "../bottomRight/BottomRight.vue";
-import RelationGraph from "../multilayer/RelationGraph.vue";
-import LineChart from "../bottomLeft/LineChart.vue";
+import LineChart from "../bottomLeft/BottomLeft.vue";
 import CompanyRelationGraph from "../multilayer/CompanyRelationGraph.vue"
 </script>
 
