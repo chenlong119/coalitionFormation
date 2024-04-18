@@ -22,7 +22,7 @@
         <div class="leftBox">
           <div class="box1 skew bg">
             <div class="rSkew bg">
-              <span>欢迎使用本系统</span>
+              <span>平台简介</span>
             </div>
           </div>
           <div class="box2 bg skew">
