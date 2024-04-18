@@ -1,4 +1,5 @@
 <template>
+<div>
   <el-card class="step-card">
     <el-steps :active="active" align-center>
       <el-step
@@ -56,6 +57,7 @@
       ></el-button>
     </div>
   </div>
+</div>
 </template>
 
 
