@@ -19,22 +19,11 @@ const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
 const layere3 = layers3 + height;
 
-let name_title = "多重产业链网络中企业关系图"
-let nameColor = " rgb(255, 255, 255)"
-let name_fontFamily = '等线'
-let name_fontSize = 17
+
 let baseOption = {
   animationDurationUpdate: 1500,
   animationEasingUpdate: 'quinticInOut',
-  title: {
-    text: name_title,
-    x: 'center',
-    textStyle: {
-      color: nameColor,
-      fontFamily: name_fontFamily,
-      fontSize: name_fontSize
-    }
-  },
+
   graphic: [
     {
       type: 'polygon',
@@ -115,41 +104,6 @@ const allocateSpace = (nodes) => {
     }
   })
 }
-
-// const allocateSpace = (nodes) => {
-//   const totalNodes = nodes.length;
-//   let choose = [];
-  
-//   nodes.forEach((node) => {
-//     while (true) {
-//       const randomPos = Math.floor(Math.random() * totalNodes) + 1;
-//       if (choose.indexOf(randomPos) === -1) {
-//         choose.push(randomPos);
-
-//         // 每一份大小40*50，起点为（50,30)，一共totalNodes份，分布为3行，每行nodesPerRow份
-//         const nodesPerRow = Math.ceil(totalNodes / 3); // 每行的节点数
-//         const row = Math.floor((randomPos - 1) / nodesPerRow); // 计算行数
-//         const column = (randomPos - 1) % nodesPerRow; // 计算列数
-
-//         const offsetX = column * 60; // x 坐标偏移量，增加每列之间的空隙
-//         node.x = 50 + column * 50 + 25 + offsetX;
-//         node.y = 30 + row * 40 + 30;
-        
-//         // 调整上方第一个区域的节点向上移动
-//         if (row === 0) {
-//           node.y -= 15; // 调整向上的偏移量
-//         }
-//         // 调整下方最后一个区域的节点向下移动
-//         if (row === 2) {
-//           node.y += 15; // 调整向下的偏移量
-//         }
-        
-//         break;
-//       }
-//     }
-//   });
-// };
-
 
 
 const drawRelationShip = async () => {
