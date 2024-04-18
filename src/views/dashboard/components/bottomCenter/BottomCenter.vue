@@ -108,11 +108,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <Body :dec-id="3" :name="'群智汇聚'" :icon-name="'icon-layer-group'">
+  <Body :dec-id="3" name='课题1' :icon-name="'icon-layer-group'">
 <!--  <div ref="chartref" style="height:100%"></div>-->
-    <div id="pieChart" ref="pieChart" class="container"
-         style="flex: 1 0 25%; height: 100%; background-color: #0f1325;">
-    </div>
+<!--    <div id="pieChart" ref="pieChart" class="container"-->
+<!--         style="flex: 1 0 25%; height: 100%; background-color: #0f1325;">-->
+<!--    </div>-->
   </Body>
 
 </template>

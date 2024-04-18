@@ -47,6 +47,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskGraph {
   width: 100%;
-  height: 500px
+  height: 470px
 }
 </style>

@@ -93,6 +93,15 @@
         >配置资源
         </el-button>
       </el-col>
+      <el-col :span="1.5">
+        <el-button
+            type="primary"
+            plain
+            icon="Share"
+            @click="$router.push('/coalitionFormation/coalitionResult')"
+        >查看联盟详情
+        </el-button>
+      </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -315,6 +324,21 @@ const getTaskResource = async (taskId) => {
   })
 }
 
+const coalitionformation=async (task)=>{
+  const res=await request({
+    url:"/coalition/allocation",
+    method:"post",
+    params:{
+      taskId:task.id
+    },
+    data:task.resource
+  })
+  ElMessage({
+    type: 'success',
+    message: "联盟形成成功，联盟编号为："+res
+  })
+  getList();
+}
 /** 查询任务信息列表 */
 function getList() {
   loading.value = true;

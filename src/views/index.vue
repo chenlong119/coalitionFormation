@@ -1,7 +1,6 @@
 <template>
   <div class="index" ref="index">
-    <dv-loading v-if="loading">Loading...</dv-loading>
-    <div v-else class="dashboard">
+    <div class="dashboard">
       <div class="lineOne">
         <dv-decoration-10 class="dv-dec-10"/>
         <div class="middle">
@@ -21,24 +20,53 @@
       </div>
       <div class="lineTwo">
         <div class="leftBox">
-          <div class="box1 skew bg" @click="$router.push('/sharingIncentive/auction/Mysharing')">
+          <div class="box1 skew bg">
             <div class="rSkew bg">
-              <span>数据共享激励</span>
+              <span>欢迎使用本系统</span>
             </div>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/datafusion')">
-            <span class="rSkew">群智汇聚</span>
+          <div class="box2 bg skew">
+            <el-dropdown class="bg">
+            <span class="rSkew">群智协同</span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item @click="$router.push('/coalitionFormation/companyInfo')">联盟形成与演化</el-dropdown-item>
+                  <el-dropdown-item>平衡效益与公平的任务分配</el-dropdown-item>
+                  <el-dropdown-item @click="$router.push('/123654')">企业协同效果评估</el-dropdown-item>
+                  <el-dropdown-item @click="$router.push('/income')">企业收益评估</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/taskallocation/taskdashboard')">
-            <span class="rSkew">联盟形成</span>
+          <div class="box2 bg skew">
+            <span class="rSkew">产业链资源管理</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/multimode')">
-            <span class="rSkew">企业群多模式协同</span>
+            <el-dropdown class="bg rSkew">
+              <span class="bg">
+                数据体系架构
+              </span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item>企业信息管理</el-dropdown-item>
+                  <el-dropdown-item>数据共享</el-dropdown-item>
+                  <el-dropdown-item @click="$router.push('/aa')">群智汇聚</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </div>
         </div>
         <div class="rightBox" @click="$router.push('/multig/pinggu')">
           <div class="box1 bg skew">
-            <span class="rSkew">协同效果评估</span>
+            <el-dropdown class="bg">
+              <span class="rSkew">用户登录</span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item @click="handleReloginAdmin">平台管理员</el-dropdown-item>
+                  <el-dropdown-item @click="handleReLoginRegular">一般企业用户</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </div>
           <div class="box2  skew bg ">
             <div class="rSkew bg">
@@ -59,18 +87,51 @@
 
 <script setup name="Index">
 import {formatTime} from '@/utils/formatTime'
-import {onMounted, onUnmounted, reactive, ref} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import Main from "@/views/dashboard/components/main/Main.vue";
-import elementResizeDetectorMaker from 'element-resize-detector'
-import {debounce} from 'lodash'
-
+import {ElMessage, ElMessageBox} from "element-plus";
+const userStore=useUserStore();
+import {useRouter} from "vue-router";
+import useUserStore from "@/store/modules/user.js";
+const router=useRouter();
+const handleReloginAdmin=()=>{
+  ElMessage({
+    type:'warning',
+    'message':"请使用管理员账号登录"
+  })
+  ElMessageBox.confirm('确定注销并退出系统吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    userStore.logOut().then(() => {
+      location.href = '/index';
+    })
+  }).catch(() => {
+  });
+}
+const handleReLoginRegular=()=>{
+  ElMessage({
+    type:'warning',
+    'message':"请使用普通用户账号登录"
+  })
+  ElMessageBox.confirm('确定注销并退出系统吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    userStore.logOut().then(() => {
+      location.href = '/index';
+    })
+  }).catch(() => {
+  });
+}
 const index = ref(null);
-const title = "多重产业链企业群协同系统"
+const title = "产业链项目平台"
 const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 let height;
 let width;
 
-let erd = elementResizeDetectorMaker();
 // * 时间内容
 const timeInfo = reactive({
   setInterval: 0,
@@ -83,19 +144,8 @@ onMounted(() => {
   height = index.value.offsetHeight;
   width = index.value.offsetWidth;
   handleTime();
-  // erd.listenTo(index.value, debounce((element) => {
-  //   if (width === element.offsetWidth && height === element.offsetHeight) {
-  //     return;
-  //   }
-  //   height = element.offsetHeight;
-  //   width = element.offsetWidth;
-  //   location.reload();
-  // }, 500));
 })
-// onUnmounted(() => {
-//   console.log('unmounted')
-//   erd.uninstall(index.value);
-// })
+
 
 const handleTime = () => {
   timeInfo.setInterval = setInterval(() => {
@@ -255,7 +305,10 @@ const handleTime = () => {
       background-color: #004d8c;
       text-align: center;
       line-height: 45px;
+      color: #fff;
+      font-size: 25px;
     }
+
   }
 }
 </style>

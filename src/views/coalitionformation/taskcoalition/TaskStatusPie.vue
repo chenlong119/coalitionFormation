@@ -84,6 +84,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskStatusPie {
   width: 100%;
-  height: 230px
+  height: 218px
 }
 </style>

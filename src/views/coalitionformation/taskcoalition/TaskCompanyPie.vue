@@ -31,7 +31,6 @@ const drawtaskCompanyPie = async () => {
   })
   //根据企业id获取企业名字
   let ids = data.map(item => item.name).join(",");
-  console.log(ids)
   const names = await request({
     url: "/company/show/getnames",
     params: {
@@ -101,6 +100,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskCompanyPie {
   width: 100%;
-  height: 230px
+  height: 210px
 }
 </style>

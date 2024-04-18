@@ -179,132 +179,132 @@ onMounted(()=>{
 </style> -->
 
 <template>
-  <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'企业群多模式协同'">
-  <div ref="sit2" class="chart-container"></div>
+  <Body :icon-name="'icon-laptop'" :dec-id="1" name="课题3">
+<!--  <div ref="sit2" class="chart-container"></div>-->
   </Body>
 </template>
 
 
 <script setup>
-import Body from "@/views/dashboard/components/main/component/Body.vue";
-import * as echarts from "echarts";
-import request from "@/utils/request.js";
-import {onMounted, reactive, ref, nextTick} from 'vue';
-import {
-  runGeneticAlgorithm,
-  getActiveTasks,
-  sendSolutionToBackend,
-  fetchCoalitionDetails,
-  modeShow,
-  getAllScoreRecords,
-
-} from '@/api/multimode/faultyMachine';
-
-
-// mode板块
-const modesData = ref([]); // 使用ref来保持响应性
-
-const fetchModesData = async () => {
-  try {
-    const response = await modeShow();
-    console.log("Data from modeShow:", response);
-    modesData.value = response.map(mode => ({
-      ...mode,
-      completionRate: (mode.completionRate * 100).toFixed(2) + '%', // 假设完成率是0到1之间的数，转换为百分比
-      failureRate:(100- (mode.completionRate * 100).toFixed(2) )+ '%',
-    }));
-    // 确保DOM已更新，再绘制echarts图表
-    nextTick(() => {
-      if (sit2.value) { // 确保sit2已经被ref关联
-        createPieChart(sit2.value, modesData.value);
-      }
-    });
-  } catch (error) {
-    console.error("Failed to fetch modes data:", error);
-  }
-};
-// 定义一个计算属性来排序modesData
-const sortedModesData = computed(() => {
-  // 假设每个模式对象中的完成率已经是百分比形式的字符串了，需要转换为数字进行比较
-  return modesData.value.slice().sort((a, b) => {
-    // 转换完成率字符串为数字，去掉百分号并转换为浮点数进行比较
-    let rateA = parseFloat(a.completionRate.replace('%', ''));
-    let rateB = parseFloat(b.completionRate.replace('%', ''));
-    return rateB - rateA; // 降序排序
-  });
-});
-
-const sit2 = ref(null);//饼状图
-onMounted(async () => {
-  try {
-    const response = await getAllScoreRecords();
-    console.log('Received data:', response); // 打印到控制台
-    scoreRecords.value = response; // 将数据保存到scoreRecords变量中
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-
-//mode 板块挂载
-  fetchModesData();
-  fetchData();
-
-  //调用GA函数
-  fetchRunDataAndUpdateExceptionalTaskIds();
-  //获取长宽
-  getActiveTasks().then(response => {
-    const rectangle = rectangleRef.value;
-    if (rectangle) {
-      const containerWidth = rectangle.offsetWidth;
-      const containerHeight = rectangle.offsetHeight;
-      prepareCircles(response, containerWidth, containerHeight);
-    }
-  }).catch(error => {
-    console.error('获取任务数据失败', error);
-  });
-  // intervalId = setInterval(toggleCirclesVisibility, 20000);
-  try {
-    isRunning.value = true;
-    const response = await runGeneticAlgorithm();
-    console.log(response); // 或者处理返回的数据
-    const response1 = await getActiveTasks();
-    console.log('获取:',response1); // 或者处理返回的数据
-  } catch (error) {
-    console.error('Error running genetic algorithm:', error);
-  } finally {
-    isRunning.value = false;
-  }
-});
-function createPieChart(chartContainer, data) {
-  const chartInstance = echarts.init(chartContainer);
-  const chartOptions = {
-    tooltip: {
-      trigger: 'item',
-      formatter: function (params) {
-        //console.log("ECharts tooltip params:", params); // 输出params以检查
-        const modeData = data.find(item => item.modeName === params.name);
-        const completionRate = modeData.completionRate;
-        const failureRate = modeData.failureRate;
-        const defaultContent = `${params.marker}${params.name} : ${params.value}<br/>`;
-        const additionalContent = `任务完成率: ${completionRate}<br/>故障发生率: ${failureRate}`;
-        return defaultContent + additionalContent;
-      },
-    },
-    series: [
-      {
-        type: 'pie',
-        data: data.map(item => ({value: item.competitionNum, name: item.modeName})),
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)',
-          },
-        },
-      },
-    ],
-  };
-  chartInstance.setOption(chartOptions);
-}
+// import Body from "@/views/dashboard/components/main/component/Body.vue";
+// import * as echarts from "echarts";
+// import request from "@/utils/request.js";
+// import {onMounted, reactive, ref, nextTick} from 'vue';
+// import {
+//   runGeneticAlgorithm,
+//   getActiveTasks,
+//   sendSolutionToBackend,
+//   fetchCoalitionDetails,
+//   modeShow,
+//   getAllScoreRecords,
+//
+// } from '@/api/multimode/faultyMachine';
+//
+//
+// // mode板块
+// const modesData = ref([]); // 使用ref来保持响应性
+//
+// const fetchModesData = async () => {
+//   try {
+//     const response = await modeShow();
+//     console.log("Data from modeShow:", response);
+//     modesData.value = response.map(mode => ({
+//       ...mode,
+//       completionRate: (mode.completionRate * 100).toFixed(2) + '%', // 假设完成率是0到1之间的数，转换为百分比
+//       failureRate:(100- (mode.completionRate * 100).toFixed(2) )+ '%',
+//     }));
+//     // 确保DOM已更新，再绘制echarts图表
+//     nextTick(() => {
+//       if (sit2.value) { // 确保sit2已经被ref关联
+//         createPieChart(sit2.value, modesData.value);
+//       }
+//     });
+//   } catch (error) {
+//     console.error("Failed to fetch modes data:", error);
+//   }
+// };
+// // 定义一个计算属性来排序modesData
+// const sortedModesData = computed(() => {
+//   // 假设每个模式对象中的完成率已经是百分比形式的字符串了，需要转换为数字进行比较
+//   return modesData.value.slice().sort((a, b) => {
+//     // 转换完成率字符串为数字，去掉百分号并转换为浮点数进行比较
+//     let rateA = parseFloat(a.completionRate.replace('%', ''));
+//     let rateB = parseFloat(b.completionRate.replace('%', ''));
+//     return rateB - rateA; // 降序排序
+//   });
+// });
+//
+// const sit2 = ref(null);//饼状图
+// onMounted(async () => {
+//   try {
+//     const response = await getAllScoreRecords();
+//     console.log('Received data:', response); // 打印到控制台
+//     scoreRecords.value = response; // 将数据保存到scoreRecords变量中
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+//
+// //mode 板块挂载
+//   fetchModesData();
+//   fetchData();
+//
+//   //调用GA函数
+//   fetchRunDataAndUpdateExceptionalTaskIds();
+//   //获取长宽
+//   getActiveTasks().then(response => {
+//     const rectangle = rectangleRef.value;
+//     if (rectangle) {
+//       const containerWidth = rectangle.offsetWidth;
+//       const containerHeight = rectangle.offsetHeight;
+//       prepareCircles(response, containerWidth, containerHeight);
+//     }
+//   }).catch(error => {
+//     console.error('获取任务数据失败', error);
+//   });
+//   // intervalId = setInterval(toggleCirclesVisibility, 20000);
+//   try {
+//     isRunning.value = true;
+//     const response = await runGeneticAlgorithm();
+//     console.log(response); // 或者处理返回的数据
+//     const response1 = await getActiveTasks();
+//     console.log('获取:',response1); // 或者处理返回的数据
+//   } catch (error) {
+//     console.error('Error running genetic algorithm:', error);
+//   } finally {
+//     isRunning.value = false;
+//   }
+// });
+// function createPieChart(chartContainer, data) {
+//   const chartInstance = echarts.init(chartContainer);
+//   const chartOptions = {
+//     tooltip: {
+//       trigger: 'item',
+//       formatter: function (params) {
+//         //console.log("ECharts tooltip params:", params); // 输出params以检查
+//         const modeData = data.find(item => item.modeName === params.name);
+//         const completionRate = modeData.completionRate;
+//         const failureRate = modeData.failureRate;
+//         const defaultContent = `${params.marker}${params.name} : ${params.value}<br/>`;
+//         const additionalContent = `任务完成率: ${completionRate}<br/>故障发生率: ${failureRate}`;
+//         return defaultContent + additionalContent;
+//       },
+//     },
+//     series: [
+//       {
+//         type: 'pie',
+//         data: data.map(item => ({value: item.competitionNum, name: item.modeName})),
+//         emphasis: {
+//           itemStyle: {
+//             shadowBlur: 10,
+//             shadowOffsetX: 0,
+//             shadowColor: 'rgba(0, 0, 0, 0.5)',
+//           },
+//         },
+//       },
+//     ],
+//   };
+//   chartInstance.setOption(chartOptions);
+// }
 
 </script>
 
