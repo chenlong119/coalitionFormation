@@ -19,22 +19,22 @@ const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
 const layere3 = layers3 + height;
 
-let name_title = "多重产业链网络中企业关系图"
-let nameColor = " rgb(255, 255, 255)"
-let name_fontFamily = '等线'
-let name_fontSize = 17
+// let name_title = "多重产业链网络中企业关系图"
+// let nameColor = " rgb(255, 255, 255)"
+// let name_fontFamily = '等线'
+// let name_fontSize = 17
 let baseOption = {
   animationDurationUpdate: 1500,
   animationEasingUpdate: 'quinticInOut',
-  title: {
-    text: name_title,
-    x: 'center',
-    textStyle: {
-      color: nameColor,
-      fontFamily: name_fontFamily,
-      fontSize: name_fontSize
-    }
-  },
+  // title: {
+  //   text: name_title,
+  //   x: 'center',
+  //   textStyle: {
+  //     color: nameColor,
+  //     fontFamily: name_fontFamily,
+  //     fontSize: name_fontSize
+  //   }
+  // },
   graphic: [
     {
       type: 'polygon',
@@ -43,7 +43,7 @@ let baseOption = {
       },
       style: {
         fill: '#eee',
-        stroke: 'red',
+        stroke: 'blue',
         lineWidth: 3,
         opacity: 0.3, //透明度
         shadowBlur: 10, //边框阴影模糊程度
@@ -59,7 +59,7 @@ let baseOption = {
       },
       style: {
         fill: '#eee',
-        stroke: 'blue',
+        stroke: 'green',
         lineWidth: 3,
         opacity: 0.3,
         shadowBlur: 10,
@@ -75,7 +75,7 @@ let baseOption = {
       },
       style: {
         fill: '#eee',
-        stroke: 'green',
+        stroke: 'yellow',
         lineWidth: 3,
         opacity: 0.2,
         shadowBlur: 10,
