@@ -168,6 +168,7 @@ const drawRelationShip = async () => {
     legend: {
       left: 0,
       top: 0,
+      orient:'vertical'
     },
     series: [
       {
