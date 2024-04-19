@@ -110,7 +110,7 @@
       <el-table-column label="任务编号" align="center" prop="id"/>
       <el-table-column label="任务名称" align="center" prop="name"/>
       <el-table-column label="任务价值" align="center" prop="val"/>
-      <el-table-column label="任务到达时间" align="center" prop="arrivalTime" width="180">
+      <el-table-column label="任务到达时间" align="center" prop="arrivalTime">
         <template #default="scope">
           <span>{{ parseTime(scope.row.arrivalTime, '{y}-{m}-{d}') }}</span>
         </template>
@@ -143,7 +143,7 @@
           <span v-else>{{ scope.row.coalitionId }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="所属产业链名称" align="center">
+      <el-table-column label="所属产业链名称" align="center" :width="150">
         <template #default="scope">
           <span>{{ getNameByChainId(scope.row.chainId) }}</span>
         </template>
@@ -462,6 +462,6 @@ getList();
 <style scoped>
 .app-container {
   width: 100%;
-  height: 400px;
+  height: 420px;
 }
 </style>

@@ -138,6 +138,6 @@ onMounted(()=>{
 <style scoped lang="scss">
 .taskBar{
   width: 100%;
-  height: 506px;
+  height: 475px;
 }
 </style>

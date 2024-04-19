@@ -22,7 +22,7 @@ onMounted(() => {
       {
         name: '任务产业链分布情况',
         type: 'pie',
-        radius: [30, 160],
+        radius: [30, 150],
         center: ['50%', '40%'],
         roseType: 'area',
         itemStyle: {
@@ -59,6 +59,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskChainPie {
   width: 100%;
-  height: 470px;
+  height: 440px;
 }
 </style>
