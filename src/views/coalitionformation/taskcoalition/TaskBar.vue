@@ -1,5 +1,5 @@
 <script setup>
-import * as echarts from 'echarts'
+import * as echarts from 'echarts';
 import useTaskStore from "../../../store/modules/task.js";
 import request from "../../../utils/request.js";
 const taskBar = ref();
@@ -9,7 +9,7 @@ const drawTaskBar=async ()=>{
   taskStore.tasks = await request({
     url: "/coalition/formation/getall"
   });
-  const res = taskStore.tasks;
+  let res = taskStore.tasks;
   let category = [];
   let lineData = [];
   let barData = [];

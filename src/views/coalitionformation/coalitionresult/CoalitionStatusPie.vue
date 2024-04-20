@@ -1,6 +1,7 @@
 <script setup>
 import * as echarts from 'echarts'
 import request from "@/utils/request.js";
+import useLoadingStore from "@/store/modules/loading.js";
 const coalitionStatus = ref(null);
 let chartInstance=null;
 const draw=async ()=>{
@@ -83,6 +84,10 @@ const draw=async ()=>{
 }
 onMounted(()=>{
   chartInstance=echarts.init(coalitionStatus.value);
+  draw();
+})
+const loadingStroe=useLoadingStore();
+watch(()=>loadingStroe.coalitionloading,()=>{
   draw();
 })
 </script>

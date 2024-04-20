@@ -86,6 +86,15 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
+            type="success"
+            plain
+            icon="User"
+            @click="$router.push('/coalitionFormation/companyInfo')"
+        >查看企业信息
+        </el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-button
             type="primary"
             plain
             icon="Setting"
@@ -228,6 +237,7 @@ import {addFormation, delFormation, getFormation, listFormation, updateFormation
 import request from "@/utils/request.js";
 import ResourceSetting from "@/views/coalitionformation/common/ResourceSetting.vue";
 import {ElMessage} from "element-plus";
+import useLoadingStore from "@/store/modules/loading.js";
 
 const resourceSetting = ref(null);
 
@@ -323,7 +333,7 @@ const getTaskResource = async (taskId) => {
     }
   })
 }
-
+const loadingStroe=useLoadingStore();
 const coalitionformation=async (task)=>{
   const res=await request({
     url:"/coalition/allocation",
@@ -337,6 +347,7 @@ const coalitionformation=async (task)=>{
     type: 'success',
     message: "联盟形成成功，联盟编号为："+res
   })
+  loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
   getList();
 }
 /** 查询任务信息列表 */
@@ -462,6 +473,6 @@ getList();
 <style scoped>
 .app-container {
   width: 100%;
-  height: 420px;
+  height: 410px;
 }
 </style>

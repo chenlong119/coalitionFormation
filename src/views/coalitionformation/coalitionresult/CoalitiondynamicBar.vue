@@ -2,6 +2,7 @@
 import * as echarts from 'echarts';
 import userTaskStore from "@/store/modules/task.js";
 import request from "@/utils/request.js";
+import useLoadingStore from "@/store/modules/loading.js";
 const dynamicBar=ref(null);
 let barChart=null;
 const taskStore=userTaskStore();
@@ -12,7 +13,10 @@ const draw=async ()=>{
   });
  let taskList=taskStore.tasks.filter(item=>item.taskStatus===1);
  let categories=taskList.map(item=>item.name);
-  // console.log(categories)
+ if(categories.length==0)
+ {
+   categories=["任务一","任务二","任务三","任务四","任务五","任务六"];
+ }
  for(let i=0;i<categories.length;i++)
  {
    data.push(Math.round(Math.random() * 30))
@@ -60,7 +64,15 @@ const draw=async ()=>{
   };
   barChart.setOption(option);
 }
-
+let timer=null;
+const loadingStroe=useLoadingStore();
+watch(()=>loadingStroe.coalitionloading,()=>{
+  clearInterval(timer);
+  draw();
+  timer=setInterval(()=>{
+    run()
+  },3000);
+})
 function run() {
   for (let i = 0; i < data.length; ++i) {
     if (Math.random() > 0.6) {
@@ -89,7 +101,7 @@ function run() {
 onMounted(()=>{
   barChart=echarts.init(dynamicBar.value)
   draw();
-  setInterval(()=>{
+  timer=setInterval(()=>{
     run()
   },3000)
 })
@@ -102,6 +114,6 @@ onMounted(()=>{
 <style scoped lang="scss">
 .dynamicBar{
   width: 100%;
-  height: 400px;
+  height: 380px;
 }
 </style>
