@@ -1,13 +1,10 @@
 <script setup>
-defineProps(['iconName', 'name', 'decId']);
+defineProps(['name', 'decId']);
 </script>
 
 <template>
   <div class="container">
     <div class="title">
-        <span>
-          <i class="iconfont" :class="[iconName]"/>
-        </span>
       <span class="name">{{ name }}</span>
       <Component :is="'dv-decoration-'+decId" class="dec"/>
     </div>

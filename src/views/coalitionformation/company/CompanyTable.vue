@@ -17,14 +17,6 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <!--      <el-form-item label="所属产业链名称" prop="chainName">-->
-      <!--        <el-input-->
-      <!--            v-model="queryParams.chainName"-->
-      <!--            placeholder="请输入所属产业链名称"-->
-      <!--            clearable-->
-      <!--            @keyup.enter="handleQuery"-->
-      <!--        />-->
-      <!--      </el-form-item>-->
       <el-form-item label="所属联盟编号" prop="groupId">
         <el-input
             v-model="queryParams.coalitionId"
@@ -90,6 +82,15 @@
             @click="handleExport"
             v-hasPermi="['company:show:export']"
         >导出
+        </el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-button
+            type="success"
+            plain
+            icon="Comment"
+            @click="$router.push('/coalitionFormation/formation')"
+        >查看任务信息
         </el-button>
       </el-col>
       <el-col :span="1.5">

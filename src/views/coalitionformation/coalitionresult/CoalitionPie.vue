@@ -1,10 +1,12 @@
 <script setup>
 import * as echarts from 'echarts';
+import useLoadingStore from "@/store/modules/loading.js";
 
 const props=defineProps(['coalitionCompany'])
 const chainName=['汽车产业链','家电产业链','电子产业链']
 const coalitionPie = ref(null);
 let coalitionPieChart = null;
+
 const drawCoalitionPie = async () => {
   const data=[];
   let visited=[];
@@ -65,6 +67,10 @@ const drawCoalitionPie = async () => {
   coalitionPieChart.setOption(option);
 };
 watch(()=>props.coalitionCompany,()=>{
+  drawCoalitionPie();
+})
+const loadingStroe=useLoadingStore();
+watch(()=>loadingStroe.coalitionloading,()=>{
   drawCoalitionPie();
 })
 onMounted(() => {
