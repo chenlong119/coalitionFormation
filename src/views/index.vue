@@ -98,7 +98,7 @@ const handleReLoginRegular=()=>{
   });
 }
 const index = ref(null);
-const title = "产业链项目平台"
+const title = "多重产业链企业群协同系统"
 const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 let height;
 let width;
