@@ -282,7 +282,7 @@ function cancel() {
       <!--        </div>-->
       <!--      </div>-->
       <div class="button-container">
-        <el-button :icon="ArrowLeft" type="primary" plain @click="back" v-show="active !== 0">上一步</el-button>
+        <el-button :icon="ArrowLeft" type="primary" plain @click="back" v-show="active !== 0">企业协作团体发现</el-button>
         <div class="right-button-container">
           <el-button type="primary" plain @click="next" v-show="active !== 1">
             <!--            {{ active === 0 ? '企业关联分析' : buttonNames[active] }}-->
