@@ -2,6 +2,7 @@
 import {onMounted, ref} from 'vue';
 import * as echarts from "echarts";
 import request from "@/utils/request.js";
+import useLoadingStore from "@/store/modules/loading.js";
 
 const multiChart = ref(null);
 const lb = 0;
@@ -168,6 +169,7 @@ const drawRelationShip = async () => {
     legend: {
       left: 0,
       top: 0,
+      orient:'vertical'
     },
     series: [
       {
@@ -191,7 +193,10 @@ const drawRelationShip = async () => {
   }
   multiChartInstance.setOption(relationOption);
 }
-
+const loadingStroe=useLoadingStore();
+watch(()=>loadingStroe.coalitionloading,()=>{
+  drawRelationShip();
+})
 onMounted(() => {
   multiChartInstance = echarts.init(multiChart.value);
   multiChartInstance.setOption(baseOption);

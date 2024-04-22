@@ -22,7 +22,7 @@
         <div class="leftBox">
           <div class="box1 skew bg">
             <div class="rSkew bg">
-              <span>欢迎使用本系统</span>
+              <span>平台简介</span>
             </div>
           </div>
           <div class="box2 bg skew">
@@ -41,7 +41,7 @@
           <div class="box2 bg skew">
             <span class="rSkew">产业链资源管理</span>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/multimode')">
+          <div class="box2 bg skew">
             <el-dropdown class="bg rSkew">
               <span class="bg">
                 数据体系架构

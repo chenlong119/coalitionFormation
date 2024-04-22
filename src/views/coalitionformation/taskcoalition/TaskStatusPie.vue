@@ -50,7 +50,7 @@ const drawTaskStatusPie = async () => {
         name: '任务状态分布',
         type: 'pie',
         radius: '88%',
-        center: ['50%', '53%'],
+        center: ['55%', '55%'],
         label: {
           normal: {
             position: 'inner',
@@ -84,6 +84,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskStatusPie {
   width: 100%;
-  height: 218px
+  height: 200px
 }
 </style>

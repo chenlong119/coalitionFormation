@@ -28,8 +28,20 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-          <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+          <el-button
+              type="primary"
+              icon="User"
+              @click="$router.push('/coalitionFormation/companyInfo')"
+          >查看企业信息
+          </el-button>
+            <el-button
+                type="success"
+                icon="Comment"
+                @click="$router.push('/coalitionFormation/formation')"
+            >查看任务信息
+            </el-button>
+            <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
+            <el-button icon="Refresh" @click="resetQuery">重置</el-button>
         </el-form-item>
       </el-form>
       <el-table v-loading="loading" :data="enterpriseList" @selection-change="handleSelectionChange">
@@ -93,9 +105,13 @@
 import { listEnterprise} from "@/api/coalition/enterprise";
 import request from "@/utils/request.js";
 import CoalitionPie from "@/views/coalitionformation/coalitionresult/CoalitionPie.vue";
-
+import useLoadingStore from "@/store/modules/loading.js";
 const { proxy } = getCurrentInstance();
 const { coalition_state } = proxy.useDict('coalition_state');
+const loadingStroe=useLoadingStore();
+watch(()=>loadingStroe.coalitionloading,()=>{
+  getList();
+})
 
 const chainName=['汽车产业链','家电产业链','电子产业链']
 const stateTypes=['danger','warning','success']
@@ -198,6 +214,6 @@ getList();
 <style scoped>
 .app-container
 {
-  height: 460px;
+  height: 480px;
 }
 </style>
