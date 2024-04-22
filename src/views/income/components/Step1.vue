@@ -120,6 +120,7 @@
             title="企业详情"
             align-center
             class="info_content"
+            :width="auto"
           >
             <el-form :model="info">
               <el-form-item label="" :label-width="formLabelWidth">
@@ -697,4 +698,5 @@ const handleGraph = () => {
 .spacer {
   height: 20px;
 }
+
 </style>

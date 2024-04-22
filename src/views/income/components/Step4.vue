@@ -5,9 +5,9 @@
       >{{ store.companyInfo.name }}（ID：{{ store.companyInfo.companyId }}）</span
     >
   </div>
-
+<div class="title">企业个体/群体收益预估图：</div>
   <div class="container1">
-    <div class="title">企业个体/群体收益预估图：</div>
+    
     <div class="chart-wrapper">
       <LineChart></LineChart>
     </div>
@@ -78,15 +78,17 @@ watch(
 </script>
 
 <style lang="scss" scoped>
+.title {
+  margin-left: 10%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-weight: bold;
+}
 .container1 {
   display: flex;
   flex-direction: column;
-}
-.title {
-  margin-left: 60px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: bold;
+  width: 50%; /* 父容器缩小为50% */
+  margin: 0 auto; /* 居中对齐 */
 }
 .chart-wrapper {
   display: flex;
