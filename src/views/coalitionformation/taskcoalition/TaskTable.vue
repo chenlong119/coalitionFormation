@@ -473,6 +473,5 @@ getList();
 <style scoped>
 .app-container {
   width: 100%;
-  height: 410px;
 }
 </style>
