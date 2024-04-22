@@ -8,12 +8,15 @@ const multiChart = ref(null);
 const lb = 0;
 const lt = 50;
 const width = 850;
-const height = 120;
-const layers1 = 30;
+// const height = 120;
+const height = 150;
+// const layers1 = 30;
+const layers1 = 60;
 const rb = lb + width;
 const rt = lt + width;
 const layere1 = layers1 + height;
-const gap = 50;
+// const gap = 50;
+const gap = 100;
 const layers2 = layere1 + gap;
 const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
@@ -68,22 +71,22 @@ let baseOption = {
         shadowOffsetY: 5
       }
     },
-    {
-      type: 'polygon',
-      shape: {
-        points: [[lt, layers3], [rt, layers3], [rb, layere3], [lb, layere3]]
-      },
-      style: {
-        fill: '#eee',
-        stroke: 'green',
-        lineWidth: 3,
-        opacity: 0.2,
-        shadowBlur: 10,
-        shadowColor: 'black',
-        shadowOffsetX: 5,
-        shadowOffsetY: 5
-      }
-    }
+    // {
+    //   type: 'polygon',
+    //   shape: {
+    //     points: [[lt, layers3], [rt, layers3], [rb, layere3], [lb, layere3]]
+    //   },
+    //   style: {
+    //     fill: '#eee',
+    //     stroke: 'green',
+    //     lineWidth: 3,
+    //     opacity: 0.2,
+    //     shadowBlur: 10,
+    //     shadowColor: 'black',
+    //     shadowOffsetX: 5,
+    //     shadowOffsetY: 5
+    //   }
+    // }
   ],
 };
 let multiChartInstance = null;
@@ -95,8 +98,12 @@ const allocateSpace = (nodes) => {
       if (choose.indexOf(randomPos) === -1) {
         choose.push(randomPos);
         //每一份大小40*50，起点为（50,30),一共45份，分布为3行，每行15份
+        // node.x = 50 + ((randomPos - 1) % 15) * 50 + 25;
+        // node.y = 30 + Math.floor((randomPos - 1) / 15) * 40 + 20;
+
+        //每一份大小50*50，起点为（50,100),一共45份，分布为3行，每行15份
         node.x = 50 + ((randomPos - 1) % 15) * 50 + 25;
-        node.y = 30 + Math.floor((randomPos - 1) / 15) * 40 + 20;
+        node.y = 100 + Math.floor((randomPos - 1) / 15) * 50 + 25;
         break;
       }
     }
@@ -139,22 +146,34 @@ const drawRelationShip = async () => {
     node.symbolSize = node.value * 30;
     node.category = node.layer_id - 1;
   })
-  const node_l1 = nodes.filter(node => node.layer_id === 1);
+  let node_l1 = nodes.filter(node => node.layer_id === 1);
   const node_l2 = nodes.filter(node => node.layer_id === 2);
   const node_l3 = nodes.filter(node => node.layer_id === 3);
+ // node_l1= node_l1.concat(node_l3)
   allocateSpace(node_l1);
   allocateSpace(node_l2);
-  allocateSpace(node_l3);
+  // allocateSpace(node_l3);
   //根据层对节点的y值进行校正
+  // node_l2.forEach(node => {
+  //   node.y += 170;
+  // });
   node_l2.forEach(node => {
-    node.y += 170;
+    node.y += 230;
   });
-  node_l3.forEach(node => {
-    node.y += 340;
-  });
-  let node_all = node_l1.concat(node_l2).concat(node_l3);
-
-  // const node_after = node_l1.concat(node_l2).concat(node_l3);
+  // node_l3.forEach(node => {
+  //   node.y += 340;
+  // });
+  // let node_all = node_l1.concat(node_l2).concat(node_l3);
+  let node_all = node_l1.concat(node_l2)
+  // node_all.push({
+  //     name: '汽车产业链',
+  //     x:0,
+  //     y:0,
+  //     symbolSize:80,
+  //     category:0,
+  //     value:2
+  // })
+  console.log(node_all)
   const relationOption = {
     tooltip: {
       formatter: function (params) {
@@ -163,7 +182,7 @@ const drawRelationShip = async () => {
     },
     legend: {
       left: 0,
-      top: 0
+      top: 30
     },
     series: [
       {
@@ -178,9 +197,9 @@ const drawRelationShip = async () => {
           {
             name: '家电产业链'
           },
-          {
-            name: '电子产业链'
-          }
+          // {
+          //   name: '电子产业链'
+          // }
         ],
         // coordinateSystem: 'none',
         links: links,
