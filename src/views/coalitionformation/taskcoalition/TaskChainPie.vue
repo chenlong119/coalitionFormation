@@ -2,6 +2,7 @@
 import * as echarts from 'echarts';
 
 const taskChainPie = ref();
+
 onMounted(() => {
   const chartInstance = echarts.init(taskChainPie.value);
   let option = {
@@ -11,7 +12,7 @@ onMounted(() => {
       left: 'center'
     },
     legend: {
-      top: 'bottom'
+      bottom:30
     },
     tooltip: {
       show: true,
@@ -21,8 +22,8 @@ onMounted(() => {
       {
         name: '任务产业链分布情况',
         type: 'pie',
-        radius: [50, 200],
-        center: ['50%', '50%'],
+        radius: [30, 150],
+        center: ['50%', '40%'],
         roseType: 'area',
         itemStyle: {
           borderRadius: 8
@@ -58,6 +59,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskChainPie {
   width: 100%;
-  height: 500px;
+  height: 440px;
 }
 </style>

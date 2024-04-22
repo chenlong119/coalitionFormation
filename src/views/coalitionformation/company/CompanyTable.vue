@@ -17,17 +17,9 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <!--      <el-form-item label="所属产业链名称" prop="chainName">-->
-      <!--        <el-input-->
-      <!--            v-model="queryParams.chainName"-->
-      <!--            placeholder="请输入所属产业链名称"-->
-      <!--            clearable-->
-      <!--            @keyup.enter="handleQuery"-->
-      <!--        />-->
-      <!--      </el-form-item>-->
       <el-form-item label="所属联盟编号" prop="groupId">
         <el-input
-            v-model="queryParams.groupId"
+            v-model="queryParams.coalitionId"
             placeholder="请输入所属联盟编号"
             clearable
             @keyup.enter="handleQuery"
@@ -94,6 +86,15 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
+            type="success"
+            plain
+            icon="Comment"
+            @click="$router.push('/coalitionFormation/formation')"
+        >查看任务信息
+        </el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-button
             type="primary"
             plain
             icon="Setting"
@@ -114,8 +115,7 @@
       <el-table-column label="所属产业链名称" align="center" prop="chainName"/>
       <el-table-column label="所属联盟编号" align="center">
         <template #default="scope">
-          <!--          如果groupId为0，显示暂无，否则显示groupId-->
-          <span v-if="scope.row.groupId!==0">{{ scope.row.groupId }}</span>
+          <span v-if="scope.row.coalitionId!==0">{{ scope.row.coalitionId }}</span>
           <span v-else>暂无</span>
         </template>
       </el-table-column>
@@ -304,9 +304,7 @@ const data = reactive({
     pageNum: 1,
     pageSize: 4,
     name: null,
-    address: null,
-    chainName: null,
-    groupId: null,
+    coalitionId: null,
     status: null
   },
   rules: {
