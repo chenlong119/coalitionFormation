@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="10" style="height:60%;margin-bottom: 10px">
+  <el-row :gutter="10" style="height:60%">
     <el-col :span="6">
       <dv-border-box-12 class="pd">
         <LeftTop/>
@@ -12,7 +12,7 @@
   <el-row :gutter="10" style="height:40%">
     <el-col :span="8">
       <dv-border-box-8 class="pd">
-        <LineChart></LineChart>
+        <BottomLeft/>
       </dv-border-box-8>
     </el-col>
     <el-col :span="8">
@@ -32,7 +32,7 @@
 import LeftTop from "../leftTop/LeftTop.vue";
 import BottomCenter from "../bottomCenter/BottomCenter.vue";
 import BottomRight from "../bottomRight/BottomRight.vue";
-import LineChart from "../bottomLeft/BottomLeft.vue";
+import BottomLeft from "../bottomLeft/BottomLeft.vue";
 import CompanyRelationGraph from "../multilayer/CompanyRelationGraph.vue"
 </script>
 
