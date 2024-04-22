@@ -1,63 +1,63 @@
 <template>
-<div>
-  <el-card class="step-card">
-    <el-steps :active="active" align-center>
-      <el-step
-        title="查询关联企业"
-        :icon="OfficeBuilding"
-        description="Step 1"
-        finish-status="success"
-      />
-      <el-step title="修改关联关系" :icon="Switch" description="Step 2" />
-      <el-step title="确定参数" :icon="Edit" description="Step 3" />
-      <el-step title="收益评估" :icon="TrendCharts" description="Step 4" />
-    </el-steps>
-  </el-card>
+  <div class="container">
+    <el-card class="step-card">
+      <el-steps :active="active" align-center>
+        <el-step
+          title="查询关联企业"
+          :icon="OfficeBuilding"
+          description="Step 1"
+          finish-status="success"
+        />
+        <el-step title="修改关联关系" :icon="Switch" description="Step 2" />
+        <el-step title="确定参数" :icon="Edit" description="Step 3" />
+        <el-step title="收益评估" :icon="TrendCharts" description="Step 4" />
+      </el-steps>
+    </el-card>
 
-  <el-card class="content-card">
-    <div v-show="active === 0">
-      <Step1></Step1>
-    </div>
-    <div v-show="active === 1">
-      <Step2></Step2>
-    </div>
-    <div v-show="active === 2">
-      <Step3></Step3>
-    </div>
-    <div v-show="active === 3">
-      <Step4></Step4>
-    </div>
-  </el-card>
-  <div class="button-container">
-    <el-button
-      :icon="ArrowLeft"
-      type="primary"
-      plain
-      style="margin-top: 12px"
-      @click="back"
-      v-show="active !== 0"
-      >上一步</el-button
-    >
-    <div class="right-button-container">
+    <el-card class="content-card">
+      <div v-show="active === 0">
+        <Step1></Step1>
+      </div>
+      <div v-show="active === 1">
+        <Step2></Step2>
+      </div>
+      <div v-show="active === 2">
+        <Step3></Step3>
+      </div>
+      <div v-show="active === 3">
+        <Step4></Step4>
+      </div>
+    </el-card>
+    <div class="button-container">
       <el-button
+        :icon="ArrowLeft"
         type="primary"
         plain
-        style="margin-top: 12px"
-        @click="next"
-        v-show="active === 0 || active === 1"
-        >下一步<el-icon> <ArrowRight /> </el-icon
-      ></el-button>
-      <el-button
-        type="primary"
-        round
-        style="margin-top: 12px"
-        @click="next"
-        v-show="active === 2"
-        >预测收益值<el-icon> <ArrowRight /> </el-icon
-      ></el-button>
+        class="back-button"
+        @click="back"
+        v-show="active !== 0"
+        >上一步</el-button
+      >
+      <div class="right-button-container">
+        <el-button
+          type="primary"
+          plain
+          class="next-button"
+          @click="next"
+          v-show="active === 0 || active === 1"
+          >下一步<el-icon> <ArrowRight /> </el-icon
+        ></el-button>
+        <el-button
+          type="primary"
+          round
+          class="next-button"
+          @click="next"
+          v-show="active === 2"
+          >预测收益值<el-icon> <ArrowRight /> </el-icon
+        ></el-button>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 
@@ -149,34 +149,49 @@ const next = () => {
   }
 };
 </script>
+
 <style>
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .step-card {
-  margin-top: 12px;
-  margin-left: 12px;
-  margin-right: 12px;
-  height: 120px;
-  background-color: (255, 255, 255, 0.1);
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  height: 10%;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .content-card {
-  margin-top: 12px;
-  margin-left: 12px;
-  margin-right: 12px;
-  /* height: 650px; */
-  height: auto;
-  background-color: (255, 255, 255, 0.1);
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  /* margin-bottom: 1%; */
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .button-container {
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: 2%;
+  margin-right: 2%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 10%;
+}
+
+.back-button {
+  /* margin-top: 0.5%; */
 }
 
 .right-button-container {
   margin-left: auto;
 }
-</style>
 
-  
+.next-button {
+  margin-top: 2%;
+}
+</style>
