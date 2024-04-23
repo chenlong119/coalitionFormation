@@ -1,14 +1,15 @@
 <template>
-  <el-row :gutter="10" style="height:60%">
-    <el-col :span="6">
+  <div :gutter="10" style="display:flex;height:60%">
+    <div style="width:25%">
       <dv-border-box-12 class="pd">
         <LeftTop/>
       </dv-border-box-12>
-    </el-col>
-    <el-col :span="18">
+    </div>
+    <div style="height:100%; width:75%">
       <CompanyRelationGraph/>
-    </el-col>
-  </el-row>
+    </div>
+  </div>
+
   <el-row :gutter="10" style="height:40%">
     <el-col :span="8">
       <dv-border-box-8 class="pd">
