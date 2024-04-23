@@ -40,6 +40,8 @@ const drawtaskCompanyPie = async () => {
   data.forEach((item, index) => {
     item.name = names[index];
   })
+  data=data.filter(item=>item.name.length<=5)
+  data=data.slice(0,6);
   let option = {
     title: {
       text: "任务所属企业分布图",
@@ -48,7 +50,7 @@ const drawtaskCompanyPie = async () => {
     },
     legend: {
       left: 0,
-      top: 10,
+      bottom: 0,
       orient: 'vertical'
     },
     tooltip: {

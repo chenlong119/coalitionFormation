@@ -37,8 +37,8 @@ onMounted(() => {
         data: [
           {value: 40, name: '智能汽车产业链'},
           {value: 38, name: '洗衣机产业链'},
-          {value: 32, name: '手机产业链'},
-          {value: 30, name: '笔记本电脑产业链'},
+          {value: 32, name: 'SUV汽车产业链'},
+          {value: 30, name: '越野车产业链'},
           {value: 28, name: '空调产业链'},
           {value: 26, name: '电视产业链'},
           {value: 22, name: '台式电脑产业链'},
