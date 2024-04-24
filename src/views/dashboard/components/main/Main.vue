@@ -6,7 +6,7 @@
       </dv-border-box-12>
     </div>
     <div style="height:100%; width:75%">
-      <CompanyRelationGraph/>
+<!--      <CompanyRelationGraph/>-->
     </div>
   </div>
 

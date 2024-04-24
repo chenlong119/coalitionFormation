@@ -111,7 +111,7 @@
       <el-table-column label="企业名称" align="center" prop="name"/>
       <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>
       <el-table-column label="企业地址" align="center" prop="address"/>
-      <el-table-column label="企业类型" align="center" prop="companyType"/>
+<!--      <el-table-column label="企业类型" align="center" prop="companyType"/>-->
       <el-table-column label="所属产业链名称" align="center" prop="chainName"/>
       <el-table-column label="所属联盟编号" align="center">
         <template #default="scope">

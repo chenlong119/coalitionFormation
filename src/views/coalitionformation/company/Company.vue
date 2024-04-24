@@ -13,7 +13,7 @@ import CompanyMap from "@/views/coalitionformation/company/CompanyMap.vue";
     <el-row :gutter="10">
       <el-col :span="12">
         <el-card shadow="hover">
-          <company-relation/>
+<!--          <company-relation/>-->
         </el-card>
       </el-col>
       <el-col :span="12">
