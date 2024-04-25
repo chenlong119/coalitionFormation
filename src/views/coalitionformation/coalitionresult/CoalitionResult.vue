@@ -30,7 +30,7 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
       </div>
       <div style="margin-top: 10px">
       <el-card>
-        <CoalitionRelation/>
+<!--        <CoalitionRelation/>-->
       </el-card>
       </div>
     </div>

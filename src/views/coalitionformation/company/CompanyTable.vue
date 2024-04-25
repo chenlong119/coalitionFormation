@@ -1,6 +1,16 @@
 <template>
   <div class="app-container table">
     <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="100px">
+      <el-form-item label="企业类型" prop="companyType">
+        <el-select v-model="queryParams.companyType" placeholder="请选择企业类型" clearable>
+          <el-option
+              v-for="dict in chain_stage"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item label="企业名称" prop="name">
         <el-input
             v-model="queryParams.name"
@@ -110,6 +120,11 @@
       <el-table-column label="企业编号" align="center" prop="id"/>
       <el-table-column label="企业名称" align="center" prop="name"/>
       <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>
+      <el-table-column label="企业类型" align="center" prop="companyType">
+        <template #default="scope">
+          <dict-tag :options="chain_stage" :value="scope.row.companyType"/>
+        </template>
+      </el-table-column>
       <el-table-column label="企业地址" align="center" prop="address"/>
 <!--      <el-table-column label="企业类型" align="center" prop="companyType"/>-->
       <el-table-column label="所属产业链名称" align="center" prop="chainName"/>
@@ -218,7 +233,7 @@ import ResourceDialog from "@/views/coalitionformation/company/ResourceDialog.vu
 import useLoadingStore from "@/store/modules/loading.js";
 import ResourceSetting from "@/views/coalitionformation/common/ResourceSetting.vue";
 import {ElMessage} from "element-plus";
-
+import {getCurrentInstance} from "vue";
 
 const setResourceDialog = ref(false);
 const setResource = () => {
@@ -244,8 +259,7 @@ const cancleResource = () => {
   setResourceDialog.value = false;
 }
 const {proxy} = getCurrentInstance();
-const {company_status} = proxy.useDict('company_status');
-
+const { company_status, chain_stage } = proxy.useDict('company_status', 'chain_stage');
 const getStatusNameByValue = (val) => {
   return company_status.value.filter(item => item.value == val)[0].label;
 }

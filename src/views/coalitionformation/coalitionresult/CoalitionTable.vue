@@ -156,10 +156,10 @@ const data = reactive({
   queryParams: {
     pageNum: 1,
     pageSize: 5,
-    id:null,
     name: null,
     taskId: null,
     coalitionStatus: null,
+    companyType:null
   },
   rules: {
   }
