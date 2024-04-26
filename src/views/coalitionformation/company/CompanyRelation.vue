@@ -1,43 +1,29 @@
 <script setup>
-import {onMounted, ref} from 'vue';
+import {getCurrentInstance, onMounted, ref} from 'vue';
 import * as echarts from "echarts";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 
+const {proxy} = getCurrentInstance();
+const {  chain_stage } = proxy.useDict('chain_stage');
+let companyStage = ref("原料供应");
 const multiChart = ref(null);
 const lb = 0;
 const lt = 50;
 const width = 850;
-// const height = 120;
-const height = 150;
-// const layers1 = 30;
-const layers1 = 60;
+const height = 120;
+const layers1 = 30;
 const rb = lb + width;
 const rt = lt + width;
 const layere1 = layers1 + height;
-// const gap = 50;
-const gap = 100;
+const gap = 50;
 const layers2 = layere1 + gap;
 const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
 const layere3 = layers3 + height;
 
 let name_title = "多重产业链网络中企业关系图"
-let nameColor = " rgb(55, 75, 113)"
-let name_fontFamily = '等线'
-let name_fontSize = 18
 let baseOption = {
-  animationDurationUpdate: 1500,
-  animationEasingUpdate: 'quinticInOut',
-  title: {
-    text: name_title,
-    x: 'center',
-    textStyle: {
-      color: nameColor,
-      fontFamily: name_fontFamily,
-      fontSize: name_fontSize
-    }
-  },
   graphic: [
     {
       type: 'polygon',
@@ -71,24 +57,29 @@ let baseOption = {
         shadowOffsetY: 5
       }
     },
-    // {
-    //   type: 'polygon',
-    //   shape: {
-    //     points: [[lt, layers3], [rt, layers3], [rb, layere3], [lb, layere3]]
-    //   },
-    //   style: {
-    //     fill: '#eee',
-    //     stroke: 'green',
-    //     lineWidth: 3,
-    //     opacity: 0.2,
-    //     shadowBlur: 10,
-    //     shadowColor: 'black',
-    //     shadowOffsetX: 5,
-    //     shadowOffsetY: 5
-    //   }
-    // }
+    {
+      type: 'polygon',
+      shape: {
+        points: [[lt, layers3], [rt, layers3], [rb, layere3], [lb, layere3]]
+      },
+      style: {
+        fill: '#eee',
+        stroke: 'green',
+        lineWidth: 3,
+        opacity: 0.2,
+        shadowBlur: 10,
+        shadowColor: 'black',
+        shadowOffsetX: 5,
+        shadowOffsetY: 5
+      }
+    }
   ],
 };
+
+const handleStageChange=()=>{
+  drawRelationShip()
+}
+
 let multiChartInstance = null;
 const allocateSpace = (nodes) => {
   let choose = [];
@@ -111,13 +102,20 @@ const allocateSpace = (nodes) => {
 }
 
 const drawRelationShip = async () => {
+  let type=companyStage.value==="原料供应"?1:companyStage.value
   const nodes = await request({
     url: '/graph/getnodes',
-    method: 'get'
+    method: 'get',
+    params:{
+      companyType:type
+    }
   });
   const links = await request({
     url: '/graph/getedges',
-    method: 'get'
+    method: 'get',
+    params:{
+      linkType:1
+    }
   });
   links.forEach((link) => {
     link.source = link.source + " " + link.layer;
@@ -149,40 +147,28 @@ const drawRelationShip = async () => {
   let node_l1 = nodes.filter(node => node.layer_id === 1);
   const node_l2 = nodes.filter(node => node.layer_id === 2);
   const node_l3 = nodes.filter(node => node.layer_id === 3);
- // node_l1= node_l1.concat(node_l3)
   allocateSpace(node_l1);
   allocateSpace(node_l2);
-  // allocateSpace(node_l3);
-  //根据层对节点的y值进行校正
-  // node_l2.forEach(node => {
-  //   node.y += 170;
-  // });
+  allocateSpace(node_l3);
+  // 根据层对节点的y值进行校正
   node_l2.forEach(node => {
-    node.y += 230;
+    node.y += 190;
   });
-  // node_l3.forEach(node => {
-  //   node.y += 340;
-  // });
-  // let node_all = node_l1.concat(node_l2).concat(node_l3);
-  let node_all = node_l1.concat(node_l2)
-  // node_all.push({
-  //     name: '汽车产业链',
-  //     x:0,
-  //     y:0,
-  //     symbolSize:80,
-  //     category:0,
-  //     value:2
-  // })
-  console.log(node_all)
+  node_l3.forEach(node => {
+    node.y += 380;
+  });
+  let node_all = node_l1.concat(node_l2).concat(node_l3);
   const relationOption = {
     tooltip: {
       formatter: function (params) {
-        return params.data.name + "的信誉：" + params.data.value;
+        let cid=params.data.id?.split(" ")[0];
+        return "企业编号:"+cid+"</br>"+
+            "企业名称:"+params.data.name;
       }
     },
     legend: {
       left: 0,
-      top: 30
+      top: 0
     },
     series: [
       {
@@ -192,14 +178,14 @@ const drawRelationShip = async () => {
         data: node_all,
         categories: [
           {
-            name: '汽车产业链'
+            name: '洗衣机产业链'
           },
           {
-            name: '家电产业链'
+            name: '空调产业链'
           },
-          // {
-          //   name: '电子产业链'
-          // }
+          {
+            name: '汽车产业链'
+          }
         ],
         // coordinateSystem: 'none',
         links: links,
@@ -238,8 +224,26 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relationChart" ref="multiChart">
-  </div>
+  <el-card shadow="hover">
+    <template #header style="text-align: center">
+      <div style="text-align: center">
+        <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>
+      </div>
+    </template>
+    <div style="margin-bottom: 10px">
+      <span style="margin-right: 10px;font-size: 16px">当前阶段:</span>
+      <el-select v-model="companyStage" placeholder="请选择企业类型" clearable @change="handleStageChange">
+        <el-option
+            v-for="dict in chain_stage"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+        />
+      </el-select>
+    </div>
+    <div class="relationChart" ref="multiChart">
+    </div>
+  </el-card>
 </template>
 
 <style scoped lang="scss">

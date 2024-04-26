@@ -113,7 +113,7 @@ watch(()=>loadingStroe.coalitionloading,()=>{
   getList();
 })
 
-const chainName=['汽车产业链','家电产业链','电子产业链']
+const chainName=['洗衣机产业链','空调产业链','汽车产业链']
 const stateTypes=['danger','warning','success']
 const enterpriseList = ref([]);
 const loading = ref(true);

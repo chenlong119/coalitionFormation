@@ -10,12 +10,12 @@ let placeholder="";
 let isTask = props.ckey === "task";
 if (isTask) {
   prefix = "任务";
-  placeholder="范围[5,20]";
+  placeholder="范围[200,400]";
 } else {
   prefix = "企业";
-  placeholder="范围[1,9]";
+  placeholder="范围[50,150]";
 }
-const chainNames = ["汽车产业链", "家电产业链", "电子产业链"]
+const chainNames = ["洗衣机产业链", "空调产业链", "汽车产业链"]
 let chain = ref("");
 const getChain = () => {
   chain.value = chainNames[chainId.value - 1]

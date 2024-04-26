@@ -11,6 +11,14 @@
           />
         </el-select>
       </el-form-item>
+      <el-form-item label="企业编号" prop="id">
+        <el-input
+            v-model="queryParams.id"
+            placeholder="请输入企业地址"
+            clearable
+            @keyup.enter="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="企业名称" prop="name">
         <el-input
             v-model="queryParams.name"
@@ -19,18 +27,10 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="企业地址" prop="address">
+      <el-form-item label="网络层编号" prop="layerId">
         <el-input
-            v-model="queryParams.address"
-            placeholder="请输入企业地址"
-            clearable
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="所属联盟编号" prop="groupId">
-        <el-input
-            v-model="queryParams.coalitionId"
-            placeholder="请输入所属联盟编号"
+            v-model="queryParams.layerId"
+            placeholder="请输入所属网络层编号"
             clearable
             @keyup.enter="handleQuery"
         />
@@ -172,7 +172,7 @@
     <el-dialog :title="title" v-model="open" width="500px" append-to-body @closed="handleColse">
       <el-form ref="showRef" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="企业编号" prop="id">
-          <el-input v-model="form.id" placeholder="请输入企业编号，可为空" :disabled="!isAdd"/>
+          <el-input v-model="form.id" placeholder="请输入企业编号,为空则自动分配" :disabled="!isAdd"/>
         </el-form-item>
         <el-form-item label="企业名称" prop="name">
           <el-input v-model="form.name" placeholder="请输入企业名称"/>
@@ -183,10 +183,17 @@
         <el-form-item label="所属网络层编号" prop="layerId">
           <el-input v-model="form.layerId" placeholder="请输入网络层编号" :disabled="!isAdd"/>
         </el-form-item>
-        <el-form-item label="企业类型" prop="companyType">
-          <el-input v-model="form.companyType" placeholder="请输入企业类型"/>
+        <el-form-item label="企业类型" prop="companyType" v-if="isAdd">
+          <el-select v-model="form.companyType" placeholder="请选择企业类型" clearable>
+            <el-option
+                v-for="dict in chain_stage"
+                :key="dict.value"
+                :label="dict.label"
+                :value="dict.value"
+            />
+          </el-select>
         </el-form-item>
-        <el-form-item label="层内邻居关系">
+        <el-form-item label="层内邻居关系" v-if="!isAdd">
           <el-button link type="primary" @click="addNei">点击此处添加层内邻居关系</el-button>
           <template v-for="idx in idxs">
             <el-row :gutter="5">
@@ -281,7 +288,7 @@ const isAdd = ref(true);
 // 添加企业关系时使用
 const idxs = ref([]);
 const neis = ref([]);
-const chains = ["汽车产业链", "家电产业链", "电子产业链"]
+const chains = ["洗衣机产业链", "空调产业链", "汽车产业链"]
 
 
 const addNei = () => {
@@ -318,8 +325,10 @@ const data = reactive({
     pageNum: 1,
     pageSize: 4,
     name: null,
-    coalitionId: null,
-    status: null
+    layerId: null,
+    status: null,
+    companyType:null,
+    id:null
   },
   rules: {
     name: [
@@ -421,12 +430,14 @@ function handleAdd() {
 
 const loadingStore = useLoadingStore()
 
+let companyType = null;
 /** 修改按钮操作 */
 function handleUpdate(row) {
   reset();
   isAdd.value = false;
   const _id = row.id || ids.value
   const layerId = row.layerId;
+  companyType=row.companyType;
   getShow(_id, layerId).then(response => {
     form.value = response.data;
     open.value = true;
@@ -441,7 +452,8 @@ const addRelation = async () => {
     params: {
       id1: form.value.id,
       id2s: id2s.join(","),
-      layer: form.value.layerId
+      layer: form.value.layerId,
+      companyType
     }
   })
 }
@@ -468,7 +480,6 @@ function submitForm() {
           proxy.$modal.msgSuccess("新增成功");
           open.value = false;
           getList();
-          await addRelation()
           loadingStore.isloading = true;
         });
       }
@@ -482,6 +493,7 @@ function handleDelete(row) {
   proxy.$modal.confirm('是否确认删除企业信息编号为"' + _ids + '"的数据项？').then(function () {
     return delShow(_ids);
   }).then(() => {
+    loadingStore.isloading = true;
     getList();
     proxy.$modal.msgSuccess("删除成功");
   }).catch(() => {
