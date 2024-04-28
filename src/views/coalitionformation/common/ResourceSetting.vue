@@ -6,13 +6,16 @@ const props = defineProps(["ckey"])
 let prefix = null;
 let id = ref();
 let chainId = ref();
+let placeholder="";
 let isTask = props.ckey === "task";
 if (isTask) {
   prefix = "任务";
+  placeholder="范围[200,400]";
 } else {
   prefix = "企业";
+  placeholder="范围[50,150]";
 }
-const chainNames = ["汽车产业链", "家电产业链", "电子产业链"]
+const chainNames = ["洗衣机产业链", "空调产业链", "汽车产业链"]
 let chain = ref("");
 const getChain = () => {
   chain.value = chainNames[chainId.value - 1]
@@ -315,7 +318,7 @@ defineExpose({
             <el-input v-model="resource.name" disabled></el-input>
           </el-col>
           <el-col :span="7">
-            <el-input v-model="resource.num"></el-input>
+            <el-input v-model="resource.num" :placeholder="placeholder"></el-input>
           </el-col>
         </el-row>
       </template>

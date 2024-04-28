@@ -1,7 +1,6 @@
 <template>
   <div class="index" ref="index">
-    <dv-loading v-if="loading">Loading...</dv-loading>
-    <div v-else class="dashboard">
+    <div class="dashboard">
       <div class="lineOne">
         <dv-decoration-10 class="dv-dec-10"/>
         <div class="middle">
@@ -21,23 +20,23 @@
       </div>
       <div class="lineTwo">
         <div class="leftBox">
-          <div class="box1 skew bg" @click="$router.push('/sharingIncentive/auction/Mysharing')">
+          <div class="box1 skew bg" @click="$router.push('/shareing/auction/history')">
             <div class="rSkew bg">
               <span>数据共享激励</span>
             </div>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/datafusion')">
+          <div class="box2 bg skew" @click="$router.push('/aa')">
             <span class="rSkew">群智汇聚</span>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/taskallocation/taskdashboard')">
+          <div class="box2 bg skew" @click="$router.push('/coalitionFormation/companyInfo')">
             <span class="rSkew">联盟形成</span>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/multimode')">
+          <div class="box2 bg skew" @click="$router.push('/xietong')">
             <span class="rSkew">企业群多模式协同</span>
           </div>
         </div>
-        <div class="rightBox" @click="$router.push('/multig/pinggu')">
-          <div class="box1 bg skew">
+        <div class="rightBox">
+          <div class="box1 bg skew" @click="$router.push('/123654')">
             <span class="rSkew">协同效果评估</span>
           </div>
           <div class="box2  skew bg ">
@@ -59,18 +58,51 @@
 
 <script setup name="Index">
 import {formatTime} from '@/utils/formatTime'
-import {onMounted, onUnmounted, reactive, ref} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import Main from "@/views/dashboard/components/main/Main.vue";
-import elementResizeDetectorMaker from 'element-resize-detector'
-import {debounce} from 'lodash'
-
+import {ElMessage, ElMessageBox} from "element-plus";
+const userStore=useUserStore();
+import {useRouter} from "vue-router";
+import useUserStore from "@/store/modules/user.js";
+const router=useRouter();
+const handleReloginAdmin=()=>{
+  ElMessage({
+    type:'warning',
+    'message':"请使用管理员账号登录"
+  })
+  ElMessageBox.confirm('确定注销并退出系统吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    userStore.logOut().then(() => {
+      location.href = '/index';
+    })
+  }).catch(() => {
+  });
+}
+const handleReLoginRegular=()=>{
+  ElMessage({
+    type:'warning',
+    'message':"请使用普通用户账号登录"
+  })
+  ElMessageBox.confirm('确定注销并退出系统吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    userStore.logOut().then(() => {
+      location.href = '/index';
+    })
+  }).catch(() => {
+  });
+}
 const index = ref(null);
 const title = "多重产业链企业群协同系统"
 const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 let height;
 let width;
 
-let erd = elementResizeDetectorMaker();
 // * 时间内容
 const timeInfo = reactive({
   setInterval: 0,
@@ -83,19 +115,8 @@ onMounted(() => {
   height = index.value.offsetHeight;
   width = index.value.offsetWidth;
   handleTime();
-  // erd.listenTo(index.value, debounce((element) => {
-  //   if (width === element.offsetWidth && height === element.offsetHeight) {
-  //     return;
-  //   }
-  //   height = element.offsetHeight;
-  //   width = element.offsetWidth;
-  //   location.reload();
-  // }, 500));
 })
-// onUnmounted(() => {
-//   console.log('unmounted')
-//   erd.uninstall(index.value);
-// })
+
 
 const handleTime = () => {
   timeInfo.setInterval = setInterval(() => {
@@ -175,7 +196,7 @@ const handleTime = () => {
       padding: 0 5px;
       color: #fff;
       font-size: 25px;
-      height: 5%;
+      height: 6%;
 
       .leftBox {
         width: 60%;
@@ -255,7 +276,10 @@ const handleTime = () => {
       background-color: #004d8c;
       text-align: center;
       line-height: 45px;
+      color: #fff;
+      font-size: 25px;
     }
+
   }
 }
 </style>

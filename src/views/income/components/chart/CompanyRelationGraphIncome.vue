@@ -1,29 +1,29 @@
 <script setup>
-import {getCurrentInstance, onMounted, ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import * as echarts from "echarts";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 
-const {proxy} = getCurrentInstance();
-const {  chain_stage } = proxy.useDict('chain_stage');
-let companyStage = ref("原料供应");
 const multiChart = ref(null);
-const lb = 0;
+const lb = 20;
 const lt = 50;
-const width = 850;
-const height = 120;
+const width = 1300;
+const height = 130;
 const layers1 = 30;
 const rb = lb + width;
 const rt = lt + width;
 const layere1 = layers1 + height;
-const gap = 50;
+const gap = 30;
 const layers2 = layere1 + gap;
 const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
 const layere3 = layers3 + height;
 
-let name_title = "多重产业链网络中企业关系图"
+
 let baseOption = {
+  animationDurationUpdate: 1500,
+  animationEasingUpdate: 'quinticInOut',
+
   graphic: [
     {
       type: 'polygon',
@@ -75,11 +75,6 @@ let baseOption = {
     }
   ],
 };
-
-const handleStageChange=()=>{
-  drawRelationShip()
-}
-
 let multiChartInstance = null;
 const allocateSpace = (nodes) => {
   let choose = [];
@@ -88,39 +83,39 @@ const allocateSpace = (nodes) => {
       const randomPos = Math.floor(Math.random() * 45) + 1;
       if (choose.indexOf(randomPos) === -1) {
         choose.push(randomPos);
-        //每一份大小40*50，起点为（50,30),一共45份，分布为3行，每行15份
-        // node.x = 50 + ((randomPos - 1) % 15) * 50 + 25;
-        // node.y = 30 + Math.floor((randomPos - 1) / 15) * 40 + 20;
 
-        //每一份大小50*50，起点为（50,100),一共45份，分布为3行，每行15份
-        node.x = 50 + ((randomPos - 1) % 15) * 50 + 25;
-        node.y = 100 + Math.floor((randomPos - 1) / 15) * 50 + 25;
+        // 每一份大小40*50，起点为（50,30)，一共45份，分布为3行，每行15份
+        const row = Math.floor((randomPos - 1) / 15); // 计算行数
+        const column = (randomPos - 1) % 15; // 计算列数
+
+        const offsetX = column * 60 + 80; // x 坐标偏移量，增加每列之间的空隙
+        node.x = column * 50  + offsetX;
+        node.y = 30 + Math.floor((randomPos - 1) / 15) * 40 + 30;
+        // 调整上方第一个区域的节点向上移动
+        if (row === 0) {
+          node.y -= 15; // 调整向上的偏移量
+        }
+        // 调整下方最后一个区域的节点向下移动
+        if (row === 2) {
+          node.y += 15; // 调整向下的偏移量
+        }
         break;
       }
     }
   })
 }
 
+
 const drawRelationShip = async () => {
-  let type=companyStage.value==="原料供应"?1:companyStage.value
   const nodes = await request({
-    url: '/graph/getnodes',
-    method: 'get',
-    params:{
-      companyType:type
-    }
+    url: '/home/getnodes',
+    method: 'get'
   });
   const links = await request({
-    url: '/graph/getedges',
-    method: 'get',
-    params:{
-      linkType:1
-    }
+    url: '/home/getlinks',
+    method: 'get'
   });
-  links.forEach((link) => {
-    link.source = link.source + " " + link.layer;
-    link.target = link.target + " " + link.layer;
-  });
+
   nodes.forEach((node) => {
     if (node.layer_id != 3) {
       let temp = nodes.filter(item => {
@@ -140,73 +135,122 @@ const drawRelationShip = async () => {
     }
   });
   nodes.forEach((node) => {
-    node.id = node.id + " " + node.layer_id;
-    node.symbolSize = node.value * 30;
-    node.category = node.layer_id - 1;
+    node.id = node.id + " " + node.layer_id;  //节点分层
+    node.symbolSize = 30;
+    node.category = node.layer_id - 1;  //产业链的类别
   })
-  let node_l1 = nodes.filter(node => node.layer_id === 1);
+  const node_l1 = nodes.filter(node => node.layer_id === 1);
   const node_l2 = nodes.filter(node => node.layer_id === 2);
   const node_l3 = nodes.filter(node => node.layer_id === 3);
   allocateSpace(node_l1);
   allocateSpace(node_l2);
   allocateSpace(node_l3);
-  // 根据层对节点的y值进行校正
+  //根据层对节点的y值进行校正
   node_l2.forEach(node => {
-    node.y += 190;
+    node.y += 230;
   });
   node_l3.forEach(node => {
-    node.y += 380;
+    node.y += 450;
   });
   let node_all = node_l1.concat(node_l2).concat(node_l3);
+
   const relationOption = {
     tooltip: {
+      show: true,
+      trigger: "item",
       formatter: function (params) {
-        let cid=params.data.id?.split(" ")[0];
-        return "企业编号:"+cid+"</br>"+
-            "企业名称:"+params.data.name;
-      }
+        if (params.dataType === "node") {
+          var id = params.data.id;
+          var name = params.name;
+          var company_type = params.data.company_type;
+          var chain_name = params.data.chain_name;
+          return (
+            "id: " +
+            id +
+            "<br/>" +
+            "企业：" +
+            name +
+            "<br/>" +
+            "所处领域：" +
+            company_type +
+            "<br/>" +
+            "所处产业链: " +
+            chain_name +
+            "<br/>"
+          );
+        } else if (params.dataType === "edge") {
+          var layer = params.data.layer;
+          var relation;
+          if (layer == 1) relation = "竞争关系";
+          else if (layer == 2) relation = "供应关系";
+          else if (layer == 3) relation = "合作关系";
+          else relation = "同一企业";
+          return (
+            "连接关系：" +
+            relation
+          );
+        }
+      },
     },
     legend: {
       left: 0,
       top: 0
     },
+
+
     series: [
       {
         name: '企业多重网络关系',
         type: 'graph',
         layout: 'none',
         data: node_all,
-        categories: [
-          {
-            name: '洗衣机产业链'
-          },
-          {
-            name: '空调产业链'
-          },
-          {
-            name: '汽车产业链'
-          }
-        ],
-        // coordinateSystem: 'none',
         links: links,
         roam: false,
+        categories: [{
+          name: '家电产业链'
+        },
+        {
+          name: '汽车产业链'
+        },
+        {
+          name: '电子产业链'
+        }],
+
+        label: {
+          show: true, //是否显示节点标签
+          formatter: "{b}", //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
+          textStyle: {
+            color: "black", // 设置节点标签的字体颜色
+          },
+        },
         lineStyle: {
           color: 'source',
           width: 2.5,
           curveness: 0.1
         },
+
         emphasis: {
-          focus: 'adjacency',
+          focus: "adjacency", //当鼠标移动到节点上，突出显示节点以及节点的边和邻接节点，'adjacency' 表示只突出显示节点以及节点的边
+          lineStyle: {
+            width: 10,
+            type: "dotted",
+            opacity: 0.7,
+          },
         },
-        // edgeLabel: {
-        //   show: true,
-        //   formatter: function (params) {
-        //     return params.data.weight; // 显示边的权重
-        //   }
-        // }
       },
-    ]
+    ],
+    legend: [
+      {
+        left: "60px",
+        padding: [10, 100, 0, 0],
+        textStyle: {
+          color: "black", // 设置图例字体颜色
+        },
+      },
+    ],
+
   }
+
   multiChartInstance.setOption(relationOption);
 }
 const loadingStore = useLoadingStore()
@@ -224,31 +268,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-card shadow="hover">
-    <template #header style="text-align: center">
-      <div style="text-align: center">
-        <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>
-      </div>
-    </template>
-    <div style="margin-bottom: 10px">
-      <span style="margin-right: 10px;font-size: 16px">当前阶段:</span>
-      <el-select v-model="companyStage" placeholder="请选择企业类型" clearable @change="handleStageChange">
-        <el-option
-            v-for="dict in chain_stage"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-        />
-      </el-select>
-    </div>
-    <div class="relationChart" ref="multiChart">
-    </div>
-  </el-card>
+  <div class="relationChart" ref="multiChart">
+  </div>
 </template>
 
 <style scoped lang="scss">
 .relationChart {
-  width: 100%;
+  width: 1500px;
   height: 500px;
 }
 </style>

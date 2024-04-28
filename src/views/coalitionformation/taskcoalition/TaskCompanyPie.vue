@@ -31,7 +31,6 @@ const drawtaskCompanyPie = async () => {
   })
   //根据企业id获取企业名字
   let ids = data.map(item => item.name).join(",");
-  console.log(ids)
   const names = await request({
     url: "/company/show/getnames",
     params: {
@@ -41,6 +40,8 @@ const drawtaskCompanyPie = async () => {
   data.forEach((item, index) => {
     item.name = names[index];
   })
+  data=data.filter(item=>item.name.length<=5)
+  data=data.slice(0,6);
   let option = {
     title: {
       text: "任务所属企业分布图",
@@ -49,7 +50,7 @@ const drawtaskCompanyPie = async () => {
     },
     legend: {
       left: 0,
-      top: 10,
+      bottom: 0,
       orient: 'vertical'
     },
     tooltip: {
@@ -101,6 +102,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskCompanyPie {
   width: 100%;
-  height: 230px
+  height: 200px
 }
 </style>

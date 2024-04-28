@@ -1,5 +1,5 @@
 <template>
-  <Body :dec-id="3" :icon-name="'icon-tongji4'" :name="'任务完成情况'">
+  <Body :dec-id="3"  name="任务完成情况">
   <template #default>
     <!-- 4个主要的数据 -->
     <div class="main">

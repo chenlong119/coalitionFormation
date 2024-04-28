@@ -4,7 +4,7 @@
          style="flex: 1 0 70%; height: 460px; background-color: rgb(255,255,255)">
     </div>
     <el-button type="primary" @click="toggleLegendAndCategories"
-               style="margin: 10px; padding: 8px; font-size: 16px; height: 100px" class="vertical-text-button">
+               style="flex: 1 0 1%;margin: 10px; padding: 8px; font-size: 16px; height: 100px" class="vertical-text-button">
       <span>{{ buttonText }}</span>
     </el-button>
     <div id="pieChart" ref="pieChart" class="container"

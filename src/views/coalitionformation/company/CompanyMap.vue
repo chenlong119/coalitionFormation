@@ -3,11 +3,8 @@ import {onMounted, ref} from "vue";
 import * as echarts from 'echarts'
 //引入axios
 import axios from "axios";
-
+import mapData from "@/assets/chain.json";
 let name_title = "多重产业链网络中企业地理分布图"
-let nameColor = " rgb(55, 75, 113)"
-let name_fontFamily = '等线'
-let name_fontSize = 18
 const map = ref(null);
 let chartInstance = null;
 let data = [
@@ -64,28 +61,28 @@ let convertData = function (data) {
 
 const initChart = async () => {
   chartInstance = echarts.init(map.value);
-  const res = await axios.get('/src/assets/chain.json');
-  echarts.registerMap('china', res.data);
-  res.data.features.forEach(function (item) {
+  // const res = await axios.get('/src/assets/chain.json');
+  echarts.registerMap('china', mapData);
+  mapData.features.forEach(function (item) {
     geoCoordMap[item.properties.name] = item.properties.cp;
   });
   const initOption = {
-    title: {
-      text: name_title,
-      x: 'center',
-      textStyle: {
-        color: nameColor,
-        fontFamily: name_fontFamily,
-        fontSize: name_fontSize
-      }
-    },
+    // title: {
+    //   text: name_title,
+    //   x: 'center',
+    //   textStyle: {
+    //     color: nameColor,
+    //     fontFamily: name_fontFamily,
+    //     fontSize: name_fontSize
+    //   }
+    // },
     geo: {
       type: 'map',
       map: 'china',
-      top: '30%',
+      top: '35%',
       bottom: '0',
       roam: false,
-      zoom: 1.8,
+      zoom: 1.9,
       itemStyle: {
         normal: {
           areaColor: '#031525',
@@ -251,7 +248,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="map" style="height: 500px; width:100%;"></div>
+  <el-card shadow="hover">
+      <template #header style="text-align: center">
+        <div style="text-align: center">
+          <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>
+        </div>
+    </template>
+    <div ref="map" style="height: 540px; width:100%;"></div>
+  </el-card>
 </template>
 
 <style scoped lang="scss">

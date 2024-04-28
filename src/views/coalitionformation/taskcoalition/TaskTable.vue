@@ -86,11 +86,29 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
+            type="success"
+            plain
+            icon="User"
+            @click="$router.push('/coalitionFormation/companyInfo')"
+        >查看企业信息
+        </el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-button
             type="primary"
             plain
             icon="Setting"
             @click="setResource"
         >配置资源
+        </el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-button
+            type="primary"
+            plain
+            icon="Share"
+            @click="$router.push('/coalitionFormation/coalitionResult')"
+        >查看联盟详情
         </el-button>
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
@@ -101,7 +119,7 @@
       <el-table-column label="任务编号" align="center" prop="id"/>
       <el-table-column label="任务名称" align="center" prop="name"/>
       <el-table-column label="任务价值" align="center" prop="val"/>
-      <el-table-column label="任务到达时间" align="center" prop="arrivalTime" width="180">
+      <el-table-column label="任务到达时间" align="center" prop="arrivalTime">
         <template #default="scope">
           <span>{{ parseTime(scope.row.arrivalTime, '{y}-{m}-{d}') }}</span>
         </template>
@@ -134,7 +152,7 @@
           <span v-else>{{ scope.row.coalitionId }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="所属产业链名称" align="center">
+      <el-table-column label="所属产业链名称" align="center" :width="150">
         <template #default="scope">
           <span>{{ getNameByChainId(scope.row.chainId) }}</span>
         </template>
@@ -219,6 +237,7 @@ import {addFormation, delFormation, getFormation, listFormation, updateFormation
 import request from "@/utils/request.js";
 import ResourceSetting from "@/views/coalitionformation/common/ResourceSetting.vue";
 import {ElMessage} from "element-plus";
+import useLoadingStore from "@/store/modules/loading.js";
 
 const resourceSetting = ref(null);
 
@@ -314,7 +333,23 @@ const getTaskResource = async (taskId) => {
     }
   })
 }
-
+const loadingStroe=useLoadingStore();
+const coalitionformation=async (task)=>{
+  const res=await request({
+    url:"/coalition/allocation",
+    method:"post",
+    params:{
+      taskId:task.id
+    },
+    data:task.resource
+  })
+  ElMessage({
+    type: 'success',
+    message: "联盟形成成功，联盟编号为："+res
+  })
+  loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
+  getList();
+}
 /** 查询任务信息列表 */
 function getList() {
   loading.value = true;

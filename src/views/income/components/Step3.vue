@@ -9,7 +9,7 @@
     <div class="common-layout">
       <div id="main1" class="container-l">
         <div class="title-info">评估企业信息：</div>
-        <el-form style="margin-left: 200px">
+        <el-form style="margin-left: 5%">
           <el-form-item label="评估企业：" prop="nodeName">
             <span style="font-weight: bold"
               >{{ store.companyInfo.name }}（ID：{{ store.companyInfo.companyId }}）</span
@@ -56,7 +56,7 @@
       <div id="main2" class="container-r">
         <div class="title-info">评估企业收益指标：</div>
         <el-form
-          style="display: flex; flex-direction: column; align-items: left; text-align: left;margin-left: 150px;margin-top: 50px" 
+          style="display: flex; flex-direction: column; align-items: left; text-align: left;margin-left: 10%;margin-top:5%" 
         >
 
           <el-row :gutter="24" style="margin-bottom:10px">

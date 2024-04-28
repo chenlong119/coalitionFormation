@@ -1,18 +1,15 @@
 <script setup>
-import {getCurrentInstance, onMounted, ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import * as echarts from "echarts";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 
-const {proxy} = getCurrentInstance();
-const {  chain_stage } = proxy.useDict('chain_stage');
-let companyStage = ref("原料供应");
 const multiChart = ref(null);
 const lb = 0;
 const lt = 50;
 const width = 850;
 const height = 120;
-const layers1 = 30;
+const layers1 = 40;
 const rb = lb + width;
 const rt = lt + width;
 const layere1 = layers1 + height;
@@ -22,8 +19,14 @@ const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
 const layere3 = layers3 + height;
 
-let name_title = "多重产业链网络中企业关系图"
+let name_title = "联盟企业关系图"
 let baseOption = {
+  animationDurationUpdate: 1500,
+  animationEasingUpdate: 'quinticInOut',
+  title: {
+    text: name_title,
+    x: 'center',
+  },
   graphic: [
     {
       type: 'polygon',
@@ -75,11 +78,6 @@ let baseOption = {
     }
   ],
 };
-
-const handleStageChange=()=>{
-  drawRelationShip()
-}
-
 let multiChartInstance = null;
 const allocateSpace = (nodes) => {
   let choose = [];
@@ -89,12 +87,8 @@ const allocateSpace = (nodes) => {
       if (choose.indexOf(randomPos) === -1) {
         choose.push(randomPos);
         //每一份大小40*50，起点为（50,30),一共45份，分布为3行，每行15份
-        // node.x = 50 + ((randomPos - 1) % 15) * 50 + 25;
-        // node.y = 30 + Math.floor((randomPos - 1) / 15) * 40 + 20;
-
-        //每一份大小50*50，起点为（50,100),一共45份，分布为3行，每行15份
         node.x = 50 + ((randomPos - 1) % 15) * 50 + 25;
-        node.y = 100 + Math.floor((randomPos - 1) / 15) * 50 + 25;
+        node.y = 40 + Math.floor((randomPos - 1) / 15) * 40 + 20;
         break;
       }
     }
@@ -102,20 +96,13 @@ const allocateSpace = (nodes) => {
 }
 
 const drawRelationShip = async () => {
-  let type=companyStage.value==="原料供应"?1:companyStage.value
   const nodes = await request({
     url: '/graph/getnodes',
-    method: 'get',
-    params:{
-      companyType:type
-    }
+    method: 'get'
   });
   const links = await request({
     url: '/graph/getedges',
-    method: 'get',
-    params:{
-      linkType:1
-    }
+    method: 'get'
   });
   links.forEach((link) => {
     link.source = link.source + " " + link.layer;
@@ -139,36 +126,50 @@ const drawRelationShip = async () => {
       }
     }
   });
+  let categories = [];
   nodes.forEach((node) => {
     node.id = node.id + " " + node.layer_id;
     node.symbolSize = node.value * 30;
-    node.category = node.layer_id - 1;
+    let name = ""
+    if (node.category === 0) {
+      name = "空闲"
+    } else {
+      name = "联盟" + node.category;
+    }
+    if (categories.indexOf(name) === -1) {
+      categories.push(name);
+      node.category = categories.length - 1;
+    } else {
+      node.category = categories.indexOf(name);
+    }
   })
-  let node_l1 = nodes.filter(node => node.layer_id === 1);
+  categories=categories.map(name =>{ return{
+    name
+  }})
+  const node_l1 = nodes.filter(node => node.layer_id === 1);
   const node_l2 = nodes.filter(node => node.layer_id === 2);
   const node_l3 = nodes.filter(node => node.layer_id === 3);
   allocateSpace(node_l1);
   allocateSpace(node_l2);
   allocateSpace(node_l3);
-  // 根据层对节点的y值进行校正
+  //根据层对节点的y值进行校正
   node_l2.forEach(node => {
-    node.y += 190;
+    node.y += 170;
   });
   node_l3.forEach(node => {
-    node.y += 380;
+    node.y += 340;
   });
   let node_all = node_l1.concat(node_l2).concat(node_l3);
   const relationOption = {
     tooltip: {
       formatter: function (params) {
-        let cid=params.data.id?.split(" ")[0];
-        return "企业编号:"+cid+"</br>"+
-            "企业名称:"+params.data.name;
+        return params.data.name;
       }
     },
     legend: {
       left: 0,
-      top: 0
+      top: 0,
+      orient:'vertical'
     },
     series: [
       {
@@ -176,18 +177,7 @@ const drawRelationShip = async () => {
         type: 'graph',
         layout: 'none',
         data: node_all,
-        categories: [
-          {
-            name: '洗衣机产业链'
-          },
-          {
-            name: '空调产业链'
-          },
-          {
-            name: '汽车产业链'
-          }
-        ],
-        // coordinateSystem: 'none',
+        categories,
         links: links,
         roam: false,
         lineStyle: {
@@ -197,24 +187,15 @@ const drawRelationShip = async () => {
         },
         emphasis: {
           focus: 'adjacency',
-        },
-        // edgeLabel: {
-        //   show: true,
-        //   formatter: function (params) {
-        //     return params.data.weight; // 显示边的权重
-        //   }
-        // }
-      },
+        }
+      }
     ]
   }
   multiChartInstance.setOption(relationOption);
 }
-const loadingStore = useLoadingStore()
-watch(() => loadingStore.isloading, (newval) => {
-  if (newval) {
-    drawRelationShip();
-    loadingStore.isloading = false;
-  }
+const loadingStroe=useLoadingStore();
+watch(()=>loadingStroe.coalitionloading,()=>{
+  drawRelationShip();
 })
 onMounted(() => {
   multiChartInstance = echarts.init(multiChart.value);
@@ -224,31 +205,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-card shadow="hover">
-    <template #header style="text-align: center">
-      <div style="text-align: center">
-        <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>
-      </div>
-    </template>
-    <div style="margin-bottom: 10px">
-      <span style="margin-right: 10px;font-size: 16px">当前阶段:</span>
-      <el-select v-model="companyStage" placeholder="请选择企业类型" clearable @change="handleStageChange">
-        <el-option
-            v-for="dict in chain_stage"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-        />
-      </el-select>
-    </div>
-    <div class="relationChart" ref="multiChart">
-    </div>
-  </el-card>
+  <div class="relationChart" ref="multiChart">
+  </div>
 </template>
 
 <style scoped lang="scss">
 .relationChart {
   width: 100%;
-  height: 500px;
+  height: 503px;
 }
 </style>

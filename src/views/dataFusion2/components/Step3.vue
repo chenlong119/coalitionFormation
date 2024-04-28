@@ -21,9 +21,9 @@
   <!--  </el-dialog>-->
   <div class="common-layout">
     <div id="main2" ref="chartContainer" class="container"
-         style="width: 750px;height:460px;background-color: rgb(255,255,255)"></div>
+         style="flex: 1 0 50%;;height:460px;background-color: rgb(255,255,255)"></div>
     <div id="relationChart" ref="relationChart" class="container"
-         style="width: 750px;height:460px;background-color: rgb(255,255,255)"></div>
+         style="flex: 1 0 50%;;height:460px;background-color: rgb(255,255,255)"></div>
 
   </div>
   <br>

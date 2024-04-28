@@ -1,4 +1,5 @@
 <template>
+
   <div class="common-layout">
     <el-container>
       <el-header class="header-container">
@@ -14,6 +15,7 @@
           @click="handleGraph()"
           >查看关联企业图</el-button
         >
+
       </el-header>
       <el-container>
         <el-main>
@@ -118,6 +120,7 @@
             title="企业详情"
             align-center
             class="info_content"
+            :width="auto"
           >
             <el-form :model="info">
               <el-form-item label="" :label-width="formLabelWidth">
@@ -150,7 +153,7 @@
             </el-form>
           </el-dialog>
 
-          <el-dialog
+          <!-- <el-dialog
             v-model="graphDialogVisible"
             title="关联企业图"
             align-center
@@ -181,7 +184,20 @@
               ref="multiChart"
               style="height: 600px; width: 1350px"
             ></div>
+          </el-dialog> -->
+
+            <el-dialog
+            v-model="graphDialogVisible"
+            title="关联企业图"
+            align-center 
+             :width="1500"  
+            >
+          
+               <CompanyRelationGraphIncome/>
+               <!-- <CompanyRelationGraph/> -->
+
           </el-dialog>
+
         </el-main>
       </el-container>
     </el-container>
@@ -200,6 +216,8 @@ import {
   nextTick,
 } from "vue";
 import * as echarts from "echarts"; //引入echarts
+import CompanyRelationGraphIncome from "./chart/CompanyRelationGraphIncome.vue"
+import CompanyRelationGraph from "../../dashboard/components/multilayer/CompanyRelationGraph.vue"
 
 import {
   getAllCompany,
@@ -252,7 +270,7 @@ onMounted(async () => {
       console.error("API请求失败", error);
     });
 
-        // 寻找关联企业
+    // 寻找关联企业
     const relatedCompanies = await getRelatedCompany(companyInfo.companyId);
     relatedCompanyList.splice(0);
     relatedCompanies.forEach((item) => {
@@ -278,91 +296,88 @@ onMounted(async () => {
     });
     totalItems.value = relatedCompanyList.length;
 
-  //初始化图表
-  relationGraph.value && (myChart.value = echarts.init(relationGraph.value));
-  const points = [
-    {
-      layer: 1,
-      points: [
-        [lt, layers1],
-        [rt, layers1],
-        [rb, layere1],
-        [lb, layere1],
-      ],
-    },
-    {
-      layer: 2,
-      points: [
-        [lt, layers2],
-        [rt, layers2],
-        [rb, layere2],
-        [lb, layere2],
-      ],
-    },
-    {
-      layer: 3,
-      points: [
-        [lt, layers3],
-        [rt, layers3],
-        [rb, layere3],
-        [lb, layere3],
-      ],
-    },
-  ];
-  const jsonPoints = JSON.stringify(points); //平行四边形的坐标（json格式传给后端）
+  // //初始化图表
+  // relationGraph.value && (myChart.value = echarts.init(relationGraph.value));
+  // const points = [
+  //   {
+  //     layer: 1,
+  //     points: [
+  //       [lt, layers1],
+  //       [rt, layers1],
+  //       [rb, layere1],
+  //       [lb, layere1],
+  //     ],
+  //   },
+  //   {
+  //     layer: 2,
+  //     points: [
+  //       [lt, layers2],
+  //       [rt, layers2],
+  //       [rb, layere2],
+  //       [lb, layere2],
+  //     ],
+  //   },
+  //   {
+  //     layer: 3,
+  //     points: [
+  //       [lt, layers3],
+  //       [rt, layers3],
+  //       [rb, layere3],
+  //       [lb, layere3],
+  //     ],
+  //   },
+  // ];
+  // const jsonPoints = JSON.stringify(points); //平行四边形的坐标（json格式传给后端）
 
-  // 获取关系图中所有连接
-  await getAllLink()
-    .then((response) => {
-      response.forEach((item) => {
-        initGraphLink.push({
-          source: item.sourceLocation,
-          target: item.targetLocation,
-          relation: item.relation,
-          strength: item.strength,
-        });
-      });
-      // 使用 JSON 方法进行深拷贝
-      relatedLink.value = JSON.parse(JSON.stringify(initGraphLink));
-    })
-    .catch((error) => {
-      console.error("API请求失败", error);
-    });
+  // // 获取关系图中所有连接
+  // await getAllLink()
+  //   .then((response) => {
+  //     response.forEach((item) => {
+  //       initGraphLink.push({
+  //         source: item.sourceLocation,
+  //         target: item.targetLocation,
+  //         relation: item.relation,
+  //         strength: item.strength,
+  //       });
+  //     });
+  //     // 使用 JSON 方法进行深拷贝
+  //     relatedLink.value = JSON.parse(JSON.stringify(initGraphLink));
+  //   })
+  //   .catch((error) => {
+  //     console.error("API请求失败", error);
+  //   });
 
-  // 获取关系图中所有企业节点
-  await getAllNode(jsonPoints)
-    .then((response) => {
-      console.log(response)
-      response.forEach((item) => {
-        initGraphNode.push({
-          locationId: item.locationId,
-          companyId: item.companyId,
-          name: item.name,
-          field: item.field,
-          category: item.category,
-          layer: item.layer,
-          locationX: item.locationX,
-          locationY: item.locationY,
-          isSelected: false,
-        });
-      });
-      //使用 JSON 方法进行深拷贝
-      relatedNode.value = JSON.parse(JSON.stringify(initGraphNode));
-    })
-    .catch((error) => {
-      console.error("API请求失败", error);
-    });
+  // // 获取关系图中所有企业节点
+  // await getAllNode(jsonPoints)
+  //   .then((response) => {
+  //     console.log(response)
+  //     response.forEach((item) => {
+  //       initGraphNode.push({
+  //         locationId: item.locationId,
+  //         companyId: item.companyId,
+  //         name: item.name,
+  //         field: item.field,
+  //         category: item.category,
+  //         layer: item.layer,
+  //         locationX: item.locationX,
+  //         locationY: item.locationY,
+  //         isSelected: false,
+  //       });
+  //     });
+  //     //使用 JSON 方法进行深拷贝
+  //     relatedNode.value = JSON.parse(JSON.stringify(initGraphNode));
+  //   })
+  //   .catch((error) => {
+  //     console.error("API请求失败", error);
+  //   });
 
-    // 寻找当前企业对应节点
-    relatedNode.value.forEach((node) => {
-      if (node.companyId === companyInfo.companyId) {
-        node.isSelected = true;
-      }
-    })
+  //   // 寻找当前企业对应节点
+  //   relatedNode.value.forEach((node) => {
+  //     if (node.companyId === companyInfo.companyId) {
+  //       node.isSelected = true;
+  //     }
+  //   })
   
-
-
-
     //修改全局变量
     store.relatedCompany = relatedCompanyList
     store.newRelatedCompany = relatedCompanyList
@@ -596,13 +611,16 @@ const initGraph = () => {
   multiChart.value && (myChart1.value = echarts.init(multiChart.value));
   myChart1.value.setOption(option1);
 };
+// const handleGraph = () => {
+//   graphDialogVisible.value = true;
+//   nextTick(() => {
+//     initGraph();
+//     myChart1.value.setOption(option1);
+//     dynamicLoading(relatedNode, companyInfo, relatedLink);
+//   });
+// };
 const handleGraph = () => {
   graphDialogVisible.value = true;
-  nextTick(() => {
-    initGraph();
-    myChart1.value.setOption(option1);
-    dynamicLoading(relatedNode, companyInfo, relatedLink);
-  });
 };
 
 
@@ -680,4 +698,5 @@ const handleGraph = () => {
 .spacer {
   height: 20px;
 }
+
 </style>

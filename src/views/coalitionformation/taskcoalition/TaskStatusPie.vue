@@ -3,16 +3,14 @@ import * as echarts from 'echarts';
 import useTaskStore from "@/store/modules/task.js";
 import request from "@/utils/request.js";
 
-const taskStore = useTaskStore();
 const taskStatusPie = ref();
 let chartInstance = null;
 
 const drawTaskStatusPie = async () => {
   const statusArr = ['未分配', '已分配', '已完成', '执行失败']
-  taskStore.tasks = await request({
+  const res = await request({
     url: "/coalition/formation/getall"
   });
-  const res = taskStore.tasks;
   //统计每种类别的个数 taskStatus 0,1,2,3
   let categoryArr = [];
   let data = [];
@@ -50,7 +48,7 @@ const drawTaskStatusPie = async () => {
         name: '任务状态分布',
         type: 'pie',
         radius: '88%',
-        center: ['50%', '53%'],
+        center: ['55%', '55%'],
         label: {
           normal: {
             position: 'inner',
@@ -84,6 +82,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskStatusPie {
   width: 100%;
-  height: 230px
+  height: 200px
 }
 </style>
