@@ -1,16 +1,16 @@
 <script setup>
 import * as echarts from 'echarts'
 import request from "@/utils/request.js";
-import taskData from "@/assets/task_xyjchain.json"
+import taskData from "@/assets/task_ktchain.json"
 const chainGraph=ref();
 let chartInstance=null;
 
 const draw=async ()=>{
   const statusArr = ['未分配', '已分配', '已完成', '执行失败']
- let res = await request({
+  let res = await request({
     url: "/coalition/formation/getChainTask",
     params: {
-      chainId: 1
+      chainId: 2
     }
   });
   let data=taskData.nodes;
@@ -38,7 +38,7 @@ const draw=async ()=>{
       }
     },
     legend:{
-    left:80,
+      left:80,
       top:80
     },
     tooltip:{
@@ -97,7 +97,7 @@ onMounted(()=>{
 </script>
 
 <template>
-<div ref="chainGraph" class="chainGraph"></div>
+  <div ref="chainGraph" class="chainGraph"></div>
 </template>
 
 <style scoped lang="scss">

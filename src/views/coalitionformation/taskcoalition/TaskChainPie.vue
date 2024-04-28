@@ -12,7 +12,7 @@ onMounted(() => {
       left: 'center'
     },
     legend: {
-      bottom:30
+      bottom:0
     },
     tooltip: {
       show: true,
@@ -22,8 +22,8 @@ onMounted(() => {
       {
         name: '任务产业链分布情况',
         type: 'pie',
-        radius: [30, 150],
-        center: ['50%', '40%'],
+        radius: [40, 160],
+        center: ['50%', '50%'],
         roseType: 'area',
         itemStyle: {
           borderRadius: 8

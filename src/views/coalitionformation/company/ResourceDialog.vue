@@ -53,6 +53,7 @@ const updateChart = () => {
       {
         name: '资源详情',
         type: 'pie',
+        center:["50%",'60%'],
         radius: ['30%', '60%'],
         avoidLabelOverlap: false,
         itemStyle: {
@@ -107,16 +108,16 @@ onMounted(() => {
 <style scoped>
 .dialogContent {
   width: 800px;
-  height: 300px;
+  height: 400px;
 }
 
 .barChart {
   width: 500px;
-  height: 300px;
+  height: 400px;
 }
 
 .pieChart {
   width: 300px;
-  height: 300px;
+  height: 400px;
 }
 </style>

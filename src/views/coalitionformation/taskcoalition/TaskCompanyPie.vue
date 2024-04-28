@@ -40,7 +40,7 @@ const drawtaskCompanyPie = async () => {
   data.forEach((item, index) => {
     item.name = names[index];
   })
-  data=data.filter(item=>item.name.length<=5)
+  data.sort((a, b) => b.value - a.value);
   data=data.slice(0,6);
   let option = {
     title: {
@@ -61,8 +61,8 @@ const drawtaskCompanyPie = async () => {
       {
         name: '任务所属企业分布',
         type: 'pie',
-        center: ['50%', '53%'],
-        radius: ['40%', '80%'],
+        center: ['70%', '53%'],
+        radius: ['30%', '60%'],
         avoidLabelOverlap: false,
         padAngle: 5,
         itemStyle: {
@@ -102,6 +102,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskCompanyPie {
   width: 100%;
-  height: 200px
+  height: 440px
 }
 </style>

@@ -36,7 +36,7 @@ const drawTaskStatusPie = async () => {
     },
     legend: {
       left: 0,
-      top: 10,
+      bottom: 10,
       orient: 'vertical'
     },
     tooltip: {
@@ -47,7 +47,7 @@ const drawTaskStatusPie = async () => {
       {
         name: '任务状态分布',
         type: 'pie',
-        radius: '88%',
+        radius: '60%',
         center: ['55%', '55%'],
         label: {
           normal: {
@@ -82,6 +82,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskStatusPie {
   width: 100%;
-  height: 200px
+  height: 440px
 }
 </style>

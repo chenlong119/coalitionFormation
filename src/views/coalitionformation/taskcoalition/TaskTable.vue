@@ -17,6 +17,16 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="任务类型" prop="taskType">
+        <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable>
+          <el-option
+              v-for="dict in chain_stage"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item label="任务状态" prop="taskStatus">
         <el-select v-model="queryParams.taskStatus" placeholder="请选择任务状态" clearable>
           <el-option
@@ -27,10 +37,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="所属企业编号" prop="companyId">
+      <el-form-item label="所属产业链" prop="chainId">
         <el-input
-            v-model="queryParams.companyId"
-            placeholder="请输入任务所属企业编号"
+            v-model="queryParams.chainId"
+            placeholder="请输入任务所属产业链编号"
             clearable
             @keyup.enter="handleQuery"
         />
@@ -119,15 +129,20 @@
       <el-table-column label="任务编号" align="center" prop="id"/>
       <el-table-column label="任务名称" align="center" prop="name"/>
       <el-table-column label="任务价值" align="center" prop="val"/>
-      <el-table-column label="任务到达时间" align="center" prop="arrivalTime">
+<!--      <el-table-column label="任务到达时间" align="center" prop="arrivalTime">-->
+<!--        <template #default="scope">-->
+<!--          <span>{{ parseTime(scope.row.arrivalTime, '{y}-{m}-{d}') }}</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+<!--      <el-table-column label="任务完成时间" align="center" prop="finishTime" width="180">-->
+<!--        <template #default="scope">-->
+<!--          <span v-if="scope.row.finishTime">{{ parseTime(scope.row.finishTime, '{y}-{m}-{d}') }}</span>-->
+<!--          <span v-else>暂无</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+      <el-table-column label="任务类型" align="center" prop="taskType">
         <template #default="scope">
-          <span>{{ parseTime(scope.row.arrivalTime, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="任务完成时间" align="center" prop="finishTime" width="180">
-        <template #default="scope">
-          <span v-if="scope.row.finishTime">{{ parseTime(scope.row.finishTime, '{y}-{m}-{d}') }}</span>
-          <span v-else>暂无</span>
+          <dict-tag :options="chain_stage" :value="scope.row.taskType"/>
         </template>
       </el-table-column>
       <el-table-column label="任务状态" align="center" prop="taskStatus">
@@ -202,6 +217,16 @@
         <el-form-item label="任务持续时长" prop="duration">
           <el-input v-model="form.duration" placeholder="请输入任务持续时长(天)"/>
         </el-form-item>
+        <el-form-item label="任务类型"  prop="taskType">
+          <el-select v-model="form.taskType" placeholder="请选择任务类型" clearable>
+            <el-option
+                v-for="dict in chain_stage"
+                :key="dict.value"
+                :label="dict.label"
+                :value="dict.value"
+            />
+          </el-select>
+        </el-form-item>
         <el-form-item label="产品编号" prop="productId">
           <el-row :gutter="5">
             <el-col :span="12">
@@ -236,7 +261,7 @@
 import {addFormation, delFormation, getFormation, listFormation, updateFormation} from "@/api/taskcoalition/index.js";
 import request from "@/utils/request.js";
 import ResourceSetting from "@/views/coalitionformation/common/ResourceSetting.vue";
-import {ElMessage} from "element-plus";
+import {ElMessage, ElMessageBox} from "element-plus";
 import useLoadingStore from "@/store/modules/loading.js";
 
 const resourceSetting = ref(null);
@@ -263,14 +288,14 @@ const cancleResource = () => {
 }
 
 const {proxy} = getCurrentInstance();
-const {task_state} = proxy.useDict('task_state');
+const { task_state, chain_stage } = proxy.useDict('task_state', 'chain_stage');
 
 const getStatusNameByValue = (val) => {
   return task_state.value.filter(item => item.value == val)[0].label;
 }
 
 const getType = (val) => {
-  const types = ['primary', 'warning', 'success', 'danger'];
+  const types = ['info', 'warning', 'success', 'danger'];
   return types[val];
 }
 
@@ -288,18 +313,25 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 4,
+    pageSize: 3,
     id: null,
     name: null,
-    val: null,
     taskStatus: null,
-    companyId: null
+    chainId: null,
+    taskType:null
   },
-  rules: {}
+  rules: {
+    name:[{
+      required: true, message: "任务名称不能为空", trigger: "blur"}
+    ],
+    taskType:[
+      {required: true, message: "任务类型不能为空", trigger: "blur"}
+    ]
+  }
 });
 
 const {queryParams, form, rules} = toRefs(data);
-const chainName = ["汽车产业链", "家电产业链", "电子产业链"]
+const chainName = ["洗衣机产业链", "空调产业链", "汽车产业链"]
 const getNameByChainId = (id) => {
   return chainName[id - 1];
 }
@@ -335,17 +367,38 @@ const getTaskResource = async (taskId) => {
 }
 const loadingStroe=useLoadingStore();
 const coalitionformation=async (task)=>{
-  const res=await request({
+  if(task.resource.length==0)
+  {
+    ElMessage({
+      message:"任务资源为空，无法形成联盟",
+      type:"error"
+    });
+    return;
+  }
+  let res=await request({
     url:"/coalition/allocation",
     method:"post",
     params:{
-      taskId:task.id
+      taskId:task.id,
+      taskType:task.taskType
     },
     data:task.resource
   })
-  ElMessage({
-    type: 'success',
-    message: "联盟形成成功，联盟编号为："+res
+  if(res==-1)
+  {
+    ElMessageBox.alert("联盟形成失败，系统资源不足", '任务'+task.id, {
+      confirmButtonText: '确认',
+      callback: () => {
+
+      },
+    })
+    return;
+  }
+  ElMessageBox.alert("联盟形成成功，联盟编号为："+res, '任务'+task.id, {
+    confirmButtonText: '确认',
+    callback: () => {
+
+    },
   })
   loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
   getList();
@@ -372,6 +425,7 @@ function cancel() {
 
 // 表单重置
 function reset() {
+  productName.value = "";
   form.value = {
     id: null,
     name: null,

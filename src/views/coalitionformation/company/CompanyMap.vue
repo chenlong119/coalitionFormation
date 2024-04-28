@@ -61,21 +61,15 @@ let convertData = function (data) {
 
 const initChart = async () => {
   chartInstance = echarts.init(map.value);
-  // const res = await axios.get('/src/assets/chain.json');
   echarts.registerMap('china', mapData);
   mapData.features.forEach(function (item) {
     geoCoordMap[item.properties.name] = item.properties.cp;
   });
   const initOption = {
-    // title: {
-    //   text: name_title,
-    //   x: 'center',
-    //   textStyle: {
-    //     color: nameColor,
-    //     fontFamily: name_fontFamily,
-    //     fontSize: name_fontSize
-    //   }
-    // },
+    title: {
+      text: name_title,
+      x: 'center',
+    },
     geo: {
       type: 'map',
       map: 'china',
@@ -249,11 +243,11 @@ onMounted(() => {
 
 <template>
   <el-card shadow="hover">
-      <template #header style="text-align: center">
-        <div style="text-align: center">
-          <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>
-        </div>
-    </template>
+<!--      <template #header style="text-align: center">-->
+<!--        <div style="text-align: center">-->
+<!--          <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>-->
+<!--        </div>-->
+<!--    </template>-->
     <div ref="map" style="height: 540px; width:100%;"></div>
   </el-card>
 </template>

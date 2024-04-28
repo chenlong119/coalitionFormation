@@ -22,7 +22,7 @@ const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
 const layere3 = layers3 + height;
 
-let name_title = "多重产业链网络中企业关系图"
+let name_title = "多重产业链网络企业关系图"
 let baseOption = {
   graphic: [
     {
@@ -114,7 +114,7 @@ const drawRelationShip = async () => {
     url: '/graph/getedges',
     method: 'get',
     params:{
-      linkType:1
+      linkType:type
     }
   });
   links.forEach((link) => {
@@ -225,14 +225,14 @@ onMounted(() => {
 
 <template>
   <el-card shadow="hover">
-    <template #header style="text-align: center">
-      <div style="text-align: center">
-        <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>
-      </div>
-    </template>
+<!--    <template #header style="text-align: center">-->
+<!--      <div style="text-align: center">-->
+<!--        <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>-->
+<!--      </div>-->
+<!--    </template>-->
     <div style="margin-bottom: 10px">
       <span style="margin-right: 10px;font-size: 16px">当前阶段:</span>
-      <el-select v-model="companyStage" placeholder="请选择企业类型" clearable @change="handleStageChange">
+      <el-select v-model="companyStage" placeholder="请选择企业类型" clearable @change="handleStageChange" style="width: 120px;">
         <el-option
             v-for="dict in chain_stage"
             :key="dict.value"
@@ -240,6 +240,7 @@ onMounted(() => {
             :value="dict.value"
         />
       </el-select>
+      <span style="font-weight: 800;font-size: 18px;margin-left: 150px">{{name_title}}</span>
     </div>
     <div class="relationChart" ref="multiChart">
     </div>
