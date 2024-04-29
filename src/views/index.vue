@@ -8,7 +8,7 @@
           <div class="middleCenter">
             <dv-decoration-11
                 class="dec-11">
-              {{ title }}
+              <span>{{ title }}</span>
             </dv-decoration-11>
           </div>
           <dv-decoration-8
@@ -98,7 +98,7 @@ const handleReLoginRegular=()=>{
   });
 }
 const index = ref(null);
-const title = "多重产业链企业群协同系统"
+const title = "产业链企业群协同与群智涌现系统"
 const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 let height;
 let width;
@@ -145,7 +145,7 @@ const handleTime = () => {
 
       .dv-dec-10 {
         width: 25%;
-        height: 10px;
+        height: 5px;
 
         &.reverse {
           transform: rotate(180deg);
@@ -154,7 +154,7 @@ const handleTime = () => {
 
       .middle {
         display: flex;
-        width: 70%;
+        width: 80%;
 
         .dv-dec-8 {
           width: 25%;
@@ -162,28 +162,18 @@ const handleTime = () => {
         }
 
         .middleCenter {
-          width: 70%;
+          width: 90%;
           position: relative;
           color: #fff;
 
           .dec-11 {
-            width: 90%;
+            width: 100%;
             height: 60px;
             font-size: 35px;
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-          }
-
-          .dec-6 {
-            height: 10px !important;
-            width: 50%;
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
           }
         }
       }
@@ -196,7 +186,7 @@ const handleTime = () => {
       padding: 0 5px;
       color: #fff;
       font-size: 25px;
-      height: 7%;
+      height:70px;
 
       .leftBox {
         width: 60%;

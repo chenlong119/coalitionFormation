@@ -22,7 +22,7 @@ onMounted(() => {
       {
         name: '任务产业链分布情况',
         type: 'pie',
-        radius: [40, 160],
+        radius: [30, 140],
         center: ['50%', '50%'],
         roseType: 'area',
         itemStyle: {

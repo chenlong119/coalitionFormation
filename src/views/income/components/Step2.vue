@@ -70,7 +70,7 @@
         :min-width="10"
       />
       <el-table-column
-        prop="category"
+        prop="chainName"
         label="所处产业链"
         align="center"
         :min-width="15"
@@ -268,7 +268,7 @@ const companyForm = ref({
   companyId: -1,
   name: "",
   field: "",
-  category: "",
+  chainName: "",
   marketShare: -1,
   marketIncrease: -1,
   turnover: -1,
@@ -292,7 +292,7 @@ const initialNewCompany = reactive({
   companyId: "",
   name: "",
   field: "",
-  category: "",
+  chainName: "",
   marketShare: -1,
   marketIncrease: -1,
   turnover: -1,
@@ -315,7 +315,7 @@ const newCompany = reactive({
   companyId: "",
   name: "",
   field: "",
-  category: "",
+  chainName: "",
   marketShare: -1,
   marketIncrease: -1,
   turnover: -1,
@@ -335,12 +335,23 @@ onMounted(() => {
   // 调用API接口，获取所有的企业id和名称
   getAllCompany()
     .then((response) => {
+      
       response.forEach((item) => {
+        let fieldText = "";
+        if (item.field === "1") {
+          fieldText = "原料供应";
+        } else if (item.field === "2") {
+          fieldText = "零件生产";
+        } else if (item.field === "3") {
+          fieldText = "整机组装";
+        } else if (item.field === "4") {
+          fieldText = "销售和回收";
+        }
         allCompany.push({
           companyId: item.companyId,
           name: item.name,
-          field: item.field,
-          category: item.category,
+          field: fieldText,
+          chainName: item.chainName,
           marketShare: item.marketShare,
           marketIncrease: item.marketIncrease,
           turnover: item.turnover,
@@ -398,7 +409,7 @@ const editNode = (row) => {
     companyId: -1,
     name: "",
     field: "",
-    category: "",
+    chainName: "",
     marketShare: -1,
     marketIncrease: -1,
     turnover: -1,
@@ -575,7 +586,7 @@ const addNode = () => {
   );
   if (company) {
     newCompany.field = company.field;
-    newCompany.category = company.category;
+    newCompany.chainName = company.chainName;
     newCompany.marketShare = company.marketShare;
     newCompany.marketIncrease = company.marketIncrease;
     newCompany.turnover = company.turnover;

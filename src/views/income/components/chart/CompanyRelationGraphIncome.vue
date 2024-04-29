@@ -108,40 +108,28 @@ const allocateSpace = (nodes) => {
 
 const drawRelationShip = async () => {
   const nodes = await request({
-    url: '/home/getnodes',
+    url: '/income/manage/getAllNode',
     method: 'get'
   });
   const links = await request({
-    url: '/home/getlinks',
+    url: '/income/manage/getAllLink',
     method: 'get'
   });
 
+  //将node和link的字段名进行转换，以符合echarts的要求
   nodes.forEach((node) => {
-    if (node.layer_id != 3) {
-      let temp = nodes.filter(item => {
-        return item.id === node.id && item.layer_id > node.layer_id;
-      })
-      if (temp.length > 0) {
-        links.push({
-          source: node.id + " " + node.layer_id,
-          target: temp[0].id + " " + temp[0].layer_id,
-          lineStyle: {
-            width: 4,
-            curveness: 0.2,
-            type: 'dotted'
-          },
-        })
-      }
-    }
-  });
-  nodes.forEach((node) => {
-    node.id = node.id + " " + node.layer_id;  //节点分层
+    node.id = node.locationId  //节点id(必须有一个id字段，用于画图)
     node.symbolSize = 30;
-    node.category = node.layer_id - 1;  //产业链的类别
   })
-  const node_l1 = nodes.filter(node => node.layer_id === 1);
-  const node_l2 = nodes.filter(node => node.layer_id === 2);
-  const node_l3 = nodes.filter(node => node.layer_id === 3);
+    links.forEach((link) => {
+    link.source = link.sourceLocation
+    link.target = link.targetLocation
+  })
+
+  //随机化节点的位置 
+  const node_l1 = nodes.filter(node => node.layerRelation=== 1);
+  const node_l2 = nodes.filter(node => node.layerRelation=== 2);
+  const node_l3 = nodes.filter(node => node.layerRelation === 3);
   allocateSpace(node_l1);
   allocateSpace(node_l2);
   allocateSpace(node_l3);
@@ -154,36 +142,43 @@ const drawRelationShip = async () => {
   });
   let node_all = node_l1.concat(node_l2).concat(node_l3);
 
+
   const relationOption = {
     tooltip: {
       show: true,
       trigger: "item",
       formatter: function (params) {
         if (params.dataType === "node") {
-          var id = params.data.id;
+          var locationId = params.locationId;
+          var companyId = params.data.companyId;
           var name = params.name;
-          var company_type = params.data.company_type;
-          var chain_name = params.data.chain_name;
+          var field = params.data.field;
+          var layerId = params.data.layerId;
+          var chainName;
+          if (layerId == 1) chainName = "洗衣机产业链";
+          else if (layerId == 2) chainName = "空调产业链";
+          else if (layerId== 3) chainName = "汽车产业链";
+          else chainName = "冰箱产业链";
           return (
-            "id: " +
-            id +
+            "企业ID: " +
+            companyId +
             "<br/>" +
             "企业：" +
             name +
             "<br/>" +
             "所处领域：" +
-            company_type +
+            field +
             "<br/>" +
             "所处产业链: " +
-            chain_name +
+            chainName +
             "<br/>"
           );
         } else if (params.dataType === "edge") {
-          var layer = params.data.layer;
+          var layer = params.data.layerRelation;
           var relation;
           if (layer == 1) relation = "竞争关系";
           else if (layer == 2) relation = "供应关系";
-          else if (layer == 3) relation = "合作关系";
+          else if (layer== 3) relation = "合作关系";
           else relation = "同一企业";
           return (
             "连接关系：" +
@@ -206,14 +201,24 @@ const drawRelationShip = async () => {
         data: node_all,
         links: links,
         roam: false,
-        categories: [{
-          name: '家电产业链'
+        categories: [
+          {
+          name: '竞争关系',
+          itemStyle: {
+            color: 'red', 
+          },
         },
         {
-          name: '汽车产业链'
+          name: '供应关系',
+          itemStyle: {
+            color: 'blue', 
+          },
         },
         {
-          name: '电子产业链'
+          name: '合作关系',
+          itemStyle: {
+            color: 'green', 
+          },
         }],
 
         label: {
@@ -228,7 +233,7 @@ const drawRelationShip = async () => {
           width: 2.5,
           curveness: 0.1
         },
-
+        
         emphasis: {
           focus: "adjacency", //当鼠标移动到节点上，突出显示节点以及节点的边和邻接节点，'adjacency' 表示只突出显示节点以及节点的边
           lineStyle: {
@@ -239,6 +244,7 @@ const drawRelationShip = async () => {
         },
       },
     ],
+
     legend: [
       {
         left: "60px",

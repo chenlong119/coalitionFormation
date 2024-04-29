@@ -105,7 +105,12 @@
 <script setup>
 import {computed, onMounted, reactive, ref} from 'vue'
 import * as echarts from 'echarts'
-import {getAllCompanyAndLink, getAllCompanyWithoutLocation, getGroupInfo} from "@/api/datafusion/test";
+import {
+  getAllCompanyAndLink,
+  getAllCompanyWithoutLocation,
+  getGroupInfo,
+  searchSingleCompanyByName
+} from "@/api/datafusion/test";
 
 const formulaVisible = ref(false)
 const singleCompanyForm = reactive({
@@ -155,7 +160,8 @@ const renderPieChart = async () => {
       // 查找对应团体的企业信息
       const groupInfo = groupData.value.find(group => group.name === params.name);
       if (groupInfo) {
-        return `团体${params.name}企业数量: ${params.value} (${params.percent}%)<br>企业名单：${groupInfo.list}<br>团体特征：${groupInfo.describe}`;
+        const formattedList = groupInfo.list.split(',').join('<br>');
+        return `团体${params.name}企业数量: ${params.value} (${params.percent}%)<br>企业名单：${formattedList}`;
       } else {
         return `${params.id}: ${params.value} (${params.percent}%)`;
       }
@@ -349,11 +355,13 @@ function showGroupFeatures() {
 
 function searchSingleCompany() {
   const name = singleCompanyForm.companyName;
-  getAllCompanyWithoutLocation().then(response => {
-    let data = response.nodes;
-    tableData2.filterData = data.filter(item => item.name == name);
-    //console.log(tableData.filterData)
-  })
+  searchSingleCompanyByName(name).then(response =>{
+        tableData2.filterData = response.nodes;
+      })
+  // getAllCompanyWithoutLocation().then(response => {
+  //   let data = response.nodes;
+  //   tableData2.filterData = data.filter(item => item.name == name);
+  // })
   currentPage.value = 1;
 }
 

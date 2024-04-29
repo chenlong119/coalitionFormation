@@ -64,3 +64,11 @@ export function getGroupInfo() {
         method: 'get',
     })
 }
+
+export function searchSingleCompanyByName(name){
+    return request({
+        url: '/dataFusion/searchByName',
+        method: 'get',
+        params: { name }
+    })
+}

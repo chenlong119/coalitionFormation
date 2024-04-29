@@ -20,8 +20,8 @@
             <span style="font-weight: bold">{{ store.companyInfo.field }}</span>
           </el-form-item>
 
-          <el-form-item label="所处产业链：" prop="nodeCategory">
-            <span style="font-weight: bold">{{ store.companyInfo.category }}</span>
+          <el-form-item label="所处产业链：" prop="nodeChainName">
+            <span style="font-weight: bold">{{ store.companyInfo.chainName }}</span>
           </el-form-item>
 
           <el-row :gutter="10">

@@ -100,6 +100,15 @@
         <el-row>
           <el-card class="card" style="width:100%; height: 450px">
             <template #header><span style="font-size: 20px; font-weight: bold;">任务价值统计图</span></template>
+            <span style="margin-right: 10px;font-size: 16px">当前产业链:</span>
+            <el-select  placeholder="请选择产业链" style="width:150px" @change="handleStageChange" v-model="chainType">
+              <el-option
+                  v-for="dict in chain"
+                  :key="dict.value"
+                  :label="dict.label"
+                  :value="dict.value"
+              />
+            </el-select>
               <div class="taskBar" ref="taskBar"></div>
           </el-card>
         </el-row>
@@ -116,7 +125,7 @@ import useLoadingStore from "@/store/modules/loading.js";
 import useTaskStore from "@/store/modules/task.js";
 import * as echarts from "echarts";
 // import _ from "lodash";
-import {onMounted, reactive, ref, nextTick} from 'vue';
+import {onMounted, reactive, ref, nextTick, getCurrentInstance} from 'vue';
 import {
   runGeneticAlgorithm,
   getActiveTasks,
@@ -131,11 +140,30 @@ import {
 const taskBar = ref();
 let chartInstance = null;
 let taskStore=useTaskStore();
+const chainType=ref("洗衣机产业链")
+const {proxy}=getCurrentInstance()
+const { chain } = proxy.useDict('chain');
+const getType=()=>{
+  if(chainType.value==="洗衣机产业链")
+    return 1;
+  else
+    return chainType.value;
+}
+const props=defineProps(['chainType'])
+watch(()=>props.chainType,(val)=>{
+  getTaskStatus()
+})
+const chains=['洗衣机产业链','空调产业链','汽车产业链']
+const handleStageChange=()=>{
+  drawTaskBar()
+}
 const drawTaskBar=async ()=>{
+  let type=chainType.value==="洗衣机产业链"?1:chainType.value
   taskStore.tasks = await request({
     url: "/coalition/formation/getChainTask",
+    method: 'get',
     params:{
-      chainId:1
+      chainId:type
     }
   });
   let res = taskStore.tasks;
@@ -722,6 +750,11 @@ const draw=async ()=>{
     data.push(Math.round(Math.random() * 30))
   }
   let option = {
+    grid:{
+      containLabel: true,
+      top:0,
+      left:0
+    },
     xAxis: {
       max: 'dataMax'
     },
@@ -1023,6 +1056,27 @@ function createPieChart(chartContainer, data) {
     series: [
       {
         type: 'pie',
+        label: {
+          normal: {
+            show: true,
+            formatter: function (params) {
+              let name = params.data.name;
+              if(name.length<=3)
+              {
+                return name;
+              }
+              else
+              {
+                return name.slice(0,3)+"\n"+name.slice(4,name.length);
+              }
+            }
+          }
+        },
+        labelLine:{
+          normal:{
+            show:true
+          }
+        },
         data: data.map(item => ({value: item.competitionNum, name: item.modeName})),
         emphasis: {
           itemStyle: {
@@ -1045,7 +1099,7 @@ function createPieChart(chartContainer, data) {
 }
 .taskBar{
   width: 100%;
-  height: 380px;
+  height: 350px;
 }
 .star-rating {
   display: inline-block;

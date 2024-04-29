@@ -91,7 +91,18 @@ const getTaskStatus = async () => {
         symbolSize: 50,
         roam: false,
         label: {
-          show: true
+          show: true,
+          formatter:function(params){
+            let name = params.data.name;
+            if(name.length<=5)
+            {
+              return name;
+            }
+            else
+            {
+              return name.slice(0,5)+"\n"+name.slice(4,name.length);
+            }
+          }
         },
         categories,
         edgeSymbol: ['circle', 'arrow'],
