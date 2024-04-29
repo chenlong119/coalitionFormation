@@ -60,7 +60,7 @@
                 align="center"
               />
               <el-table-column
-                prop="category"
+                prop="chainName"
                 label="所处产业链"
                 :min-width="15"
                 align="center"
@@ -217,11 +217,11 @@ import {
 } from "vue";
 import * as echarts from "echarts"; //引入echarts
 import CompanyRelationGraphIncome from "./chart/CompanyRelationGraphIncome.vue"
-import CompanyRelationGraph from "../../dashboard/components/multilayer/CompanyRelationGraph.vue"
+// import CompanyRelationGraph from "../../dashboard/components/multilayer/CompanyRelationGraph.vue"
 
 import {
-  getAllCompany,
-  getCompanyById,
+  // getAllCompany,
+  // getCompanyById,
   getRelatedCompany,
   getAllNode,
   getAllLink,
@@ -252,9 +252,10 @@ onMounted(async () => {
   await getCompanyNow()
     .then((response) => {
       companyInfo.companyId = response.companyId
+      companyInfo.layerId = response.layerId
+      companyInfo.chainName = response.chainName
       companyInfo.name = response.name
       companyInfo.field = response.field
-      companyInfo.category = response.category
       companyInfo.marketShare = formatPercentage(response.marketShare)
       companyInfo.marketIncrease = formatPercentage(response.marketIncrease)
       companyInfo.turnover = formatPercentage(response.turnover)
@@ -263,7 +264,6 @@ onMounted(async () => {
       companyInfo.averageRoi = formatPercentage(response.averageRoi)
       companyInfo.liability = response.liability
       companyInfo.ownerEquity = response.ownerEquity
-      // Object.assign(companyInfo, response);
       store.companyInfo = companyInfo;
     })
     .catch((error) => {
@@ -274,11 +274,23 @@ onMounted(async () => {
     const relatedCompanies = await getRelatedCompany(companyInfo.companyId);
     relatedCompanyList.splice(0);
     relatedCompanies.forEach((item) => {
+      let fieldText = "";
+      if (item.field === "1") {
+        fieldText = "原料供应";
+      } else if (item.field === "2") {
+        fieldText = "零件生产";
+      } else if (item.field === "3") {
+        fieldText = "整机组装";
+      } else if (item.field === "4") {
+        fieldText = "销售和回收";
+      }
+
       relatedCompanyList.push({
         companyId: item.companyId,
+        layerId: item.layerId,
+        chainName: item.chainName,
+        field: fieldText,
         name: item.name,
-        field: item.field,
-        category: item.category,
         marketShare: formatPercentage(item.marketShare),
         marketIncrease: formatPercentage(item.marketIncrease),
         turnover: formatPercentage(item.turnover),
@@ -536,7 +548,7 @@ const dynamicLoading = (relatedNode, selectedCompanyInfo, relatedLink) => {
         companyId: node.companyId,
         name: node.name,
         field: node.field,
-        category: node.category,
+        chainName: node.chainName,
         layer: node.layer,
         x: node.locationX,
         y: node.locationY,
@@ -601,7 +613,7 @@ const dynamicLoading = (relatedNode, selectedCompanyInfo, relatedLink) => {
         formatter: function (params) {
           if (params.dataType === "node") {
             const nodeData = params.data;
-            return "企业ID: " + nodeData.companyId + '<br/>' + "企业名称：" + nodeData.name + '<br/>' + "所处领域：" + nodeData.field + '<br/>' + "所处产业链：" + nodeData.category;
+            return "企业ID: " + nodeData.companyId + '<br/>' + "企业名称：" + nodeData.name + '<br/>' + "所处领域：" + nodeData.field + '<br/>' + "所处产业链：" + nodeData.chainName;
           }
         },
       },
