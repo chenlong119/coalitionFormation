@@ -151,8 +151,10 @@ watch(() => loadingStore.isloading, (newval) => {
     loadingStore.isloading = false;
   }
 })
-onMounted(() => {
-  multiChartInstance = echarts.init(multiChart.value);
+
+let name_title = "多重产业链网络企业关系图";
+
+const initChart=()=>{
   const lb = 0;
   const lt = 30;
   const height = 120;
@@ -169,8 +171,6 @@ onMounted(() => {
   const layere2 = layers2 + height;
   const layers3 = layere2 + gap;
   const layere3 = layers3 + height;
-
-  let name_title = "多重产业链网络企业关系图"
   let baseOption = {
     graphic: [
       {
@@ -224,6 +224,11 @@ onMounted(() => {
     ],
   };
   multiChartInstance.setOption(baseOption);
+}
+
+onMounted(() => {
+  multiChartInstance = echarts.init(multiChart.value);
+  initChart();
   drawRelationShip();
 })
 </script>

@@ -223,10 +223,6 @@ onMounted(() => {
           }
         },
       },
-      legend: {
-        left: 0,
-        top: 0,
-      },
 
       series: [
         {
