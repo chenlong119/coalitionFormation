@@ -6,20 +6,12 @@ const coalitionCompany = ref(null);
 let chartInstance=null;
 const draw=async ()=>{
   let companyList=await request({
-    url:"/company/show/getall"
+    url:"/company/show/getallcoalition"
   })
   const data=[];
   let categories=[];
   companyList.forEach(item=>{
-    let name="";
-    if(item.coalitionId==0)
-    {
-      name="空闲";
-    }
-    else
-    {
-      name="联盟"+item.coalitionId;
-    }
+    let  name="联盟"+item.coalitionId;
     if(categories.indexOf(name)===-1)
     {
       categories.push(name);
@@ -37,13 +29,19 @@ const draw=async ()=>{
       })
     }
   })
+  data.sort((d1,d2)=>
+    d2.value-d1.value
+  )
   let option = {
     title:{
       text:"企业分布图",
       left:"center"
     },
     tooltip: {
-      trigger: 'item'
+      trigger: 'item',
+      formatter:function (params){
+       return params.data.name+"中的企业个数为："+params.data.value;
+      }
     },
     legend: {
       top: '10%',
@@ -73,7 +71,7 @@ const draw=async ()=>{
         labelLine: {
           show: false
         },
-        data
+        data:data.slice(0,6)
       }
     ]
   };

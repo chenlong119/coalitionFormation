@@ -263,7 +263,10 @@ import request from "@/utils/request.js";
 import ResourceSetting from "@/views/coalitionformation/common/ResourceSetting.vue";
 import {ElMessage, ElMessageBox} from "element-plus";
 import useLoadingStore from "@/store/modules/loading.js";
+import useTaskStore from "@/store/modules/task.js";
 
+
+const taskStore=useTaskStore();
 const resourceSetting = ref(null);
 
 const clear = () => {
@@ -401,6 +404,7 @@ const coalitionformation=async (task)=>{
     },
   })
   loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
+  loadingStroe.taskId=task.id;
   getList();
 }
 /** 查询任务信息列表 */
@@ -480,7 +484,6 @@ function handleUpdate(row) {
     title.value = "修改任务信息";
   });
 }
-
 /** 提交按钮 */
 function submitForm() {
   proxy.$refs["formationRef"].validate(valid => {
@@ -495,6 +498,7 @@ function submitForm() {
         addFormation(form.value).then(response => {
           proxy.$modal.msgSuccess("新增成功");
           open.value = false;
+          taskStore.isAddTask=!taskStore.isAddTask;
           getList();
         });
       }
@@ -508,6 +512,7 @@ function handleDelete(row) {
   proxy.$modal.confirm('是否确认删除任务信息编号为"' + _ids + '"的数据项？').then(function () {
     return delFormation(_ids);
   }).then(() => {
+    taskStore.isAddTask=!taskStore.isAddTask;
     getList();
     proxy.$modal.msgSuccess("删除成功");
   }).catch(() => {

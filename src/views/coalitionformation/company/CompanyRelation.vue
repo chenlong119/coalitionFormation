@@ -232,7 +232,7 @@ onMounted(() => {
 <!--    </template>-->
     <div style="margin-bottom: 10px">
       <span style="margin-right: 10px;font-size: 16px">当前阶段:</span>
-      <el-select v-model="companyStage" placeholder="请选择企业类型" clearable @change="handleStageChange" style="width: 120px;">
+      <el-select v-model="companyStage" placeholder="请选择企业类型"  @change="handleStageChange" style="width: 120px;">
         <el-option
             v-for="dict in chain_stage"
             :key="dict.value"

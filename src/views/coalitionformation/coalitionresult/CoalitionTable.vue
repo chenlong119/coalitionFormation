@@ -83,15 +83,23 @@
             <div>
               <h3>当前任务：{{taskName}}</h3>
             </div>
-            <el-table :data="companyList">
-              <el-table-column label="企业编号" align="center" prop="id" />
-              <el-table-column label="企业名称" align="center" prop="name" />
+            <el-table :data="pageCompany">
+              <el-table-column label="企业编号" align="center" prop="companyId" />
+              <el-table-column label="企业名称" align="center" prop="companyName" />
               <el-table-column label="所属产业链" align="center">
                 <template #default="scope">
                   <span>{{chainName[scope.row.layerId-1]}}</span>
                 </template>
               </el-table-column>
             </el-table>
+            <div class="myPagination">
+              <el-pagination hide-on-single-page
+                             background
+                             layout="prev, pager, next" :total="totalPage"
+                             :page-size="myPageSize"
+                             @current-change="handlePageChange"
+              />
+            </div>
           </el-col>
           <el-col :span="10">
             <CoalitionPie :coalition-company="companyList"/>
@@ -138,9 +146,16 @@ const getStateName=(row)=>{
   })
   return label;
 }
+let totalPage=0;
+const myPageSize=4;
+let currentPage=1;
+let pageCompany=ref([]);
 const handleCoalition=async (row)=>{
   coalitionDialog.value=true
- companyList.value=row.company
+  // allCompanyInCoalition=row.company;
+  totalPage=row.company.length;
+ companyList.value=row.company;
+ pageCompany.value=row.company.slice((currentPage-1)*myPageSize,myPageSize);
   const res=await request({
     url:"/coalition/formation/getone",
     params:{
@@ -150,6 +165,11 @@ const handleCoalition=async (row)=>{
   if(res.name!=null) {
     taskName.value = res.name;
   }
+}
+
+const handlePageChange=(currentPage)=>{
+  let start=currentPage==1?(currentPage-1)*myPageSize:(currentPage-1)*myPageSize-1;
+  pageCompany.value=companyList.value.slice(start,myPageSize);
 }
 const data = reactive({
   form: {},
@@ -215,5 +235,12 @@ getList();
 .app-container
 {
   height: 480px;
+}
+
+.myPagination
+{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

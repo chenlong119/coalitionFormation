@@ -1,17 +1,16 @@
 <script setup>
 import * as echarts from 'echarts';
-import userTaskStore from "@/store/modules/task.js";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 const dynamicBar=ref(null);
 let barChart=null;
-const taskStore=userTaskStore();
 const data = [];
 const draw=async ()=>{
-  taskStore.tasks = await request({
+  let res = await request({
     url: "/coalition/formation/getall"
   });
- let taskList=taskStore.tasks.filter(item=>item.taskStatus===1);
+ let taskList=res.filter(item=>item.taskStatus===1);
+ taskList=taskList.slice(0,6);
  let categories=taskList.map(item=>item.name);
 if(categories.length==0)
 {
@@ -34,6 +33,7 @@ if(categories.length==0)
       containLabel:true
     },
     xAxis: {
+      min:0,
       max: 'dataMax'
     },
     yAxis: {
@@ -42,7 +42,7 @@ if(categories.length==0)
       inverse: true,
       animationDuration: 300,
       animationDurationUpdate: 300,
-      max: 5
+      max: 5 // 固定坐标轴的最大值
     },
     series: [
       {
@@ -83,7 +83,7 @@ function run() {
       data[i] += Math.round(Math.random() * 15);
       if(data[i]>=100)
       {
-        data[i]=Math.round(Math.random()*30);
+        data[i]=Math.round(Math.random()*20);
       }
     } else {
       data[i] += Math.round(Math.random() * 30);

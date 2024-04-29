@@ -1,7 +1,19 @@
 <script setup>
 import * as echarts from 'echarts';
-import useTaskStore from "@/store/modules/task.js";
 import request from "@/utils/request.js";
+import useLoadingStore from "@/store/modules/loading.js";
+import useTaskStore from "@/store/modules/task.js";
+
+const loadingStore = useLoadingStore();
+const taskStore=useTaskStore();
+
+watch(() => loadingStore.coalitionloading, () => {
+  drawTaskStatusPie();
+})
+
+watch(() => taskStore.isAddTask, () => {
+  drawTaskStatusPie();
+})
 
 const taskStatusPie = ref();
 let chartInstance = null;

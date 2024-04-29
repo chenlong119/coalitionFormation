@@ -4,6 +4,9 @@ import taskData from "@/assets/task_xyj.json"
 import taskKt from '@/assets/task_kt.json'
 import taskCar from '@/assets/task_car.json'
 import request from "@/utils/request.js";
+import useLoadingStore from "@/store/modules/loading.js";
+
+const loadingStore = useLoadingStore();
 
 const props=defineProps(['chainType'])
 const taskGraph = ref(null);
@@ -12,6 +15,10 @@ let ktInstance = null;
 let carInstance = null;
 watch(()=>props.chainType,(val)=>{
   getTaskStatus()
+})
+watch(() => loadingStore.coalitionloading, () => {
+  if(loadingStore.taskId<=57)
+    getTaskStatus()
 })
 const getTaskStatus = async () => {
   const statusArr = ['未分配','已分配','已完成','执行失败']
