@@ -82,6 +82,6 @@ export default {
 
 .chart {
   width: 100%;
-  height: 280px;
+  height: 100%;
 }
 </style>

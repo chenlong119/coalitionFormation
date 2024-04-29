@@ -240,11 +240,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <!--      <template #header style="text-align: center">-->
-    <!--        <div style="text-align: center">-->
-    <!--          <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>-->
-    <!--        </div>-->
-    <!--    </template>-->
     <div ref="map" style="height: 100%; width:100%;"></div>
 </template>
 
