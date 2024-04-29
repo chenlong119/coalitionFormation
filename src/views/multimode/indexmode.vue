@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container" v-if="!showSecond">
+<!--  <div class="app-container" v-if="!showSecond">-->
     <el-row :gutter="20">
       <el-col :span="12">
         <el-row>
@@ -40,10 +40,8 @@
         </el-row>
         <el-row>
           <el-card class="card" style="width:100%; height: 450px" >
-            <template #header><span style="font-size: 20px; font-weight: bold;">多模式协同下企业关系图</span></template>
-
-            <div ref="multiChart" style="width:100%; height: 400px"/>
-
+            <template #header><span style="font-size: 20px; font-weight: bold;">任务完成率变化图</span></template>
+            <div class="dynamicBar" ref="dynamicBar"></div>
           </el-card>
         </el-row>
       </el-col>
@@ -101,18 +99,18 @@
         </el-row>
         <el-row>
           <el-card class="card" style="width:100%; height: 450px">
-            <template>
+            <template #header><span style="font-size: 20px; font-weight: bold;">任务价值统计图</span></template>
               <div class="taskBar" ref="taskBar"></div>
-            </template>
           </el-card>
         </el-row>
       </el-col>
     </el-row>
-  </div>
+<!--  </div>-->
 </template>
 
 <script setup>
 import { ElMessage, ElMessageBox, ElRate } from 'element-plus'
+import CoalitionDynamicBar from "@/views/coalitionformation/coalitionresult/CoalitionDynamicBar.vue";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 import useTaskStore from "@/store/modules/task.js";
@@ -127,11 +125,8 @@ import {
   modeShow,
   getAllScoreRecords,
 
-
-  fetchBusinessDirections,
-  fetchBusinessHistory,
-  fetchBusinessLocations,
 } from '@/api/multimode/faultyMachine';
+//cl 部分，左下角
 //cl 部分，右下角
 const taskBar = ref();
 let chartInstance = null;
@@ -155,7 +150,7 @@ const drawTaskBar=async ()=>{
   })
 
   let option = {
-    backgroundColor: "#0f375f",
+    backgroundColor: "#fcfcfc",
     tooltip: {
       trigger: "axis",
       axisPointer: {
@@ -172,7 +167,7 @@ const drawTaskBar=async ()=>{
     legend: {
       data: ["持续时长", "任务价值"],
       textStyle: {
-        color: "#ccc",
+        color: "#000000",
       },
     },
     grid:{
@@ -185,7 +180,7 @@ const drawTaskBar=async ()=>{
       data: category,
       axisLine: {
         lineStyle: {
-          color: "#ccc",
+          color: "#000000",
         },
       },
     },
@@ -193,7 +188,7 @@ const drawTaskBar=async ()=>{
       splitLine: { show: false },
       axisLine: {
         lineStyle: {
-          color: "#ccc",
+          color: "#000000",
         },
       },
     },
@@ -215,8 +210,8 @@ const drawTaskBar=async ()=>{
           normal: {
             barBorderRadius: 5,
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: "#14c8d4" },
-              { offset: 1, color: "#43eec6" },
+              { offset: 0, color: "#b5eef3" },
+              { offset: 1, color: "#cbefe7" },
             ]),
           },
         },
@@ -705,7 +700,103 @@ const fetchRunDataAndUpdateExceptionalTaskIds = async () => {
     console.error("Fetching run genetic algorithm data failed:", error);
   }
 };
+const dynamicBar=ref(null);
+let barChart=null;
+//const taskStore=userTaskStore();
+const data = [];
+const draw=async ()=>{
+  taskStore.tasks = await request({
+    url: "/coalition/formation/getall"
+  });
+  let taskList=taskStore.tasks.filter(item=>item.taskStatus===1);
+  let categories=taskList.map(item=>item.name);
+  if(categories.length==0)
+  {
+    for(let i=1;i<=6;i++)
+    {
+      categories.push("任务"+i);
+    }
+  }
+  for(let i=0;i<categories.length;i++)
+  {
+    data.push(Math.round(Math.random() * 30))
+  }
+  let option = {
+    xAxis: {
+      max: 'dataMax'
+    },
+    yAxis: {
+      type: 'category',
+      data: categories,
+      inverse: true,
+      animationDuration: 300,
+      animationDurationUpdate: 300,
+      max: 5
+    },
+    series: [
+      {
+        realtimeSort: true,
+        name: 'X',
+        type: 'bar',
+        data: data,
+        label: {
+          show: true,
+          position: 'right',
+          formatter:function(params){
+            return params.value+"%";
+          },
+          valueAnimation: true
+        }
+      }
+    ],
+    animationDuration: 0,
+    animationDurationUpdate: 3000,
+    animationEasing: 'linear',
+    animationEasingUpdate: 'linear'
+  };
+  barChart.setOption(option);
+}
+
+let timer=null;
+//const loadingStore=useLoadingStore();
+watch(()=>loadingStore.coalitionloading,()=>{
+  clearInterval(timer);
+  draw();
+  timer=setInterval(()=>{
+    run()
+  },3000);
+})
+function run() {
+  for (let i = 0; i < data.length; ++i) {
+    if (Math.random() > 0.6) {
+      data[i] += Math.round(Math.random() * 15);
+      if(data[i]>=100)
+      {
+        data[i]=Math.round(Math.random()*30);
+      }
+    } else {
+      data[i] += Math.round(Math.random() * 30);
+      if(data[i]>=100)
+      {
+        data[i]=Math.round(Math.random()*30);
+      }
+    }
+  }
+  barChart.setOption({
+    series: [
+      {
+        type: 'bar',
+        data
+      }
+    ]
+  });
+}
 onMounted(async () => {
+  barChart=echarts.init(dynamicBar.value)
+  draw();
+  setInterval(()=>{
+    run()
+  },3000)
   chartInstance= echarts.init(taskBar.value);
   drawTaskBar()
   try {
@@ -948,9 +1039,13 @@ function createPieChart(chartContainer, data) {
 </script>
 
 <style scoped>
+.dynamicBar{
+  width: 100%;
+  height: 430px;
+}
 .taskBar{
   width: 100%;
-  height: 475px;
+  height: 380px;
 }
 .star-rating {
   display: inline-block;
@@ -992,10 +1087,10 @@ function createPieChart(chartContainer, data) {
 
 .card {
   width: 100%;
-  border: 10px solid #ccc; /* 添加边框样式 */
-  border-radius: 8px; /* 可选：添加边框圆角 */
+  border: 1px solid #ccc; /* 添加边框样式 */
+  border-radius: 3px; /* 可选：添加边框圆角 */
   overflow: hidden; /* 防止边框溢出内容 */
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   position: relative;
 }
 
@@ -1031,7 +1126,7 @@ function createPieChart(chartContainer, data) {
   font-size: 14px; /* 调整字体大小 */
   position: absolute;
   left: 400px;
-  top: 220px;
+  top: 240px;
   background-color: #fff;
   padding: 8px; /* 内边距 */
   border: 2px solid #ccc;
