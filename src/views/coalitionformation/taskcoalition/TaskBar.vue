@@ -7,7 +7,10 @@ let chartInstance = null;
 let taskStore=useTaskStore();
 const drawTaskBar=async ()=>{
   taskStore.tasks = await request({
-    url: "/coalition/formation/getall"
+    url: "/coalition/formation/getChainTask",
+    params:{
+      chainId:1
+    }
   });
   let res = taskStore.tasks;
   let category = [];
@@ -20,7 +23,6 @@ const drawTaskBar=async ()=>{
     barData.push(item.val);
   })
 
-// option
   let option = {
     backgroundColor: "#0f375f",
     tooltip: {

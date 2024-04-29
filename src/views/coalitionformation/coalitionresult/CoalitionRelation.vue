@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue';
+import {getCurrentInstance, onMounted, ref} from 'vue';
 import * as echarts from "echarts";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
@@ -18,6 +18,9 @@ const layers2 = layere1 + gap;
 const layere2 = layers2 + height;
 const layers3 = layere2 + gap;
 const layere3 = layers3 + height;
+
+const {proxy} = getCurrentInstance();
+const {chain_stage} = proxy.useDict('chain_stage');
 
 let name_title = "联盟企业关系图"
 let baseOption = {
@@ -98,11 +101,17 @@ const allocateSpace = (nodes) => {
 const drawRelationShip = async () => {
   const nodes = await request({
     url: '/graph/getnodes',
-    method: 'get'
+    method: 'get',
+    params:{
+      companyType:companyStage.value==="原料供应"?1:companyStage.value
+    }
   });
   const links = await request({
     url: '/graph/getedges',
-    method: 'get'
+    method: 'get',
+    params:{
+      linkType:companyStage.value==="原料供应"?1:companyStage.value
+    }
   });
   links.forEach((link) => {
     link.source = link.source + " " + link.layer;
@@ -143,9 +152,11 @@ const drawRelationShip = async () => {
       node.category = categories.indexOf(name);
     }
   })
-  categories=categories.map(name =>{ return{
-    name
-  }})
+  categories = categories.map(name => {
+    return {
+      name
+    }
+  })
   const node_l1 = nodes.filter(node => node.layer_id === 1);
   const node_l2 = nodes.filter(node => node.layer_id === 2);
   const node_l3 = nodes.filter(node => node.layer_id === 3);
@@ -163,13 +174,15 @@ const drawRelationShip = async () => {
   const relationOption = {
     tooltip: {
       formatter: function (params) {
-        return params.data.name;
+        let cid=params.data.id?.split(" ")[0];
+        return "企业编号:"+cid+"</br>"+
+            "企业名称:"+params.data.name;
       }
     },
     legend: {
-      left: 0,
+      right: 0,
       top: 0,
-      orient:'vertical'
+      orient: 'vertical'
     },
     series: [
       {
@@ -193,8 +206,14 @@ const drawRelationShip = async () => {
   }
   multiChartInstance.setOption(relationOption);
 }
-const loadingStroe=useLoadingStore();
-watch(()=>loadingStroe.coalitionloading,()=>{
+
+let companyStage = ref("原料供应");
+const handleStageChange = () => {
+  drawRelationShip()
+}
+
+const loadingStroe = useLoadingStore();
+watch(() => loadingStroe.coalitionloading, () => {
   drawRelationShip();
 })
 onMounted(() => {
@@ -205,13 +224,39 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relationChart" ref="multiChart">
-  </div>
+    <el-card shadow="hover" class="chartCard">
+      <div class="selector">
+        <span style="margin-right: 10px;font-size: 16px">当前阶段:</span>
+        <el-select v-model="companyStage" placeholder="请选择企业类型"  @change="handleStageChange"
+                   style="width: 120px;">
+          <el-option
+              v-for="dict in chain_stage"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+          />
+        </el-select>
+      </div>
+    <div class="relationChart" ref="multiChart">
+    </div>
+    </el-card>
+
 </template>
 
 <style scoped lang="scss">
 .relationChart {
   width: 100%;
   height: 503px;
+}
+
+.chartCard {
+  position: relative;
+
+  .selector {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    z-index: 9;
+  }
 }
 </style>

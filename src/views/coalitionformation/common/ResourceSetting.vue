@@ -1,5 +1,6 @@
 <script setup>
 import request from "@/utils/request.js";
+import {ElMessage} from "element-plus";
 
 const props = defineProps(["ckey"])
 
@@ -13,7 +14,7 @@ if (isTask) {
   placeholder="范围[200,400]";
 } else {
   prefix = "企业";
-  placeholder="范围[50,150]";
+  placeholder="范围[100,150]";
 }
 const chainNames = ["洗衣机产业链", "空调产业链", "汽车产业链"]
 let chain = ref("");
@@ -98,13 +99,44 @@ const addResource = () => {
   })
 }
 const getResourceNameById = async (resource) => {
-  const r = await request({
-    url: "/resource/getone",
-    params: {
-      id: resource.id
+  if(isTask)
+  {
+    if(id.value==null||id.value==="")
+    {
+      ElMessage.error("请先输入任务编号");
+      return ;
     }
-  })
-  resource.name = r.name;
+    const r = await request({
+      url: "/resource/getone",
+      params: {
+        id: resource.id,
+        taskId: id.value
+      }
+    })
+    resource.name = r.name;
+  }
+  if(!isTask)
+  {
+    if(id.value==null||id.value==="")
+    {
+      ElMessage.error("请先输入任务编号");
+      return ;
+    }
+    if(chainId.value==null||chainId.value==="")
+    {
+      ElMessage.error("请先输入企业所属产业链编号");
+      return ;
+    }
+    const r = await request({
+      url: "/resource/getone",
+      params: {
+        id: resource.id,
+        companyId: id.value,
+        layerId: chainId.value
+      }
+    })
+    resource.name = r.name;
+  }
 }
 const addedDelete = (resource) => {
   const index = addedResource.value.indexOf(resource);
@@ -308,7 +340,7 @@ defineExpose({
     <el-form-item>
       <template v-for="(resource,index) in addedResource" :key="index">
         <el-row :gutter="5">
-          <el-col :span="3">
+          <el-col :span="2">
             <el-button link icon="Delete" @click="addedDelete(resource)"></el-button>
           </el-col>
           <el-col :span="7">
@@ -317,7 +349,7 @@ defineExpose({
           <el-col :span="7">
             <el-input v-model="resource.name" disabled></el-input>
           </el-col>
-          <el-col :span="7">
+          <el-col :span="8">
             <el-input v-model="resource.num" :placeholder="placeholder"></el-input>
           </el-col>
         </el-row>

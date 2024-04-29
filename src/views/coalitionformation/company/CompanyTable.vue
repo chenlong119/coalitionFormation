@@ -118,7 +118,7 @@
     <el-table v-loading="loading" :data="showList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="企业编号" align="center" prop="id"/>
-      <el-table-column label="企业名称" align="center" prop="name"/>
+      <el-table-column label="企业名称" align="center" prop="name" width="200"/>
       <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>
       <el-table-column label="企业类型" align="center" prop="companyType">
         <template #default="scope">
@@ -134,7 +134,7 @@
           <span v-else>暂无</span>
         </template>
       </el-table-column>
-      <el-table-column label="企业信誉" align="center" prop="rep"/>
+<!--      <el-table-column label="企业信誉" align="center" prop="rep"/>-->
       <el-table-column label="企业状态" align="center" prop="status">
         <template #default="scope">
           <el-tag :type="getType(scope.row.status)">
@@ -272,7 +272,7 @@ const getStatusNameByValue = (val) => {
 }
 
 const getType = (val) => {
-  const types = ['danger', 'primary', 'success'];
+  const types = ['danger', 'info', 'success'];
   return types[val];
 }
 const showList = ref([]);
@@ -323,7 +323,7 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 4,
+    pageSize: 3,
     name: null,
     layerId: null,
     status: null,

@@ -1,8 +1,6 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import * as echarts from 'echarts'
-//引入axios
-import axios from "axios";
 import mapData from "@/assets/chain.json";
 let name_title = "多重产业链网络中企业地理分布图"
 const map = ref(null);
@@ -98,14 +96,14 @@ const initChart = async () => {
       seriesIndex: [0],
       inRange: {
         // color: ['#3B5077', '#031525'] // 蓝黑
-        color: ['#ffc0cb', '#800080'] // 红紫
+        // color: ['#ffc0cb', '#800080'] // 红紫
         // color: ['#3C3B3F', '#605C3C'] // 黑绿
         // color: ['#0f0c29', '#302b63', '#24243e'] // 黑紫黑
         // color: ['#23074d', '#cc5333'] // 紫红
         // color: ['#00467F', '#A5CC82'] // 蓝绿
         // color: ['#1488CC', '#2B32B2'] // 浅蓝
         // color: ['#00467F', '#A5CC82'] // 蓝绿
-        // color: ['#00467F', '#A5CC82'] // 蓝绿
+        color: ['#00467F', '#A5CC82'] // 蓝绿
         // color: ['#00467F', '#A5CC82'] // 蓝绿
         // color: ['#00467F', '#A5CC82'] // 蓝绿
       }
@@ -242,14 +240,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-card shadow="hover">
-<!--      <template #header style="text-align: center">-->
-<!--        <div style="text-align: center">-->
-<!--          <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>-->
-<!--        </div>-->
-<!--    </template>-->
-    <div ref="map" style="height: 540px; width:100%;"></div>
-  </el-card>
+    <div ref="map" style="height: 100%; width:100%;"></div>
 </template>
 
 <style scoped lang="scss">

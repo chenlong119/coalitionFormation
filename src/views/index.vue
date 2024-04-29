@@ -196,7 +196,7 @@ const handleTime = () => {
       padding: 0 5px;
       color: #fff;
       font-size: 25px;
-      height: 6%;
+      height: 7%;
 
       .leftBox {
         width: 60%;

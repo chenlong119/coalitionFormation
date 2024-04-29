@@ -27,7 +27,7 @@ const getTaskStatus = async () => {
       name: item
     }
   });
- let res = await request({
+  let res = await request({
     url: "/coalition/formation/getChainTask",
     params: {
       chainId: props.chainType
@@ -50,15 +50,15 @@ const getTaskStatus = async () => {
     res=res.slice(0,data.length);
   }
   res.forEach((item, index) => {
-      data[index].category = item.taskStatus
-      data[index].coalitionId = item.coalitionId;
-    })
+    data[index].category = item.taskStatus
+    data[index].coalitionId = item.coalitionId;
+  })
   let option = {
-    title: {
-      text: '任务关系图',
-      left: 'center',
-      top: 0
-    },
+    // title: {
+    //   text: '任务关系图',
+    //   left: 'center',
+    //   top: 0
+    // },
     tooltip:{
       trigger:'item',
       formatter:function(params){
@@ -78,7 +78,10 @@ const getTaskStatus = async () => {
     },
     legend: {
       bottom: 0,
-      left: 0
+      left: 0,
+      textStyle: {
+        color: 'white' // 将图例字体颜色设置为白色
+      },
     },
     series: [
       {
