@@ -11,10 +11,10 @@ import CompanyMap from "@/views/coalitionformation/company/CompanyMap.vue";
       <company-table></company-table>
     </el-row>
     <el-row :gutter="10">
-      <el-col :span="12">
+      <el-col :span="13">
           <company-relation/>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="11">
           <company-map/>
       </el-col>
     </el-row>

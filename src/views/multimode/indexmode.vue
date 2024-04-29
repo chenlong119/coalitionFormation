@@ -750,6 +750,11 @@ const draw=async ()=>{
     data.push(Math.round(Math.random() * 30))
   }
   let option = {
+    grid:{
+      containLabel: true,
+      top:0,
+      left:0
+    },
     xAxis: {
       max: 'dataMax'
     },
@@ -1051,6 +1056,27 @@ function createPieChart(chartContainer, data) {
     series: [
       {
         type: 'pie',
+        label: {
+          normal: {
+            show: true,
+            formatter: function (params) {
+              let name = params.data.name;
+              if(name.length<=3)
+              {
+                return name;
+              }
+              else
+              {
+                return name.slice(0,3)+"\n"+name.slice(4,name.length);
+              }
+            }
+          }
+        },
+        labelLine:{
+          normal:{
+            show:true
+          }
+        },
         data: data.map(item => ({value: item.competitionNum, name: item.modeName})),
         emphasis: {
           itemStyle: {

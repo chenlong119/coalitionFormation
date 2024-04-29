@@ -5,10 +5,10 @@
         <LeftTop/>
       </dv-border-box-12>
     </el-col>
-    <el-col :span="12">
+    <el-col :span="11">
       <TopCenter/>
     </el-col>
-    <el-col :span="6">
+    <el-col :span="7">
       <dv-border-box-12 class="pd">
         <RightTop/>
       </dv-border-box-12>
