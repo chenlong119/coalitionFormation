@@ -25,7 +25,7 @@ export default {
         const lineChart = echarts.init(lineChartRef.value);
         const lineOption = {
           title: {
-            text: '近半年90分以上的企业数目',
+            text: '近半年80分以上的企业数目',
             x: 'center',
             textStyle: {
               fontSize: 16,
