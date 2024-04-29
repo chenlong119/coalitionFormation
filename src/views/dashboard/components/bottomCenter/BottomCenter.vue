@@ -65,7 +65,8 @@ const renderPieChart = async () => {
       // 查找对应团体的企业信息
       const groupInfo = groupData.value.find(group => group.name === params.name);
       if (groupInfo) {
-        return `团体${params.name}企业数量: ${params.value} (${params.percent}%)<br>企业名单：${groupInfo.list}`;
+        const formattedList = groupInfo.list.split(',').join('<br>');
+        return `团体${params.name}企业数量: ${params.value} (${params.percent}%)<br>企业名单：${formattedList}`;
       } else {
         return `${params.id}: ${params.value} (${params.percent}%)`;
       }
