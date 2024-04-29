@@ -1,5 +1,5 @@
 <template>
-  <Body :dec-id="3"  name="任务完成情况">
+  <Body :dec-id="3"  name="任务执行情况" icon="icon-report">
   <template #default>
     <!-- 4个主要的数据 -->
     <div class="main">
@@ -32,34 +32,33 @@ import Body from "@/views/dashboard/components/main/component/Body.vue";
 // 下层数据
 const dataArr = [
   {
-    number: 10,
+    number: 25,
     text: '今日完成总量'
   },
   {
-    number: 44,
+    number: 57,
     text: '总共完成数量'
   },
   {
-    number: 36,
+    number: 18,
     text: '正在执行数量'
   },
   {
-    number: 7,
+    number: 6,
     text: '未通过数量'
   }
 ]
 // 对应图标
 const iconFont = [
-  'icon-diagnose',
-  'icon-monitoring',
-  'icon-cloudupload',
-  'icon-clouddownload'
+  'icon-summary',
+  'icon-el-hg-icon-sum',
+  'icon-process',
+  'icon-a-PaperFail'
 ]
 const numberData = reactive([])
-let intervalInstance = null
+// let intervalInstance = null
 onMounted(() => {
   setData()
-  changeTiming()
 })
 
 const setData = () => {
@@ -77,21 +76,6 @@ const setData = () => {
     })
   })
 }
-
-const changeTiming = () => {
-  intervalInstance = setInterval(() => {
-    changeNumber()
-  }, 2000)
-}
-const changeNumber = () => {
-  numberData.forEach((item, index) => {
-    item.config.number[0] += ++index
-    item.config = {...item.config}
-  })
-}
-onUnmounted(() => {
-  clearInterval(intervalInstance)
-})
 </script>
 
 <style scoped lang="scss">
@@ -116,6 +100,7 @@ onUnmounted(() => {
       i {
         font-size: 20px;
         line-height: 30px;
+        font-weight: 800;
         color: #004d8c;
       }
     }

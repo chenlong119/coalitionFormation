@@ -1,6 +1,6 @@
 <template>
   <div class="box-card">
-    <Body :icon-name="'icon-laptop'" :dec-id="1" :name="'多粒度协同评估'">
+    <Body icon="icon-fengxianpinggu" :dec-id="1" name="多粒度协同评估">
     <div ref="lineChartRef" class="chart"></div>
     </Body>
   </div>

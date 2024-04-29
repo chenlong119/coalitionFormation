@@ -36,7 +36,9 @@ const initChart = () => {
     ],
     tooltip: {
       trigger: 'item',
-      formatter: '{a} <br/>{b} : {c} ({d}%)'
+      formatter: function(params){
+        return params.data.name+"需求数量："+params.data.value;
+      }
     },
     toolbox: {
       show: true
@@ -54,7 +56,6 @@ const initChart = () => {
     },
     series: [
       {
-        name: '通过率统计',
         type: 'pie',
         radius: [10, 50],
         roseType: 'area',
