@@ -65,7 +65,8 @@ const renderPieChart = async () => {
       // 查找对应团体的企业信息
       const groupInfo = groupData.value.find(group => group.name === params.name);
       if (groupInfo) {
-        return `团体${params.name}企业数量: ${params.value} (${params.percent}%)<br>企业名单：${groupInfo.list}`;
+        const formattedList = groupInfo.list.split(',').join('<br>');
+        return `团体${params.name}企业数量: ${params.value} (${params.percent}%)<br>企业名单：${formattedList}`;
       } else {
         return `${params.id}: ${params.value} (${params.percent}%)`;
       }
@@ -108,7 +109,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Body :dec-id="3" :name="'群智汇聚'" :icon-name="'icon-layer-group'">
+  <Body :dec-id="3" :name="'群智汇聚'" icon="icon-huiju">
   <!--  <div ref="chartref" style="height:100%"></div>-->
   <div id="pieChart" ref="pieChart" class="container"
        style="flex: 1 0 25%; height: 100%; background-color: #0f1325;">

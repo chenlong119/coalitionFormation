@@ -1,7 +1,19 @@
 <script setup>
 import * as echarts from 'echarts';
-import useTaskStore from "@/store/modules/task.js";
 import request from "@/utils/request.js";
+import useLoadingStore from "@/store/modules/loading.js";
+import useTaskStore from "@/store/modules/task.js";
+
+const loadingStore = useLoadingStore();
+const taskStore=useTaskStore();
+
+watch(() => loadingStore.coalitionloading, () => {
+  drawTaskStatusPie();
+})
+
+watch(() => taskStore.isAddTask, () => {
+  drawTaskStatusPie();
+})
 
 const taskStatusPie = ref();
 let chartInstance = null;
@@ -36,7 +48,7 @@ const drawTaskStatusPie = async () => {
     },
     legend: {
       left: 0,
-      top: 10,
+      bottom: 10,
       orient: 'vertical'
     },
     tooltip: {
@@ -47,7 +59,7 @@ const drawTaskStatusPie = async () => {
       {
         name: '任务状态分布',
         type: 'pie',
-        radius: '88%',
+        radius: '60%',
         center: ['55%', '55%'],
         label: {
           normal: {
@@ -82,6 +94,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .taskStatusPie {
   width: 100%;
-  height: 200px
+  height: 440px
 }
 </style>

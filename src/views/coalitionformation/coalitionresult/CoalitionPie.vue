@@ -30,7 +30,6 @@ const drawCoalitionPie = async () => {
       })
     }
   })
-  console.log(data)
   let option = {
     title:{
       text: '联盟内企业产业链分布图',

@@ -1,6 +1,24 @@
 <template>
   <div class="app-container table">
     <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="100px">
+      <el-form-item label="企业类型" prop="companyType">
+        <el-select v-model="queryParams.companyType" placeholder="请选择企业类型" clearable>
+          <el-option
+              v-for="dict in chain_stage"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="企业编号" prop="id">
+        <el-input
+            v-model="queryParams.id"
+            placeholder="请输入企业地址"
+            clearable
+            @keyup.enter="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="企业名称" prop="name">
         <el-input
             v-model="queryParams.name"
@@ -9,18 +27,10 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="企业地址" prop="address">
+      <el-form-item label="网络层编号" prop="layerId">
         <el-input
-            v-model="queryParams.address"
-            placeholder="请输入企业地址"
-            clearable
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="所属联盟编号" prop="groupId">
-        <el-input
-            v-model="queryParams.coalitionId"
-            placeholder="请输入所属联盟编号"
+            v-model="queryParams.layerId"
+            placeholder="请输入所属网络层编号"
             clearable
             @keyup.enter="handleQuery"
         />
@@ -108,10 +118,15 @@
     <el-table v-loading="loading" :data="showList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="企业编号" align="center" prop="id"/>
-      <el-table-column label="企业名称" align="center" prop="name"/>
+      <el-table-column label="企业名称" align="center" prop="name" width="200"/>
       <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>
+      <el-table-column label="企业类型" align="center" prop="companyType">
+        <template #default="scope">
+          <dict-tag :options="chain_stage" :value="scope.row.companyType"/>
+        </template>
+      </el-table-column>
       <el-table-column label="企业地址" align="center" prop="address"/>
-      <el-table-column label="企业类型" align="center" prop="companyType"/>
+<!--      <el-table-column label="企业类型" align="center" prop="companyType"/>-->
       <el-table-column label="所属产业链名称" align="center" prop="chainName"/>
       <el-table-column label="所属联盟编号" align="center">
         <template #default="scope">
@@ -119,7 +134,7 @@
           <span v-else>暂无</span>
         </template>
       </el-table-column>
-      <el-table-column label="企业信誉" align="center" prop="rep"/>
+<!--      <el-table-column label="企业信誉" align="center" prop="rep"/>-->
       <el-table-column label="企业状态" align="center" prop="status">
         <template #default="scope">
           <el-tag :type="getType(scope.row.status)">
@@ -157,7 +172,7 @@
     <el-dialog :title="title" v-model="open" width="500px" append-to-body @closed="handleColse">
       <el-form ref="showRef" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="企业编号" prop="id">
-          <el-input v-model="form.id" placeholder="请输入企业编号，可为空" :disabled="!isAdd"/>
+          <el-input v-model="form.id" placeholder="请输入企业编号,为空则自动分配" :disabled="!isAdd"/>
         </el-form-item>
         <el-form-item label="企业名称" prop="name">
           <el-input v-model="form.name" placeholder="请输入企业名称"/>
@@ -168,10 +183,17 @@
         <el-form-item label="所属网络层编号" prop="layerId">
           <el-input v-model="form.layerId" placeholder="请输入网络层编号" :disabled="!isAdd"/>
         </el-form-item>
-        <el-form-item label="企业类型" prop="companyType">
-          <el-input v-model="form.companyType" placeholder="请输入企业类型"/>
+        <el-form-item label="企业类型" prop="companyType" v-if="isAdd">
+          <el-select v-model="form.companyType" placeholder="请选择企业类型" clearable>
+            <el-option
+                v-for="dict in chain_stage"
+                :key="dict.value"
+                :label="dict.label"
+                :value="dict.value"
+            />
+          </el-select>
         </el-form-item>
-        <el-form-item label="层内邻居关系">
+        <el-form-item label="层内邻居关系" v-if="!isAdd">
           <el-button link type="primary" @click="addNei">点击此处添加层内邻居关系</el-button>
           <template v-for="idx in idxs">
             <el-row :gutter="5">
@@ -218,7 +240,7 @@ import ResourceDialog from "@/views/coalitionformation/company/ResourceDialog.vu
 import useLoadingStore from "@/store/modules/loading.js";
 import ResourceSetting from "@/views/coalitionformation/common/ResourceSetting.vue";
 import {ElMessage} from "element-plus";
-
+import {getCurrentInstance} from "vue";
 
 const setResourceDialog = ref(false);
 const setResource = () => {
@@ -244,14 +266,13 @@ const cancleResource = () => {
   setResourceDialog.value = false;
 }
 const {proxy} = getCurrentInstance();
-const {company_status} = proxy.useDict('company_status');
-
+const { company_status, chain_stage } = proxy.useDict('company_status', 'chain_stage');
 const getStatusNameByValue = (val) => {
   return company_status.value.filter(item => item.value == val)[0].label;
 }
 
 const getType = (val) => {
-  const types = ['danger', 'primary', 'success'];
+  const types = ['danger', 'info', 'success'];
   return types[val];
 }
 const showList = ref([]);
@@ -267,7 +288,7 @@ const isAdd = ref(true);
 // 添加企业关系时使用
 const idxs = ref([]);
 const neis = ref([]);
-const chains = ["汽车产业链", "家电产业链", "电子产业链"]
+const chains = ["洗衣机产业链", "空调产业链", "汽车产业链"]
 
 
 const addNei = () => {
@@ -302,10 +323,12 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 4,
+    pageSize: 3,
     name: null,
-    coalitionId: null,
-    status: null
+    layerId: null,
+    status: null,
+    companyType:null,
+    id:null
   },
   rules: {
     name: [
@@ -407,12 +430,14 @@ function handleAdd() {
 
 const loadingStore = useLoadingStore()
 
+let companyType = null;
 /** 修改按钮操作 */
 function handleUpdate(row) {
   reset();
   isAdd.value = false;
   const _id = row.id || ids.value
   const layerId = row.layerId;
+  companyType=row.companyType;
   getShow(_id, layerId).then(response => {
     form.value = response.data;
     open.value = true;
@@ -427,7 +452,8 @@ const addRelation = async () => {
     params: {
       id1: form.value.id,
       id2s: id2s.join(","),
-      layer: form.value.layerId
+      layer: form.value.layerId,
+      companyType
     }
   })
 }
@@ -454,7 +480,6 @@ function submitForm() {
           proxy.$modal.msgSuccess("新增成功");
           open.value = false;
           getList();
-          await addRelation()
           loadingStore.isloading = true;
         });
       }
@@ -468,6 +493,7 @@ function handleDelete(row) {
   proxy.$modal.confirm('是否确认删除企业信息编号为"' + _ids + '"的数据项？').then(function () {
     return delShow(_ids);
   }).then(() => {
+    loadingStore.isloading = true;
     getList();
     proxy.$modal.msgSuccess("删除成功");
   }).catch(() => {

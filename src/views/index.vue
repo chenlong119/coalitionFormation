@@ -35,8 +35,8 @@
             <span class="rSkew">企业群多模式协同</span>
           </div>
         </div>
-        <div class="rightBox" @click="$router.push('/123654')">
-          <div class="box1 bg skew">
+        <div class="rightBox">
+          <div class="box1 bg skew" @click="$router.push('/123654')">
             <span class="rSkew">协同效果评估</span>
           </div>
           <div class="box2  skew bg ">
@@ -196,7 +196,7 @@ const handleTime = () => {
       padding: 0 5px;
       color: #fff;
       font-size: 25px;
-      height: 6%;
+      height: 7%;
 
       .leftBox {
         width: 60%;

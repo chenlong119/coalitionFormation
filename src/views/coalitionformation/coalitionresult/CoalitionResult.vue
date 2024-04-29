@@ -2,7 +2,7 @@
 
 import CoalitionTable from "@/views/coalitionformation/coalitionresult/CoalitionTable.vue";
 import CoalitionDynamicBar from "@/views/coalitionformation/coalitionresult/CoalitionDynamicBar.vue";
-import CoalitionCompanyDistribution from "@/views/coalitionformation/coalitionresult/CoalitionCompanyDistribution.vue";
+import CoalitionCompanyDistribution from "@/views/coalitionformation/coalitionresult/CoalitionCompany.vue";
 import CoalitionStatusPie from "@/views/coalitionformation/coalitionresult/CoalitionStatusPie.vue";
 import CoalitionRelation from "@/views/coalitionformation/coalitionresult/CoalitionRelation.vue";
 </script>
@@ -29,9 +29,7 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
         </el-card>
       </div>
       <div style="margin-top: 10px">
-      <el-card>
         <CoalitionRelation/>
-      </el-card>
       </div>
     </div>
   </div>

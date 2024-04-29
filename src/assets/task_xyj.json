@@ -1,0 +1,111 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "name": "橡胶制造"
+    },
+    {
+      "id": "2",
+      "name": "塑料产品生产"
+    },
+    {
+      "id": "3",
+      "name": "半导体制造"
+    },
+    {
+      "id": "4",
+      "name": "功能涂料合成"
+    },
+    {
+      "id": "5",
+      "name": "金属冶炼加工"
+    },
+    {
+      "id": "6",
+      "name": "热镀铝锌生产"
+    },
+    {
+      "id": "7",
+      "name": "电刷材料制造"
+    },
+    {
+      "id": "8",
+      "name": "磁性材料制造"
+    },
+    {
+      "id": "9",
+      "name": "传动带制造"
+    },
+    {
+      "id": "10",
+      "name": "脱水桶制造"
+    },
+    {
+      "id": "11",
+      "name": "电子元器件制造"
+    },
+    {
+      "id": "12",
+      "name": "金属机箱制造"
+    },
+    {
+      "id": "13",
+      "name": "轴承制造"
+    },
+    {
+      "id": "14",
+      "name": "电机制造"
+    },
+    {
+      "id": "15",
+      "name": "家电检测"
+    },
+    {
+      "id": "16",
+      "name": "洗衣机制造"
+    },
+    {
+      "id": "17",
+      "name": "物流运输"
+    },
+    {
+      "id": "18",
+      "name": "家电零售"
+    },
+    {
+      "id": "19",
+      "name": "设备维护"
+    },
+    {
+      "id": "20",
+      "name": "家电回收"
+    }
+  ],
+  "links": [
+    { "source": "1", "target": "9" },
+    { "source": "2", "target": "10" },
+    { "source": "3", "target": "11" },
+    { "source": "4", "target": "10" },
+    { "source": "4", "target": "12" },
+    { "source": "5", "target": "11" },
+    { "source": "5", "target": "12" },
+    { "source": "5", "target": "13" },
+    { "source": "5", "target": "6" },
+    { "source": "6", "target": "14" },
+    { "source": "7", "target": "14" },
+    { "source": "8", "target": "14" },
+    { "source": "9", "target": "16" },
+    { "source": "10", "target": "16" },
+    { "source": "11", "target": "16" },
+    { "source": "12", "target": "16" },
+    { "source": "13", "target": "16" },
+    { "source": "14", "target": "16" },
+    { "source": "13", "target": "14" },
+    { "source": "16", "target": "15" },
+    { "source": "16", "target": "17" },
+    { "source": "17", "target": "18" },
+    { "source": "18", "target": "19" },
+    { "source": "19", "target": "20" }
+  ]
+
+}
