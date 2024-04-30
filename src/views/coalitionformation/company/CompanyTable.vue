@@ -516,9 +516,6 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.app-container{
-  height: 390px;
-}
 .table {
   width: 100%;
 }
