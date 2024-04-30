@@ -556,8 +556,8 @@ function load() {  //加载
 
     const dataNow=[
       { 
-        dataName: '双十一电视销售数据',
-        dataReleaser: '闲鱼',
+        dataName: '一季度轮胎销售数据',
+        dataReleaser: '玲珑轮胎',
         dataDate: '2023-01-01',
         hisClick: 100,
         recClick: 20,
@@ -665,7 +665,7 @@ function load() {  //加载
         creditLevel:3,
       },
       {
-        companyName: '闲鱼',
+        companyName: '玲珑轮胎',
         joinTime: '2023-03-16',
         sumData: 150,
         averageScore: 3.8,
