@@ -23,7 +23,8 @@
     </el-col>
     <el-col :span="8">
       <dv-border-box-12 class="pd">
-        <BottomCenter/>
+        <NewBottomCenter/>
+<!--        <BottomCenter/>-->
       </dv-border-box-12>
     </el-col>
     <el-col :span="8">
@@ -42,6 +43,7 @@ import BottomLeft from "../bottomLeft/BottomLeft.vue";
 import CompanyRelationGraph from "../multilayer/CompanyRelationGraph.vue"
 import TopCenter from "@/views/dashboard/components/topCenter/TopCenter.vue";
 import RightTop from "@/views/dashboard/components/rightTop/RightTop.vue";
+import NewBottomCenter from "@/views/dashboard/components/bottomCenter/NewBottomCenter.vue";
 </script>
 
 <style scoped>
