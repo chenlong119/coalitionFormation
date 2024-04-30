@@ -10,14 +10,14 @@ const {proxy} = getCurrentInstance();
 const chartRef = ref(null);
 let intervalInstance = null;
 const cdata = {
-  xData: ['资源1', '资源2', '资源3', '资源4', '资源5', '资源6'],
+  xData: ['传统汽车', '新能源汽车', '洗衣机', '空调', '冰箱', '电视机'],
   seriesData: [
-    {value: 10, name: '资源1'},
-    {value: 10, name: '资源2'},
-    {value: 15, name: '资源3'},
-    {value: 25, name: '资源4'},
-    {value: 20, name: '资源5'},
-    {value: 35, name: '资源6'},
+    {value: 10, name: '传统汽车'},
+    {value: 10, name: '新能源汽车'},
+    {value: 15, name: '洗衣机'},
+    {value: 25, name: '空调'},
+    {value: 20, name: '冰箱'},
+    {value: 35, name: '电视机'},
   ],
 }
 let chart = null;
@@ -37,7 +37,7 @@ const initChart = () => {
     tooltip: {
       trigger: 'item',
       formatter: function(params){
-        return params.data.name+"需求数量："+params.data.value;
+        return params.data.name+"生产数量："+params.data.value;
       }
     },
     toolbox: {
