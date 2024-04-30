@@ -300,7 +300,7 @@ const fetchModesData = async () => {
     modesData.value = response.map(mode => ({
       ...mode,
       completionRate: (mode.completionRate * 100).toFixed(2) + '%', // 假设完成率是0到1之间的数，转换为百分比
-      failureRate:(100- (mode.completionRate * 100).toFixed(2) )+ '%',
+      failureRate:(100- (mode.completionRate * 100).toFixed(2) ).toFixed(2)+ '%',
     }));
     // 确保DOM已更新，再绘制echarts图表
     nextTick(() => {
@@ -1067,14 +1067,16 @@ function createPieChart(chartContainer, data) {
               }
               else
               {
-                return name.slice(0,3)+"\n"+name.slice(4,name.length);
+                return name.slice(0,3)+"\n"+name.slice(3,name.length);
               }
             }
           }
         },
         labelLine:{
           normal:{
-            show:true
+            show:true,
+            length:10,//第一段长度
+            length2:0//第二段长度 设置0不显示第二段
           }
         },
         data: data.map(item => ({value: item.competitionNum, name: item.modeName})),
