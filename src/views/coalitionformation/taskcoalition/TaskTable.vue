@@ -6,6 +6,7 @@
             v-model="queryParams.id"
             placeholder="请输入任务编号"
             clearable
+            style="width: 140px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -15,10 +16,11 @@
             placeholder="请输入任务名称"
             clearable
             @keyup.enter="handleQuery"
+            style="width: 140px"
         />
       </el-form-item>
       <el-form-item label="任务类型" prop="taskType">
-        <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable>
+        <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable style="width: 150px">
           <el-option
               v-for="dict in chain_stage"
               :key="dict.value"
@@ -28,7 +30,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="任务状态" prop="taskStatus">
-        <el-select v-model="queryParams.taskStatus" placeholder="请选择任务状态" clearable>
+        <el-select v-model="queryParams.taskStatus" placeholder="请选择任务状态" clearable style="width: 150px">
           <el-option
               v-for="dict in task_state"
               :key="dict.value"
@@ -172,7 +174,7 @@
           <span>{{ getNameByChainId(scope.row.chainId) }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="所属企业" align="center">
+      <el-table-column label="所属企业" align="center" :width="200">
         <template #default="scope">
           <span>{{ scope.row.companyName }}</span>
         </template>
@@ -532,5 +534,6 @@ getList();
 <style scoped>
 .app-container {
   width: 100%;
+  height: 390px;
 }
 </style>

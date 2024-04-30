@@ -20,11 +20,11 @@
           <!--          </el-tooltip>-->
           <!--          <div class="red-dot"></div>-->
         </div>
-        <screenfull id="screenfull" class="right-menu-item hover-effect"/>
+<!--        <screenfull id="screenfull" class="right-menu-item hover-effect"/>-->
 
-        <el-tooltip content="布局大小" effect="dark" placement="bottom">
-          <size-select id="size-select" class="right-menu-item hover-effect"/>
-        </el-tooltip>
+<!--        <el-tooltip content="布局大小" effect="dark" placement="bottom">-->
+<!--          <size-select id="size-select" class="right-menu-item hover-effect"/>-->
+<!--        </el-tooltip>-->
       </template>
       <div class="avatar-container">
         <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">
@@ -36,9 +36,9 @@
           </div>
           <template #dropdown>
             <el-dropdown-menu>
-              <router-link to="/user/profile">
-                <el-dropdown-item>个人中心</el-dropdown-item>
-              </router-link>
+<!--              <router-link to="/user/profile">-->
+<!--                <el-dropdown-item>个人中心</el-dropdown-item>-->
+<!--              </router-link>-->
               <el-dropdown-item command="setLayout" v-if="settingsStore.showSettings">
                 <span>布局设置</span>
               </el-dropdown-item>
