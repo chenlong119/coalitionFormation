@@ -9,7 +9,7 @@ const draw=async ()=>{
   let res = await request({
     url: "/coalition/formation/getall"
   });
- let taskList=taskStore.tasks.filter(item=>item.taskStatus===1);
+ let taskList=res.filter(item=>item.taskStatus===1);
  let categories=taskList.map(item=>item.name);
 if(categories.length==0)
 {
