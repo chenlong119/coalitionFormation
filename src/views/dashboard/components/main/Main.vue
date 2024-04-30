@@ -22,25 +22,22 @@
       </dv-border-box-8>
     </el-col>
     <el-col :span="8">
-      <dv-border-box-12 class="pd">
-        <NewBottomCenter/>
-<!--        <BottomCenter/>-->
-      </dv-border-box-12>
-    </el-col>
-    <el-col :span="8">
       <dv-border-box-8 class="pd">
         <BottomRight/>
       </dv-border-box-8>
+    </el-col>
+    <el-col :span="8">
+      <dv-border-box-12 class="pd">
+        <NewBottomCenter/>
+      </dv-border-box-12>
     </el-col>
   </el-row>
 </template>
 
 <script setup>
 import LeftTop from "../leftTop/LeftTop.vue";
-import BottomCenter from "../bottomCenter/BottomCenter.vue";
 import BottomRight from "../bottomRight/BottomRight.vue";
-import BottomLeft from "../bottomLeft/BottomLeft.vue";
-import CompanyRelationGraph from "../multilayer/CompanyRelationGraph.vue"
+import BottomLeft from "@/views/dashboard/components/bottomLeft/BottomLeft.vue";
 import TopCenter from "@/views/dashboard/components/topCenter/TopCenter.vue";
 import RightTop from "@/views/dashboard/components/rightTop/RightTop.vue";
 import NewBottomCenter from "@/views/dashboard/components/bottomCenter/NewBottomCenter.vue";
