@@ -119,7 +119,6 @@
 
 <script setup>
 import { ElMessage, ElMessageBox, ElRate } from 'element-plus'
-import CoalitionDynamicBar from "@/views/coalitionformation/coalitionresult/CoalitionDynamicBar.vue";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 import useTaskStore from "@/store/modules/task.js";

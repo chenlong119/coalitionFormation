@@ -2,7 +2,7 @@
   <div class="app-container table">
     <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="100px">
       <el-form-item label="企业类型" prop="companyType">
-        <el-select v-model="queryParams.companyType" placeholder="请选择企业类型" clearable>
+        <el-select v-model="queryParams.companyType" placeholder="请选择企业类型" clearable style="width: 150px">
           <el-option
               v-for="dict in chain_stage"
               :key="dict.value"
@@ -17,6 +17,7 @@
             placeholder="请输入企业地址"
             clearable
             @keyup.enter="handleQuery"
+            style="width: 120px"
         />
       </el-form-item>
       <el-form-item label="企业名称" prop="name">
@@ -25,6 +26,7 @@
             placeholder="请输入企业名称"
             clearable
             @keyup.enter="handleQuery"
+            style="width: 120px"
         />
       </el-form-item>
       <el-form-item label="网络层编号" prop="layerId">
@@ -33,10 +35,11 @@
             placeholder="请输入所属网络层编号"
             clearable
             @keyup.enter="handleQuery"
+            style="width: 170px"
         />
       </el-form-item>
       <el-form-item label="企业状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择企业状态" clearable>
+        <el-select v-model="queryParams.status" placeholder="请选择企业状态" style="width: 150px" clearable>
           <el-option
               v-for="dict in company_status"
               :key="dict.value"
