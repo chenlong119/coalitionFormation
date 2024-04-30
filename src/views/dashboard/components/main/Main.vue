@@ -22,14 +22,14 @@
       </dv-border-box-8>
     </el-col>
     <el-col :span="8">
-      <dv-border-box-8 class="pd">
+      <dv-border-box-12 class="pd">
         <BottomRight/>
-      </dv-border-box-8>
+      </dv-border-box-12>
     </el-col>
     <el-col :span="8">
-      <dv-border-box-12 class="pd">
+      <dv-border-box-8 class="pd">
         <NewBottomCenter/>
-      </dv-border-box-12>
+      </dv-border-box-8>
     </el-col>
   </el-row>
 </template>
