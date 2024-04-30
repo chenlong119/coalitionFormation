@@ -26,7 +26,7 @@ export default {
             text: '当前不同分数段企业占比',
             x: 'center',
             textStyle: {
-              fontSize: 14,
+              
               fontWeight: 'bolder'
             }
           },
@@ -102,7 +102,7 @@ function calculateScoreDistribution(data) {
 <style scoped>
 .box-card {
   margin-top:20px;
-  
+
   width: 100%;
   padding: 20px;
   border-radius: 12px;
@@ -111,7 +111,7 @@ function calculateScoreDistribution(data) {
 }
 
 .chart {
-  height: 300px; 
+  height: 300px;
    /* 设置宽度为100%，以确保它填满其容器 */
 }
 /* 其他样式保持不变 */

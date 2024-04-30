@@ -136,6 +136,7 @@ export default {
         // 创建一个 Set 来存储唯一的产业链名称
         const uniqueTypeSet = new Set(this.data.map(item => this.industryLayerNames[item.layer_id.toString()]));
 
+
         // 转换 Set 为 Array
         const types = Array.from(uniqueTypeSet);
         console.log('Unique types available:', types);
