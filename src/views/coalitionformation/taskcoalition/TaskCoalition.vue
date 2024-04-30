@@ -32,7 +32,7 @@ const handleExpand=()=>{
       <TaskTable/>
     </el-row>
     <el-row :gutter="10" class="row2">
-      <el-col :span="6">
+      <el-col :span="7">
         <div class="taskGraph">
           <div class="graphHeader">
             <span>当前产业链：</span>
@@ -51,7 +51,7 @@ const handleExpand=()=>{
         </el-card>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="5">
         <el-card shadow="hover">
           <TaskChainPie/>
         </el-card>

@@ -37,6 +37,7 @@ let data = [
   {name: "广东", value: 123},
   {name: "广西", value: 59},
   {name: "海南", value: 14},
+  {name: "台湾", value: 9}
 ];
 let max = 480,
     min = 9; // todo
@@ -67,6 +68,9 @@ const initChart = async () => {
     title: {
       text: name_title,
       x: 'center',
+      textStyle:{
+        color:'white'
+      }
     },
     geo: {
       type: 'map',
@@ -94,6 +98,9 @@ const initChart = async () => {
       text: ['高', '低'], // 文本，默认为数值文本
       calculable: true,
       seriesIndex: [0],
+      textStyle:{
+        color:'white'
+      },
       inRange: {
         // color: ['#3B5077', '#031525'] // 蓝黑
         // color: ['#ffc0cb', '#800080'] // 红紫

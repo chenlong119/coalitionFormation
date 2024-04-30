@@ -47,6 +47,7 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
     justify-content: flex-start;
     width: 50%;
     height: 100%;
+    margin-right: 5px;
   }
   .column2{
     display: flex;

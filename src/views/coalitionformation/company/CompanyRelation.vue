@@ -8,73 +8,7 @@ const {proxy} = getCurrentInstance();
 const {  chain_stage } = proxy.useDict('chain_stage');
 let companyStage = ref("原料供应");
 const multiChart = ref(null);
-const lb = 0;
-const lt = 50;
-const width = 850;
-const height = 120;
-const layers1 = 30;
-const rb = lb + width;
-const rt = lt + width;
-const layere1 = layers1 + height;
-const gap = 50;
-const layers2 = layere1 + gap;
-const layere2 = layers2 + height;
-const layers3 = layere2 + gap;
-const layere3 = layers3 + height;
 
-let name_title = "多重产业链网络企业关系图"
-let baseOption = {
-  graphic: [
-    {
-      type: 'polygon',
-      shape: {
-        points: [[lt, layers1], [rt, layers1], [rb, layere1], [lb, layere1]]
-      },
-      style: {
-        fill: '#eee',
-        stroke: 'red',
-        lineWidth: 3,
-        opacity: 0.3, //透明度
-        shadowBlur: 10, //边框阴影模糊程度
-        shadowColor: 'black', //边框阴影颜色
-        shadowOffsetX: 5, //边框阴影水平偏移量
-        shadowOffsetY: 5 //边框阴影垂直偏移量
-      }
-    },
-    {
-      type: 'polygon',
-      shape: {
-        points: [[lt, layers2], [rt, layers2], [rb, layere2], [lb, layere2]]
-      },
-      style: {
-        fill: '#eee',
-        stroke: 'blue',
-        lineWidth: 3,
-        opacity: 0.3,
-        shadowBlur: 10,
-        shadowColor: 'black',
-        shadowOffsetX: 5,
-        shadowOffsetY: 5
-      }
-    },
-    {
-      type: 'polygon',
-      shape: {
-        points: [[lt, layers3], [rt, layers3], [rb, layere3], [lb, layere3]]
-      },
-      style: {
-        fill: '#eee',
-        stroke: 'green',
-        lineWidth: 3,
-        opacity: 0.2,
-        shadowBlur: 10,
-        shadowColor: 'black',
-        shadowOffsetX: 5,
-        shadowOffsetY: 5
-      }
-    }
-  ],
-};
 
 const handleStageChange=()=>{
   drawRelationShip()
@@ -100,6 +34,7 @@ const allocateSpace = (nodes) => {
     }
   })
 }
+let width = 860;
 
 const drawRelationShip = async () => {
   let type=companyStage.value==="原料供应"?1:companyStage.value
@@ -216,20 +151,90 @@ watch(() => loadingStore.isloading, (newval) => {
     loadingStore.isloading = false;
   }
 })
+
+let name_title = "多重产业链网络企业关系图";
+
+const initChart=()=>{
+  const lb = 0;
+  const lt = 30;
+  const height = 120;
+  const layers1 = 30;
+  // console.log(multiChart.value.getBoundingRect().width)
+  let domwidth=multiChart.value.offsetWidth;
+  if(domwidth<=900)
+    width=domwidth-40
+  const rb = lb + width;
+  const rt = lt + width;
+  const layere1 = layers1 + height;
+  const gap = 50;
+  const layers2 = layere1 + gap;
+  const layere2 = layers2 + height;
+  const layers3 = layere2 + gap;
+  const layere3 = layers3 + height;
+  let baseOption = {
+    graphic: [
+      {
+        type: 'polygon',
+        shape: {
+          points: [[lt, layers1], [rt, layers1], [rb, layere1], [lb, layere1]]
+        },
+        style: {
+          fill: '#eee',
+          stroke: 'red',
+          lineWidth: 3,
+          opacity: 0.3, //透明度
+          shadowBlur: 10, //边框阴影模糊程度
+          shadowColor: 'black', //边框阴影颜色
+          shadowOffsetX: 5, //边框阴影水平偏移量
+          shadowOffsetY: 5 //边框阴影垂直偏移量
+        }
+      },
+      {
+        type: 'polygon',
+        shape: {
+          points: [[lt, layers2], [rt, layers2], [rb, layere2], [lb, layere2]]
+        },
+        style: {
+          fill: '#eee',
+          stroke: 'blue',
+          lineWidth: 3,
+          opacity: 0.3,
+          shadowBlur: 10,
+          shadowColor: 'black',
+          shadowOffsetX: 5,
+          shadowOffsetY: 5
+        }
+      },
+      {
+        type: 'polygon',
+        shape: {
+          points: [[lt, layers3], [rt, layers3], [rb, layere3], [lb, layere3]]
+        },
+        style: {
+          fill: '#eee',
+          stroke: 'green',
+          lineWidth: 3,
+          opacity: 0.2,
+          shadowBlur: 10,
+          shadowColor: 'black',
+          shadowOffsetX: 5,
+          shadowOffsetY: 5
+        }
+      }
+    ],
+  };
+  multiChartInstance.setOption(baseOption);
+}
+
 onMounted(() => {
   multiChartInstance = echarts.init(multiChart.value);
-  multiChartInstance.setOption(baseOption);
+  initChart();
   drawRelationShip();
 })
 </script>
 
 <template>
   <el-card shadow="hover">
-<!--    <template #header style="text-align: center">-->
-<!--      <div style="text-align: center">-->
-<!--        <span style="font-size: 20px;font-family: 'Microsoft YaHei UI'">{{name_title}}</span>-->
-<!--      </div>-->
-<!--    </template>-->
     <div style="margin-bottom: 10px">
       <span style="margin-right: 10px;font-size: 16px">当前阶段:</span>
       <el-select v-model="companyStage" placeholder="请选择企业类型"  @change="handleStageChange" style="width: 120px;">
