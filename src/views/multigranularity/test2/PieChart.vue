@@ -26,7 +26,7 @@ export default {
             text: '当前不同分数段企业占比',
             x: 'center',
             textStyle: {
-              
+
               fontWeight: 'bolder'
             }
           },
