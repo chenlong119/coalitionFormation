@@ -10,25 +10,25 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="任务名称" prop="name">
-        <el-input
-            v-model="queryParams.name"
-            placeholder="请输入任务名称"
-            clearable
-            @keyup.enter="handleQuery"
-            style="width: 140px"
-        />
-      </el-form-item>
-      <el-form-item label="任务类型" prop="taskType">
-        <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable style="width: 150px">
-          <el-option
-              v-for="dict in chain_stage"
-              :key="dict.value"
-              :label="dict.label"
-              :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
+<!--      <el-form-item label="任务名称" prop="name">-->
+<!--        <el-input-->
+<!--            v-model="queryParams.name"-->
+<!--            placeholder="请输入任务名称"-->
+<!--            clearable-->
+<!--            @keyup.enter="handleQuery"-->
+<!--            style="width: 140px"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="任务类型" prop="taskType">-->
+<!--        <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable style="width: 150px">-->
+<!--          <el-option-->
+<!--              v-for="dict in chain_stage"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
       <el-form-item label="任务状态" prop="taskStatus">
         <el-select v-model="queryParams.taskStatus" placeholder="请选择任务状态" clearable style="width: 150px">
           <el-option
@@ -39,14 +39,14 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="所属产业链" prop="chainId">
-        <el-input
-            v-model="queryParams.chainId"
-            placeholder="请输入任务所属产业链编号"
-            clearable
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
+<!--      <el-form-item label="所属产业链" prop="chainId">-->
+<!--        <el-input-->
+<!--            v-model="queryParams.chainId"-->
+<!--            placeholder="请输入任务所属产业链编号"-->
+<!--            clearable-->
+<!--            @keyup.enter="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
         <el-button icon="Refresh" @click="resetQuery">重置</el-button>
@@ -98,29 +98,11 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-            type="success"
-            plain
-            icon="User"
-            @click="$router.push('/coalitionFormation/companyInfo')"
-        >查看企业信息
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
             type="primary"
             plain
             icon="Setting"
             @click="setResource"
         >配置资源
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="primary"
-            plain
-            icon="Share"
-            @click="$router.push('/coalitionFormation/coalitionResult')"
-        >查看联盟详情
         </el-button>
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
@@ -131,18 +113,7 @@
       <el-table-column label="任务编号" align="center" prop="id"/>
       <el-table-column label="任务名称" align="center" prop="name"/>
       <el-table-column label="任务价值" align="center" prop="val"/>
-<!--      <el-table-column label="任务到达时间" align="center" prop="arrivalTime">-->
-<!--        <template #default="scope">-->
-<!--          <span>{{ parseTime(scope.row.arrivalTime, '{y}-{m}-{d}') }}</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="任务完成时间" align="center" prop="finishTime" width="180">-->
-<!--        <template #default="scope">-->
-<!--          <span v-if="scope.row.finishTime">{{ parseTime(scope.row.finishTime, '{y}-{m}-{d}') }}</span>-->
-<!--          <span v-else>暂无</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-      <el-table-column label="任务类型" align="center" prop="taskType">
+      <el-table-column label="任务类型" align="center" prop="taskType" width="120">
         <template #default="scope">
           <dict-tag :options="chain_stage" :value="scope.row.taskType"/>
         </template>
@@ -154,13 +125,7 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="任务持续时长" align="center" prop="duration"/>
-      <el-table-column label="产品编号" align="center">
-        <template #default="scope">
-          <span v-if="scope.row.productId">{{ scope.row.productId }}</span>
-          <span v-else>暂无</span>
-        </template>
-      </el-table-column>
+      <el-table-column label="持续时长" align="center" prop="duration"/>
       <el-table-column label="联盟编号" align="center">
         <template #default="scope">
           <span v-if="scope.row.coalitionId==0">
@@ -169,25 +134,18 @@
           <span v-else>{{ scope.row.coalitionId }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="所属产业链名称" align="center" :width="150">
-        <template #default="scope">
-          <span>{{ getNameByChainId(scope.row.chainId) }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="所属企业" align="center" :width="200">
-        <template #default="scope">
-          <span>{{ scope.row.companyName }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="资源种类数" align="center">
+      <el-table-column label="资源种类数" align="center" width="100">
         <template #default="scope">
           <span>{{ scope.row.resource?.length }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="300">
+      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="350" fixed="right">
         <template #default="scope">
           <el-button link type="primary" icon="Star" @click="coalitionformation(scope.row)"
                      :disabled="scope.row.taskStatus===1||scope.row.taskStatus===2">联盟形成
+          </el-button>
+          <el-button link type="primary" icon="Star" @click="handleFinish(scope.row)"
+                     :disabled="scope.row.taskStatus!=1">完成确认
           </el-button>
           <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"
                      v-hasPermi="['coalition:formation:edit']">修改
@@ -267,7 +225,7 @@ import {ElMessage, ElMessageBox} from "element-plus";
 import useLoadingStore from "@/store/modules/loading.js";
 import useTaskStore from "@/store/modules/task.js";
 
-
+const props=defineProps(['currentCompany']);
 const taskStore=useTaskStore();
 const resourceSetting = ref(null);
 
@@ -302,6 +260,18 @@ const getStatusNameByValue = (val) => {
 const getType = (val) => {
   const types = ['info', 'warning', 'success', 'danger'];
   return types[val];
+}
+const loadingStore=useLoadingStore();
+const handleFinish=async (row)=>{
+await request({
+   url:"/userCenter/updateTaskStatus",
+   params:{
+     taskId:row.id,
+     coalitionId:row.coalitionId
+   }
+ })
+  getList();
+  loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
 }
 
 const formationList = ref([]);
@@ -412,6 +382,7 @@ const coalitionformation=async (task)=>{
 /** 查询任务信息列表 */
 function getList() {
   loading.value = true;
+  queryParams.value.companyId= props.currentCompany.id;
   listFormation(queryParams.value).then((response) => {
     formationList.value = response.rows;
     total.value = response.total;
@@ -419,7 +390,7 @@ function getList() {
     formationList.value.forEach(async (item) => {
       item.companyName = await getCompanyName(item.companyId, item.chainId);
       item.resource = await getTaskResource(item.id);
-    })
+    });
   });
 }
 
