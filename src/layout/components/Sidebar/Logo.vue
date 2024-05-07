@@ -25,7 +25,7 @@ defineProps({
   }
 })
 
-const title = "多重产业链项目平台";
+const title = "课题一系统";
 const settingsStore = useSettingsStore();
 const sideTheme = computed(() => settingsStore.sideTheme);
 </script>
