@@ -11,7 +11,7 @@ let placeholder="";
 let isTask = props.ckey === "task";
 if (isTask) {
   prefix = "任务";
-  placeholder="范围[200,400]";
+  placeholder="范围[100,250]";
 } else {
   prefix = "企业";
   placeholder="范围[100,150]";

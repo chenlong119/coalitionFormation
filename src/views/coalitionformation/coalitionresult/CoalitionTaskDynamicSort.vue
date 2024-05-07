@@ -24,10 +24,11 @@ const draw=async ()=>{
   }
   let option = {
     title:{
-      text:'任务完成率变化图'
+      text:'任务完成率变化图',
+      left:'center'
     },
     grid:{
-      left:0,
+      left:30,
       bottom:0,
       containLabel:true
     },

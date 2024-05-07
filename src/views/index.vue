@@ -20,23 +20,23 @@
       </div>
       <div class="lineTwo">
         <div class="leftBox">
-          <div class="box1 skew bg" @click="$router.push('/shareing/auction/history')">
+          <div class="box1 skew bg" @click="$router.push('/dataSharing/shareing/auction/history')">
             <div class="rSkew bg">
               <span>数据共享激励</span>
             </div>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/aa')">
+          <div class="box2 bg skew" @click="$router.push('/dataSharing/aa')">
             <span class="rSkew">群智汇聚</span>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/coalitionFormation/companyInfo')">
+          <div class="box2 bg skew" @click="$router.push('/intelligenceEmerges/companyInfo')">
             <span class="rSkew">联盟形成</span>
           </div>
-          <div class="box2 bg skew" @click="$router.push('/xietong')">
+          <div class="box2 bg skew" @click="$router.push('/multimode/xietong')">
             <span class="rSkew">企业群多模式协同</span>
           </div>
         </div>
         <div class="rightBox">
-          <div class="box1 bg skew" @click="$router.push('/123654')">
+          <div class="box1 bg skew" @click="$router.push('/multimode/123654')">
             <span class="rSkew">协同效果评估</span>
           </div>
           <div class="box2  skew bg ">

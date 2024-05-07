@@ -78,7 +78,7 @@ const getTaskStatus = async () => {
     },
     legend: {
       bottom: 0,
-      left: 0,
+      left: 'center',
       textStyle: {
         color: 'white' // 将图例字体颜色设置为白色
       },
