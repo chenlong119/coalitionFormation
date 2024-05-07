@@ -53,7 +53,7 @@ export default {
         const chartInstance = echarts.init(chartRef.value);
         const option = {
           title: {
-            text: '近半年评分大于80的企业数目',
+            text: '近半年评分大于85的企业数目',
             left: 'center',
             top: 'top'
           },
