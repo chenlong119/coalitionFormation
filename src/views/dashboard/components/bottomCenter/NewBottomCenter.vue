@@ -571,7 +571,7 @@ function createincomechartPolylines(){
   width: 100%;
 }
 #income-chartPol{
-  height: 50vh;
+  height: 100%;
   width: 100%;
 }
 </style>
