@@ -2055,12 +2055,12 @@ const option = {
   width: 100%;
 }
 #income-chartHis{
-  height: 50vh;
+  height: 100%;
   width: 100%;
 }
 
 #income-chartPol{
-  height: 50vh;
+  height: 100%;
   width: 100%;
 }
 .data-item {
