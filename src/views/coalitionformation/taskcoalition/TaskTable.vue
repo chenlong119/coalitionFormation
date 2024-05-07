@@ -101,7 +101,7 @@
             type="success"
             plain
             icon="User"
-            @click="$router.push('/coalitionFormation/companyInfo')"
+            @click="$router.push('/intelligenceEmerges/companyInfo')"
         >查看企业信息
         </el-button>
       </el-col>
@@ -119,7 +119,7 @@
             type="primary"
             plain
             icon="Share"
-            @click="$router.push('/coalitionFormation/coalitionResult')"
+            @click="$router.push('/intelligenceEmerges/coalitionResult')"
         >查看联盟详情
         </el-button>
       </el-col>

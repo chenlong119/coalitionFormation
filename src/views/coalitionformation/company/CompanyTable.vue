@@ -102,7 +102,7 @@
             type="success"
             plain
             icon="Comment"
-            @click="$router.push('/coalitionFormation/formation')"
+            @click="$router.push('/intelligenceEmerges/formation')"
         >查看任务信息
         </el-button>
       </el-col>
