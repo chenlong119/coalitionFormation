@@ -5,18 +5,21 @@
       <el-button-group class="button-group-centered">
         <el-button @click="setDateRange('MONTH')">本月</el-button>
         <el-button @click="setDateRange('HALF_YEAR')">半年</el-button>
-        <el-button @click="setDateRange('year')">一年</el-button>
+        <el-button @click="setDateRange('YEAR')">一年</el-button> <!-- 将 'year' 改为 'YEAR' -->
       </el-button-group>
       <el-table :data="rankData" class="el-table" stripe>
-        <el-table-column type="index" label="排名"   width="120px" align="center"> <template #default="{ row }">
-          <span v-if="row.ranking === 1" class="rank-gold">🥇</span>
-          <span v-else-if="row.ranking === 2" class="rank-silver">🥈</span>
-          <span v-else-if="row.ranking === 3" class="rank-bronze">🥉</span>
-          <span v-else>{{ row.ranking }}</span>
-        </template></el-table-column>
-        <el-table-column prop="groupName" label="企业群名称" width="150px" align="center"></el-table-column>
-        <el-table-column prop="score" label="分数"  align="center"></el-table-column>
-
+        <el-table-column type="index" label="排名" align="center" :width="rankWidth"> <!-- 根据排名的宽度设置百分比 -->
+          <template #default="{ row }">
+            <span v-if="row.ranking === 1" class="rank-gold">🥇</span>
+            <span v-else-if="row.ranking === 2" class="rank-silver">🥈</span>
+            <span v-else-if="row.ranking === 3" class="rank-bronze">🥉</span>
+            <span v-else>{{ row.ranking }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="groupName" label="企业群名称" align="center" :width="groupNameWidth"> <!-- 根据企业群名称的宽度设置百分比 -->
+        </el-table-column>
+        <el-table-column prop="score" label="分数" align="center" :width="scoreWidth"> <!-- 根据分数的宽度设置百分比 -->
+        </el-table-column>
       </el-table>
     </div>
   </el-col>
@@ -29,7 +32,11 @@ export default {
   data() {
     return {
       currentFrame: 'MONTH', // 添加这一行
-      rankData: []
+      rankData: [],
+      totalScore: 0, // 添加这一行
+      rankWidth: '10%', // 默认宽度百分比
+      groupNameWidth: '40%', // 默认宽度百分比
+      scoreWidth: '50%' // 默认宽度百分比
     };
   },
   created() {
@@ -45,18 +52,21 @@ export default {
       try {
         const response = await fetchGroupRanking({ timeFrame: this.currentFrame });
         this.rankData = response.filter(item => item.timeFrame === this.currentFrame);
+        this.totalScore = this.rankData.reduce((total, item) => total + item.score, 0); // 计算总分数
+        this.updateColumnWidths(); // 更新列的宽度
       } catch (error) {
         console.error('Error fetching group ranking data:', error);
       }
     },
-    //
-
+    updateColumnWidths() {
+      // 更新每列的宽度百分比
+      this.rankWidth = `$30%`; // 排名列宽度
+      this.groupNameWidth = `$40%`; // 企业群名称列宽度
+      this.scoreWidth = `$30%`; // 分数列宽度
     }
-
-  };
+  }
+};
 </script>
-
-
 
 
 <style scoped>

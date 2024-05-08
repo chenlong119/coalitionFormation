@@ -1,4 +1,6 @@
+
 <template>
+  <div>
 <!--  <div class="app-container" v-if="!showSecond">-->
     <el-row :gutter="20">
       <el-col :span="12">
@@ -174,6 +176,7 @@
       </el-col>
     </el-row>
 <!--  </div>-->
+  </div>
 </template>
 
 <script setup>
