@@ -55,7 +55,7 @@ function createincomechartPolylines(){
     {
       type: 'category',
       boundaryGap: false,
-      data: ['24-06', '24-07', '24-08', '24-09', '24-10', '24-11', '24-12'],
+      data: ['23-09', '23-10', '23-11', '23-12', '24-01', '24-02', '24-03'],
       axisLabel: {
               color: "#ffffff" // 设置 x 轴标签的颜色为白色
             },
