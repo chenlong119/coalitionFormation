@@ -109,7 +109,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Body :dec-id="3" :name="'群智汇聚'" icon="icon-huiju">
+  <Body :dec-id="3" :name="'数据共享'" icon="icon-huiju">
   <!--  <div ref="chartref" style="height:100%"></div>-->
   <div id="pieChart" ref="pieChart" class="container"
        style="flex: 1 0 25%; height: 100%; background-color: #0f1325;">
