@@ -125,8 +125,6 @@ export default {
     };
   },
   computed: {
-
-
       uniqueTypes() {
         if (!this.data.length) {
           console.warn('Data is available but empty.');
@@ -238,7 +236,7 @@ export default {
   max-width: 200px;
   margin-bottom: 5px;
   margin-left: 100px;
-  
+
 }
 
 
@@ -274,29 +272,29 @@ export default {
 /* 通用样式调整 */
 :deep(.el-dialog) {
   background-color: #f9f9f9; /* 使用更柔和的背景颜色 */
-  border-radius: 15px; 
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 添加柔和的阴影效果 */
+  border-radius: 15px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); /* 添加柔和的阴影效果 */
   padding: 20px; /* 添加内部填充以创建更多空间 */
 }
 
 :deep(.el-dialog__title) {
-  font-weight: 600; /* 使标题更加粗体 */
-  font-size: 20px; /* 增加标题字体大小 */
-  color: #333; /* 为标题设置深色字体 */
-  margin-bottom: 20px; /* 增加标题和内容之间的间距 */
+  //font-weight: 600; /* 使标题更加粗体 */
+  //font-size: 20px; /* 增加标题字体大小 */
+  //color: #333; /* 为标题设置深色字体 */
+  //margin-bottom: 20px; /* 增加标题和内容之间的间距 */
 }
 
 :deep(.el-dialog__body) {
-  padding:  5px 10px; /* 添加内部填充以创建更多空间 */
-  font-size: 16px; /* 增加主体字体大小 */
-  line-height: 1.7; /* 设置更大的行高来改善可读性 */
-  color: #555; /* 为文本设置深色字体 */
+  //padding:  5px 10px; /* 添加内部填充以创建更多空间 */
+  //font-size: 16px; /* 增加主体字体大小 */
+  //line-height: 1.7; /* 设置更大的行高来改善可读性 */
+  //color: #555; /* 为文本设置深色字体 */
 }
 
 :deep(.el-dialog__body p) {
  
   margin: 10px 0; 
-  padding: 0 0 0 30%; /* 调整这个值来改变文字的起始位置 */
+  padding: 0 0 0 0%; /* 调整这个值来改变文字的起始位置 */
   text-align: left; 
   border-left: 3px solid #007BFF; 
 
