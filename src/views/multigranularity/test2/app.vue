@@ -9,7 +9,7 @@
       </rank-list-1>
       </div>
   
-      <div class="main-panel">
+      <div class="main-panel" >
     <!-- Table Component -->
     <table-component 
     :data="tableData"
@@ -99,19 +99,20 @@
   }
 
   .side-panel {
-    width: 20%; 
+    width: 20%;
     margin-left: 10px;
     margin-right: 10px;
     background-color: #f9f9f9;
-    padding: 10px;
+    padding: 8px;
     border-radius: 12px;
   }
   
   .main-panel {
-    width: 58%;
+    width: 60%;
     background-color: #f9f9f9;
     padding: 10px;
     border-radius: 12px;
+
   }
   .row-container {
   display: flex; /* Set the container to flex layout */

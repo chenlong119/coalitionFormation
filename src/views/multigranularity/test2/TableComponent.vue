@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <h2 class="table-title">企业数据查询表</h2>
 
     <div class="select-container">
@@ -57,7 +57,7 @@
 
   <el-table-column 
       label="查看详情" 
-      width="180" align="center">
+      width="150" align="center">
       <template #default="{ row }">
         <el-button 
         @click="viewDetails(row)">详情</el-button>
@@ -248,10 +248,10 @@ export default {
   padding: 0;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+
 }
 .el-table-column {
   text-align: center;
-  height: 20px;
   
 }
 .dialog-footer button:first-child {
