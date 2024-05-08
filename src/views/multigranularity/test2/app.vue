@@ -95,7 +95,7 @@
   <style>
   #app {
     display: flex;
-    padding: 20px;
+    padding: 2px;
   }
 
   .side-panel {

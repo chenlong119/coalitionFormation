@@ -70,7 +70,7 @@ export default {
 </script>
 <style scoped>
 :deep(.el-table .el-table__body tr) {
-  height: 80px;
+  height: 72px;
   min-height: 80px;
 }
 .box-card {
