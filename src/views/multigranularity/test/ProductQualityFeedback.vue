@@ -20,7 +20,7 @@
 <!-- 合格率 -->
 <div style="margin-left: 5px;">合格率:</div>
   <div class="rating-display">
-    {{ calculatePassRate() }}
+    {{ calculatePassRate() }} %
   </div>
 </el-form-item>
 
@@ -209,11 +209,13 @@ export default {
     calculatePassRate() {
       if (this.feedbackForm.receivedQuantity > 0) {
         let passQuantity = this.feedbackForm.receivedQuantity - this.feedbackForm.defectiveQuantity;
-        return (passQuantity / this.feedbackForm.receivedQuantity) * 100;
+        let passRate = (passQuantity / this.feedbackForm.receivedQuantity) * 100;
+        return passRate.toFixed(2); // 将结果格式化为两位小数的字符串
       } else {
-        return 0; // 或者任何表示不适用的值
+        return "0.00"; // 或者任何表示不适用的值
       }
-    },
+    }
+,
 
 
 

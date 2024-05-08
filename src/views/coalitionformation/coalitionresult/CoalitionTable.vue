@@ -31,13 +31,13 @@
           <el-button
               type="primary"
               icon="User"
-              @click="$router.push('/coalitionFormation/companyInfo')"
+              @click="$router.push('/intelligenceEmerges/coalitionResult')"
           >查看企业信息
           </el-button>
             <el-button
                 type="success"
                 icon="Comment"
-                @click="$router.push('/coalitionFormation/formation')"
+                @click="$router.push('/intelligenceEmerges/formation')"
             >查看任务信息
             </el-button>
             <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>

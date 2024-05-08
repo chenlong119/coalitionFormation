@@ -3,7 +3,7 @@
     <meta charSet="utf-8"/>
 
     <div id="titleDiv" class="titleDiv">
-      当前系统数据共享拍卖
+      当前系统数据共享情况
     </div>
     <div>
       <el-main tyle="width: 100%;">
@@ -16,7 +16,7 @@
             </el-table-column>
             <el-table-column prop="fileSize" label="数据规模" >
             </el-table-column>
-            <el-table-column prop="profit" label="起拍积分" >
+            <el-table-column prop="profit" label="初始积分" >
             </el-table-column>
             <el-table-column prop="data" label="日期" >
             </el-table-column>、
@@ -65,12 +65,12 @@
     <el-row class="second" type="flex" justify="space_around">
         <el-col :span="12">
           <el-card shadow="hover">
-            <div id="echarts-line" ref="echarts_access"></div>
+            <div id="echarts-line" ></div>
           </el-card>
         </el-col>
         <el-col :span="12">
           <el-card shadow="hover">
-            <div id="echarts-category" ref="echarts_scatter"></div>
+            <div id="echarts-category" ></div>
           </el-card>
         </el-col>
       </el-row>
@@ -112,20 +112,7 @@
           </el-table>
         </el-dialog>
       </div>
-    <!-- <el-row type="flex" justify="space-around">
-      <el-col :span="24">
-        <el-card shadow="hover">
-          <div id="echarts-line"></div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row type="flex" justify="space-around">
-      <el-col :span="24">
-        <el-card shadow="hover">
-          <div id="echarts-category"></div>
-        </el-card>
-      </el-col>
-    </el-row> -->
+
 
 
   </body>
@@ -240,7 +227,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:10,
           profit:10,
-          data:"2022.5.1",
+          data:"2022-05-01",
           remaintime:"12",
           chain:'家电产业链'
           },
@@ -249,7 +236,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:10,
           profit:50,
-          data:"2022.4.1",
+          data:"2022-04-01",
           remaintime:"12",
           chain:'家电产业链'
           },
@@ -258,7 +245,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:50,
           profit:100,
-          data:"2022.7.1",
+          data:"2022-07-01",
           remaintime:"12",
           chain:'家电产业链'
           },
@@ -267,7 +254,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:20,
           profit:30,
-          data:"2022.5.15",
+          data:"2022-05-15",
           remaintime:"12",
           chain:'家电产业链'
           }
@@ -768,6 +755,123 @@ for (let i = 6; i >= 0; i--) {
 
   };
 
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+
+document.addEventListener('DOMContentLoaded', function() {
+  var xAxisData = [];
+  var data1 = [];
+  var data2 = [];
+  for (var i = 0; i < 100; i++) {
+    xAxisData.push('A' + i);
+    data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+    data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+  }
+
+  var chartDom = document.getElementById('chart');
+  var myChart = echarts.init(chartDom);
+
+  var option = {
+    title: {
+      text: 'Bar Animation Delay'
+    },
+    legend: {
+      data: ['bar', 'bar2']
+    },
+    toolbox: {
+      feature: {
+        magicType: {
+          type: ['stack']
+        },
+        dataView: {},
+        saveAsImage: {
+          pixelRatio: 2
+        }
+      }
+    },
+    tooltip: {},
+    xAxis: {
+      data: xAxisData,
+      splitLine: {
+        show: false
+      }
+    },
+    yAxis: {},
+    series: [
+      {
+        name: 'bar',
+        type: 'bar',
+        data: data1,
+        emphasis: {
+          focus: 'series'
+        },
+        animationDelay: function (idx) {
+          return idx * 10;
+        }
+      },
+      {
+        name: 'bar2',
+        type: 'bar',
+        data: data2,
+        emphasis: {
+          focus: 'series'
+        },
+        animationDelay: function (idx) {
+          return idx * 10 + 100;
+        }
+      }
+    ],
+    animationEasing: 'elasticOut',
+    animationDelayUpdate: function (idx) {
+      return idx * 5;
+    }
+  };
+
+  myChart.setOption(option);
+
+  document.getElementById('date-select').addEventListener('change', function() {
+    var selectedData = this.value;
+    if (selectedData === 'data1') {
+      option.series[0].data = data1;
+      option.series[1].data = data2;
+    } else if (selectedData === 'data2') {
+      option.series[0].data = data2;
+      option.series[1].data = data1;
+    }
+    myChart.setOption(option);
+  });
+});
+
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
 </script>
 
 <style>

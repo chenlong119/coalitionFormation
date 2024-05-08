@@ -3,10 +3,13 @@
     <h2 class="table-title">企业数据查询表</h2>
 
     <div class="select-container">
-      <el-select class="el-select" v-model="filterType" placeholder="选择企业类型">
-        <el-option label="所有类别" :value="null"></el-option>
+      <el-select class="el-select" v-model="filterType" placeholder="选择产业链">
+        <el-option label="所有类别" value=""></el-option>
         <el-option v-for="option in uniqueTypes" :key="option" :label="option" :value="option"></el-option>
       </el-select>
+
+
+
         <el-input v-model="searchTerm" style="width: 300px;margin-bottom: 5px;" placeholder="请输入搜索关键词"></el-input>
     <el-button class="btn1" type="primary" @click="searchTasks" style="margin-bottom: 5px;"><el-icon><Search /></el-icon>搜索</el-button>
 
@@ -27,16 +30,21 @@
       align="center">
     </el-table-column>
 
-      <el-table-column 
-      prop="company_type"
-      label="所属领域"
-      align="center">
-    </el-table-column>
-
       <el-table-column
-          prop="chain_name"
-          label="所属企业群"
+          prop="company_type"
+          label="所属领域"
           align="center">
+        <template #default="{row}">
+          {{ companyTypeNames[row.company_type] }}
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="layer_id"
+          label="所属产业链"
+          align="center">
+        <template #default="{row}">
+          {{ industryLayerNames[row.layer_id] }}
+        </template>
       </el-table-column>
 
 
@@ -92,8 +100,23 @@ export default {
   },
   data() {
     return {
+      companyTypeNames: {
+        '1': '原料供应',
+        '2': '零件生产',
+        '3': '整机组装',
+        '4': '销售和回收'
+
+      },
+      industryLayerNames: {
+        '1': '洗衣机产业链',
+        '2': '空调产业链',
+        '3': '汽车产业链',
+        '4': '冰箱产业链',
+
+
+      },
       company_type:'',
-      chain_name:'',
+      layer_id:'',
       data: [],
       searchTerm: '',
       filterType: '',
@@ -102,14 +125,34 @@ export default {
     };
   },
   computed: {
-    uniqueTypes() {
-      return [...new Set(this.data.map(item => item.type))];
-    },
+
+
+      uniqueTypes() {
+        if (!this.data.length) {
+          console.warn('Data is available but empty.');
+          return [];
+        }
+
+        // 创建一个 Set 来存储唯一的产业链名称
+        const uniqueTypeSet = new Set(this.data.map(item => this.industryLayerNames[item.layer_id.toString()]));
+
+
+        // 转换 Set 为 Array
+        const types = Array.from(uniqueTypeSet);
+        console.log('Unique types available:', types);
+        return types;
+      },
+
+
     filteredData() {
-      console.log("Filtering data with:", this.searchTerm, this.filterType);
+      console.log("Filtering data with searchTerm:", this.searchTerm, "and filterType:", this.filterType);
+      // 根据选择的产业链名称查找对应的 layer_id
+      const selectedLayerId = Object.keys(this.industryLayerNames).find(key => this.industryLayerNames[key] === this.filterType);
+
+      // 筛选数据
       return this.data.filter(item =>
           item.name.includes(this.searchTerm) &&
-          (this.filterType ? item.type === this.filterType : true)
+          (this.filterType ? item.layer_id.toString() === selectedLayerId : true)
       );
     },
   },
@@ -118,11 +161,17 @@ export default {
     async loadData() {
       try {
         const response = await fetchEnterprises();
-        this.data = response;
+        if (response && response.length > 0) {
+          this.data = response;  // 确保这里正确地将响应赋值给data
+          console.log('Data loaded:', this.data);
+        } else {
+          console.error('No data returned from the API:', response);
+        }
       } catch (error) {
         console.error('Error fetching enterprise data:', error);
       }
     },
+
     viewDetails(row) {
       // 模拟企业详细数据
       this.dialogContent = {
