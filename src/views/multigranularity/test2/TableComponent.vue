@@ -13,10 +13,10 @@
         <el-input v-model="searchTerm" style="width: 300px;margin-bottom: 5px;" placeholder="请输入搜索关键词"></el-input>
     <el-button class="btn1" type="primary" @click="searchTasks" style="margin-bottom: 5px;"><el-icon><Search /></el-icon>搜索</el-button>
 
-     
+
     </div>
 
-    <el-table :data="filteredData" style="width: 100% " height="498px" padding="10px">
+    <el-table :data="displayData" style="width: 100% " height="400px" padding="10px">
       <el-table-column 
       prop="id" 
       label="企业编号"  
@@ -55,33 +55,50 @@
     </el-table-column>
 
 
+
   <el-table-column 
       label="查看详情" 
       width="150" align="center">
       <template #default="{ row }">
         <el-button 
         @click="viewDetails(row)">详情</el-button>
-        <el-dialog 
-        v-model="dialogVisible"
-        title="协同效果详情"
-        width="30%"
-        :modal="false">
-  
+        <!-- 使用v-if而非v-show控制对话框的渲染 -->
+        <el-dialog
+            v-if="dialogVisible"
+            v-model="dialogVisible"
+            title="协同效果详情"
+            width="30%"
+            :modal="false">
+
     <div v-if="dialogContent">
       <p>1. 企业名称: {{ dialogContent.name }}</p>
       <p>2. 近期评分: {{ dialogContent.recentScores }}</p>
       <p>3. 评分较高项: {{ dialogContent.highScores }} </p>
       <p>4. 评分较低项: {{ dialogContent.lowScores }} </p>
     </div>
-  
+
   <span slot="footer" class="dialog-footer">
     <el-button @click="closeDialog">关闭</el-button>
   </span>
+
 </el-dialog>
+
       </template>
   </el-table-column>
+
     </el-table>
-    
+
+    <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pagination.currentPage"
+        :page-sizes="[8,15,20,30]"
+        :page-size="pagination.pageSize"
+        layout=" ->, sizes, prev, pager, next "
+        :total="pagination.total"
+    >
+    </el-pagination>
+
   </div>
 </template>
 <script>
@@ -122,27 +139,23 @@ export default {
       filterType: '',
       dialogVisible: false,
       dialogContent: null,
+      pagination: {
+        currentPage: 1,
+        pageSize: 8,
+        total: 0
+      },
+      filteredData: [],
+      displayData: [] // 当前页显示的数据
     };
   },
   computed: {
-      uniqueTypes() {
-        if (!this.data.length) {
-          console.warn('Data is available but empty.');
-          return [];
-        }
+    uniqueTypes() {
+      const types = new Set(this.data.map(item => this.industryLayerNames[item.layer_id.toString()]));
+      return Array.from(types);
 
-        // 创建一个 Set 来存储唯一的产业链名称
-        const uniqueTypeSet = new Set(this.data.map(item => this.industryLayerNames[item.layer_id.toString()]));
+  },
 
-
-        // 转换 Set 为 Array
-        const types = Array.from(uniqueTypeSet);
-        console.log('Unique types available:', types);
-        return types;
-      },
-
-
-    filteredData() {
+  filteredData() {
       console.log("Filtering data with searchTerm:", this.searchTerm, "and filterType:", this.filterType);
       // 根据选择的产业链名称查找对应的 layer_id
       const selectedLayerId = Object.keys(this.industryLayerNames).find(key => this.industryLayerNames[key] === this.filterType);
@@ -154,22 +167,44 @@ export default {
       );
     },
   },
+  watch: {
+    searchTerm(newVal) {
+      this.applyFilter();
+    },
+    filterType(newVal) {
+      this.applyFilter();
+    }
+  },
 
   methods: {
-    async loadData() {
-      try {
-        const response = await fetchEnterprises();
-        if (response && response.length > 0) {
-          this.data = response;  // 确保这里正确地将响应赋值给data
-          console.log('Data loaded:', this.data);
-        } else {
-          console.error('No data returned from the API:', response);
-        }
-      } catch (error) {
-        console.error('Error fetching enterprise data:', error);
-      }
+
+    applyFilter() {
+      const selectedLayerId = this.filterType ? Object.keys(this.industryLayerNames).find(key => this.industryLayerNames[key] === this.filterType) : null;
+      this.filteredData = this.data.filter(item =>
+          item.name.includes(this.searchTerm) &&
+          (!this.filterType || item.layer_id.toString() === selectedLayerId));
+
+      // 重置分页和更新显示数据
+      this.pagination.currentPage = 1;
+      this.pagination.total = this.filteredData.length;
+      this.updateDisplayData();
     },
 
+    updateDisplayData() {
+      const start = (this.pagination.currentPage - 1) * this.pagination.pageSize;
+      const end = start + this.pagination.pageSize;
+      this.displayData = this.filteredData.slice(start, end);
+    },
+
+    handleCurrentChange(newPage) {
+      this.pagination.currentPage = newPage;
+      this.updateDisplayData();
+    },
+
+    handleSizeChange(newSize) {
+      this.pagination.pageSize = newSize;
+      this.updateDisplayData();
+    },
     viewDetails(row) {
       // 模拟企业详细数据
       this.dialogContent = {
@@ -183,10 +218,25 @@ export default {
     closeDialog() {
       this.dialogVisible = false;
     },
+
+    async loadData() {
+      try {
+        const response = await fetchEnterprises();
+        if (response && response.length > 0) {
+          this.data = response;
+          this.applyFilter();  // 应用过滤和初始化分页
+        } else {
+          console.error('No data returned from the API:', response);
+        }
+      } catch (error) {
+        console.error('Error fetching enterprise data:', error);
+      }
+    },
   },
   mounted() {
     this.loadData();
-  }
+  },
+
 };
 
 </script>
@@ -197,11 +247,11 @@ export default {
     background-color: rgba(255, 255, 255, 0.8)!important; /* 或任何其他颜色 */
   }
 :deep(.el-table .el-table__body tr) {
-    height: 45px !important;
+    height: 1px !important;
 }
 
 :deep(.el-table .el-table__body tr td) {
-    line-height: 3px !important;
+    line-height: 30px !important;
 }
 .page-title {
   text-align: center;
