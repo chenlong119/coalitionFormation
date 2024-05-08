@@ -1647,8 +1647,8 @@ const option = {
     tooltip: {},
     legend: {
       left: 'right',
-      // data: ['空调产业链', '汽车产业链', '冰箱产业链', 'GDP', '金融', '房地产'],
-      data: ['空调产业链', '汽车产业链', '冰箱产业链'],
+      // data: ['空调产业链', '汽车产业链', '洗衣机产业链', 'GDP', '金融', '房地产'],
+      data: ['空调产业链', '汽车产业链', '洗衣机产业链'],
       // selected: {
       //   GDP: false,
       //   金融: false,
@@ -1705,7 +1705,7 @@ const option = {
       // { name: '房地产', type: 'bar' },
       { name: '空调产业链', type: 'bar' },
       { name: '汽车产业链', type: 'bar' },
-      { name: '冰箱产业链', type: 'bar' },
+      { name: '洗衣机产业链', type: 'bar' },
       {
         name: '收益占比',
         type: 'pie',
@@ -1729,7 +1729,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2002sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2002sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2002sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2002sum'] }
           ]
         }
       ]
@@ -1747,7 +1747,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2003sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2003sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2003sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2003sum'] }
           ]
         }
       ]
@@ -1765,7 +1765,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2004sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2004sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2004sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2004sum'] }
           ]
         }
       ]
@@ -1783,7 +1783,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2005sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2005sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2005sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2005sum'] }
           ]
         }
       ]
@@ -1801,7 +1801,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2006sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2006sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2006sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2006sum'] }
           ]
         }
       ]
@@ -1819,7 +1819,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2007sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2007sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2007sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2007sum'] }
           ]
         }
       ]
@@ -1837,7 +1837,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2008sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2008sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2008sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2008sum'] }
           ]
         }
       ]
@@ -1855,7 +1855,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2009sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2009sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2009sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2009sum'] }
           ]
         }
       ]
@@ -1873,7 +1873,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2010sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2010sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2010sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2010sum'] }
           ]
         }
       ]
@@ -1891,7 +1891,7 @@ const option = {
           data: [
             { name: '空调产业链', value: dataMap.dataPI['2011sum'] },
             { name: '汽车产业链', value: dataMap.dataSI['2011sum'] },
-            { name: '冰箱产业链', value: dataMap.dataTI['2011sum'] }
+            { name: '洗衣机产业链', value: dataMap.dataTI['2011sum'] }
           ]
         }
       ]

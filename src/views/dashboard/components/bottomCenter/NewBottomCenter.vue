@@ -34,7 +34,7 @@ function createincomechartPolylines(){
     }
   },
   legend: {
-    data: ['洗衣机产业链', '家电产业链', '汽车产业链'],
+    data: ['洗衣机产业链', '空调产业链', '汽车产业链'],
             left: 'right',
         textStyle: {
           color:'white',
@@ -82,7 +82,7 @@ function createincomechartPolylines(){
       data: [12, 13.2, 10.1, 13.4, 9, 23, 21]
     },
     {
-      name: '家电产业链',
+      name: '空调产业链',
       type: 'line',
       stack: 'Total',
       areaStyle: {},
