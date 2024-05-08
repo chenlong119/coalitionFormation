@@ -60,7 +60,7 @@ export default {
     },
     updateColumnWidths() {
       // 更新每列的宽度百分比
-      this.rankWidth = `$30%`; // 排名列宽度
+      this.rankWidth = `$40%`; // 排名列宽度
       this.groupNameWidth = `$40%`; // 企业群名称列宽度
       this.scoreWidth = `$30%`; // 分数列宽度
     }
@@ -71,7 +71,7 @@ export default {
 
 <style scoped>
 :deep(.el-table .el-table__body tr) {
-  height: 72px;
+  height: 70px;
   min-height: 80px;
 }
 .box-card {
