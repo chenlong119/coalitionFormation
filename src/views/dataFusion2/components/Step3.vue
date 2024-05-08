@@ -418,7 +418,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[0, -30], [680, -30], [630, 90], [-50, 90]])  // 左上、右上、右下、左下
+              points: calculatePoints([[0, -30], [650, -30], [600, 90], [-50, 90]])  // 左上、右上、右下、左下
             },
             style: {
               fill: '#eee',
@@ -450,7 +450,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[0, -15], [680, -15], [640, 105], [-50, 105]])  // 左上、右上、右下、左下
+              points: calculatePoints([[0, -15], [650, -15], [610, 105], [-50, 105]])  // 左上、右上、右下、左下
             },
             style: {
               fill: '#eee',
@@ -478,7 +478,7 @@ onMounted(async () => {
           {
             type: 'polygon',
             shape: {
-              points: calculatePoints([[0, 110], [675, 110], [715, -10], [50, -10]])  // 左下、右下、右上、左上
+              points: calculatePoints([[0, 110], [645, 110], [685, -10], [50, -10]])  // 左下、右下、右上、左上
             },
             style: {
               fill: '#eee',
