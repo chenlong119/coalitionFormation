@@ -14,7 +14,7 @@ function createincomechartPolylines(){
     const myChart = echarts.init(income_chartPol.value);
     const option = {
   title: {
-    text: '共享收益变化表',
+    text: '共享收益变化图',
     textStyle: {
           color:'white',
           fontSize:18
@@ -559,7 +559,7 @@ function createincomechartPolylines(){
 </script>
 
 <template>
-  <Body :dec-id="3" :name="'群智汇聚'" icon="icon-huiju">
+  <Body :dec-id="3" :name="'数据共享'" icon="icon-huiju">
     <div id="income-chartPol" ref="income_chartPol"></div>
   <!-- <div id="income-chart" ref="income_chart"></div> -->
   </Body>
