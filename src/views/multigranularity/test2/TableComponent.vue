@@ -209,7 +209,7 @@ export default {
       // 模拟企业详细数据
       this.dialogContent = {
         name: row.name,
-        recentScores: '92, 88, 91, 94, 90',
+        recentScores: '85.87, 85.77, 88.41, 85.23, 87.69',
         highScores: '质量评价, 服务评价 >90分 ',
         lowScores: '交货情况 <70分 ',
       };
@@ -328,55 +328,50 @@ export default {
 }
 
 :deep(.el-dialog__title) {
-  //font-weight: 600; /* 使标题更加粗体 */
-  //font-size: 20px; /* 增加标题字体大小 */
-  //color: #333; /* 为标题设置深色字体 */
-  //margin-bottom: 20px; /* 增加标题和内容之间的间距 */
+  font-weight: 600; /* 使标题更加粗体 */
+  font-size: 20px; /* 增加标题字体大小 */
+  color: #333; /* 为标题设置深色字体 */
+  margin-bottom: 20px; /* 增加标题和内容之间的间距 */
 }
 
 :deep(.el-dialog__body) {
-  //padding:  5px 10px; /* 添加内部填充以创建更多空间 */
-  //font-size: 16px; /* 增加主体字体大小 */
-  //line-height: 1.7; /* 设置更大的行高来改善可读性 */
-  //color: #555; /* 为文本设置深色字体 */
+  padding:  5px 10px; /* 添加内部填充以创建更多空间 */
+  font-size: 16px; /* 增加主体字体大小 */
+  line-height: 1.7; /* 设置更大的行高来改善可读性 */
+  color: #555; /* 为文本设置深色字体 */
 }
 
 :deep(.el-dialog__body p) {
  
-  margin: 10px 0; 
+  margin: 10px 0;
   padding: 0 0 0 0%; /* 调整这个值来改变文字的起始位置 */
   text-align: left; 
-  border-left: 3px solid #007BFF; 
+  border-left: 4px solid #007BFF;
 
   &::before {
     content: '';
-   
-  margin-left: 40px;
-    top: 0;
-    bottom: 0;
-    width: 3px; /* 将它更改为你想要的宽度 */
+  margin-left: 70px;
+
    
   }
 }
 
 
 
-/* 按钮样式调整 */
-:deep(.dialog-footer) {
-  border-top: 1px solid #e9e9e9; /* 添加一个顶部边界来分隔底部按钮区域 */
-  padding-top: 15px; /* 在按钮区域上方添加一些填充 */
-}
+
 
 :deep(.dialog-footer .el-button) {
   font-size: 16px; /* 增加字体大小来强调按钮 */
   background-color: #007BFF; /* 设置一个明亮的背景色来吸引注意力 */
   border-color: #007BFF; /* 使边界颜色与背景颜色匹配 */
   color: #fff; /* 为按钮文字设置一个亮白色 */
+
 }
 
 :deep(.dialog-footer .el-button:hover) {
   background-color: #0056b3; /* 添加一个深色的悬停效果 */
   border-color: #0056b3; /* 使悬停边框颜色匹配背景色 */
+
 }
 
  .select-container {
