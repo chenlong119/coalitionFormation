@@ -123,16 +123,15 @@ onMounted(() => {
           const row = Math.floor((randomPos - 1) / 15); // 计算行数
           const column = (randomPos - 1) % 15; // 计算列数
 
-          const offsetX = column * 60 + 80; // x 坐标偏移量，增加每列之间的空隙
-          node.x = column * 50 + offsetX;
-          node.y = Math.floor((randomPos - 1) / 15) * height / 4;
+          node.x = column * width / 10;
+          node.y = Math.floor(randomPos - 1) * height / 100;
           // 调整上方第一个区域的节点向上移动
           if (row === 0) {
-            node.y -= height / 10; 
+            node.y -= height / 3; 
           }
           // 调整下方最后一个区域的节点向下移动
           if (row === 2) {
-            node.y += height / 10; 
+            node.y += height / 3; 
           }
           break;
         }
@@ -181,10 +180,10 @@ onMounted(() => {
     allocateSpace(node_l3);
     //根据层对节点的y值进行校正
     node_l2.forEach((node) => {
-      node.y += 1.9*height;
+      node.y += 2*height;
     });
     node_l3.forEach((node) => {
-      node.y += 3.8*height;
+      node.y += 4*height;
     });
     let node_all = node_l1.concat(node_l2).concat(node_l3);
 
@@ -198,6 +197,11 @@ onMounted(() => {
             var name = params.name;
             var company_type = params.data.company_type;
             var chain_name = params.data.chain_name;
+            var type;
+            if (company_type == 1) type = "原料供应";
+            else if (company_type == 2) type = "零件生产";
+            else if (company_type == 3) type = "整机组装";
+            else type = "销售和回收";
             return (
               "id: " +
               id +
@@ -206,7 +210,7 @@ onMounted(() => {
               name +
               "<br/>" +
               "所处领域：" +
-              company_type +
+              type +
               "<br/>" +
               "所处产业链: " +
               chain_name +
@@ -238,13 +242,13 @@ onMounted(() => {
           roam: false,
           categories: [
             {
-              name: "家电产业链",
+              name: "洗衣机产业链",
+            },
+            {
+              name: "空调产业链",
             },
             {
               name: "汽车产业链",
-            },
-            {
-              name: "电子产业链",
             },
           ],
 
