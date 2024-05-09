@@ -216,7 +216,7 @@ getList();
 <style scoped>
 .app-container
 {
-  height: 360px;
+  height: 420px;
 }
 
 .myPagination
