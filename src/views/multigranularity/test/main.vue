@@ -34,7 +34,7 @@
 
           <!-- ... 其他代码 ... -->
           <el-button type="primary" @click="fetchScoreHistory">历史评分</el-button>
-          <el-button  @click="calculateHistory">计算</el-button>
+<!--          <el-button  @click="calculateHistory">计算</el-button>-->
           <!-- 假设按钮在Vue模板中 -->
 
 
