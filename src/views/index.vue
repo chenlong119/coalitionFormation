@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="box2 bg skew" @click="$router.push('/dataSharing/aa')">
-            <span class="rSkew">数据共享</span>
+            <span class="rSkew">群智汇聚</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/intelligenceEmerges/companyInfo')">
             <span class="rSkew">联盟演化</span>
