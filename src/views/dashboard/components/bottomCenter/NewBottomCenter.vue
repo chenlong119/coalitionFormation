@@ -438,7 +438,7 @@ function createincomechart(){
 </script>
 
 <template>
-  <Body :dec-id="3" :name="'群智汇聚'" icon="icon-huiju">
+  <Body :dec-id="3" name="共享收益变化图" icon="icon-huiju">
   <div id="income-chart" ref="income_chart"></div>
   </Body>
 </template>
