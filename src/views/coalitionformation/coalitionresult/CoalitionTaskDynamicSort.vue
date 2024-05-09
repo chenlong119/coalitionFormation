@@ -8,7 +8,7 @@ let barChart=null;
 const taskStore=userTaskStore();
 const data = [];
 const draw=async ()=>{
-  taskStore.tasks = await request({
+  let res = await request({
     url: "/coalition/formation/getall"
   });
   let taskList=res.filter(item=>item.taskStatus===1);

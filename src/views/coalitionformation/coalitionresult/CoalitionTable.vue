@@ -175,7 +175,7 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 5,
+    pageSize: 4,
     name: null,
     taskId: null,
     coalitionStatus: null,
@@ -234,7 +234,7 @@ getList();
 <style scoped>
 .app-container
 {
-  height: 480px;
+  height: 500px;
 }
 
 .myPagination

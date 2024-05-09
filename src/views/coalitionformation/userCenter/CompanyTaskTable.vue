@@ -139,7 +139,7 @@
           <span>{{ scope.row.resource?.length }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="350" fixed="right">
+      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="230" fixed="right">
         <template #default="scope">
           <el-button link type="primary" icon="Star" @click="coalitionformation(scope.row)"
                      :disabled="scope.row.taskStatus===1||scope.row.taskStatus===2">联盟形成
