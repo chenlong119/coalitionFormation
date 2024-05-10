@@ -488,6 +488,7 @@ function handleDelete(row) {
     return delFormation(_ids);
   }).then(() => {
     taskStore.isAddTask=!taskStore.isAddTask;
+    loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
     getList();
     proxy.$modal.msgSuccess("删除成功");
   }).catch(() => {

@@ -29,15 +29,15 @@
             style="width: 120px"
         />
       </el-form-item>
-      <el-form-item label="网络层编号" prop="layerId">
-        <el-input
-            v-model="queryParams.layerId"
-            placeholder="请输入所属网络层编号"
-            clearable
-            @keyup.enter="handleQuery"
-            style="width: 170px"
-        />
-      </el-form-item>
+<!--      <el-form-item label="网络层编号" prop="layerId">-->
+<!--        <el-input-->
+<!--            v-model="queryParams.layerId"-->
+<!--            placeholder="请输入所属网络层编号"-->
+<!--            clearable-->
+<!--            @keyup.enter="handleQuery"-->
+<!--            style="width: 170px"-->
+<!--        />-->
+<!--      </el-form-item>-->
       <el-form-item label="企业状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="请选择企业状态" style="width: 150px" clearable>
           <el-option
