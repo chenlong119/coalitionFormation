@@ -192,7 +192,7 @@
           <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"
                      v-hasPermi="['coalition:formation:edit']">修改
           </el-button>
-          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
+          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" ：disabled="scope.row.taskStatus==1"
                      v-hasPermi="['coalition:formation:remove']">删除
           </el-button>
         </template>
