@@ -719,6 +719,10 @@ const getBidRecord = async () => {
     }
   })
   currentBidRecordAll.value = res;
+  currentBidRecordAll.value.forEach(item => {
+    item.bidTime = item.bidTime.replace('T', ' ');
+    item.selectedDate = item.selectedDate.replace('T', ' ');
+});
   currentBidRecordAwait.value = currentBidRecordAll.value.filter(item => item.selected === '0');
   currentBidRecordSelected.value = currentBidRecordAll.value.filter(item => item.selected === '1');
   chooseCompanyVis.value = true;
@@ -749,7 +753,8 @@ const getgroupFormingAuctionDataAll = async () => {
   groupFormingAuctionDataRecomended.value = groupFormingAuctionDataAll.value.filter(
     item => item.groupAuctionReleaser != currentCompany.value
   );
-  // console.log("groupFormingAuctionDataAllbdfore  "+groupFormingAuctionDataAll.value);
+  console.log(groupFormingAuctionDataAll.value[1]);
+  console.log("groupFormingAuctionDataAll  "+groupFormingAuctionDataAll.value[1].dataFinish);
   // console.log("groupFormingAuctionDataLead  "+groupFormingAuctionDataLead.value);
 
 };
@@ -883,6 +888,7 @@ const getFinishedTaskData = async () => {
   });
 
   finishedData.value = res;
+  console.log(finishedData.value[1])
   console.log(finishedData.value[1].dataFinish)
 };
 
