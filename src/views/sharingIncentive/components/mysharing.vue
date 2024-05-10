@@ -1610,23 +1610,23 @@ const option = {
       // },
       data: [
         // '2024-01-21',
-        '2024-02-01',
-        '2024-03-01',
+        '2023-10-01',
+        '2023-11-01',
         {
-          value: '2024-04-01',
+          value: '2023-12-01',
           tooltip: {
             formatter: '{b} 收益达到一个高度'
           },
           symbol: 'diamond',
           symbolSize: 16
         },
+        '2024-01-01',
+        '2024-02-01',
+        '2024-03-01',
+        '2024-04-01',
         '2024-05-01',
-        '2024-06-01',
-        '2024-07-01',
-        '2024-08-01',
-        '2024-09-01',
         {
-          value: '2024-10-01',
+          value: '2024-6-01',
           tooltip: {
             formatter: function (params) {
               return params.name + '收益达到又一个高度';
@@ -2028,31 +2028,31 @@ const option = {
         // },
         data: [
           // '2024-01-21',
-          '2024-02-01',
-          '2024-03-01',
-          {
-            value: '2024-04-01',
-            tooltip: {
-              formatter: '{b} 收益达到一个高度'
-            },
-            symbol: 'diamond',
-            symbolSize: 16
+          '2023-08-01',
+        '2023-09-01',
+        {
+          value: '2023-10-01',
+          tooltip: {
+            formatter: '{b} 收益达到一个高度'
           },
-          '2024-05-01',
-          '2024-06-01',
-          '2024-07-01',
-          '2024-08-01',
-          '2024-09-01',
-          {
-            value: '2024-10-01',
-            tooltip: {
-              formatter: function (params) {
-                return params.name + '收益达到又一个高度';
-              }
-            },
-            symbol: 'diamond',
-            symbolSize: 18
-          }
+          symbol: 'diamond',
+          symbolSize: 16
+        },
+        '2023-11-01',
+        '2023-12-01',
+        '2024-02-01',
+        '2024-03-01',
+        '2024-04-01',
+        {
+          value: '2024-5-18',
+          tooltip: {
+            formatter: function (params) {
+              return params.name + '收益达到又一个高度';
+            }
+          },
+          symbol: 'diamond',
+          symbolSize: 18
+        }
         ],
         label: {
           formatter: function (s) {
@@ -2366,7 +2366,7 @@ const option = {
     {
       type: 'category',
       boundaryGap: false,
-      data: ['24-06', '24-07', '24-08', '24-09', '24-10', '24-11', '24-12']
+      data: ['23-06', '23-07', '23-08', '23-09', '23-10', '23-11', '23-12']
     }
   ],
   yAxis: [

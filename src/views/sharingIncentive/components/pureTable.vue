@@ -626,7 +626,7 @@ function load() {  //加载
       recComment: '有点小问题',
     },
     {
-      dataName: '六幺八家电基本购买情况与分析',
+      dataName: '618家电基本购买情况与分析',
       dataReleaser: '小鸭集团',
       dataDate: '2023-06-20',
       hisClick: 105,
