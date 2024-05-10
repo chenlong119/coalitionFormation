@@ -39,9 +39,9 @@ onMounted(() => {
           {value: 38, name: '洗衣机产业链'},
           {value: 32, name: 'SUV汽车产业链'},
           {value: 30, name: '越野车产业链'},
-          {value: 28, name: '空调产业链'},
-          {value: 26, name: '电视产业链'},
-          {value: 22, name: '台式电脑产业链'},
+          {value: 28, name: '挂式空调产业链'},
+          {value: 26, name: '立式空调产业链'},
+          {value: 22, name: '小鸭洗衣机产业链'},
           {value: 18, name: '冰箱产业链'}
         ]
       }

@@ -10,7 +10,7 @@ const draw=async ()=>{
   let res = await request({
     url: "/coalition/formation/getChainTask",
     params: {
-      chainId: 2
+      chainId: 3
     }
   });
   let data=taskData.nodes;
@@ -30,7 +30,7 @@ const draw=async ()=>{
   });
   let option={
     title: {
-      text: "洗衣机产业链任务关系图",
+      text: "汽车产业链任务关系图",
       left:80,
       top:30,
       textStyle:{
