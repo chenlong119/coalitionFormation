@@ -31,7 +31,7 @@
           <el-button
               type="primary"
               icon="User"
-              @click="$router.push('/intelligenceEmerges/coalitionResult')"
+              @click="$router.push('/intelligenceEmerges/companyInfo')"
           >查看企业信息
           </el-button>
             <el-button
@@ -76,7 +76,7 @@
       <el-dialog
           title="联盟详情"
           v-model="coalitionDialog"
-          width="50%"
+          width="60%"
       >
         <el-row :gutter="15">
           <el-col :span="14">

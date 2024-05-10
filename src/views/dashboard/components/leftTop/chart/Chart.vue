@@ -107,7 +107,7 @@ onMounted(() => {
   updateChart();
   interval();
 })
-</script>
+<img src="../../../../../assets/dashboard/pageBg.png" height="1080" width="1920"/></script>
 
 <style scoped>
 

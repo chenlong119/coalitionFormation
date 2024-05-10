@@ -14,7 +14,7 @@
       <el-form-item label="企业编号" prop="id">
         <el-input
             v-model="queryParams.id"
-            placeholder="请输入企业地址"
+            placeholder="请输入企业编号"
             clearable
             @keyup.enter="handleQuery"
             style="width: 120px"
