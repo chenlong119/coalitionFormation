@@ -2062,7 +2062,7 @@ const option = {
         }
       },
       title: {
-        subtext: '数据来自近期统计',
+        subtext: '',
         // textStyle: {
         //   color:'white',
         //   fontSize:18
@@ -2129,7 +2129,7 @@ const option = {
       yAxis:
         {
           type: 'value',
-          name: '增长值（亿元）'
+          name: '增长值'
         },
       series: [
         // { name: 'GDP', type: 'bar' },
@@ -2149,7 +2149,7 @@ const option = {
     },
     options: [
       {
-        title: { text: '2024年1月共享收益指标' },
+        title: { text: '2023年7月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2002'] },
           // { data: dataMap.dataFinancial['2002'] },
@@ -2167,7 +2167,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年2月共享收益指标' },
+        title: { text: '2023年8月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2003'] },
           // { data: dataMap.dataFinancial['2003'] },
@@ -2185,7 +2185,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年3月共享收益指标' },
+        title: { text: '2023年9月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2004'] },
           // { data: dataMap.dataFinancial['2004'] },
@@ -2203,7 +2203,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年4月共享收益指标' },
+        title: { text: '2023年10月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2005'] },
           // { data: dataMap.dataFinancial['2005'] },
@@ -2221,7 +2221,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年5月共享收益指标' },
+        title: { text: '2023年11月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2006'] },
           // { data: dataMap.dataFinancial['2006'] },
@@ -2239,7 +2239,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年6月共享收益指标' },
+        title: { text: '2024年1月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2007'] },
           // { data: dataMap.dataFinancial['2007'] },
@@ -2257,7 +2257,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年7月共享收益指标' },
+        title: { text: '2024年2月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2008'] },
           // { data: dataMap.dataFinancial['2008'] },
@@ -2275,7 +2275,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年8月共享收益指标' },
+        title: { text: '2024年3月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2009'] },
           // { data: dataMap.dataFinancial['2009'] },
@@ -2293,7 +2293,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年9月共享收益指标' },
+        title: { text: '2024年4月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2010'] },
           // { data: dataMap.dataFinancial['2010'] },
@@ -2311,7 +2311,7 @@ const option = {
         ]
       },
       {
-        title: { text: '2024年10月共享收益指标' },
+        title: { text: '2024年5月共享收益指标' },
         series: [
           // { data: dataMap.dataGDP['2011'] },
           // { data: dataMap.dataFinancial['2011'] },
