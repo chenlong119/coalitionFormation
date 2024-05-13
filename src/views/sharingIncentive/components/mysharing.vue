@@ -80,8 +80,6 @@
        
       <!-- 修改之前已经完成的表格界面 -->
       <el-table :data="dataFiltered" border stripe :header-cell-class-name="headerBg" max-height="240" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column label="序号" width="60">
             <template #header="{ column }">
               <div>{{ column.label }}</div>
@@ -179,11 +177,9 @@
 
       <el-dialog title="数据上传情况" v-model="isDatadetailVisible" @close="hideDataDetails" class="custom-dialog">
         <el-table :data="dataProvidersInfo" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="provider" label="企业名称" >
           </el-table-column>
-          <el-table-column prop="value" label="出价" >
+          <el-table-column prop="value" label="积分" >
           </el-table-column>
           <el-table-column prop="dataName" label="数据名称" >
           </el-table-column>
@@ -196,16 +192,14 @@
       <div class="center-container">
         <el-button @click="showModifyAuction()" 
         style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px;">
-        重新发布拍卖</el-button>
+        重新发布共享需求</el-button>
       </div>
-      <span slot="footer" class="dialog-footer">
+      <!-- <span slot="footer" class="dialog-footer">
         <el-button @click="hideDataDetails">关闭</el-button>
-      </span>
+      </span> -->
     </el-dialog>
     <el-dialog title="拍卖确认" v-model=" isAuctionConfirmVis" @close="hideDataDetails" class="custom-dialog">
         <el-table :data="dataProvidersInfo" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="provider" label="企业名称" >
           </el-table-column>
           <el-table-column prop="value" label="最终出价" >
@@ -294,7 +288,7 @@
             :total="total">
         </el-pagination>
       </div>
-      <el-dialog title="新添拍卖任务" width="50%" v-model="isPopupVisible"  @close="hidePopup">
+      <el-dialog title="新增共享需求" width="50%" v-model="isPopupVisible"  @close="hidePopup">
         <el-form label-width="110px" size="small" id="addAuctionForm">
           <el-form-item label="数据需求">
             <el-input v-model="AuctionTaskForm.taskName" autocomplete="off"></el-input>
@@ -305,7 +299,7 @@
           <el-form-item label="所属产业链">
             <el-input v-model="AuctionTaskForm.chain" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="起拍价">
+          <el-form-item label="初始积分">
             <el-input v-model="AuctionTaskForm.profit" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="截止日期">
@@ -321,13 +315,13 @@
             <el-input v-model="AuctionTaskForm.dataFinish" autocomplete="off"></el-input>
           </el-form-item> -->
         </el-form>
-        <div slot="footer" class="dialog-footer">
+        <div slot="footer" class="center-container">
           <el-button @click="hidePopup">取 消</el-button>
           <el-button type="primary" @click="save">确 定</el-button>
         </div>
       </el-dialog>
 
-      <el-dialog title="修改拍卖任务" width="50%" v-model="isModifyAuctionVisible"  @close="hideModifyAuctionp">
+      <el-dialog title="修改数据共享需求" width="50%" v-model="isModifyAuctionVisible"  @close="hideModifyAuctionp">
         <el-form label-width="110px" size="small">
           <el-form-item label="数据需求">
             <el-input v-model="AuctionTaskForm.taskName" autocomplete="off"></el-input>
@@ -338,7 +332,7 @@
           <el-form-item label="所属产业链">
             <el-input v-model="AuctionTaskForm.chain" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="起拍价">
+          <el-form-item label="初始积分">
             <el-input v-model="AuctionTaskForm.profit" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="截止日期">
@@ -351,7 +345,7 @@
             ></el-date-picker>
           </el-form-item>
         </el-form>
-        <div slot="footer" class="dialog-footer">
+        <div slot="footer" class="center-container">
           <el-button @click="hideModifyAuction">取 消</el-button>
           <el-button type="primary" @click="save">确 定</el-button>
         </div>

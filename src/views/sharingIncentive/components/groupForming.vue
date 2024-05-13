@@ -199,8 +199,6 @@
          </el-form-item>
       </el-form>
           <el-table :data="groupFormingAuctionDataLead" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-            <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column label="序号" width="60">
             <template #header="{ column }">
               <div>{{ column.label }}</div>
@@ -294,8 +292,6 @@
          </el-form-item>
       </el-form>
           <el-table :data="groupFormingAuctionDataParticipate" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-            <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column label="序号" width="60">
             <template #header="{ column }">
               <div>{{ column.label }}</div>
@@ -373,8 +369,6 @@
 
       <el-dialog title="数据上传情况" v-model="isDatadetailVisible" @close="hideDataDetails" class="custom-dialog">
         <el-table :data="dataProvidersInfo" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="provider" label="企业名称" >
           </el-table-column>
           <el-table-column prop="value" label="值" >
@@ -401,8 +395,6 @@
       <div>
         <h3>历史报价：</h3>
         <el-table :data="historyBidRecordUserName" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" center>
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="bidId" label="出价编号" >
           </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
@@ -423,8 +415,6 @@
     </el-dialog>
     <el-dialog title="选择企业" v-model="chooseCompanyVis" @close="hideAuctionDetails" class="custom-dialog" center>
       <el-table :data="currentBidRecordAwait" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="bidId" label="出价编号" >
           </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
@@ -441,8 +431,6 @@
         </el-table>
         <div>已形成企业群</div>
         <el-table :data="currentBidRecordSelected" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
           </el-table-column>
           <el-table-column prop="bidAmount" label="出价收益比例（%）" >

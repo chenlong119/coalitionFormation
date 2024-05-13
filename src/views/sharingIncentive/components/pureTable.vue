@@ -122,8 +122,6 @@
 
     </el-form>
       <el-table :data="companyData" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-        <el-table-column type="selection" width="65"> <!--多选框-->
-        </el-table-column>
         <el-table-column prop="companyName" label="企业名称" >
         </el-table-column>
         <el-table-column prop="joinTime" label="加入时间" >
@@ -193,8 +191,6 @@
 
     </el-form>
         <el-table :data="dataTableAvailable" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="dataName" label="数据名称" >
           </el-table-column>
           <el-table-column prop="dataReleaser" label="数据提供方" >
@@ -295,8 +291,6 @@
 
     </el-form>
         <el-table :data="dataTableSelf" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="dataName" label="数据名称" >
           </el-table-column>
           <el-table-column prop="dataDate" label="上传日期" >
@@ -327,9 +321,9 @@
               </el-tooltip>
             </template> 
           </el-table-column>
-        <el-table-column label="重新上传" align="center"  class-name="small-padding fixed-width">
+        <!-- <el-table-column label="重新上传" align="center"  class-name="small-padding fixed-width">
           <el-button link type="primary" icon="Edit" @click="openFileUploadDialog" ></el-button>
-        </el-table-column>
+        </el-table-column> -->
         </el-table> 
       </el-tab-pane>
       <!-- <el-tab-pane label="Task">Task</el-tab-pane> -->
