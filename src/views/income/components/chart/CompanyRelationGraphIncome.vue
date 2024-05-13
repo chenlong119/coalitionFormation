@@ -149,16 +149,26 @@ const drawRelationShip = async () => {
       trigger: "item",
       formatter: function (params) {
         if (params.dataType === "node") {
-          var locationId = params.locationId;
-          var companyId = params.data.companyId;
-          var name = params.name;
-          var field = params.data.field;
-          var layerId = params.data.layerId;
+          var fieldText = "";
+          if (params.data.field === "1") {
+            fieldText = "原料供应";
+          } else if (params.data.field === "2") {
+            fieldText = "零件生产";
+          } else if (params.data.field === "3") {
+            fieldText = "整机组装";
+          } else if (params.data.field === "4") {
+            fieldText = "销售和回收";
+          }
           var chainName;
           if (layerId == 1) chainName = "洗衣机产业链";
           else if (layerId == 2) chainName = "空调产业链";
           else if (layerId== 3) chainName = "汽车产业链";
           else chainName = "冰箱产业链";
+          var locationId = params.locationId;
+          var companyId = params.data.companyId;
+          var name = params.name;
+          var field = fieldText;
+          var layerId = params.data.layerId;
           return (
             "企业ID: " +
             companyId +
