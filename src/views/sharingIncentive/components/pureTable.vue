@@ -535,7 +535,7 @@ function load() {  //加载
         },
       { 
         taskName:'双十一电视销售数据',
-        taskReleaser:'闲鱼',
+        taskReleaser:'京东',
         profit:100,
         dataRelease:"2022.5.1",
         dataFinish:"2022.6.1",
