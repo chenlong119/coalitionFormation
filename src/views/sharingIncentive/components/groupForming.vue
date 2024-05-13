@@ -136,12 +136,6 @@
                     </el-tooltip>
                 </template>
             </el-table-column>
-          <!-- <el-table-column label="查看出价详情" align="center"  class-name="small-padding fixed-width">
-            <template #default="scope">
-              <el-link @click="showProfitDetails(scope.row)">{{ calculateWeightedGain(scope.row) }}</el-link>
-              <el-button link type="primary" icon="Edit" @click="showAuctionDetails(scope.row)" ></el-button>
-            </template>
-          </el-table-column> -->
         </el-table> 
         </el-tab-pane>
         <el-tab-pane label="我发布的">
@@ -232,7 +226,7 @@
           </el-table-column>        
           <el-table-column label="所属产业链" prop="chain" >
           </el-table-column>
-          <el-table-column label="查看出价详情" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="查看加入详情" align="center"  class-name="small-padding fixed-width">
             <el-button link type="primary" icon="Edit" @click="getBidRecord " ></el-button>
           </el-table-column>
           </el-table> 
@@ -325,7 +319,7 @@
           </el-table-column>        
           <el-table-column label="所属产业链" prop="chain" >
           </el-table-column>
-          <el-table-column label="查看出价详情" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="查看加入详情" align="center"  class-name="small-padding fixed-width">
             <template #default="scope">
                     <el-button link type="primary" icon="Edit" @click="getHistoryBidRecordUserName(scope.row)" ></el-button>
                 </template>
@@ -359,8 +353,7 @@
       >
         <el-button type="primary" size="medium" round icon="upload">上传数据</el-button>
       </el-upload> -->
-      <div slot="footer" class="center-container" >
-
+      <div  class="center-container" >
           <el-button  @click="uploadFile">确认份额</el-button>
         </div>
     </div>
@@ -375,7 +368,7 @@
           </el-table-column>
           <el-table-column prop="dataName" label="数据名称" >
           </el-table-column>
-          <el-table-column label="接受出价" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="接受入群" align="center"  class-name="small-padding fixed-width">
             <template #default="scope">
             <el-button type="text" icon="el-icon-download" @click="downloadSucc ">接受</el-button>
             </template>         
@@ -391,17 +384,17 @@
         <el-button @click="hideDataDetails">关闭</el-button>
       </span>
     </el-dialog>
-    <el-dialog title="出价详情" v-model="isAuctiondetailVisible" @close="hideAuctionDetails" class="custom-dialog" center>
+    <el-dialog title="加入请求详情" v-model="isAuctiondetailVisible" @close="hideAuctionDetails" class="custom-dialog" center>
       <div>
         <h3>历史报价：</h3>
         <el-table :data="historyBidRecordUserName" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" center>
-          <el-table-column prop="bidId" label="出价编号" >
+          <el-table-column prop="bidId" label="编号" >
           </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
           </el-table-column>
-          <el-table-column prop="bidAmount" label="出价收益比例" >
+          <el-table-column prop="bidAmount" label="意向收益比例" >
           </el-table-column>
-          <el-table-column prop="bidTime" label="出价日期" >
+          <el-table-column prop="bidTime" label="日期" >
           </el-table-column>
           <el-table-column prop="selected" label="是否被选中" >
           </el-table-column>
@@ -409,21 +402,21 @@
       </div>
       <div class="center-container">
         <el-button @click="bidDialogVisible = true" >
-        修改出价</el-button>
+        修改请求</el-button>
       </div>
 
     </el-dialog>
     <el-dialog title="选择企业" v-model="chooseCompanyVis" @close="hideAuctionDetails" class="custom-dialog" center>
       <el-table :data="currentBidRecordAwait" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column prop="bidId" label="出价编号" >
+          <el-table-column prop="bidId" label="编号" >
           </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
           </el-table-column>
-          <el-table-column prop="bidAmount" label="出价收益比例（%）" >
+          <el-table-column prop="bidAmount" label="意向收益比例（%）" >
           </el-table-column>
-          <el-table-column prop="bidTime" label="出价日期" >
+          <el-table-column prop="bidTime" label="请求日期" >
           </el-table-column>
-          <el-table-column label="接受出价" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="接受入群" align="center"  class-name="small-padding fixed-width">
             <template #default="scope">
             <el-button @click="acceptBid(scope.row.bidId)">接受</el-button>
             </template>         
@@ -433,7 +426,7 @@
         <el-table :data="currentBidRecordSelected" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
           <el-table-column prop="userName" label="企业名称" >
           </el-table-column>
-          <el-table-column prop="bidAmount" label="出价收益比例（%）" >
+          <el-table-column prop="bidAmount" label="意向收益比例（%）" >
           </el-table-column>
           <el-table-column prop="selectedDate" label="进群日期" >
           </el-table-column>
@@ -725,6 +718,10 @@ function getHistoryBidRecordUserName(row){
   currentAuctionReleaser.value = row.groupAuctionReleaser;
   currentAuctionId.value=row.id;
   historyBidRecordUserName.value = bidRecordAll.value.filter(item => item.userName === currentCompany.value && item.auctionId === currentAuctionId.value);
+  historyBidRecordUserName.value.forEach(item => {
+    item.bidTime = item.bidTime.replace('T', ' ');
+    // item.selectedDate = item.selectedDate.replace('T', ' ');
+});
   isAuctiondetailVisible.value=true;
 }
 
@@ -788,7 +785,7 @@ function uploadFile() {
     const addAuction1 = async () =>{    const res = await request.post("bidGroup/add",updatedDataBid.value )
   }
   addAuction1();
-    ElMessage.success('出价成功！');
+    ElMessage.success('请求发送成功！');
 
   };
 let form = ref({
