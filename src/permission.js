@@ -54,15 +54,15 @@ router.beforeEach((to, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
-      usePermissionStore().generateRoutes().then(accessRoutes => {
-        // 根据roles权限生成可访问的路由表
-        accessRoutes.forEach(route => {
-          if (!isHttp(route.path)) {
-            router.addRoute(route) // 动态添加可访问路由表
-          }
-        })
-        next({...to, replace: true}) // hack方法 确保addRoutes已完成
-      })
+      // usePermissionStore().generateRoutes().then(accessRoutes => {
+      //   // 根据roles权限生成可访问的路由表
+      //   accessRoutes.forEach(route => {
+      //     if (!isHttp(route.path)) {
+      //       router.addRoute(route) // 动态添加可访问路由表
+      //     }
+      //   })
+      //   next({...to, replace: true}) // hack方法 确保addRoutes已完成
+      // })
        next();
       // next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
       // next();
