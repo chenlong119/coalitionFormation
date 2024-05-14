@@ -166,9 +166,9 @@
     </div>
 
 
-    <footer style="margin-left: 20px;">
-      <p>© 2023 东南大学 仅供测试</p>
-    </footer>
+<!--    <footer style="margin-left: 20px;">-->
+<!--&lt;!&ndash;      <p>© 2023 东南大学 仅供测试</p>&ndash;&gt;-->
+<!--    </footer>-->
   </div>
 </template>
 
