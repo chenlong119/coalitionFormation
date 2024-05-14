@@ -20,7 +20,7 @@
     <el-row>
         <el-col :span="16"   >
 <div style="display: flex;align-items: center;">
-<span class="font">当前所在群组：</span>
+<span class="font">当前所在团体：</span>
 <el-button type="text"  style="font-size: medium;  font-weight: 600;    font-size: 23px; 
 ">{{ currentGroup }}</el-button>
 </div>
@@ -64,7 +64,7 @@
           <span class="custom-tabs-label">
             <el-icon><calendar /></el-icon>
             <span>
-              群内企业
+              团体内内企业
             </span>
           </span>
         </template>
