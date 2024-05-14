@@ -8,8 +8,6 @@
     <div>
       <el-main tyle="width: 100%;">
           <el-table :data="tableData" border stripe :header-cell-class-name="headerBg" @selection-change="handleSelectionChange" :fit="true">
-            <el-table-column type="selection" > <!--多选框-->
-            </el-table-column>
             <el-table-column prop="taskName" label="数据需求" >
             </el-table-column>
             <el-table-column prop="taskReleaser" label="数据请求方" >
@@ -26,7 +24,7 @@
             </el-table-column>
             <el-table-column label="操作" align="center"  class-name="small-padding fixed-width">
                 <template #default="scope">
-                    <el-tooltip content="出价" placement="top" v-if="scope.row.userId !== 1">
+                    <el-tooltip content="查看" placement="top" v-if="scope.row.userId !== 1">
                     <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" ></el-button>
                     </el-tooltip>
                     <el-tooltip content="不再显示" placement="top" v-if="scope.row.userId !== 1">
@@ -38,14 +36,14 @@
       </el-main>
     </div>
     <!-- 上传文件弹窗 -->
-    <el-dialog title="出价" v-model="uploadDialogVisible" @close="closeFileUploadDialog" :width="dialogWidthSmall">
+    <el-dialog title="详情" v-model="uploadDialogVisible" @close="closeFileUploadDialog" :width="dialogWidthSmall">
       <el-form label-width="110px" size="small">
         <el-form-item label="数据条数">
             <el-input v-model="numOfData" placeholder="请输入数据条数" clearable />
           </el-form-item>
-          <el-form-item label="出价">
+          <el-form-item label="积分">
             <el-input   autocomplete="off"         
-            v-model="bidPrice" placeholder="出价不低于15" clearable ></el-input>
+            v-model="bidPrice" placeholder="积分不低于15" clearable ></el-input>
           </el-form-item>
         </el-form>
       <div class="center-container">
@@ -58,7 +56,7 @@
       >
         <el-button type="primary" size="medium" round icon="upload">上传数据</el-button>
       </el-upload> -->
-        <el-button type="primary" size="medium" round @click="bid">确认出价</el-button>
+        <el-button type="primary" size="medium" round @click="bid">确认积分</el-button>
       </div>
     </el-dialog>
 
@@ -76,15 +74,16 @@
       </el-row>
       <div>
         <div class="center-container">
-          <el-button type="info" icon="el-icon-search"  class="el-button" @click="showRecommendation">查看今日推荐</el-button>
+          <!-- <el-button  class="el-button center-text" type="info" icon="el-icon-search"   @click="showRecommendation">查看今日推荐</el-button> -->
+          <el-button @click="showRecommendation" 
+        style="background-color: #008cba; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px;">
+        查看今日推荐</el-button>
         </div>
         <!-- 今日推荐弹窗 -->
         <el-dialog v-model="isRecommendationVisible" title="今日推荐" @close="hideRcommendation" 
         :width="dialogWidth" 
         :height="dialogHeight" >
           <el-table :data="gridData" border stripe :header-cell-class-name="headerBg" :fit="true">
-              <el-table-column type="selection" > <!--多选框-->
-              </el-table-column>
               <el-table-column prop="taskName" label="数据需求" >
               </el-table-column>
               <el-table-column prop="taskReleaser" label="数据请求方" >
@@ -95,13 +94,13 @@
               </el-table-column>
               <el-table-column prop="difficulty" label="难度" >
               </el-table-column>
-              <el-table-column prop="probability" label="拍中概率(%)" >
+              <el-table-column prop="probability" label="成功概率(%)" >
               </el-table-column>
               <el-table-column prop="recomendation" label="推荐指数（%）" >
               </el-table-column>
               <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
               <template #default="scope">
-                  <el-tooltip content="出价" placement="top" v-if="scope.row.userId !== 1">
+                  <el-tooltip content="查看" placement="top" v-if="scope.row.userId !== 1">
                   <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" ></el-button>
                   </el-tooltip>
                   <el-tooltip content="推荐有误" placement="top" v-if="scope.row.userId !== 1">
@@ -217,7 +216,7 @@ function negativeRecommendation(row){
   ElMessage.success('已收到，谢谢您的反馈！');
 }
   function bid() {
-    ElMessage.success('出价成功！详情请到历史拍卖中查看。');
+    ElMessage.success('协商请求已发送！详情请到我的共享中查看。');
 
   };
   function load(){
@@ -945,4 +944,10 @@ body,
   align-items: center;
   margin-bottom: 1px; /* 调整按钮之间的间距 */
 }
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>

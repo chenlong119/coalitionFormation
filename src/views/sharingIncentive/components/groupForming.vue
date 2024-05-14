@@ -96,16 +96,13 @@
             <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
             <el-button icon="Refresh" @click="resetQuery">重置</el-button>
          </el-form-item>
-         <!-- <el-form-item>
-            <el-button  type="primary" @click="showPopup">新增拍卖 </el-button>
-         </el-form-item> -->
       </el-form>
           <el-table :data="groupFormingAuctionDataRecomended " border stripe :header-cell-class-name="headerBg"  max-height="700" :fit="true" >
-          <el-table-column prop="id" label="企业群编号" width="90">
+          <el-table-column prop="id" label="团体编号" width="90">
           </el-table-column>
           <el-table-column prop="motivationTask" label="驱动任务" width="250">
           </el-table-column>
-          <el-table-column prop="groupAuctionReleaser" label="企业群发起方" width="120">
+          <el-table-column prop="groupAuctionReleaser" label="团体发起方" width="120">
           </el-table-column>
           <el-table-column prop="requestDescription" label="需求描述" width="290">
           </el-table-column>
@@ -113,7 +110,7 @@
           </el-table-column>
           <el-table-column prop="profitAuctionStart" label="利润份额（%）" width="100">
             <template #header="{ column }">
-              <el-tooltip effect="dark" content="参与企业群企业最终能分配到的利益份额" placement="top-start">
+              <el-tooltip effect="dark" content="参与团体企业最终能分配到的利益份额" placement="top-start">
                 <span>{{ column.label }}</span>
               </el-tooltip>
             </template>
@@ -136,12 +133,6 @@
                     </el-tooltip>
                 </template>
             </el-table-column>
-          <!-- <el-table-column label="查看出价详情" align="center"  class-name="small-padding fixed-width">
-            <template #default="scope">
-              <el-link @click="showProfitDetails(scope.row)">{{ calculateWeightedGain(scope.row) }}</el-link>
-              <el-button link type="primary" icon="Edit" @click="showAuctionDetails(scope.row)" ></el-button>
-            </template>
-          </el-table-column> -->
         </el-table> 
         </el-tab-pane>
         <el-tab-pane label="我发布的">
@@ -199,8 +190,6 @@
          </el-form-item>
       </el-form>
           <el-table :data="groupFormingAuctionDataLead" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-            <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column label="序号" width="60">
             <template #header="{ column }">
               <div>{{ column.label }}</div>
@@ -209,11 +198,11 @@
               <div>{{ $index + 1 }}</div>
             </template>
           </el-table-column>
-          <el-table-column prop="id" label="企业群编号" >
+          <el-table-column prop="id" label="团体编号" >
           </el-table-column>
           <el-table-column prop="motivationTask" label="驱动任务" >
           </el-table-column>
-          <el-table-column prop="groupAuctionReleaser" label="企业群发起方" >
+          <el-table-column prop="groupAuctionReleaser" label="团体发起方" >
           </el-table-column>
           <el-table-column prop="requestDescription" label="需求描述" >
           </el-table-column>
@@ -221,7 +210,7 @@
           </el-table-column>
           <el-table-column prop="profitAuctionStart" label="利润份额 (%）" >
             <template #header="{ column }">
-              <el-tooltip effect="dark" content="参与拍卖企业最终能分配到的利益份额" placement="top-start">
+              <el-tooltip effect="dark" content="参与该团体的企业最终能分配到的利益份额" placement="top-start">
                 <span>{{ column.label }}</span>
               </el-tooltip>
             </template>
@@ -234,7 +223,7 @@
           </el-table-column>        
           <el-table-column label="所属产业链" prop="chain" >
           </el-table-column>
-          <el-table-column label="查看出价详情" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="查看加入详情" align="center"  class-name="small-padding fixed-width">
             <el-button link type="primary" icon="Edit" @click="getBidRecord " ></el-button>
           </el-table-column>
           </el-table> 
@@ -294,8 +283,6 @@
          </el-form-item>
       </el-form>
           <el-table :data="groupFormingAuctionDataParticipate" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-            <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column label="序号" width="60">
             <template #header="{ column }">
               <div>{{ column.label }}</div>
@@ -304,11 +291,11 @@
               <div>{{ $index + 1 }}</div>
             </template>
           </el-table-column>
-          <el-table-column prop="id" label="企业群编号" >
+          <el-table-column prop="id" label="团体编号" >
           </el-table-column>
           <el-table-column prop="motivationTask" label="驱动任务" >
           </el-table-column>
-          <el-table-column prop="groupAuctionReleaser" label="企业群发起方" >
+          <el-table-column prop="groupAuctionReleaser" label="团体发起方" >
           </el-table-column>
           <el-table-column prop="requestDescription" label="需求描述" >
           </el-table-column>
@@ -316,7 +303,7 @@
           </el-table-column>
           <el-table-column prop="profitAuctionStart" label="利润份额 (%）" >
             <template #header="{ column }">
-              <el-tooltip effect="dark" content="参与拍卖企业最终能分配到的利益份额" placement="top-start">
+              <el-tooltip effect="dark" content="参与该团体的企业最终能分配到的利益份额" placement="top-start">
                 <span>{{ column.label }}</span>
               </el-tooltip>
             </template>
@@ -329,7 +316,7 @@
           </el-table-column>        
           <el-table-column label="所属产业链" prop="chain" >
           </el-table-column>
-          <el-table-column label="查看出价详情" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="查看加入详情" align="center"  class-name="small-padding fixed-width">
             <template #default="scope">
                     <el-button link type="primary" icon="Edit" @click="getHistoryBidRecordUserName(scope.row)" ></el-button>
                 </template>
@@ -343,8 +330,8 @@
     <!-- 上传文件弹窗 -->
     <el-dialog title="加入" v-model="bidDialogVisible" @close="bidDialogVisible = false" :width="dialogWidthSmall">
       <el-form label-width="110px" size="small">
-        <el-form-item label="企业群编号">
-            <el-input  v-model="currentAuctionId" autocomplete="off" placeholder="输入拍卖编号" disabled></el-input>
+        <el-form-item label="团体编号">
+            <el-input  v-model="currentAuctionId" autocomplete="off" placeholder="输入编号" disabled></el-input>
           </el-form-item>
           <el-form-item label="发起企业">
             <el-input  v-model="currentAuctionReleaser" autocomplete="off"  disabled></el-input>
@@ -363,8 +350,7 @@
       >
         <el-button type="primary" size="medium" round icon="upload">上传数据</el-button>
       </el-upload> -->
-      <div slot="footer" class="center-container" >
-
+      <div  class="center-container" >
           <el-button  @click="uploadFile">确认份额</el-button>
         </div>
     </div>
@@ -373,15 +359,13 @@
 
       <el-dialog title="数据上传情况" v-model="isDatadetailVisible" @close="hideDataDetails" class="custom-dialog">
         <el-table :data="dataProvidersInfo" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="provider" label="企业名称" >
           </el-table-column>
           <el-table-column prop="value" label="值" >
           </el-table-column>
           <el-table-column prop="dataName" label="数据名称" >
           </el-table-column>
-          <el-table-column label="接受出价" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="接受入团" align="center"  class-name="small-padding fixed-width">
             <template #default="scope">
             <el-button type="text" icon="el-icon-download" @click="downloadSucc ">接受</el-button>
             </template>         
@@ -391,25 +375,23 @@
       <div class="center-container">
         <el-button @click="showModifyAuction()" 
         style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px;">
-        重新发布拍卖</el-button>
+        重新发布团体任务</el-button>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="hideDataDetails">关闭</el-button>
       </span>
     </el-dialog>
-    <el-dialog title="出价详情" v-model="isAuctiondetailVisible" @close="hideAuctionDetails" class="custom-dialog" center>
+    <el-dialog title="加入请求详情" v-model="isAuctiondetailVisible" @close="hideAuctionDetails" class="custom-dialog" center>
       <div>
         <h3>历史报价：</h3>
         <el-table :data="historyBidRecordUserName" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" center>
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
-          <el-table-column prop="bidId" label="出价编号" >
+          <el-table-column prop="bidId" label="编号" >
           </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
           </el-table-column>
-          <el-table-column prop="bidAmount" label="出价收益比例" >
+          <el-table-column prop="bidAmount" label="意向收益比例" >
           </el-table-column>
-          <el-table-column prop="bidTime" label="出价日期" >
+          <el-table-column prop="bidTime" label="日期" >
           </el-table-column>
           <el-table-column prop="selected" label="是否被选中" >
           </el-table-column>
@@ -417,37 +399,33 @@
       </div>
       <div class="center-container">
         <el-button @click="bidDialogVisible = true" >
-        修改出价</el-button>
+        修改请求</el-button>
       </div>
 
     </el-dialog>
     <el-dialog title="选择企业" v-model="chooseCompanyVis" @close="hideAuctionDetails" class="custom-dialog" center>
       <el-table :data="currentBidRecordAwait" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
-          <el-table-column prop="bidId" label="出价编号" >
+          <el-table-column prop="bidId" label="编号" >
           </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
           </el-table-column>
-          <el-table-column prop="bidAmount" label="出价收益比例（%）" >
+          <el-table-column prop="bidAmount" label="意向收益比例（%）" >
           </el-table-column>
-          <el-table-column prop="bidTime" label="出价日期" >
+          <el-table-column prop="bidTime" label="请求日期" >
           </el-table-column>
-          <el-table-column label="接受出价" align="center"  class-name="small-padding fixed-width">
+          <el-table-column label="接受入团" align="center"  class-name="small-padding fixed-width">
             <template #default="scope">
             <el-button @click="acceptBid(scope.row.bidId)">接受</el-button>
             </template>         
           </el-table-column>
         </el-table>
-        <div>已形成企业群</div>
+        <div>已形成团体</div>
         <el-table :data="currentBidRecordSelected" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="userName" label="企业名称" >
           </el-table-column>
-          <el-table-column prop="bidAmount" label="出价收益比例（%）" >
+          <el-table-column prop="bidAmount" label="意向收益比例（%）" >
           </el-table-column>
-          <el-table-column prop="selectedDate" label="进群日期" >
+          <el-table-column prop="selectedDate" label="进团日期" >
           </el-table-column>
           <!-- <el-table-column label="接受出价" align="center"  class-name="small-padding fixed-width">
             <template #default="scope">
@@ -460,7 +438,7 @@
 <!-- 拍卖确认选择该企业 -->
     <el-dialog
     v-model="selectCompanyVis"
-    title="确认拍卖"
+    title="确认"
     width="30%"
 
 center    >
@@ -476,17 +454,17 @@ center    >
   </el-dialog>
     <el-dialog title="交付详情" v-model="isPaymentdetailVisible" @close="hidePaymentDetails" class="custom-dialog">
       <div>
-        <h4>中拍信息： </h4>
+        <h4>历史信息： </h4>
         <ul>            <div class="data-name">日期：2023.10.12</div>
             <div class="data-name">数据条数：12</div>
-            <div class="uploaded-company">拍卖报价: 103</div></ul>
+            <div class="uploaded-company">最终报价: 103</div></ul>
 
         <h3>历史报价：</h3>
         <ul>
           <li v-for="(dataItem, index) in auctionHistory" :key="index" class="data-item">
             <div class="data-name">日期：{{ dataItem.date }}</div>
             <div class="data-name">数据条数：{{ dataItem.number }}</div>
-            <div class="uploaded-company">拍卖报价: {{ dataItem.money }}</div>
+            <div class="uploaded-company">最终报价: {{ dataItem.money }}</div>
             <el-button type="text" icon="el-icon-download" @click="downloadData(dataItem)">查看</el-button>
           </li>
         </ul>
@@ -530,7 +508,7 @@ center    >
             :total="total">
         </el-pagination>
       </div>
-      <el-dialog title="新添拍卖任务" width="50%" v-model="isPopupVisible"  @close="hidePopup" center>
+      <el-dialog title="新添驱动任务" width="50%" v-model="isPopupVisible"  @close="hidePopup" center>
         <el-form label-width="110px" size="small" id="addAuctionForm">
           <el-form-item label="驱动任务">
             <el-input v-model="AuctionTaskForm.taskName" autocomplete="off"></el-input>
@@ -541,7 +519,7 @@ center    >
           <el-form-item label="所属产业链">
             <el-input v-model="AuctionTaskForm.chain" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="起拍价">
+          <el-form-item label="初始积分">
             <el-input v-model="AuctionTaskForm.profit" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="截止日期">
@@ -564,7 +542,7 @@ center    >
         </div>
       </el-dialog>
 
-      <el-dialog title="修改拍卖任务" width="50%" v-model="isModifyAuctionVisible"  @close="hideModifyAuctionp">
+      <el-dialog title="修改驱动任务" width="50%" v-model="isModifyAuctionVisible"  @close="hideModifyAuctionp">
         <el-form label-width="110px" size="small">
           <el-form-item label="数据需求">
             <el-input v-model="AuctionTaskForm.taskName" autocomplete="off"></el-input>
@@ -575,7 +553,7 @@ center    >
           <el-form-item label="所属产业链">
             <el-input v-model="AuctionTaskForm.chain" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="起拍价">
+          <el-form-item label="初始积分">
             <el-input v-model="AuctionTaskForm.profit" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="截止日期">
@@ -737,6 +715,10 @@ function getHistoryBidRecordUserName(row){
   currentAuctionReleaser.value = row.groupAuctionReleaser;
   currentAuctionId.value=row.id;
   historyBidRecordUserName.value = bidRecordAll.value.filter(item => item.userName === currentCompany.value && item.auctionId === currentAuctionId.value);
+  historyBidRecordUserName.value.forEach(item => {
+    item.bidTime = item.bidTime.replace('T', ' ');
+    // item.selectedDate = item.selectedDate.replace('T', ' ');
+});
   isAuctiondetailVisible.value=true;
 }
 
@@ -800,7 +782,7 @@ function uploadFile() {
     const addAuction1 = async () =>{    const res = await request.post("bidGroup/add",updatedDataBid.value )
   }
   addAuction1();
-    ElMessage.success('出价成功！');
+    ElMessage.success('请求发送成功！');
 
   };
 let form = ref({
