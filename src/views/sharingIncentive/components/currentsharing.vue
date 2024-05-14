@@ -216,7 +216,7 @@ function negativeRecommendation(row){
   ElMessage.success('已收到，谢谢您的反馈！');
 }
   function bid() {
-    ElMessage.success('协商请求已发送！详情请到历史拍卖中查看。');
+    ElMessage.success('协商请求已发送！详情请到我的共享中查看。');
 
   };
   function load(){

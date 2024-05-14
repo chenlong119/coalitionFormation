@@ -198,7 +198,7 @@
         <el-button @click="hideDataDetails">关闭</el-button>
       </span> -->
     </el-dialog>
-    <el-dialog title="拍卖确认" v-model=" isAuctionConfirmVis" @close="hideDataDetails" class="custom-dialog">
+    <el-dialog title="交易确认" v-model=" isAuctionConfirmVis" @close="hideDataDetails" class="custom-dialog">
         <el-table :data="dataProvidersInfo" border stripe :header-cell-class-name="headerBg"  max-height="300" :fit="true" >
           <el-table-column prop="provider" label="企业名称" >
           </el-table-column>
@@ -213,7 +213,7 @@
           </el-table-column>
         </el-table> 
     </el-dialog>
-    <el-dialog title="拍卖详情" v-model="isAuctiondetailVisible" @close="hideAuctionDetails" class="custom-dialog">
+    <el-dialog title="交易详情" v-model="isAuctiondetailVisible" @close="hideAuctionDetails" class="custom-dialog">
       <div>
         <h4>当前报价：103</h4>
         <h3>历史报价：</h3>
@@ -221,7 +221,7 @@
           <li v-for="(dataItem, index) in auctionHistory" :key="index" class="data-item">
             <div class="data-name">日期：{{ dataItem.date }}</div>
             <div class="data-name">数据条数：{{ dataItem.number }}</div>
-            <div class="uploaded-company">拍卖报价: {{ dataItem.money }}</div>
+            <div class="uploaded-company">报价: {{ dataItem.money }}</div>
             <el-button type="text" icon="el-icon-download" @click="downloadData(dataItem)">查看</el-button>
           </li>
         </ul>
@@ -237,17 +237,17 @@
     </el-dialog>
     <el-dialog title="交付详情" v-model="isPaymentdetailVisible" @close="hidePaymentDetails" class="custom-dialog">
       <div>
-        <h4>中拍信息： </h4>
+        <h4>交易信息： </h4>
         <ul>            <div class="data-name">日期：2023.10.12</div>
             <div class="data-name">数据条数：12</div>
-            <div class="uploaded-company">拍卖报价: 103</div></ul>
+            <div class="uploaded-company">报价: 103</div></ul>
 
         <h3>历史报价：</h3>
         <ul>
           <li v-for="(dataItem, index) in auctionHistory" :key="index" class="data-item">
             <div class="data-name">日期：{{ dataItem.date }}</div>
             <div class="data-name">数据条数：{{ dataItem.number }}</div>
-            <div class="uploaded-company">拍卖报价: {{ dataItem.money }}</div>
+            <div class="uploaded-company">报价: {{ dataItem.money }}</div>
             <el-button type="text" icon="el-icon-download" @click="downloadData(dataItem)">查看</el-button>
           </li>
         </ul>
@@ -817,7 +817,7 @@ const showDataDetails = (row) =>{
   });
   isDatadetailVisible.value = true;
   }else if(row.taskState === '进行中'){
-      ElMessage.warning('拍卖还未结束，请耐心等待！');
+      ElMessage.warning('交易还未结束，请耐心等待！');
   }else{
     Object.keys(row).forEach((key) => {
           selectedRow[key] = row[key];
