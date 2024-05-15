@@ -4,10 +4,6 @@
                @toggleClick="toggleSideBar"/>
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" v-if="!settingsStore.topNav"/>
     <top-nav id="topmenu-container" class="topmenu-container" v-if="settingsStore.topNav"/>
-<!--    <div class="schoolLogo">-->
-<!--      <el-image style="width: 200px; height: 50px" src="/src/assets/images/dndx.jpg" fit="scale-down" />-->
-<!--      <el-image style="width: 200px; height: 50px" src="/src/assets/images/xadz.png" fit="scale-down" />-->
-<!--    </div>-->
     <div class="right-menu">
       <div class="avatar-container">
         <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">
