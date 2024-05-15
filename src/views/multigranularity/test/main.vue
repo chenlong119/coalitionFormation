@@ -34,7 +34,7 @@
 
           <!-- ... 其他代码 ... -->
           <el-button type="primary" @click="fetchScoreHistory">历史评分</el-button>
-          <el-button  @click="calculateHistory">计算</el-button>
+<!--          <el-button  @click="calculateHistory">计算</el-button>-->
           <!-- 假设按钮在Vue模板中 -->
 
 
@@ -166,9 +166,9 @@
     </div>
 
 
-    <footer style="margin-left: 20px;">
-      <p>© 2023 东南大学 仅供测试</p>
-    </footer>
+<!--    <footer style="margin-left: 20px;">-->
+<!--&lt;!&ndash;      <p>© 2023 东南大学 仅供测试</p>&ndash;&gt;-->
+<!--    </footer>-->
   </div>
 </template>
 

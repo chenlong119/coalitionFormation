@@ -26,7 +26,7 @@ export default {
             text: '当前不同分数段企业占比',
             x: 'center',
             textStyle: {
-              fontSize: 14,
+
               fontWeight: 'bolder'
             }
           },
@@ -64,7 +64,8 @@ function calculateScoreDistribution(data) {
     '<60': 0,
     '60-70': 0,
     '70-80': 0,
-    '80-90': 0,
+    '80-85': 0,
+    '85-90': 0,
     '90-100': 0
   };
 
@@ -72,7 +73,8 @@ function calculateScoreDistribution(data) {
     if (item.score < 60) distribution['<60']++;
     else if (item.score < 70) distribution['60-70']++;
     else if (item.score < 80) distribution['70-80']++;
-    else if (item.score < 90) distribution['80-90']++;
+    else if (item.score < 85) distribution['80-85']++;
+    else if (item.score < 90) distribution['85-90']++;
     else distribution['90-100']++;
   });
 
@@ -102,7 +104,7 @@ function calculateScoreDistribution(data) {
 <style scoped>
 .box-card {
   margin-top:20px;
-  
+
   width: 100%;
   padding: 20px;
   border-radius: 12px;
@@ -111,7 +113,7 @@ function calculateScoreDistribution(data) {
 }
 
 .chart {
-  height: 300px; 
+  height: 300px;
    /* 设置宽度为100%，以确保它填满其容器 */
 }
 /* 其他样式保持不变 */

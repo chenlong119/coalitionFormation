@@ -4,28 +4,7 @@
                @toggleClick="toggleSideBar"/>
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" v-if="!settingsStore.topNav"/>
     <top-nav id="topmenu-container" class="topmenu-container" v-if="settingsStore.topNav"/>
-
     <div class="right-menu">
-      <template v-if="appStore.device !== 'mobile'">
-        <div style="position: relative">
-          <!--          <el-tooltip :content="htmlString" placement="bottom"-->
-          <!--                      raw-content-->
-          <!--                      effect="light"-->
-          <!--          >-->
-          <!--            <el-icon :size="24"-->
-          <!--                     color="#5a5e66"-->
-          <!--                     style="margin-top: 12px;margin-right: 10px">-->
-          <!--              <Bell/>-->
-          <!--            </el-icon>-->
-          <!--          </el-tooltip>-->
-          <!--          <div class="red-dot"></div>-->
-        </div>
-        <screenfull id="screenfull" class="right-menu-item hover-effect"/>
-
-        <el-tooltip content="布局大小" effect="dark" placement="bottom">
-          <size-select id="size-select" class="right-menu-item hover-effect"/>
-        </el-tooltip>
-      </template>
       <div class="avatar-container">
         <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">
           <div class="avatar-wrapper">
@@ -36,9 +15,6 @@
           </div>
           <template #dropdown>
             <el-dropdown-menu>
-              <router-link to="/user/profile">
-                <el-dropdown-item>个人中心</el-dropdown-item>
-              </router-link>
               <el-dropdown-item command="setLayout" v-if="settingsStore.showSettings">
                 <span>布局设置</span>
               </el-dropdown-item>
@@ -67,32 +43,6 @@ import useSettingsStore from '@/store/modules/settings'
 const appStore = useAppStore()
 const userStore = useUserStore()
 const settingsStore = useSettingsStore()
-
-const finishTasks = [{
-  id: 1,
-  name: '生产三元锂电池',
-  status: '已完成',
-  time: '2021-09-01'
-},
-  {
-    id: 5,
-    name: '生产汽车车身',
-    status: '已完成',
-    time: '2021-08-20'
-  },
-  {
-    id: 8,
-    name: '生产汽车轮胎',
-    status: '已完成',
-    time: '2021-08-10'
-  }
-]
-
-let htmlString = "<div style='text-align: center'><h3>任务完成情况</h3><table border='1' style='margin: 0 auto'><tr><th>任务名称</th><th>完成状态</th><th>完成时间</th></tr>"
-for (let i = 0; i < finishTasks.length; i++) {
-  htmlString += "<tr><td>" + finishTasks[i].name + "</td><td>" + finishTasks[i].status + "</td><td>" + finishTasks[i].time + "</td></tr>"
-}
-htmlString += "</table></div>"
 
 function toggleSideBar() {
   appStore.toggleSideBar()
@@ -151,6 +101,14 @@ function setLayout() {
       background: rgba(0, 0, 0, 0.025);
     }
   }
+
+
+  .schoolLogo{
+   position: absolute;
+    right: 120px;
+  }
+
+
 
   .breadcrumb-container {
     float: left;

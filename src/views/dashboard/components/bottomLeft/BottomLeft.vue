@@ -1,75 +1,104 @@
 <template>
-  <div class="box-card">
     <Body icon="icon-fengxianpinggu" :dec-id="1" name="多粒度协同评估">
-    <div ref="lineChartRef" class="chart"></div>
+    <div ref="chartRef" class="chart"></div>
     </Body>
-  </div>
 </template>
 
 <script>
-import {onMounted, ref} from 'vue';
+import { ref, onMounted } from 'vue';
 import * as echarts from 'echarts';
 import Body from "@/views/dashboard/components/main/component/Body.vue";
-import {fetchMonthlyStatistics} from "@/api/multigranularity/datashow"; // 根据实际路径调整
+import { fetchMonthlyStatistics } from "@/api/multigranularity/datashow";
 
 export default {
-  components: {Body},
   setup() {
-    const lineChartRef = ref(null);
+    const chartRef = ref(null);
 
     onMounted(async () => {
       const response = await fetchMonthlyStatistics();
       if (response) {
-        let months = response.map(item => item.month);
-        let counts = response.map(item => item.highScoreCount);
+        let months = [...new Set(response.map(item => item.month))];
+        let layerIds = [...new Set(response.map(item => item.layer_id))];
+        if (layerIds.includes(null)) {
+          layerIds[layerIds.indexOf(null)] = 'Unknown'; // 将 null 替换为 'Unknown'
+        }
 
-        // 反转数组以确保顺序正确
+        const layerIdToName = {
+          '1': '洗衣机产业链',
+          '2': '空调产业链',
+          '3': '汽车产业链',
+        };
 
-
-        const lineChart = echarts.init(lineChartRef.value);
-        const lineOption = {
-          title: {
-            text: '近半年90分以上的企业数目',
-            x: 'center',
+        let seriesData = layerIds.map(id => ({
+          name: layerIdToName[id] || 'Layer ' + id,
+          type: 'bar',
+          data: months.map(month => {
+            let item = response.find(item => item.month === month && item.layer_id === id);
+            return item ? item.highScoreCount : 0;
+          }),
+          label: {
+            show: false,
+            position: 'right',
+            formatter: '{c}',
+            fontSize: 16,
             textStyle: {
-              fontSize: 16,
-              fontWeight: 'bolder',
-              color: '#ffffff'
-            }
+              color: "#ffffff",
+            },
+          }
+        }));
+
+        const chartInstance = echarts.init(chartRef.value);
+        const option = {
+          title: {
+            text: '近半年评分大于85的企业数目',
+            left: 'center',
+            top: 'top',
+            textStyle: {
+              color: "#ffffff",
+            },
           },
           tooltip: {
             trigger: 'axis',
-            formatter: '时间: {b0}<br/>数目: {c0}'
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
+          legend: {
+            bottom: '5%',
+            textStyle: {
+              color: "#ffffff",
+            },
+            data: layerIds.map(id => layerIdToName[id] || 'Layer ' + id)
+          },
+          toolbox: {
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
           },
           xAxis: {
             type: 'category',
-            boundaryGap: false,
-            data: months
-
+            axisTick: { show: false },
+            data: months,
+            axisLabel: {
+              color: "#ffffff" // 设置 x 轴标签的颜色为白色
+            },
           },
           yAxis: {
-            type: 'value'
+            type: 'value',
+            axisLabel: {
+              color: "#ffffff" // 设置 y 轴标签的颜色为白色
+            },
           },
-          grid: {
-            bottom: '10%'
-          },
-          series: [{
-            data: counts,
-            type: 'line',
-            areaStyle: {},
-            smooth: true,
-            itemStyle: {
-              color: '#00ddff',
-              borderColor: '#ffffff'
-            }
-          }]
+          series: seriesData
         };
-        lineChart.setOption(lineOption);
+
+        chartInstance.setOption(option);
       }
     });
 
     return {
-      lineChartRef
+      chartRef
     };
   },
   components: {
@@ -77,6 +106,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 

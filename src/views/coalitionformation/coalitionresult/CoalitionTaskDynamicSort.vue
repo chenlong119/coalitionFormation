@@ -8,28 +8,29 @@ let barChart=null;
 const taskStore=userTaskStore();
 const data = [];
 const draw=async ()=>{
-  taskStore.tasks = await request({
+  let res = await request({
     url: "/coalition/formation/getall"
   });
- let taskList=taskStore.tasks.filter(item=>item.taskStatus===1);
- let categories=taskList.map(item=>item.name);
-if(categories.length==0)
-{
-  for(let i=1;i<=6;i++)
+  let taskList=res.filter(item=>item.taskStatus===1);
+  let categories=taskList.map(item=>item.name);
+  if(categories.length==0)
   {
-    categories.push("任务"+i);
+    for(let i=1;i<=6;i++)
+    {
+      categories.push("任务"+i);
+    }
   }
-}
- for(let i=0;i<categories.length;i++)
- {
-   data.push(Math.round(Math.random() * 30))
- }
+  for(let i=0;i<categories.length;i++)
+  {
+    data.push(Math.round(Math.random() * 30))
+  }
   let option = {
     title:{
-      text:'任务完成率变化图'
+      text:'任务完成率变化图',
+      left:'center'
     },
     grid:{
-      left:0,
+      left:30,
       bottom:0,
       containLabel:true
     },
@@ -54,8 +55,8 @@ if(categories.length==0)
           show: true,
           position: 'right',
           formatter:function(params){
-           return params.value+"%";
-           },
+            return params.value+"%";
+          },
           valueAnimation: true
         }
       }
@@ -112,7 +113,7 @@ onMounted(()=>{
 </script>
 
 <template>
-    <div class="dynamicBar" ref="dynamicBar"></div>
+  <div class="dynamicBar" ref="dynamicBar"></div>
 </template>
 
 <style scoped lang="scss">

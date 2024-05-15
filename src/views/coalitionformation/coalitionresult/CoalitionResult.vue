@@ -1,10 +1,10 @@
 <script setup>
 
 import CoalitionTable from "@/views/coalitionformation/coalitionresult/CoalitionTable.vue";
-import CoalitionDynamicBar from "@/views/coalitionformation/coalitionresult/CoalitionDynamicBar.vue";
-import CoalitionCompanyDistribution from "@/views/coalitionformation/coalitionresult/CoalitionCompany.vue";
 import CoalitionStatusPie from "@/views/coalitionformation/coalitionresult/CoalitionStatusPie.vue";
 import CoalitionRelation from "@/views/coalitionformation/coalitionresult/CoalitionRelation.vue";
+import CoalitionCompany from "@/views/coalitionformation/coalitionresult/CoalitionCompany.vue";
+import CoalitionTaskDynamicSort from "@/views/coalitionformation/coalitionresult/CoalitionTaskDynamicSort.vue";
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
     <div class="column1">
       <CoalitionTable/>
       <el-card shadow="hover">
-      <CoalitionDynamicBar/>
+        <CoalitionTaskDynamicSort/>
       </el-card>
     </div>
     <div class="column2">
@@ -20,7 +20,7 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
         <el-card shadow="hover">
         <el-row :gutter="10">
           <el-col :span="12">
-            <CoalitionCompanyDistribution/>
+            <CoalitionCompany/>
           </el-col>
           <el-col :span="12">
             <CoalitionStatusPie/>
@@ -47,6 +47,7 @@ import CoalitionRelation from "@/views/coalitionformation/coalitionresult/Coalit
     justify-content: flex-start;
     width: 50%;
     height: 100%;
+    margin-right: 5px;
   }
   .column2{
     display: flex;

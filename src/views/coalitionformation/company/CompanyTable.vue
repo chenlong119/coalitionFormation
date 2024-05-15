@@ -2,7 +2,7 @@
   <div class="app-container table">
     <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="100px">
       <el-form-item label="企业类型" prop="companyType">
-        <el-select v-model="queryParams.companyType" placeholder="请选择企业类型" clearable>
+        <el-select v-model="queryParams.companyType" placeholder="请选择企业类型" clearable style="width: 150px">
           <el-option
               v-for="dict in chain_stage"
               :key="dict.value"
@@ -14,9 +14,10 @@
       <el-form-item label="企业编号" prop="id">
         <el-input
             v-model="queryParams.id"
-            placeholder="请输入企业地址"
+            placeholder="请输入企业编号"
             clearable
             @keyup.enter="handleQuery"
+            style="width: 120px"
         />
       </el-form-item>
       <el-form-item label="企业名称" prop="name">
@@ -25,18 +26,11 @@
             placeholder="请输入企业名称"
             clearable
             @keyup.enter="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="网络层编号" prop="layerId">
-        <el-input
-            v-model="queryParams.layerId"
-            placeholder="请输入所属网络层编号"
-            clearable
-            @keyup.enter="handleQuery"
+            style="width: 120px"
         />
       </el-form-item>
       <el-form-item label="企业状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择企业状态" clearable>
+        <el-select v-model="queryParams.status" placeholder="请选择企业状态" style="width: 150px" clearable>
           <el-option
               v-for="dict in company_status"
               :key="dict.value"
@@ -60,17 +54,6 @@
             @click="handleAdd"
             v-hasPermi="['company:show:add']"
         >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="success"
-            plain
-            icon="Edit"
-            :disabled="single"
-            @click="handleUpdate"
-            v-hasPermi="['company:show:edit']"
-        >修改
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -99,7 +82,7 @@
             type="success"
             plain
             icon="Comment"
-            @click="$router.push('/coalitionFormation/formation')"
+            @click="$router.push('/intelligenceEmerges/formation')"
         >查看任务信息
         </el-button>
       </el-col>
@@ -336,6 +319,9 @@ const data = reactive({
     ],
     layerId: [
       {required: true, message: "网络层编号不能为空", trigger: "blur"}
+    ],
+    companyType: [
+      {required: true, message: "企业类型不能为空", trigger: "blur"}
     ],
   }
 });

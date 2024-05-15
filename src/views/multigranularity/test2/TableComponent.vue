@@ -1,19 +1,22 @@
 <template>
-  <div>
+  <div >
     <h2 class="table-title">企业数据查询表</h2>
 
     <div class="select-container">
-      <el-select class="el-select" v-model="filterType" placeholder="选择企业类型">
-        <el-option label="所有类别" :value="null"></el-option>
+      <el-select class="el-select" v-model="filterType" placeholder="选择产业链">
+        <el-option label="所有类别" value=""></el-option>
         <el-option v-for="option in uniqueTypes" :key="option" :label="option" :value="option"></el-option>
       </el-select>
+
+
+
         <el-input v-model="searchTerm" style="width: 300px;margin-bottom: 5px;" placeholder="请输入搜索关键词"></el-input>
     <el-button class="btn1" type="primary" @click="searchTasks" style="margin-bottom: 5px;"><el-icon><Search /></el-icon>搜索</el-button>
 
-     
+
     </div>
 
-    <el-table :data="filteredData" style="width: 100% " height="498px" padding="10px">
+    <el-table :data="displayData" style="width: 100% " height="400px" padding="10px">
       <el-table-column 
       prop="id" 
       label="企业编号"  
@@ -27,16 +30,21 @@
       align="center">
     </el-table-column>
 
-      <el-table-column 
-      prop="company_type"
-      label="所属领域"
-      align="center">
-    </el-table-column>
-
       <el-table-column
-          prop="chain_name"
-          label="所属企业群"
+          prop="company_type"
+          label="所属领域"
           align="center">
+        <template #default="{row}">
+          {{ companyTypeNames[row.company_type] }}
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="layer_id"
+          label="所属产业链"
+          align="center">
+        <template #default="{row}">
+          {{ industryLayerNames[row.layer_id] }}
+        </template>
       </el-table-column>
 
 
@@ -47,33 +55,50 @@
     </el-table-column>
 
 
+
   <el-table-column 
       label="查看详情" 
-      width="180" align="center">
+      width="150" align="center">
       <template #default="{ row }">
         <el-button 
         @click="viewDetails(row)">详情</el-button>
-        <el-dialog 
-        v-model="dialogVisible"
-        title="协同效果详情"
-        width="30%"
-        :modal="false">
-  
+        <!-- 使用v-if而非v-show控制对话框的渲染 -->
+        <el-dialog
+            v-if="dialogVisible"
+            v-model="dialogVisible"
+            title="协同效果详情"
+            width="30%"
+            :modal="false">
+
     <div v-if="dialogContent">
       <p>1. 企业名称: {{ dialogContent.name }}</p>
       <p>2. 近期评分: {{ dialogContent.recentScores }}</p>
       <p>3. 评分较高项: {{ dialogContent.highScores }} </p>
       <p>4. 评分较低项: {{ dialogContent.lowScores }} </p>
     </div>
-  
+
   <span slot="footer" class="dialog-footer">
     <el-button @click="closeDialog">关闭</el-button>
   </span>
+
 </el-dialog>
+
       </template>
   </el-table-column>
+
     </el-table>
-    
+
+    <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pagination.currentPage"
+        :page-sizes="[8,15,20,30]"
+        :page-size="pagination.pageSize"
+        layout=" ->, sizes, prev, pager, next "
+        :total="pagination.total"
+    >
+    </el-pagination>
+
   </div>
 </template>
 <script>
@@ -92,42 +117,99 @@ export default {
   },
   data() {
     return {
+      companyTypeNames: {
+        '1': '原料供应',
+        '2': '零件生产',
+        '3': '整机组装',
+        '4': '销售和回收'
+
+      },
+      industryLayerNames: {
+        '1': '洗衣机产业链',
+        '2': '空调产业链',
+        '3': '汽车产业链',
+        '4': '冰箱产业链',
+
+
+      },
       company_type:'',
-      chain_name:'',
+      layer_id:'',
       data: [],
       searchTerm: '',
       filterType: '',
       dialogVisible: false,
       dialogContent: null,
+      pagination: {
+        currentPage: 1,
+        pageSize: 8,
+        total: 0
+      },
+      filteredData: [],
+      displayData: [] // 当前页显示的数据
     };
   },
   computed: {
     uniqueTypes() {
-      return [...new Set(this.data.map(item => item.type))];
-    },
-    filteredData() {
-      console.log("Filtering data with:", this.searchTerm, this.filterType);
+      const types = new Set(this.data.map(item => this.industryLayerNames[item.layer_id.toString()]));
+      return Array.from(types);
+
+  },
+
+  filteredData() {
+      console.log("Filtering data with searchTerm:", this.searchTerm, "and filterType:", this.filterType);
+      // 根据选择的产业链名称查找对应的 layer_id
+      const selectedLayerId = Object.keys(this.industryLayerNames).find(key => this.industryLayerNames[key] === this.filterType);
+
+      // 筛选数据
       return this.data.filter(item =>
           item.name.includes(this.searchTerm) &&
-          (this.filterType ? item.type === this.filterType : true)
+          (this.filterType ? item.layer_id.toString() === selectedLayerId : true)
       );
     },
   },
+  watch: {
+    searchTerm(newVal) {
+      this.applyFilter();
+    },
+    filterType(newVal) {
+      this.applyFilter();
+    }
+  },
 
   methods: {
-    async loadData() {
-      try {
-        const response = await fetchEnterprises();
-        this.data = response;
-      } catch (error) {
-        console.error('Error fetching enterprise data:', error);
-      }
+
+    applyFilter() {
+      const selectedLayerId = this.filterType ? Object.keys(this.industryLayerNames).find(key => this.industryLayerNames[key] === this.filterType) : null;
+      this.filteredData = this.data.filter(item =>
+          item.name.includes(this.searchTerm) &&
+          (!this.filterType || item.layer_id.toString() === selectedLayerId));
+
+      // 重置分页和更新显示数据
+      this.pagination.currentPage = 1;
+      this.pagination.total = this.filteredData.length;
+      this.updateDisplayData();
+    },
+
+    updateDisplayData() {
+      const start = (this.pagination.currentPage - 1) * this.pagination.pageSize;
+      const end = start + this.pagination.pageSize;
+      this.displayData = this.filteredData.slice(start, end);
+    },
+
+    handleCurrentChange(newPage) {
+      this.pagination.currentPage = newPage;
+      this.updateDisplayData();
+    },
+
+    handleSizeChange(newSize) {
+      this.pagination.pageSize = newSize;
+      this.updateDisplayData();
     },
     viewDetails(row) {
       // 模拟企业详细数据
       this.dialogContent = {
         name: row.name,
-        recentScores: '92, 88, 91, 94, 90',
+        recentScores: '85.87, 85.77, 88.41, 85.23, 87.69',
         highScores: '质量评价, 服务评价 >90分 ',
         lowScores: '交货情况 <70分 ',
       };
@@ -136,10 +218,25 @@ export default {
     closeDialog() {
       this.dialogVisible = false;
     },
+
+    async loadData() {
+      try {
+        const response = await fetchEnterprises();
+        if (response && response.length > 0) {
+          this.data = response;
+          this.applyFilter();  // 应用过滤和初始化分页
+        } else {
+          console.error('No data returned from the API:', response);
+        }
+      } catch (error) {
+        console.error('Error fetching enterprise data:', error);
+      }
+    },
   },
   mounted() {
     this.loadData();
-  }
+  },
+
 };
 
 </script>
@@ -150,11 +247,11 @@ export default {
     background-color: rgba(255, 255, 255, 0.8)!important; /* 或任何其他颜色 */
   }
 :deep(.el-table .el-table__body tr) {
-    height: 45px !important;
+    height: 1px !important;
 }
 
 :deep(.el-table .el-table__body tr td) {
-    line-height: 3px !important;
+    line-height: 30px !important;
 }
 .page-title {
   text-align: center;
@@ -189,7 +286,7 @@ export default {
   max-width: 200px;
   margin-bottom: 5px;
   margin-left: 100px;
-  
+
 }
 
 
@@ -199,10 +296,10 @@ export default {
   padding: 0;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+
 }
 .el-table-column {
   text-align: center;
-  height: 20px;
   
 }
 .dialog-footer button:first-child {
@@ -225,8 +322,8 @@ export default {
 /* 通用样式调整 */
 :deep(.el-dialog) {
   background-color: #f9f9f9; /* 使用更柔和的背景颜色 */
-  border-radius: 15px; 
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 添加柔和的阴影效果 */
+  border-radius: 15px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); /* 添加柔和的阴影效果 */
   padding: 20px; /* 添加内部填充以创建更多空间 */
 }
 
@@ -246,40 +343,35 @@ export default {
 
 :deep(.el-dialog__body p) {
  
-  margin: 10px 0; 
-  padding: 0 0 0 30%; /* 调整这个值来改变文字的起始位置 */
+  margin: 10px 0;
+  padding: 0 0 0 0%; /* 调整这个值来改变文字的起始位置 */
   text-align: left; 
-  border-left: 3px solid #007BFF; 
+  border-left: 4px solid #007BFF;
 
   &::before {
     content: '';
-   
-  margin-left: 40px;
-    top: 0;
-    bottom: 0;
-    width: 3px; /* 将它更改为你想要的宽度 */
+  margin-left: 70px;
+
    
   }
 }
 
 
 
-/* 按钮样式调整 */
-:deep(.dialog-footer) {
-  border-top: 1px solid #e9e9e9; /* 添加一个顶部边界来分隔底部按钮区域 */
-  padding-top: 15px; /* 在按钮区域上方添加一些填充 */
-}
+
 
 :deep(.dialog-footer .el-button) {
   font-size: 16px; /* 增加字体大小来强调按钮 */
   background-color: #007BFF; /* 设置一个明亮的背景色来吸引注意力 */
   border-color: #007BFF; /* 使边界颜色与背景颜色匹配 */
   color: #fff; /* 为按钮文字设置一个亮白色 */
+
 }
 
 :deep(.dialog-footer .el-button:hover) {
   background-color: #0056b3; /* 添加一个深色的悬停效果 */
   border-color: #0056b3; /* 使悬停边框颜色匹配背景色 */
+
 }
 
  .select-container {

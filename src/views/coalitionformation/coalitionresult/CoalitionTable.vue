@@ -31,13 +31,13 @@
           <el-button
               type="primary"
               icon="User"
-              @click="$router.push('/coalitionFormation/companyInfo')"
+              @click="$router.push('/intelligenceEmerges/companyInfo')"
           >查看企业信息
           </el-button>
             <el-button
                 type="success"
                 icon="Comment"
-                @click="$router.push('/coalitionFormation/formation')"
+                @click="$router.push('/intelligenceEmerges/formation')"
             >查看任务信息
             </el-button>
             <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
@@ -61,7 +61,7 @@
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
           <template #default="scope">
-            <el-button link type="primary" icon="Search" @click="handleCoalition(scope.row)">查看联盟详情</el-button>
+            <el-button link type="primary" icon="Search" @click="handleCoalition(scope.row)">联盟详情</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -76,7 +76,7 @@
       <el-dialog
           title="联盟详情"
           v-model="coalitionDialog"
-          width="50%"
+          width="60%"
       >
         <el-row :gutter="15">
           <el-col :span="14">
@@ -175,7 +175,7 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 5,
+    pageSize: 4,
     name: null,
     taskId: null,
     coalitionStatus: null,
@@ -234,7 +234,7 @@ getList();
 <style scoped>
 .app-container
 {
-  height: 480px;
+  height: 500px;
 }
 
 .myPagination

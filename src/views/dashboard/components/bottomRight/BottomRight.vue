@@ -211,7 +211,7 @@ const fetchModesData = async () => {
     modesData.value = response.map(mode => ({
       ...mode,
       completionRate: (mode.completionRate * 100).toFixed(2) + '%', // 假设完成率是0到1之间的数，转换为百分比
-      failureRate:(100- (mode.completionRate * 100).toFixed(2) )+ '%',
+      failureRate:(100- (mode.completionRate * 100).toFixed(2) ).toFixed(2)+ '%',
     }));
     // 确保DOM已更新，再绘制echarts图表
     nextTick(() => {

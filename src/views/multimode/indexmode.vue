@@ -1,4 +1,6 @@
+
 <template>
+  <div>
 <!--  <div class="app-container" v-if="!showSecond">-->
     <el-row :gutter="20">
       <el-col :span="12">
@@ -40,8 +42,18 @@
         </el-row>
         <el-row>
           <el-card class="card" style="width:100%; height: 450px" >
-            <template #header><span style="font-size: 20px; font-weight: bold;">任务完成率变化图</span></template>
-            <div class="dynamicBar" ref="dynamicBar"></div>
+            <template #header><span style="font-size: 20px; font-weight: bold;">任务价值统计图</span></template>
+            <span style="margin-right: 10px;font-size: 16px">当前产业链:</span>
+            <el-select  placeholder="请选择产业链" style="width:150px" @change="handleStageChange" v-model="chainType">
+              <el-option
+                  v-for="dict in chain"
+                  :key="dict.value"
+                  :label="dict.label"
+                  :value="dict.value"
+              />
+            </el-select>
+            <div class="taskBar" ref="taskBar"></div>
+
           </el-card>
         </el-row>
       </el-col>
@@ -60,6 +72,69 @@
         </el-table>
       </el-drawer>
       <el-col :span="12">
+        <el-row>
+          <el-card class="card" style="width:100%; height: 450px">
+            <template #header><span style="font-size: 20px; font-weight: bold;">企业群统计表</span></template>
+            <div class="el-table el-table--enable-row-hover el-table--medium">
+              <el-row justify="center" class="tab-row">
+                <el-col :span="8">
+                  <span>选择查询类型：</span>
+                  <el-select v-model="queryType" placeholder="选择查询类型">
+                    <el-option label="企业群名称" value="企业群名称"></el-option>
+                    <el-option label="企业群编号" value="企业群编号"></el-option>
+                    <el-option label="参与任务" value="参与任务"></el-option>
+                    <el-option label="协同模式" value="协同模式"></el-option>
+                  </el-select>
+                </el-col>
+                <!-- 添加查询输入框 -->
+                <el-col :span="8" class="query-input">
+                  <div style="display: flex; align-items: center;">
+                    <div style="flex-grow: 2; margin-right: 10px;">
+                      <span>请输入查询内容：</span>
+                      <el-input v-model="queryInput" :placeholder="queryInputPlaceholder"></el-input>
+                    </div>
+                  </div>
+                </el-col>
+                <el-col :span="4">
+                  <el-row :span="1"></el-row>
+                  <el-col :span="1"></el-col>
+                  <el-button type="primary" @click="handleSearch">查询</el-button>
+                </el-col>
+              </el-row>
+              <div class="table-container">
+                <el-row justify="center" class="tab-row">
+                  <el-col :span="22">
+                    <el-table :key="tableKey" v-show="!isLoading" :data="businessGroupTableData" border max-height="239" v-fit-columns style="width: 100%">
+                      <el-table-column  label="序号" align="center" width="60">
+                        <template #default="{$index}">
+                          {{ computeRowIndex($index) }}
+                        </template>
+                      </el-table-column>
+                      <el-table-column prop="coalitionName" label="企业群名称" align="center"
+                                       header-cell-class-name="table-header-cell" width="180"/>
+                      <el-table-column prop="coalitionId" label="企业群编号" align="center"
+                                       header-cell-class-name="table-header-cell">
+                      </el-table-column>
+                      <el-table-column prop="taskId" label="任务编号" align="center" width="60"
+                                       header-cell-class-name="table-header-cell">
+                      </el-table-column>
+                      <el-table-column prop="companyCount" label="企业个数" align="center" width="60"
+                                       header-cell-class-name="table-header-cell">
+                      </el-table-column>
+                      <el-table-column prop="modeName" label="协同模式" align="center"
+                                       header-cell-class-name="table-header-cell"/>
+                    </el-table>
+                  </el-col>
+                </el-row>
+                <div class="pagination">
+                  <button @click="prevPage" :disabled="currentPage <= 1">上一页</button>
+                  <span>第 {{ currentPage }} 页</span>
+                  <button @click="nextPage" :disabled="currentPage >= totalPages">下一页</button>
+                </div>
+              </div>
+            </div>
+          </el-card>
+        </el-row>
         <el-row>
           <el-card class="card" style="width:100%; height: 450px">
             <template #header><span style="font-size: 20px; font-weight: bold;">企业协同模式统计图</span></template>
@@ -95,28 +170,23 @@
                 </div>
               </el-col>
             </el-row>
-          </el-card>
-        </el-row>
-        <el-row>
-          <el-card class="card" style="width:100%; height: 450px">
-            <template #header><span style="font-size: 20px; font-weight: bold;">任务价值统计图</span></template>
-              <div class="taskBar" ref="taskBar"></div>
+
           </el-card>
         </el-row>
       </el-col>
     </el-row>
 <!--  </div>-->
+  </div>
 </template>
 
 <script setup>
 import { ElMessage, ElMessageBox, ElRate } from 'element-plus'
-import CoalitionDynamicBar from "@/views/coalitionformation/coalitionresult/CoalitionDynamicBar.vue";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 import useTaskStore from "@/store/modules/task.js";
 import * as echarts from "echarts";
 // import _ from "lodash";
-import {onMounted, reactive, ref, nextTick} from 'vue';
+import {onMounted, reactive, ref, nextTick, getCurrentInstance} from 'vue';
 import {
   runGeneticAlgorithm,
   getActiveTasks,
@@ -131,11 +201,30 @@ import {
 const taskBar = ref();
 let chartInstance = null;
 let taskStore=useTaskStore();
+const chainType=ref("洗衣机产业链")
+const {proxy}=getCurrentInstance()
+const { chain } = proxy.useDict('chain');
+const getType=()=>{
+  if(chainType.value==="洗衣机产业链")
+    return 1;
+  else
+    return chainType.value;
+}
+const props=defineProps(['chainType'])
+watch(()=>props.chainType,(val)=>{
+  getTaskStatus()
+})
+const chains=['洗衣机产业链','空调产业链','汽车产业链']
+const handleStageChange=()=>{
+  drawTaskBar()
+}
 const drawTaskBar=async ()=>{
+  let type=chainType.value==="洗衣机产业链"?1:chainType.value
   taskStore.tasks = await request({
     url: "/coalition/formation/getChainTask",
+    method: 'get',
     params:{
-      chainId:1
+      chainId:type
     }
   });
   let res = taskStore.tasks;
@@ -254,6 +343,58 @@ const drawTaskBar=async ()=>{
   chartInstance.setOption(option);
 }
 // 联盟表格前端显示数据
+//上下翻页
+const fetchData = async () => {
+  isLoading.value = true; // 开始加载数据
+  try {
+    const response = await fetchCoalitionDetails();
+    allData.value = response; // 假设response就是数据数组
+    totalItems.value = response.length; // 更新总项目数
+    totalPages.value = Math.ceil(totalItems.value / pageSize.value); // 计算总页数
+    updatePageData(); // 初始化页面数据
+  } catch (error) {
+    console.error('获取数据失败:', error);
+  }finally {
+    isLoading.value = false; // 完成加载
+  }
+};
+
+// 更新当前页面的数据
+const updatePageData = () => {
+  const dataToDisplay = filteredData.value.length > 0 ? filteredData.value : allData.value;
+  const start = (currentPage.value - 1) * pageSize.value;
+  const end = start + pageSize.value;
+  businessGroupTableData.value = dataToDisplay.slice(start, end);
+
+  // 如果filteredData有内容，则已经在handleSearch中更新了totalPages
+  // 如果没有，则需要根据allData更新totalPages
+  if (filteredData.value.length === 0) {
+    updateTotalPages(allData.value);
+  }
+  tableKey.value++; // 每次数据更新时递增key
+};
+
+// 翻到上一页
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+    updatePageData();
+  }
+};
+// 计算行的全局索引
+const computeRowIndex = ($index) => {
+  return $index + 1 + (currentPage.value - 1) * pageSize.value;
+};
+// 翻到下一页
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+    updatePageData();
+  }
+};
+const updateTotalPages = (data) => {
+  totalPages.value = Math.ceil(data.length / pageSize.value);
+};
 async function fetchCoalitionDetailsAndUpdateTable() {
   try {
     const response = await fetchCoalitionDetails(); // 调用API函数
@@ -272,7 +413,7 @@ const fetchModesData = async () => {
     modesData.value = response.map(mode => ({
       ...mode,
       completionRate: (mode.completionRate * 100).toFixed(2) + '%', // 假设完成率是0到1之间的数，转换为百分比
-      failureRate:(100- (mode.completionRate * 100).toFixed(2) )+ '%',
+      failureRate:(100- (mode.completionRate * 100).toFixed(2) ).toFixed(2)+ '%',
     }));
     // 确保DOM已更新，再绘制echarts图表
     nextTick(() => {
@@ -722,6 +863,11 @@ const draw=async ()=>{
     data.push(Math.round(Math.random() * 30))
   }
   let option = {
+    grid:{
+      containLabel: true,
+      top:0,
+      left:0
+    },
     xAxis: {
       max: 'dataMax'
     },
@@ -792,11 +938,6 @@ function run() {
   });
 }
 onMounted(async () => {
-  barChart=echarts.init(dynamicBar.value)
-  draw();
-  setInterval(()=>{
-    run()
-  },3000)
   chartInstance= echarts.init(taskBar.value);
   drawTaskBar()
   try {
@@ -810,6 +951,9 @@ onMounted(async () => {
 
 //mode 板块挂载
   fetchModesData();
+  fetchData();
+  // 联盟表格前端显示数据
+  fetchCoalitionDetailsAndUpdateTable();
   //调用GA函数
   fetchRunDataAndUpdateExceptionalTaskIds();
   //获取长宽
@@ -836,6 +980,20 @@ onMounted(async () => {
     isRunning.value = false;
   }
 
+});
+const queryInputPlaceholder = computed(() => {
+  // 根据用户选择的查询类型返回相应的占位符
+  if (queryType.value === '企业群名称') {
+    return '请输入企业群名称';
+  } else if (queryType.value === '企业群编号') {
+    return '请输入企业群编号';
+  } else if (queryType.value === '参与任务') {
+    return '请输入任务+编号，例如“任务1”';
+  } else if (queryType.value === '协同模式') {
+    return '跨企业跨链跨群选一到三项,如"跨链跨群”'; // 这里假设协同模式是一个下拉选择菜单
+  } else {
+    return '请输入查询信息';
+  }
 });
 
 const showTooltip = async (event, index) => {
@@ -1023,6 +1181,29 @@ function createPieChart(chartContainer, data) {
     series: [
       {
         type: 'pie',
+        label: {
+          normal: {
+            show: true,
+            formatter: function (params) {
+              let name = params.data.name;
+              if(name.length<=3)
+              {
+                return name;
+              }
+              else
+              {
+                return name.slice(0,3)+"\n"+name.slice(3,name.length);
+              }
+            }
+          }
+        },
+        labelLine:{
+          normal:{
+            show:true,
+            length:10,//第一段长度
+            length2:0//第二段长度 设置0不显示第二段
+          }
+        },
         data: data.map(item => ({value: item.competitionNum, name: item.modeName})),
         emphasis: {
           itemStyle: {
@@ -1045,7 +1226,7 @@ function createPieChart(chartContainer, data) {
 }
 .taskBar{
   width: 100%;
-  height: 380px;
+  height: 350px;
 }
 .star-rating {
   display: inline-block;

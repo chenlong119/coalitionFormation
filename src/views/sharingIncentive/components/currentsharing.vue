@@ -3,20 +3,18 @@
     <meta charSet="utf-8"/>
 
     <div id="titleDiv" class="titleDiv">
-      当前系统数据共享拍卖
+      当前系统数据共享情况
     </div>
     <div>
       <el-main tyle="width: 100%;">
           <el-table :data="tableData" border stripe :header-cell-class-name="headerBg" @selection-change="handleSelectionChange" :fit="true">
-            <el-table-column type="selection" > <!--多选框-->
-            </el-table-column>
             <el-table-column prop="taskName" label="数据需求" >
             </el-table-column>
             <el-table-column prop="taskReleaser" label="数据请求方" >
             </el-table-column>
             <el-table-column prop="fileSize" label="数据规模" >
             </el-table-column>
-            <el-table-column prop="profit" label="起拍积分" >
+            <el-table-column prop="profit" label="初始积分" >
             </el-table-column>
             <el-table-column prop="data" label="日期" >
             </el-table-column>、
@@ -26,7 +24,7 @@
             </el-table-column>
             <el-table-column label="操作" align="center"  class-name="small-padding fixed-width">
                 <template #default="scope">
-                    <el-tooltip content="出价" placement="top" v-if="scope.row.userId !== 1">
+                    <el-tooltip content="查看" placement="top" v-if="scope.row.userId !== 1">
                     <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" ></el-button>
                     </el-tooltip>
                     <el-tooltip content="不再显示" placement="top" v-if="scope.row.userId !== 1">
@@ -38,14 +36,14 @@
       </el-main>
     </div>
     <!-- 上传文件弹窗 -->
-    <el-dialog title="出价" v-model="uploadDialogVisible" @close="closeFileUploadDialog" :width="dialogWidthSmall">
+    <el-dialog title="详情" v-model="uploadDialogVisible" @close="closeFileUploadDialog" :width="dialogWidthSmall">
       <el-form label-width="110px" size="small">
         <el-form-item label="数据条数">
             <el-input v-model="numOfData" placeholder="请输入数据条数" clearable />
           </el-form-item>
-          <el-form-item label="出价">
+          <el-form-item label="积分">
             <el-input   autocomplete="off"         
-            v-model="bidPrice" placeholder="出价不低于15" clearable ></el-input>
+            v-model="bidPrice" placeholder="积分不低于15" clearable ></el-input>
           </el-form-item>
         </el-form>
       <div class="center-container">
@@ -58,33 +56,34 @@
       >
         <el-button type="primary" size="medium" round icon="upload">上传数据</el-button>
       </el-upload> -->
-        <el-button type="primary" size="medium" round @click="bid">确认出价</el-button>
+        <el-button type="primary" size="medium" round @click="bid">确认积分</el-button>
       </div>
     </el-dialog>
 
     <el-row class="second" type="flex" justify="space_around">
         <el-col :span="12">
           <el-card shadow="hover">
-            <div id="echarts-line" ref="echarts_access"></div>
+            <div id="echarts-line" ></div>
           </el-card>
         </el-col>
         <el-col :span="12">
           <el-card shadow="hover">
-            <div id="echarts-category" ref="echarts_scatter"></div>
+            <div id="echarts-category" ></div>
           </el-card>
         </el-col>
       </el-row>
       <div>
         <div class="center-container">
-          <el-button type="info" icon="el-icon-search"  class="el-button" @click="showRecommendation">查看今日推荐</el-button>
+          <!-- <el-button  class="el-button center-text" type="info" icon="el-icon-search"   @click="showRecommendation">查看今日推荐</el-button> -->
+          <el-button @click="showRecommendation" 
+        style="background-color: #008cba; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px;">
+        查看今日推荐</el-button>
         </div>
         <!-- 今日推荐弹窗 -->
         <el-dialog v-model="isRecommendationVisible" title="今日推荐" @close="hideRcommendation" 
         :width="dialogWidth" 
         :height="dialogHeight" >
           <el-table :data="gridData" border stripe :header-cell-class-name="headerBg" :fit="true">
-              <el-table-column type="selection" > <!--多选框-->
-              </el-table-column>
               <el-table-column prop="taskName" label="数据需求" >
               </el-table-column>
               <el-table-column prop="taskReleaser" label="数据请求方" >
@@ -95,13 +94,13 @@
               </el-table-column>
               <el-table-column prop="difficulty" label="难度" >
               </el-table-column>
-              <el-table-column prop="probability" label="拍中概率(%)" >
+              <el-table-column prop="probability" label="成功概率(%)" >
               </el-table-column>
               <el-table-column prop="recomendation" label="推荐指数（%）" >
               </el-table-column>
               <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
               <template #default="scope">
-                  <el-tooltip content="出价" placement="top" v-if="scope.row.userId !== 1">
+                  <el-tooltip content="查看" placement="top" v-if="scope.row.userId !== 1">
                   <el-button link type="primary" icon="Edit" @click="openFileUploadDialog(scope.row)" ></el-button>
                   </el-tooltip>
                   <el-tooltip content="推荐有误" placement="top" v-if="scope.row.userId !== 1">
@@ -112,20 +111,7 @@
           </el-table>
         </el-dialog>
       </div>
-    <!-- <el-row type="flex" justify="space-around">
-      <el-col :span="24">
-        <el-card shadow="hover">
-          <div id="echarts-line"></div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row type="flex" justify="space-around">
-      <el-col :span="24">
-        <el-card shadow="hover">
-          <div id="echarts-category"></div>
-        </el-card>
-      </el-col>
-    </el-row> -->
+
 
 
   </body>
@@ -230,7 +216,7 @@ function negativeRecommendation(row){
   ElMessage.success('已收到，谢谢您的反馈！');
 }
   function bid() {
-    ElMessage.success('出价成功！详情请到历史拍卖中查看。');
+    ElMessage.success('协商请求已发送！详情请到我的共享中查看。');
 
   };
   function load(){
@@ -240,7 +226,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:10,
           profit:10,
-          data:"2022.5.1",
+          data:"2022-05-01",
           remaintime:"12",
           chain:'家电产业链'
           },
@@ -249,7 +235,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:10,
           profit:50,
-          data:"2022.4.1",
+          data:"2022-04-01",
           remaintime:"12",
           chain:'家电产业链'
           },
@@ -258,7 +244,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:50,
           profit:100,
-          data:"2022.7.1",
+          data:"2022-07-01",
           remaintime:"12",
           chain:'家电产业链'
           },
@@ -267,7 +253,7 @@ function negativeRecommendation(row){
           taskReleaser:'小鸭集团',
           fileSize:20,
           profit:30,
-          data:"2022.5.15",
+          data:"2022-05-15",
           remaintime:"12",
           chain:'家电产业链'
           }
@@ -768,6 +754,123 @@ for (let i = 6; i >= 0; i--) {
 
   };
 
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+
+document.addEventListener('DOMContentLoaded', function() {
+  var xAxisData = [];
+  var data1 = [];
+  var data2 = [];
+  for (var i = 0; i < 100; i++) {
+    xAxisData.push('A' + i);
+    data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+    data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+  }
+
+  var chartDom = document.getElementById('chart');
+  var myChart = echarts.init(chartDom);
+
+  var option = {
+    title: {
+      text: 'Bar Animation Delay'
+    },
+    legend: {
+      data: ['bar', 'bar2']
+    },
+    toolbox: {
+      feature: {
+        magicType: {
+          type: ['stack']
+        },
+        dataView: {},
+        saveAsImage: {
+          pixelRatio: 2
+        }
+      }
+    },
+    tooltip: {},
+    xAxis: {
+      data: xAxisData,
+      splitLine: {
+        show: false
+      }
+    },
+    yAxis: {},
+    series: [
+      {
+        name: 'bar',
+        type: 'bar',
+        data: data1,
+        emphasis: {
+          focus: 'series'
+        },
+        animationDelay: function (idx) {
+          return idx * 10;
+        }
+      },
+      {
+        name: 'bar2',
+        type: 'bar',
+        data: data2,
+        emphasis: {
+          focus: 'series'
+        },
+        animationDelay: function (idx) {
+          return idx * 10 + 100;
+        }
+      }
+    ],
+    animationEasing: 'elasticOut',
+    animationDelayUpdate: function (idx) {
+      return idx * 5;
+    }
+  };
+
+  myChart.setOption(option);
+
+  document.getElementById('date-select').addEventListener('change', function() {
+    var selectedData = this.value;
+    if (selectedData === 'data1') {
+      option.series[0].data = data1;
+      option.series[1].data = data2;
+    } else if (selectedData === 'data2') {
+      option.series[0].data = data2;
+      option.series[1].data = data1;
+    }
+    myChart.setOption(option);
+  });
+});
+
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
+//************************************************************************************* */
 </script>
 
 <style>
@@ -841,4 +944,10 @@ body,
   align-items: center;
   margin-bottom: 1px; /* 调整按钮之间的间距 */
 }
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>
