@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
-      login('admin', 'admin123').then((res)=>{
+      login('clchy', 'clchy1778').then((res)=>{
         setToken(res.token)
         useUserStore().getInfo().then(() => {
           usePermissionStore().generateRoutes().then(accessRoutes => {
