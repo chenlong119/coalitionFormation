@@ -9,26 +9,26 @@
 <!--      <el-image style="width: 200px; height: 50px" src="/src/assets/images/xadz.png" fit="scale-down" />-->
 <!--    </div>-->
     <div class="right-menu">
-<!--      <div class="avatar-container">-->
-<!--&lt;!&ndash;        <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">&ndash;&gt;-->
-<!--          <div class="avatar-wrapper">-->
-<!--            <img :src="userStore.avatar" class="user-avatar"/>-->
-<!--&lt;!&ndash;            <el-icon>&ndash;&gt;-->
-<!--&lt;!&ndash;              <caret-bottom/>&ndash;&gt;-->
-<!--&lt;!&ndash;            </el-icon>&ndash;&gt;-->
-<!--          </div>-->
-<!--          <template #dropdown>-->
-<!--            <el-dropdown-menu>-->
-<!--              <el-dropdown-item command="setLayout" v-if="settingsStore.showSettings">-->
-<!--                <span>布局设置</span>-->
-<!--              </el-dropdown-item>-->
-<!--              <el-dropdown-item divided command="logout">-->
-<!--                <span>退出登录</span>-->
-<!--              </el-dropdown-item>-->
-<!--            </el-dropdown-menu>-->
-<!--          </template>-->
-<!--        </el-dropdown>-->
-<!--      </div>-->
+      <div class="avatar-container">
+        <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">
+          <div class="avatar-wrapper">
+            <img :src="userStore.avatar" class="user-avatar"/>
+            <el-icon>
+              <caret-bottom/>
+            </el-icon>
+          </div>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item command="setLayout" v-if="settingsStore.showSettings">
+                <span>布局设置</span>
+              </el-dropdown-item>
+              <el-dropdown-item divided command="logout">
+                <span>退出登录</span>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
     </div>
   </div>
 </template>
