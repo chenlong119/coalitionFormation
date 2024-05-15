@@ -26,10 +26,10 @@ router.beforeEach( (to, from, next) => {
       next()
     } else {
       if (useUserStore().roles.length === 0) {
-        // isRelogin.show = true
+        isRelogin.show = true
         // 判断当前用户是否已拉取完user_info信息
         useUserStore().getInfo().then(() => {
-          // isRelogin.show = false
+          isRelogin.show = false
           usePermissionStore().generateRoutes().then(accessRoutes => {
             // 根据roles权限生成可访问的路由表
             accessRoutes.forEach(route => {
