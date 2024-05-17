@@ -64,7 +64,7 @@
           <span class="custom-tabs-label">
             <el-icon><calendar /></el-icon>
             <span>
-              团体内内企业
+              团体内企业
             </span>
           </span>
         </template>
