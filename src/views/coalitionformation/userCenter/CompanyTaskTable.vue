@@ -262,16 +262,22 @@ const getType = (val) => {
   return types[val];
 }
 const loadingStore=useLoadingStore();
-const handleFinish=async (row)=>{
-await request({
-   url:"/userCenter/updateTaskStatus",
-   params:{
-     taskId:row.id,
-     coalitionId:row.coalitionId
-   }
- })
-  getList();
-  loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
+const handleFinish=(row)=>{
+  ElMessageBox.confirm('是否确认完成任务编号为"' + row.id + '"的数据项？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(async () => {
+    await request({
+      url:"/userCenter/updateTaskStatus",
+      params:{
+        taskId:row.id,
+        coalitionId:row.coalitionId
+      }
+    })
+    getList();
+    loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
+  })
 }
 
 const formationList = ref([]);
