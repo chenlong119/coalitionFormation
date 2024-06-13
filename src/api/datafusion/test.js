@@ -72,3 +72,10 @@ export function searchSingleCompanyByName(name){
         params: { name }
     })
 }
+
+export function getImportantNodes() {
+    return request({
+        url: '/dataFusion/searchImportantNode',
+        method: 'get',
+    })
+}
