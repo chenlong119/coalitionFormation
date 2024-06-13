@@ -30,7 +30,7 @@ const draw=async ()=>{
   });
   let option={
     title: {
-      text: "洗衣机产业链任务关系图",
+      text: "空调产业链任务关系图",
       left:80,
       top:30,
       textStyle:{

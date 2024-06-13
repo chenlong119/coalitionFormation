@@ -167,6 +167,7 @@ const initChart = async () => {
           normal: {
             formatter: '{b}',
             position: 'right',
+            color: '#fff',
             show: true
           },
           emphasis: {

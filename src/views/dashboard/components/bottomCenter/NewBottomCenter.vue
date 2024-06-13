@@ -11,124 +11,124 @@ onMounted(() => {
   createincomechartPolylines();
 });
 function createincomechartPolylines(){
-    const myChart = echarts.init(income_chartPol.value);
-    const option = {
-  title: {
-    text: '共享收益变化表',
-    textStyle: {
-          color:'white',
-          fontSize:18
-        },
-        subtextStyle: {
-          color:'white',
-          fontSize:14
-        }
-  },
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      type: 'cross',
-      label: {
-        backgroundColor: '#6a7985'
+  const myChart = echarts.init(income_chartPol.value);
+  const option = {
+    title: {
+      // text: '共享收益变化图',
+      textStyle: {
+        color:'white',
+        fontSize:18
+      },
+      subtextStyle: {
+        color:'white',
+        fontSize:14
       }
-    }
-  },
-  legend: {
-    data: ['洗衣机产业链', '空调产业链', '汽车产业链'],
-            left: 'right',
-        textStyle: {
-          color:'white',
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      }
+    },
+    legend: {
+      data: ['洗衣机产业链', '空调产业链', '汽车产业链'],
+      left: 'right',
+      textStyle: {
+        color:'white',
+      },
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        boundaryGap: false,
+        data: ['23-09', '23-10', '23-11', '23-12', '24-01', '24-02', '24-03'],
+        axisLabel: {
+          color: "#ffffff" // 设置 x 轴标签的颜色为白色
         },
-  },
-  toolbox: {
-    feature: {
-      saveAsImage: {}
-    }
-  },
-  grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
-    containLabel: true
-  },
-  xAxis: [
-    {
-      type: 'category',
-      boundaryGap: false,
-      data: ['24-06', '24-07', '24-08', '24-09', '24-10', '24-11', '24-12'],
-      axisLabel: {
-              color: "#ffffff" // 设置 x 轴标签的颜色为白色
-            },
-    }
-  ],
-  yAxis: [
-    {
-      type: 'value',
-      name: '增长值',
-      axisLabel: {
-              color: "#ffffff" // 设置 x 轴标签的颜色为白色
-            },
-    }
-  ],
-  series: [
-    {
-      name: '洗衣机产业链',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: {
-        focus: 'series'
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: '增长值',
+        axisLabel: {
+          color: "#ffffff" // 设置 x 轴标签的颜色为白色
+        },
+      }
+    ],
+    series: [
+      {
+        name: '洗衣机产业链',
+        type: 'line',
+        stack: 'Total',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [12, 13.2, 10.1, 13.4, 9, 23, 21]
       },
-      data: [12, 13.2, 10.1, 13.4, 9, 23, 21]
-    },
-    {
-      name: '空调产业链',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: {
-        focus: 'series'
+      {
+        name: '空调产业链',
+        type: 'line',
+        stack: 'Total',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [22, 18.2, 19.1, 2.34, 29.0, 33.0, 31.0]
       },
-      data: [22, 18.2, 19.1, 2.34, 29.0, 33.0, 31.0]
-    },
-    {
-      name: '汽车产业链',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: {
-        focus: 'series'
+      {
+        name: '汽车产业链',
+        type: 'line',
+        stack: 'Total',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [-15.0, 23.2, 20.1, 15.4, 19.0, 3.30, 4.10]
       },
-      data: [-15.0, 23.2, 20.1, 15.4, 19.0, 3.30, 4.10]
-    },
-    // {
-    //   name: 'Direct',
-    //   type: 'line',
-    //   stack: 'Total',
-    //   areaStyle: {},
-    //   emphasis: {
-    //     focus: 'series'
-    //   },
-    //   data: [320, 332, 301, 334, 390, 330, 320]
-    // },
-    // {
-    //   name: 'Search Engine',
-    //   type: 'line',
-    //   stack: 'Total',
-    //   label: {
-    //     show: true,
-    //     position: 'top'
-    //   },
-    //   areaStyle: {},
-    //   emphasis: {
-    //     focus: 'series'
-    //   },
-    //   data: [820, 932, 901, 934, 1290, 1330, 1320]
-    // }
-  ]
-};
-    myChart.setOption(option);
-  }
+      // {
+      //   name: 'Direct',
+      //   type: 'line',
+      //   stack: 'Total',
+      //   areaStyle: {},
+      //   emphasis: {
+      //     focus: 'series'
+      //   },
+      //   data: [320, 332, 301, 334, 390, 330, 320]
+      // },
+      // {
+      //   name: 'Search Engine',
+      //   type: 'line',
+      //   stack: 'Total',
+      //   label: {
+      //     show: true,
+      //     position: 'top'
+      //   },
+      //   areaStyle: {},
+      //   emphasis: {
+      //     focus: 'series'
+      //   },
+      //   data: [820, 932, 901, 934, 1290, 1330, 1320]
+      // }
+    ]
+  };
+  myChart.setOption(option);
+}
 // function createincomechart(){
 //   const myChart = echarts.init(income_chart.value);
 //   var dataMap = {};
@@ -559,8 +559,8 @@ function createincomechartPolylines(){
 </script>
 
 <template>
-  <Body :dec-id="3" :name="'群智汇聚'" icon="icon-huiju">
-    <div id="income-chartPol" ref="income_chartPol"></div>
+  <Body :dec-id="3" name="共享收益变化图" icon="icon-huiju">
+  <div id="income-chartPol" ref="income_chartPol"></div>
   <!-- <div id="income-chart" ref="income_chart"></div> -->
   </Body>
 </template>

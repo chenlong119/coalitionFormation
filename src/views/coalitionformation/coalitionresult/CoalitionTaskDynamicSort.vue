@@ -1,9 +1,11 @@
 <script setup>
 import * as echarts from 'echarts';
+import userTaskStore from "@/store/modules/task.js";
 import request from "@/utils/request.js";
 import useLoadingStore from "@/store/modules/loading.js";
 const dynamicBar=ref(null);
 let barChart=null;
+const taskStore=userTaskStore();
 const data = [];
 const draw=async ()=>{
   let res = await request({
@@ -33,7 +35,6 @@ const draw=async ()=>{
       containLabel:true
     },
     xAxis: {
-      min:0,
       max: 'dataMax'
     },
     yAxis: {
@@ -42,7 +43,7 @@ const draw=async ()=>{
       inverse: true,
       animationDuration: 300,
       animationDurationUpdate: 300,
-      max: 5 // 固定坐标轴的最大值
+      max: 5
     },
     series: [
       {
@@ -83,7 +84,7 @@ function run() {
       data[i] += Math.round(Math.random() * 15);
       if(data[i]>=100)
       {
-        data[i]=Math.round(Math.random()*20);
+        data[i]=Math.round(Math.random()*30);
       }
     } else {
       data[i] += Math.round(Math.random() * 30);

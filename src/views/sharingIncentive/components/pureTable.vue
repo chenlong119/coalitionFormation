@@ -20,7 +20,7 @@
     <el-row>
         <el-col :span="16"   >
 <div style="display: flex;align-items: center;">
-<span class="font">当前所在群组：</span>
+<span class="font">当前所在团体：</span>
 <el-button type="text"  style="font-size: medium;  font-weight: 600;    font-size: 23px; 
 ">{{ currentGroup }}</el-button>
 </div>
@@ -64,7 +64,7 @@
           <span class="custom-tabs-label">
             <el-icon><calendar /></el-icon>
             <span>
-              群内企业
+              团体内企业
             </span>
           </span>
         </template>
@@ -122,8 +122,6 @@
 
     </el-form>
       <el-table :data="companyData" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-        <el-table-column type="selection" width="65"> <!--多选框-->
-        </el-table-column>
         <el-table-column prop="companyName" label="企业名称" >
         </el-table-column>
         <el-table-column prop="joinTime" label="加入时间" >
@@ -193,8 +191,6 @@
 
     </el-form>
         <el-table :data="dataTableAvailable" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="dataName" label="数据名称" >
           </el-table-column>
           <el-table-column prop="dataReleaser" label="数据提供方" >
@@ -295,8 +291,6 @@
 
     </el-form>
         <el-table :data="dataTableSelf" border stripe :header-cell-class-name="headerBg"  max-height="500" :fit="true">
-          <el-table-column type="selection" width="65"> <!--多选框-->
-          </el-table-column>
           <el-table-column prop="dataName" label="数据名称" >
           </el-table-column>
           <el-table-column prop="dataDate" label="上传日期" >
@@ -327,9 +321,9 @@
               </el-tooltip>
             </template> 
           </el-table-column>
-        <el-table-column label="重新上传" align="center"  class-name="small-padding fixed-width">
+        <!-- <el-table-column label="重新上传" align="center"  class-name="small-padding fixed-width">
           <el-button link type="primary" icon="Edit" @click="openFileUploadDialog" ></el-button>
-        </el-table-column>
+        </el-table-column> -->
         </el-table> 
       </el-tab-pane>
       <!-- <el-tab-pane label="Task">Task</el-tab-pane> -->
@@ -535,7 +529,7 @@ function load() {  //加载
         },
       { 
         taskName:'双十一电视销售数据',
-        taskReleaser:'闲鱼',
+        taskReleaser:'京东',
         profit:100,
         dataRelease:"2022.5.1",
         dataFinish:"2022.6.1",
@@ -626,7 +620,7 @@ function load() {  //加载
       recComment: '有点小问题',
     },
     {
-      dataName: '六幺八家电基本购买情况与分析',
+      dataName: '618家电基本购买情况与分析',
       dataReleaser: '小鸭集团',
       dataDate: '2023-06-20',
       hisClick: 105,

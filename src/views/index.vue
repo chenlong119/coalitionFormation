@@ -29,7 +29,7 @@
             <span class="rSkew">群智汇聚</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/intelligenceEmerges/companyInfo')">
-            <span class="rSkew">联盟形成</span>
+            <span class="rSkew">联盟演化</span>
           </div>
           <div class="box2 bg skew" @click="$router.push('/multimode/xietong')">
             <span class="rSkew">企业群多模式协同</span>

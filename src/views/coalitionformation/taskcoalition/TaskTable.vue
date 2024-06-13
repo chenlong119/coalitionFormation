@@ -39,14 +39,14 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="所属产业链" prop="chainId">
-        <el-input
-            v-model="queryParams.chainId"
-            placeholder="请输入任务所属产业链编号"
-            clearable
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
+<!--      <el-form-item label="所属产业链" prop="chainId">-->
+<!--        <el-input-->
+<!--            v-model="queryParams.chainId"-->
+<!--            placeholder="请输入任务所属产业链编号"-->
+<!--            clearable-->
+<!--            @keyup.enter="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
         <el-button icon="Refresh" @click="resetQuery">重置</el-button>
@@ -62,17 +62,6 @@
             @click="handleAdd"
             v-hasPermi="['coalition:formation:add']"
         >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="success"
-            plain
-            icon="Edit"
-            :disabled="single"
-            @click="handleUpdate"
-            v-hasPermi="['coalition:formation:edit']"
-        >修改
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -192,7 +181,7 @@
           <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"
                      v-hasPermi="['coalition:formation:edit']">修改
           </el-button>
-          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
+          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" :disabled="scope.row.taskStatus==1"
                      v-hasPermi="['coalition:formation:remove']">删除
           </el-button>
         </template>

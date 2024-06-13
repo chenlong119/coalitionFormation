@@ -139,7 +139,7 @@
           <span>{{ scope.row.resource?.length }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="350" fixed="right">
+      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="230" fixed="right">
         <template #default="scope">
           <el-button link type="primary" icon="Star" @click="coalitionformation(scope.row)"
                      :disabled="scope.row.taskStatus===1||scope.row.taskStatus===2">联盟形成
@@ -150,7 +150,7 @@
           <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"
                      v-hasPermi="['coalition:formation:edit']">修改
           </el-button>
-          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
+          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" :disabled="scope.row.taskStatus==1"
                      v-hasPermi="['coalition:formation:remove']">删除
           </el-button>
         </template>
@@ -262,16 +262,22 @@ const getType = (val) => {
   return types[val];
 }
 const loadingStore=useLoadingStore();
-const handleFinish=async (row)=>{
-await request({
-   url:"/userCenter/updateTaskStatus",
-   params:{
-     taskId:row.id,
-     coalitionId:row.coalitionId
-   }
- })
-  getList();
-  loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
+const handleFinish=(row)=>{
+  ElMessageBox.confirm('是否确认完成任务编号为"' + row.id + '"的数据项？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(async () => {
+    await request({
+      url:"/userCenter/updateTaskStatus",
+      params:{
+        taskId:row.id,
+        coalitionId:row.coalitionId
+      }
+    })
+    getList();
+    loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
+  })
 }
 
 const formationList = ref([]);
@@ -488,6 +494,7 @@ function handleDelete(row) {
     return delFormation(_ids);
   }).then(() => {
     taskStore.isAddTask=!taskStore.isAddTask;
+    loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
     getList();
     proxy.$modal.msgSuccess("删除成功");
   }).catch(() => {

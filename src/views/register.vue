@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <el-form ref="registerRef" :model="registerForm" :rules="registerRules" class="register-form">
-      <h3 class="title">若依后台管理系统</h3>
+      <h3 class="title">产业链企业群协同与群智涌现系统</h3>
       <el-form-item prop="username">
         <el-input 
           v-model="registerForm.username" 
@@ -159,7 +159,7 @@ getCode();
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-image: url("../assets/images/login-background.jpg");
+  background-image: url("../assets/images/mylogin3.png");
   background-size: cover;
 }
 .title {

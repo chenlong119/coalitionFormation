@@ -14,7 +14,7 @@
       <el-form-item label="企业编号" prop="id">
         <el-input
             v-model="queryParams.id"
-            placeholder="请输入企业地址"
+            placeholder="请输入企业编号"
             clearable
             @keyup.enter="handleQuery"
             style="width: 120px"
@@ -27,15 +27,6 @@
             clearable
             @keyup.enter="handleQuery"
             style="width: 120px"
-        />
-      </el-form-item>
-      <el-form-item label="网络层编号" prop="layerId">
-        <el-input
-            v-model="queryParams.layerId"
-            placeholder="请输入所属网络层编号"
-            clearable
-            @keyup.enter="handleQuery"
-            style="width: 170px"
         />
       </el-form-item>
       <el-form-item label="企业状态" prop="status">
@@ -63,17 +54,6 @@
             @click="handleAdd"
             v-hasPermi="['company:show:add']"
         >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="success"
-            plain
-            icon="Edit"
-            :disabled="single"
-            @click="handleUpdate"
-            v-hasPermi="['company:show:edit']"
-        >修改
         </el-button>
       </el-col>
       <el-col :span="1.5">
@@ -339,6 +319,9 @@ const data = reactive({
     ],
     layerId: [
       {required: true, message: "网络层编号不能为空", trigger: "blur"}
+    ],
+    companyType: [
+      {required: true, message: "企业类型不能为空", trigger: "blur"}
     ],
   }
 });

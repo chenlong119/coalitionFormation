@@ -10,15 +10,13 @@ const {proxy} = getCurrentInstance();
 const chartRef = ref(null);
 let intervalInstance = null;
 const cdata = {
-  xData: ['传统汽车', '新能源汽车', '洗衣机', '空调', '冰箱', '电视机','热水器'],
+  xData: ['传统汽车', '新能源汽车', '洗衣机', '空调', '冰箱'],
   seriesData: [
     {value: 10, name: '传统汽车'},
     {value: 10, name: '新能源汽车'},
     {value: 15, name: '洗衣机'},
     {value: 25, name: '空调'},
     {value: 20, name: '冰箱'},
-    {value: 35, name: '电视机'},
-    {value: 40, name: '热水器'}
   ],
 }
 let chart = null;

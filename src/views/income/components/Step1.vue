@@ -220,12 +220,12 @@ import CompanyRelationGraphIncome from "./chart/CompanyRelationGraphIncome.vue"
 // import CompanyRelationGraph from "../../dashboard/components/multilayer/CompanyRelationGraph.vue"
 
 import {
+  getCompanyNow,
+  getRelatedCompany,
   // getAllCompany,
   // getCompanyById,
-  getRelatedCompany,
-  getAllNode,
-  getAllLink,
-  getCompanyNow
+  // getAllNode,
+  // getAllLink,
 } from "@/api/income/manage.js";
 import { componentSizeMap } from "element-plus";
 import { useMyStore } from "@/store/myStore.js";
@@ -539,74 +539,77 @@ const dynamicLoading = (relatedNode, selectedCompanyInfo, relatedLink) => {
       node.isSelected = true;
     }
   });
-  option1.series = [
-    {
-      type: "graph",
-      layout: "none", // 可以设置布局方式
-      data: relatedNode.value.map((node) => ({
-        id: node.locationId,
-        companyId: node.companyId,
-        name: node.name,
-        field: node.field,
-        chainName: node.chainName,
-        layer: node.layer,
-        x: node.locationX,
-        y: node.locationY,
-        isSelected: node.isSelected,
-        symbolSize: 20,
-        label: {
-          show: true, //是否显示节点标签
-          formatter: `${node.companyId}`, //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
-        },
-      })),
-      links: relatedLink.value.map((link) => ({
-        source: link.source,
-        target: link.target,
-        relation: link.relation,
-        strength: link.strength,
-        lineStyle: {
-          normal: {
-            width: 2, // 设置线条粗细
-            curveness: 0.15, // 设置线条弯曲程度
-            color: (() => {
-              // 根据关系类型设置连线颜色
-              if (link.relation === "合作关系") {
-                 return "rgba(255, 0, 0, 0.5)";  // 设置透明度为0.5的红色
-              }else if (link.relation === "供应关系") {
-                return "rgba(0, 0, 255, 0.5)";  // 设置透明度为0.5的蓝色
-              } else if (link.relation === "竞争关系") {
-                return "rgba(0, 128, 0, 0.5)";  // 设置透明度为0.5的绿色
-              }
-            })(),
-          },
-        },
-        label: {
-          show: false, // 显示连线标签
-          formatter: "{c}", // 连线标签的内容格式器，{c} 代表关系强度
-        },
-      })),
-      roam: false, //开启鼠标缩放和平移漫游
-      left: "center",
-      top: "center",
-      itemStyle: {
-        //设置节点颜色
-        normal: {
-          color: function (params) {
-            if (params.data.isSelected) return "Crimson";
-            else return "RoyalBlue";
-          },
-        },
-      },
-      emphasis: {
-        focus: "adjacency", // 当鼠标移动到节点上，突出显示节点以及节点的边和邻接节点，'adjacency' 表示只突出显示节点以及节点的边
-        lineStyle: {
-          width: 5,
-          type: "dotted",
-          opacity: 0.7,
-        },
-      },
-    },
-  ];
+
+
+  // option1.series = [
+  //   {
+  //     type: "graph",
+  //     layout: "none", // 可以设置布局方式
+      
+  //     data: relatedNode.value.map((node) => ({
+  //       id: node.locationId,
+  //       companyId: node.companyId,
+  //       name: node.name,
+  //       field: node.field,
+  //       chainName: node.chainName,
+  //       layer: node.layer,
+  //       x: node.locationX,
+  //       y: node.locationY,
+  //       isSelected: node.isSelected,
+  //       symbolSize: 20,
+  //       label: {
+  //         show: true, //是否显示节点标签
+  //         formatter: `${node.companyId}`, //节点标签的内容格式器，a 代表系列名，b 代表数据名，c 代表数据值。
+  //       },
+  //     })),
+  //     links: relatedLink.value.map((link) => ({
+  //       source: link.source,
+  //       target: link.target,
+  //       relation: link.relation,
+  //       strength: link.strength,
+  //       lineStyle: {
+  //         normal: {
+  //           width: 2, // 设置线条粗细
+  //           curveness: 0.15, // 设置线条弯曲程度
+  //           color: (() => {
+  //             // 根据关系类型设置连线颜色
+  //             if (link.relation === "合作关系") {
+  //                return "rgba(255, 0, 0, 0.5)";  // 设置透明度为0.5的红色
+  //             }else if (link.relation === "供应关系") {
+  //               return "rgba(0, 0, 255, 0.5)";  // 设置透明度为0.5的蓝色
+  //             } else if (link.relation === "竞争关系") {
+  //               return "rgba(0, 128, 0, 0.5)";  // 设置透明度为0.5的绿色
+  //             }
+  //           })(),
+  //         },
+  //       },
+  //       label: {
+  //         show: false, // 显示连线标签
+  //         formatter: "{c}", // 连线标签的内容格式器，{c} 代表关系强度
+  //       },
+  //     })),
+  //     roam: false, //开启鼠标缩放和平移漫游
+  //     left: "center",
+  //     top: "center",
+  //     itemStyle: {
+  //       //设置节点颜色
+  //       normal: {
+  //         color: function (params) {
+  //           if (params.data.isSelected) return "Crimson";
+  //           else return "RoyalBlue";
+  //         },
+  //       },
+  //     },
+  //     emphasis: {
+  //       focus: "adjacency", // 当鼠标移动到节点上，突出显示节点以及节点的边和邻接节点，'adjacency' 表示只突出显示节点以及节点的边
+  //       lineStyle: {
+  //         width: 5,
+  //         type: "dotted",
+  //         opacity: 0.7,
+  //       },
+  //     },
+  //   },
+  // ];
   option1.tooltip= {
         show: true,
         trigger: "item",
