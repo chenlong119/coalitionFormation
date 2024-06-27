@@ -202,18 +202,26 @@ const renderPieChart = async () => {
   },
       chartInstance.setOption(chartOptions);
 };
+const companyName = reactive([]);
+getAllCompanyWithoutLocation().then(response => {
+  for (const node of response.nodes) {
+    companyName.push({
+      value: node.name
+    });
+  }
+})
 const toggleLegendAndCategories = () => {
   legendAndCategoriesEnabled.value = !legendAndCategoriesEnabled.value;
   if (legendAndCategoriesEnabled.value) {
     legendConfig = {
-      data: [
-        {name: '1'},
-        {name: '2'},
-        {name: '3'},
-        {name: '4'},
-        {name: '5'},
-      ],
-      selectedMode: 'all',
+      // data: [
+      //   { name: "category1", itemStyle: {normal: {color: '#61a0a8'}}},
+      //   { name: "category2", itemStyle: {normal: {color: '#63b2ee'}}},
+      //   { name: "category3", itemStyle: {normal: {color: '#9961a8'}}},
+      //   { name: "category4", itemStyle: {normal: {color: '#ee639d'}}},
+      //   { name: "category5", itemStyle: {normal: {color: '#18235e'}}},
+      // ],
+      // selectedMode: 'all',
     };
   } else {
     legendConfig = {
@@ -232,13 +240,14 @@ const toggleLegendAndCategories = () => {
     },
     series: [
       {
+        // data: nodeData,
         categories: legendAndCategoriesEnabled.value
             ? [
-              {name: '1'},
-              {name: '2'},
-              {name: '3'},
-              {name: '4'},
-              {name: '5'},
+              { name: "1"},
+              { name: "2"},
+              { name: "3"},
+              { name: "4"},
+              { name: "5"},
             ]
             : [],
         itemStyle: legendAndCategoriesEnabled.value
@@ -262,14 +271,6 @@ const toggleLegendAndCategories = () => {
   buttonText.value = legendAndCategoriesEnabled.value ? '关系展示' : '团体划分';
   renderPieChart();
 };
-const companyName = reactive([]);
-getAllCompanyWithoutLocation().then(response => {
-  for (const node of response.nodes) {
-    companyName.push({
-      value: node.name
-    });
-  }
-})
 const selectedGroup = ref(null)
 const selectedGroupFeature = ref(null);
 const chartContainer = ref(null);
@@ -688,7 +689,7 @@ onMounted(async () => {
         symbolSize: 20,
         name: node.name,
         chain: node.chain,
-        category: node.category,
+        category: node.category - 1,
         marketShare: node.marketShare,
         marketIncrease: node.marketIncrease,
         profitability: node.profitability,
@@ -738,7 +739,8 @@ onMounted(async () => {
       //   {name: "4"},
       //   {name: "5"}
       // ],
-      categories: [],
+      categories: [
+      ],
       roam: true,     //开启鼠标缩放和平移漫游
       itemStyle: {
         normal: {

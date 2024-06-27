@@ -79,3 +79,25 @@ export function getImportantNodes() {
         method: 'get',
     })
 }
+
+export function addAssessment(data) {
+    return request({
+        url: '/dataFusion/assessment',
+        method: 'post',
+        data: data
+    })
+}
+
+export function getAssessments() {
+    return request({
+        url: '/dataFusion/assessments',
+        method: 'get',
+    })
+}
+
+export function deleteAssessment(id) {
+    return request({
+        url: '/dataFusion/deleteAssessment/' + id,
+        method: 'delete'
+    })
+}
