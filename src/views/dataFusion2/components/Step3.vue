@@ -149,13 +149,18 @@
 <script setup>
 import {onMounted, reactive, ref, watch} from 'vue'
 import * as echarts from 'echarts'
-//import jsonData from "../../../assets/dataFusion/step3.json"
-import {getAllCompanyAndLink, getAllCompanyWithoutLocation, getTotalRelation} from "@/api/datafusion/test";
+import {
+  getAllCompanyAndLink,
+  getAllCompanyWithoutLocation,
+  getImportantNodes,
+  getTotalRelation
+} from "@/api/datafusion/test";
 //定义组件的自定义事件
 const nodeData = reactive([]);
 const companyData = reactive([]);
 const relationData = reactive([]);
 const linkData = reactive([]);
+const importantNodes = reactive([]);
 getAllCompanyAndLink().then(response => {
   for (const node of response.nodes) {
     nodeData.push({
@@ -207,6 +212,15 @@ getAllCompanyWithoutLocation().then(response => {
     });
   }
 })
+
+const fetchImportantNodes = async () => {
+  try {
+    const response = await getImportantNodes();
+    importantNodes.splice(0, importantNodes.length, ...response); // 使用splice更新响应式数组
+  } catch (error) {
+    console.error('获取重要节点失败:', error);
+  }
+};
 const formulaVisible = ref(false)
 const chartContainer = ref(null);
 const relationChart = ref(null);
@@ -214,20 +228,6 @@ let myChart;
 let myChart2;
 // 读取json数据并将其存储到companyData数组和linkData数组中
 const emits = defineEmits(['onNodeSelected']);
-// for (const node of jsonData.nodes) {
-//   companyData.push({
-//     id: node.id,
-//     name: node.name,
-//     chain: node.chain,
-//     requirements: node.requirements,
-//     products: node.products,
-//     field: node.field,
-//     numbers: node.numbers,
-//     lists: node.lists,
-//     category: node.category,
-//     frequency: node.frequency,
-//   });
-// }
 relationData.push(
     {
       id: 1,
@@ -345,16 +345,15 @@ const handleInfo = (row) => {
 }
 
 onMounted(async () => {
-
+  await fetchImportantNodes();
   const chartDom = chartContainer.value;
   myChart = echarts.init(chartDom);
   myChart2 = echarts.init(relationChart.value);
   console.log(myChart)
-  //const response = await axios.get('/src/assets/dataFusion/company.json');
   const response = ref(null);
   const response2 = ref(null);
   response.value = await getAllCompanyAndLink();
-  //const response2 = await axios.get('/src/assets/dataFusion/step3.json');
+
   response2.value = await getTotalRelation();
   const graph = response.value;
   const graph2 = response2.value;
@@ -849,31 +848,34 @@ onMounted(async () => {
     series: [{
       type: 'graph',
       layout: 'none',
-      data: graph2.nodes.map(node => ({
-        id: node.id,
-        x: node.locationX,
-        y: node.locationY,
-        symbolSize: 20,
-        name: node.name,
-        chain: node.chain,
-        category: node.category - 1,
-        marketShare: node.marketShare,
-        marketIncrease: node.marketIncrease,
-        profitability: node.profitability,
-        investRatio: node.investRatio,
-        productWidth: node.productWidth,
-        productDepth: node.productDepth,
-        brandAwareness: node.brandAwareness,
-        cooperationWillingness: node.cooperationWillingness,
-        reputation: node.reputation,
-        cooperationNum: node.cooperationNum,
-        cooperationSuccess: node.cooperationSuccess,
-        averageRoi: node.averageRoi,
-        suppliersNum: node.suppliersNum,
-        turnover: node.turnover,
-        deliveryRate: node.deliveryRate,
-        tradeLevel: node.tradeLevel,
-      })),
+      data: graph2.nodes.map(node => {
+        const symbolSize = importantNodes.includes(node.id) ? 35 : 20;
+        return{
+          id: node.id,
+          x: node.locationX,
+          y: node.locationY,
+          symbolSize: symbolSize,
+          name: node.name,
+          chain: node.chain,
+          category: node.category - 1,
+          marketShare: node.marketShare,
+          marketIncrease: node.marketIncrease,
+          profitability: node.profitability,
+          investRatio: node.investRatio,
+          productWidth: node.productWidth,
+          productDepth: node.productDepth,
+          brandAwareness: node.brandAwareness,
+          cooperationWillingness: node.cooperationWillingness,
+          reputation: node.reputation,
+          cooperationNum: node.cooperationNum,
+          cooperationSuccess: node.cooperationSuccess,
+          averageRoi: node.averageRoi,
+          suppliersNum: node.suppliersNum,
+          turnover: node.turnover,
+          deliveryRate: node.deliveryRate,
+          tradeLevel: node.tradeLevel,
+        }
+      }),
       links: graph2.links.map(link => ({
         source: graph2.nodes.findIndex(node => node.id === link.sourceLocation),
         target: graph2.nodes.findIndex(node => node.id === link.targetLocation),

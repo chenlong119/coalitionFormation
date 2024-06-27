@@ -57,7 +57,11 @@ router.beforeEach((to, from, next) => {
     } else {
       // login('clchy', 'clchy1778').then((res)=>{
       //   setToken(res.token)
+<<<<<<< HEAD
       //   useUserStore().getInfo().then(() =>  {
+=======
+      //   useUserStore().getInfo().then(() => {
+>>>>>>> 07cb2c45b4eabb2b1f3a5babf073c1f0f0c01f8f
       //     usePermissionStore().generateRoutes().then(accessRoutes => {
       //       // 根据roles权限生成可访问的路由表
       //       accessRoutes.forEach(route => {
