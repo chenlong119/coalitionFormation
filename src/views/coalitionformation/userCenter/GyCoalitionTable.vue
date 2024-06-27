@@ -1,43 +1,14 @@
 <template>
   <div class="app-container table">
     <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="100px">
-      <el-form-item label="企业类型" prop="companyType">
-        <el-select v-model="queryParams.companyType" placeholder="请选择企业类型" clearable style="width: 150px">
-          <el-option
-              v-for="dict in chain_stage"
-              :key="dict.value"
-              :label="dict.label"
-              :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="企业编号" prop="id">
+      <el-form-item label="工艺名称" prop="id">
         <el-input
             v-model="queryParams.id"
-            placeholder="请输入企业编号"
+            placeholder="请输入工艺名称"
             clearable
             @keyup.enter="handleQuery"
             style="width: 120px"
         />
-      </el-form-item>
-      <el-form-item label="企业名称" prop="name">
-        <el-input
-            v-model="queryParams.name"
-            placeholder="请输入企业名称"
-            clearable
-            @keyup.enter="handleQuery"
-            style="width: 120px"
-        />
-      </el-form-item>
-      <el-form-item label="企业状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择企业状态" style="width: 150px" clearable>
-          <el-option
-              v-for="dict in company_status"
-              :key="dict.value"
-              :label="dict.label"
-              :value="dict.value"
-          />
-        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
@@ -45,71 +16,18 @@
       </el-form-item>
     </el-form>
 
-    <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-            type="primary"
-            plain
-            icon="Plus"
-            @click="handleAdd"
-            v-hasPermi="['company:show:add']"
-        >新增
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="danger"
-            plain
-            icon="Delete"
-            :disabled="multiple"
-            @click="handleDelete"
-            v-hasPermi="['company:show:remove']"
-        >删除
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="warning"
-            plain
-            icon="Download"
-            @click="handleExport"
-            v-hasPermi="['company:show:export']"
-        >导出
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-<!--        <el-button-->
-<!--            type="success"-->
-<!--            plain-->
-<!--            icon="Comment"-->
-<!--            @click="$router.push('/intelligenceEmerges/formation')"-->
-<!--        >查看任务信息-->
-<!--        </el-button>-->
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="primary"
-            plain
-            icon="Setting"
-            @click="setResource"
-        >配置资源
-        </el-button>
-      </el-col>
-      <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
-    </el-row>
-
     <el-table v-loading="loading" :data="showList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="企业编号" align="center" prop="id"/>
+<!--      <el-table-column type="selection" width="55" align="center"/>-->
+<!--      <el-table-column label="企业编号" align="center" prop="id"/>-->
       <el-table-column label="企业名称" align="center" prop="name" width="200"/>
-<!--      <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>-->
+      <!--      <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>-->
       <el-table-column label="企业类型" align="center" prop="companyType">
         <template #default="scope">
           <dict-tag :options="chain_stage" :value="scope.row.companyType"/>
         </template>
       </el-table-column>
       <el-table-column label="企业地址" align="center" prop="address"/>
-<!--      <el-table-column label="企业类型" align="center" prop="companyType"/>-->
+      <!--      <el-table-column label="企业类型" align="center" prop="companyType"/>-->
       <el-table-column label="所属产业链名称" align="center" prop="chainName"/>
       <el-table-column label="所属联盟编号" align="center">
         <template #default="scope">
@@ -119,7 +37,7 @@
       </el-table-column>
       <el-table-column label="企业信誉评分" align="center" prop="rep">
         <template #default="scope">
-            {{ scope.row.rep*Math.floor(Math.random()*10)+1 }}
+          {{ scope.row.rep*Math.floor(Math.random()*10)+1 }}
         </template>
       </el-table-column>
       <el-table-column label="企业状态" align="center" prop="status">
@@ -132,21 +50,10 @@
       <el-table-column label="工艺技术" align="center" width="180">
         <template #default="scope">
           <div class="gytag">
-            <el-tag type="success" style="margin-right: 5px">置信电机</el-tag>
-            <el-tag type="success">Monenta</el-tag>
+            <el-tag type="success" style="margin-right: 5px">水管密封</el-tag>
+            <el-tag type="success">PVC管材</el-tag>
           </div>
           <span>{{2}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" :width="300">
-        <template #default="scope">
-          <el-button link type="primary" icon="Search" @click="viewResource(scope.row)">资源详情</el-button>
-          <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['company:show:edit']">修改
-          </el-button>
-          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['company:show:remove']">删除
-          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -158,7 +65,7 @@
         v-model:limit="queryParams.pageSize"
         @pagination="getList"
     />
-    
+
     <!-- 添加或修改企业信息对话框 -->
     <el-dialog :title="title" v-model="open" width="500px" append-to-body @closed="handleColse">
       <el-form ref="showRef" :model="form" :rules="rules" label-width="120px">
@@ -317,7 +224,7 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 10,
+    pageSize: 3,
     name: null,
     layerId: null,
     status: null,
@@ -445,7 +352,7 @@ function handleUpdate(row) {
 let id2s = [];
 const addRelation = async () => {
   await request({
-    url: "/graph/addrelation",
+    url: "/coalition/graph/addrelation",
     params: {
       id1: form.value.id,
       id2s: id2s.join(","),
@@ -518,6 +425,9 @@ onMounted(() => {
 {
   display: flex;
   border: 1px solid #ccc;
- justify-content: center;
+  justify-content: center;
+}
+.app-container{
+  padding: 0;
 }
 </style>

@@ -24,7 +24,7 @@ const getChain = () => {
 let cname = ref("");
 const getNameById = async () => {
   const res = await request({
-    url: "/company/show/getbyid",
+    url: "/coalition/company/show/getbyid",
     params: {
       id: id.value
     }
@@ -51,7 +51,7 @@ const getCompanyResource = async () => {
 let tname = ref("");
 const getTaskNameById = async () => {
   const res = await request({
-    url: "/coalition/formation/getone",
+    url: "/coalition/coalition/formation/getone",
     params: {
       id: id.value
     }
@@ -62,7 +62,7 @@ const getTaskNameById = async () => {
 let tResource = ref([]);
 const getTaskResource = async () => {
   const res = await request({
-    url: "/resource/getTaskResource",
+    url: "/coalition/resource/getTaskResource",
     params: {
       task_id: id.value
     }
@@ -107,7 +107,7 @@ const getResourceNameById = async (resource) => {
       return ;
     }
     const r = await request({
-      url: "/resource/getone",
+      url: "/coalition/resource/getone",
       params: {
         id: resource.id,
         taskId: id.value
@@ -128,7 +128,7 @@ const getResourceNameById = async (resource) => {
       return ;
     }
     const r = await request({
-      url: "/resource/getone",
+      url: "/coalition/resource/getone",
       params: {
         id: resource.id,
         companyId: id.value,
@@ -177,7 +177,7 @@ const submit = () => {
     })
     if (updateArr.length > 0) {
       request({
-        url: "/resource/updateTaskResource",
+        url: "/coalition/resource/updateTaskResource",
         method: 'put',
         params: {
           taskId: id.value
@@ -187,7 +187,7 @@ const submit = () => {
     }
     if (deleteArr.length > 0) {
       request({
-        url: "/resource/deleteTaskResource",
+        url: "/coalition/resource/deleteTaskResource",
         method: 'delete',
         params: {
           taskId: id.value,
@@ -197,7 +197,7 @@ const submit = () => {
     }
     if (addedResource.value.length > 0) {
       request({
-        url: "/resource/insertTaskResource",
+        url: "/coalition/resource/insertTaskResource",
         method: 'post',
         params: {
           taskId: id.value,
@@ -228,7 +228,7 @@ const submit = () => {
     })
     if (updateArr.length > 0) {
       request({
-        url: "/resource/updateCompanyResource",
+        url: "/coalition/resource/updateCompanyResource",
         method: 'put',
         params: {
           companyId: id.value,
@@ -239,7 +239,7 @@ const submit = () => {
     }
     if (deleteArr.length > 0) {
       request({
-        url: "/resource/deleteCompanyResource",
+        url: "/coalition/resource/deleteCompanyResource",
         method: 'delete',
         params: {
           companyId: id.value,
@@ -250,7 +250,7 @@ const submit = () => {
     }
     if (addedResource.value.length > 0) {
       request({
-        url: "/resource/insertCompanyResource",
+        url: "/coalition/resource/insertCompanyResource",
         method: 'post',
         params: {
           companyId: id.value,

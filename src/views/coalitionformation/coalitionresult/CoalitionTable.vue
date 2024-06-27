@@ -28,18 +28,6 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button
-              type="primary"
-              icon="User"
-              @click="$router.push('/intelligenceEmerges/companyInfo')"
-          >查看企业信息
-          </el-button>
-            <el-button
-                type="success"
-                icon="Comment"
-                @click="$router.push('/intelligenceEmerges/formation')"
-            >查看任务信息
-            </el-button>
             <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
             <el-button icon="Refresh" @click="resetQuery">重置</el-button>
         </el-form-item>
@@ -175,7 +163,7 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 4,
+    pageSize: 15,
     name: null,
     taskId: null,
     coalitionStatus: null,
@@ -234,7 +222,7 @@ getList();
 <style scoped>
 .app-container
 {
-  height: 500px;
+  height: 100%;
 }
 
 .myPagination

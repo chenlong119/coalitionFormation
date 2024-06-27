@@ -6,7 +6,7 @@ const coalitionCompany = ref(null);
 let chartInstance=null;
 const draw=async ()=>{
   let companyList=await request({
-    url:"/company/show/getallcoalition"
+    url:"/coalition/company/show/getallcoalition"
   })
   const data=[];
   let categories=[];

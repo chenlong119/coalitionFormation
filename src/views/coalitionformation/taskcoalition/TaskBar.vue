@@ -7,7 +7,7 @@ let chartInstance = null;
 let taskStore=useTaskStore();
 const drawTaskBar=async ()=>{
   taskStore.tasks = await request({
-    url: "/coalition/formation/getChainTask",
+    url: "/coalition/coalition/formation/getChainTask",
     params:{
       chainId:1
     }
