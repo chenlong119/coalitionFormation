@@ -15,7 +15,7 @@ onMounted(()=>{
     series: [
       {
         type: 'pie',
-        radius: [50, 200],
+        radius: [50, 160],
         center: ['50%', '50%'],
         roseType: 'area',
         itemStyle: {
@@ -37,6 +37,6 @@ onMounted(()=>{
 <style scoped lang="scss">
 .resourcePie{
   width:100%;
-  height: 400px;
+  height: 350px;
 }
 </style>

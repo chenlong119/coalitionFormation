@@ -85,15 +85,15 @@
         >导出
         </el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="success"
-            plain
-            icon="User"
-            @click="$router.push('/intelligenceEmerges/companyInfo')"
-        >查看企业信息
-        </el-button>
-      </el-col>
+<!--      <el-col :span="1.5">-->
+<!--        <el-button-->
+<!--            type="success"-->
+<!--            plain-->
+<!--            icon="User"-->
+<!--            @click="$router.push('/intelligenceEmerges/companyInfo')"-->
+<!--        >查看企业信息-->
+<!--        </el-button>-->
+<!--      </el-col>-->
       <el-col :span="1.5">
         <el-button
             type="primary"
@@ -103,15 +103,6 @@
         >配置资源
         </el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="primary"
-            plain
-            icon="Share"
-            @click="$router.push('/intelligenceEmerges/coalitionResult')"
-        >查看联盟详情
-        </el-button>
-      </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -119,18 +110,7 @@
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="任务编号" align="center" prop="id"/>
       <el-table-column label="任务名称" align="center" prop="name"/>
-      <el-table-column label="任务价值" align="center" prop="val"/>
-<!--      <el-table-column label="任务到达时间" align="center" prop="arrivalTime">-->
-<!--        <template #default="scope">-->
-<!--          <span>{{ parseTime(scope.row.arrivalTime, '{y}-{m}-{d}') }}</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="任务完成时间" align="center" prop="finishTime" width="180">-->
-<!--        <template #default="scope">-->
-<!--          <span v-if="scope.row.finishTime">{{ parseTime(scope.row.finishTime, '{y}-{m}-{d}') }}</span>-->
-<!--          <span v-else>暂无</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
+<!--      <el-table-column label="任务价值" align="center" prop="val"/>-->
       <el-table-column label="任务类型" align="center" prop="taskType">
         <template #default="scope">
           <dict-tag :options="chain_stage" :value="scope.row.taskType"/>
@@ -143,19 +123,19 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="任务持续时长" align="center" prop="duration"/>
-      <el-table-column label="产品编号" align="center">
-        <template #default="scope">
-          <span v-if="scope.row.productId">{{ scope.row.productId }}</span>
-          <span v-else>暂无</span>
-        </template>
-      </el-table-column>
+<!--      <el-table-column label="任务持续时长" align="center" prop="duration"/>-->
+<!--      <el-table-column label="产品编号" align="center">-->
+<!--        <template #default="scope">-->
+<!--          <span v-if="scope.row.productId">{{ scope.row.productId }}</span>-->
+<!--          <span v-else>暂无</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="联盟编号" align="center">
         <template #default="scope">
           <span v-if="scope.row.coalitionId==0">
             暂无
           </span>
-          <span v-else>{{ scope.row.coalitionId }}</span>
+          <el-link  type="primary" v-else>{{ scope.row.coalitionId }}</el-link>
         </template>
       </el-table-column>
       <el-table-column label="所属产业链名称" align="center" :width="150">
@@ -168,11 +148,11 @@
           <span>{{ scope.row.companyName }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="资源种类数" align="center">
-        <template #default="scope">
-          <span>{{ scope.row.resource?.length }}</span>
-        </template>
-      </el-table-column>
+<!--      <el-table-column label="资源种类数" align="center">-->
+<!--        <template #default="scope">-->
+<!--          <span>{{ scope.row.resource?.length }}</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="300">
         <template #default="scope">
           <el-button link type="primary" icon="Star" @click="coalitionformation(scope.row)"
@@ -245,6 +225,19 @@
         </div>
       </template>
     </el-dialog>
+    <el-dialog v-model="openDialog">
+      <template #title>
+<span>联盟形成算法效果对比</span>
+      </template>
+      <div>
+        <el-table :data="tableData" style="width: 100%">
+          <el-table-column prop="algorithm" label="联盟形成算法"></el-table-column>
+          <el-table-column prop="reputation" label="企业联盟信誉值"></el-table-column>
+          <el-table-column prop="resourceSatisfaction" label="企业联盟资源满足度"></el-table-column>
+          <el-table-column prop="communicationCost" label="联盟沟通成本"></el-table-column>
+        </el-table>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -281,6 +274,14 @@ const cancleResource = () => {
   setResourceDialog.value = false;
 }
 
+const tableData = ref([
+  { algorithm: 'TA-agent', reputation: 75, resourceSatisfaction: 65, communicationCost: 55 },
+  { algorithm: 'TA-layer', reputation: 70, resourceSatisfaction: 60, communicationCost: 50 },
+  { algorithm: 'IGA', reputation: 80, resourceSatisfaction: 75, communicationCost: 45 },
+  { algorithm: 'DABC', reputation: 85, resourceSatisfaction: 70, communicationCost: 40 },
+  { algorithm: 'LMHA', reputation: 95, resourceSatisfaction: 90, communicationCost: 30 }
+]);
+
 const {proxy} = getCurrentInstance();
 const { task_state, chain_stage } = proxy.useDict('task_state', 'chain_stage');
 
@@ -307,7 +308,7 @@ const data = reactive({
   form: {},
   queryParams: {
     pageNum: 1,
-    pageSize: 3,
+    pageSize: 12,
     id: null,
     name: null,
     taskStatus: null,
@@ -359,6 +360,8 @@ const getTaskResource = async (taskId) => {
     }
   })
 }
+const openDialog = ref(false);
+const result=ref(-1);
 const loadingStroe=useLoadingStore();
 const coalitionformation=async (task)=>{
   if(task.resource.length==0)
@@ -378,22 +381,34 @@ const coalitionformation=async (task)=>{
     },
     data:task.resource
   })
+  result.value=res;
   if(res==-1)
   {
-    ElMessageBox.alert("联盟形成失败，系统资源不足", '任务'+task.id, {
-      confirmButtonText: '确认',
-      callback: () => {
-
-      },
-    })
-    return;
+    ElMessage.error("联盟形成失败，系统资源不足"
+    )
   }
-  ElMessageBox.alert("联盟形成成功，联盟编号为："+res, '任务'+task.id, {
-    confirmButtonText: '确认',
-    callback: () => {
-
-    },
-  })
+  else
+  {
+    ElMessage.success("联盟形成成功，联盟编号为："+res
+    )
+  }
+  // if(res==-1)
+  // {
+  //   ElMessageBox.alert("联盟形成失败，系统资源不足", '任务'+task.id, {
+  //     confirmButtonText: '确认',
+  //     callback: () => {
+  //       openDialog.value=true;
+  //     },
+  //   })
+  //   return;
+  // }
+  // ElMessageBox.alert("联盟形成成功，联盟编号为："+res, '任务'+task.id, {
+  //   confirmButtonText: '确认',
+  //   callback: () => {
+  //     openDialog.value=true;
+  //   },
+  // })
+  openDialog.value=true;
   loadingStroe.coalitionloading=!loadingStroe.coalitionloading;
   loadingStroe.taskId=task.id;
   getList();
