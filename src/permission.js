@@ -55,10 +55,6 @@ router.beforeEach((to, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
-<<<<<<< HEAD
-
-=======
->>>>>>> 97075e298b710cfbbf28dfbe33dea95b9ab32242
       next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
       NProgress.done()
     }
