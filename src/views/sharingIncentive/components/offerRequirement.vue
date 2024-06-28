@@ -1,3 +1,4 @@
+
 <template>
     <el-container>
         <el-header class="data-share-header">
@@ -52,18 +53,42 @@
   
   <script setup>
   import request from "@/utils/request";
-  import { ref } from 'vue';
+  import { ref,reactive } from 'vue';
   import { ElForm, ElFormItem, ElSelect, ElOption, ElInput, ElDatePicker, ElButton } from 'element-plus';
+  import { useRoute } from 'vue-router';
     const dataShareForm = ref(null);
-  let form = ref({    
-    requestName: '电池没电了',    
-    description: '没啥好说的',
+//   let form = ref({    
+//     requestName: '电池没电了',    
+//     description: '没啥好说的',
+//     industryChain: '汽车产业链',
+//     dataType: '生产数据',
+//     targetCompanies: '小鸭家电',
+//     deadline: '2024-06-26',
+//     status: '待响应'
+//   });
+let form = ref({    
+  requestName: '',    
+  description: '',
+  industryChain: '',
+  dataType: '',
+  targetCompanies: '',
+  deadline: '',
+  status: ''
+});
+let countrefresh =ref(0);
+function resetForm() {
+  form.value = {    
+    requestName: '5月磷酸锂电池济南销售分布数据',    
+    description: '精确到每个县的分管门店',
     industryChain: '汽车产业链',
-    dataType: '生产数据',
+    dataType: '销售数据',
     targetCompanies: '小鸭家电',
     deadline: '2024-06-26',
     status: '待响应'
-  });
+  };
+  countrefresh.value+=1;
+  console.log(countrefresh.value)
+}
   function addAuction(){
   const addAuction1 = async () => {
 
@@ -88,6 +113,15 @@
   addAuction1();
 
 }
+onMounted(async() => {
+    resetForm();
+// load();
+});
+// onBeforeRouteUpdate((to, from) => {
+//   if (to.path !== from.path) {
+//     resetForm();  // 来自其他页面时重置
+//   }
+// });
 
   
 function onSubmit(){
