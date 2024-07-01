@@ -102,14 +102,14 @@
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="企业编号" align="center" prop="id"/>
       <el-table-column label="企业名称" align="center" prop="name" width="200"/>
-<!--      <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>-->
+      <el-table-column label="产业链网络层编号" align="center" prop="layerId"/>
       <el-table-column label="企业类型" align="center" prop="companyType">
         <template #default="scope">
           <dict-tag :options="chain_stage" :value="scope.row.companyType"/>
         </template>
       </el-table-column>
       <el-table-column label="企业地址" align="center" prop="address"/>
-<!--      <el-table-column label="企业类型" align="center" prop="companyType"/>-->
+      <el-table-column label="企业类型" align="center" prop="companyType"/>
       <el-table-column label="所属产业链名称" align="center" prop="chainName"/>
       <el-table-column label="所属联盟编号" align="center">
         <template #default="scope">
@@ -129,15 +129,15 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="工艺技术" align="center" width="180">
-        <template #default="scope">
-          <div class="gytag">
-            <el-tag type="success" style="margin-right: 5px">置信电机</el-tag>
-            <el-tag type="success">Monenta</el-tag>
-          </div>
-          <span>{{2}}</span>
-        </template>
-      </el-table-column>
+<!--      <el-table-column label="工艺技术" align="center" width="180">-->
+<!--        <template #default="scope">-->
+<!--          <div class="gytag">-->
+<!--            <el-tag type="success" style="margin-right: 5px">置信电机</el-tag>-->
+<!--            <el-tag type="success">Monenta</el-tag>-->
+<!--          </div>-->
+<!--          <span>{{2}}</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" :width="300">
         <template #default="scope">
           <el-button link type="primary" icon="Search" @click="viewResource(scope.row)">资源详情</el-button>
