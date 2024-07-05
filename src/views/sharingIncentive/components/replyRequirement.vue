@@ -44,8 +44,9 @@
                     <el-table-column
                     label="操作"
                     :formatter="formatter">
-                    <el-link type="primary" @click="showPopupReply" >响应</el-link>
-
+                      <template #default="scope">
+                        <el-link type="primary" @click="showPopupReply(scope.row.dataType)" >响应</el-link>
+                      </template>
                     </el-table-column>
                 </el-table>
         <div slot="footer" class="center-container">
@@ -140,7 +141,8 @@ const isPopupVisible = ref(false);
 const isPopupVisibleRelease =ref(false);
 const isPopupVisibleReply =ref(false);
 
-
+const dataTypes=["市场份额","市场增长率","盈利率","科研投入比例","产品线宽度","产品线深度","平均收益回报率","库存周转率","所有者收益","收益值"]
+const currentDataType=ref("");
 const showPopup = () => {
     isPopupVisible.value = true;
 
@@ -155,10 +157,10 @@ const showPopupRelease = () => {
 const hidePopupRelease = () => {
     isPopupVisibleRelease.value = false;
   };
-  const showPopupReply = () => {
+  const showPopupReply = (dataType) => {
     isPopupVisibleReply.value = true;
-
   };
+
 const hidePopupReply = () => {
     isPopupVisibleReply.value = false;
   };

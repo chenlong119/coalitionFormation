@@ -1,5 +1,6 @@
 
 <template>
+  <div>
     <el-container>
         <el-header class="data-share-header">
         产业链数据共享需求发布
@@ -28,8 +29,9 @@
                     </el-form-item>
                     <el-form-item label="选择数据类型">
                         <el-select v-model="form.dataType" placeholder="请选择数据类型">
-                        <el-option label="生产数据" value="生产数据"></el-option>
-                        <el-option label="销售数据" value="销售数据"></el-option>
+                        <template v-for="(item,idx) in dataTypes" :key="idx">
+                           <el-option :label="item" :value="item" ></el-option>
+                        </template>
                         </el-select>
                     </el-form-item>
                     <el-form-item label="数据共享需求名称">
@@ -49,6 +51,7 @@
             </div>
         </el-main>
     </el-container>
+  </div>
   </template>
   
   <script setup>
@@ -57,7 +60,9 @@
   import { ElForm, ElFormItem, ElSelect, ElOption, ElInput, ElDatePicker, ElButton } from 'element-plus';
   import { useRoute } from 'vue-router';
     const dataShareForm = ref(null);
-//   let form = ref({    
+    const dataTypes=["市场份额","市场增长率","盈利率","产品线宽度","产品线深度","平均收益回报率","库存周转率"]
+
+  //   let form = ref({
 //     requestName: '电池没电了',    
 //     description: '没啥好说的',
 //     industryChain: '汽车产业链',
@@ -78,10 +83,10 @@ let form = ref({
 let countrefresh =ref(0);
 function resetForm() {
   form.value = {    
-    requestName: '5月磷酸锂电池济南销售分布数据',    
+    requestName: '5月磷酸锂电池济南销售分布数据',
     description: '精确到每个县的分管门店',
     industryChain: '汽车产业链',
-    dataType: '销售数据',
+    dataType: '',
     targetCompanies: '小鸭家电',
     deadline: '2024-06-26',
     status: '待响应'
@@ -125,7 +130,6 @@ onMounted(async() => {
 
   
 function onSubmit(){
-    console.log('Form data:', form.value);
     addAuction();
     alert('需求已提交!');
   };

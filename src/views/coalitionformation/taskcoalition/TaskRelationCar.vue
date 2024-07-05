@@ -8,7 +8,7 @@ let chartInstance=null;
 const draw=async ()=>{
   const statusArr = ['未分配', '已分配', '已完成', '执行失败']
   let res = await request({
-    url: "/coalition/coalition/formation/getChainTask",
+    url: "/coalition/formation/getChainTask",
     params: {
       chainId: 3
     }
