@@ -138,7 +138,7 @@ const handleCoalition=async (row)=>{
   companyList.value=row.company;
   pageCompany.value=row.company.slice((currentPage-1)*myPageSize,myPageSize);
   const res=await request({
-    url:"/coalition/formation/getone",
+    url:"/coalition/coalition/formation/getone",
     params:{
       id:row.taskId
     }
@@ -169,7 +169,7 @@ const { queryParams } = toRefs(data);
 /** 查询企业联盟列表 */
 function getList() {
   loading.value = true;
-  queryParams.value.companyId=props.currentCompany.id;
+  queryParams.value.companyId=props.currentCompany;
   request.get("/coalition/enterprise/mylist",{
     params:queryParams.value
   }).then((response) => {
@@ -216,7 +216,7 @@ getList();
 <style scoped>
 .app-container
 {
-  height: 420px;
+  height: 350px;
 }
 
 .myPagination

@@ -108,7 +108,7 @@ onMounted(()=>{
   draw();
   setInterval(()=>{
     run()
-  },3000)
+  },10000)
 })
 </script>
 
@@ -119,6 +119,6 @@ onMounted(()=>{
 <style scoped lang="scss">
 .dynamicBar{
   width: 100%;
-  height: 400px;
+  height: 380px;
 }
 </style>

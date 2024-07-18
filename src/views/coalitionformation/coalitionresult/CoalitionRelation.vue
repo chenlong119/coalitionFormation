@@ -30,14 +30,14 @@ let width = 850;
 
 const drawRelationShip = async () => {
   const nodes = await request({
-    url: '/graph/getnodes',
+    url: '/coalition/graph/getnodes',
     method: 'get',
     params:{
       companyType:companyStage.value==="原料供应"?1:companyStage.value
     }
   });
   const links = await request({
-    url: '/graph/getedges',
+    url: '/coalition/graph/getedges',
     method: 'get',
     params:{
       linkType:companyStage.value==="原料供应"?1:companyStage.value

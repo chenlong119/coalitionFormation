@@ -10,25 +10,6 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
-<!--      <el-form-item label="任务名称" prop="name">-->
-<!--        <el-input-->
-<!--            v-model="queryParams.name"-->
-<!--            placeholder="请输入任务名称"-->
-<!--            clearable-->
-<!--            @keyup.enter="handleQuery"-->
-<!--            style="width: 140px"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="任务类型" prop="taskType">-->
-<!--        <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable style="width: 150px">-->
-<!--          <el-option-->
-<!--              v-for="dict in chain_stage"-->
-<!--              :key="dict.value"-->
-<!--              :label="dict.label"-->
-<!--              :value="dict.value"-->
-<!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
       <el-form-item label="任务状态" prop="taskStatus">
         <el-select v-model="queryParams.taskStatus" placeholder="请选择任务状态" clearable style="width: 150px">
           <el-option
@@ -269,7 +250,7 @@ const handleFinish=(row)=>{
     type: 'warning'
   }).then(async () => {
     await request({
-      url:"/userCenter/updateTaskStatus",
+      url:"/coalition/userCenter/updateTaskStatus",
       params:{
         taskId:row.id,
         coalitionId:row.coalitionId
@@ -357,7 +338,7 @@ const coalitionformation=async (task)=>{
     return;
   }
   let res=await request({
-    url:"/coalition/allocation",
+    url:"/coalition/coalition/allocation",
     method:"post",
     params:{
       taskId:task.id,
@@ -388,7 +369,7 @@ const coalitionformation=async (task)=>{
 /** 查询任务信息列表 */
 function getList() {
   loading.value = true;
-  queryParams.value.companyId= props.currentCompany.id;
+  queryParams.value.companyId= props.currentCompany;
   listFormation(queryParams.value).then((response) => {
     formationList.value = response.rows;
     total.value = response.total;
