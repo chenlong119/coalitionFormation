@@ -101,3 +101,11 @@ export function deleteAssessment(id) {
         method: 'delete'
     })
 }
+
+export function getSameCompanys(id) {
+    return request({
+        url: '/dataFusion/searchSameCompanys',
+        method: 'get',
+        params: { id }
+    })
+}
